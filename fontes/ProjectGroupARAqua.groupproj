@@ -1,0 +1,36 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{AFBB923B-2202-4879-BF7D-CD0B7E238AE2}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="ProjetoARAqua.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="ProjetoARAqua">
+        <MSBuild Projects="ProjetoARAqua.dproj"/>
+    </Target>
+    <Target Name="ProjetoARAqua:Clean">
+        <MSBuild Projects="ProjetoARAqua.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="ProjetoARAqua:Make">
+        <MSBuild Projects="ProjetoARAqua.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="ProjetoARAqua"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="ProjetoARAqua:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="ProjetoARAqua:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
