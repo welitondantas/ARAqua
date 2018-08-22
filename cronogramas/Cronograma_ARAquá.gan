@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><project name="ARAquá - Avaliação de Risco Ambiental de Agrotóxico" company="Faculdade Eduvale de Avaré" webLink="http://www.cnpm.embrapa.br/" view-date="2018-08-10" view-index="0" gantt-divider-location="763" resource-divider-location="893" version="2.8.8" locale="pt_BR">
+<?xml version="1.0" encoding="UTF-8"?><project name="ARAquá - Avaliação de Risco Ambiental de Agrotóxico" company="Faculdade Eduvale de Avaré" webLink="http://www.cnpm.embrapa.br/" view-date="2018-08-10" view-index="0" gantt-divider-location="763" resource-divider-location="893" version="2.8.7" locale="pt_BR">
     <description><![CDATA[http://www.cnpm.embrapa.br/]]></description>
     <view zooming-state="default:2" id="gantt-chart">
         <field id="tpd3" name="Nome" width="350" order="0"/>
@@ -76,12 +76,12 @@
             <taskproperty id="tpd8" name="coordinator" type="default" valuetype="text"/>
             <taskproperty id="tpd9" name="predecessorsr" type="default" valuetype="text"/>
         </taskproperties>
-        <task id="6" name="ARAquá" color="#000000" meeting="false" project="true" start="2018-08-13" duration="35" complete="0" thirdDate="2018-08-13" thirdDate-constraint="0" expand="true">
-            <task id="7" name="Comunicação" color="#8cb6ce" meeting="false" start="2018-08-13" duration="34" complete="2" thirdDate="2018-08-13" thirdDate-constraint="0" expand="true">
+        <task id="6" name="ARAquá" color="#000000" meeting="false" project="true" start="2018-08-13" duration="35" complete="1" thirdDate="2018-08-13" thirdDate-constraint="0" expand="true">
+            <task id="7" name="Comunicação" color="#8cb6ce" meeting="false" start="2018-08-13" duration="34" complete="4" thirdDate="2018-08-13" thirdDate-constraint="0" expand="true">
                 <task id="13" name="Reunião com o Cliente" color="#8cb6ce" meeting="false" start="2018-08-13" duration="1" complete="0" thirdDate="2018-08-13" thirdDate-constraint="0" expand="true"/>
                 <task id="37" name="Reunião com Equipe de Projetos" color="#8cb6ce" meeting="false" start="2018-08-14" duration="1" complete="0" thirdDate="2018-08-14" thirdDate-constraint="0" expand="true"/>
                 <task id="38" name="Levantamento Inicial de Requisitos" color="#ff0000" meeting="false" start="2018-08-14" duration="4" complete="100" thirdDate="2018-08-14" thirdDate-constraint="0" priority="4" expand="true"/>
-                <task id="209" name="Especificação de Requisitos de Software" color="#8cb6ce" meeting="false" start="2018-08-15" duration="3" complete="0" thirdDate="2018-08-15" thirdDate-constraint="0" priority="2" expand="true"/>
+                <task id="209" name="Especificação de Requisitos de Software" color="#8cb6ce" meeting="false" start="2018-08-15" duration="3" complete="100" thirdDate="2018-08-15" thirdDate-constraint="0" priority="2" expand="true"/>
                 <task id="197" name="Requisitos de Sistema e Não Funcionais" color="#8cb6ce" meeting="false" start="2018-08-20" duration="4" complete="0" thirdDate="2018-08-20" thirdDate-constraint="0" priority="2" expand="true"/>
                 <task id="215" name="Feedback de Versões" meeting="false" start="2018-08-24" duration="24" complete="0" expand="false">
                     <task id="216" name="Feedback da versão Protótipo" color="#8cb6ce" meeting="false" start="2018-08-24" duration="1" complete="0" thirdDate="2018-08-24" thirdDate-constraint="0" expand="true"/>
@@ -149,7 +149,7 @@
                 <task id="260" name="Analise de Regras de Negócio" color="#8cb6ce" meeting="false" start="2018-08-14" duration="23" complete="0" thirdDate="2018-08-14" thirdDate-constraint="0" expand="true"/>
                 <task id="300" name="Revisão Código" color="#8cb6ce" meeting="false" start="2018-09-17" duration="10" complete="0" thirdDate="2018-08-03" thirdDate-constraint="0" expand="true"/>
             </task>
-            <task id="11" name="Emprego" color="#8cb6ce" meeting="false" start="2018-08-14" duration="34" complete="0" thirdDate="2018-08-13" thirdDate-constraint="0" expand="false">
+            <task id="11" name="Emprego" color="#8cb6ce" meeting="false" start="2018-08-14" duration="34" complete="0" thirdDate="2018-08-13" thirdDate-constraint="0" expand="true">
                 <task id="63" name="Preparação de Ambiente no Cliente" color="#8cb6ce" meeting="false" start="2018-08-14" duration="2" complete="0" thirdDate="2018-08-13" thirdDate-constraint="0" expand="true"/>
                 <task id="65" name="Instalação do Banco de Dados" color="#8cb6ce" meeting="false" start="2018-08-16" duration="2" complete="0" thirdDate="2018-08-17" thirdDate-constraint="0" expand="true"/>
                 <task id="33" name="Liberação da versão Protótipo" color="#8cb6ce" meeting="false" start="2018-08-20" duration="1" complete="0" thirdDate="2018-08-20" thirdDate-constraint="0" expand="true"/>
