@@ -4,24 +4,24 @@ interface
   type
     TForm = class(TForm)
       private
-    FPrecipitacao: double;
-    FId: integer;
-    FProfundidadeAquifero: double;
-    FEvapotranspiracao: double;
-    FPorosidadeAquifero: double;
-    FIrrigacao: double;
-    procedure SetEvapotranspiracao(const Value: double);
-    procedure SetId(const Value: integer);
-    procedure SetIrrigacao(const Value: double);
-    procedure SetPorosidadeAquifero(const Value: double);
-    procedure SetPrecipitacao(const Value: double);
-    procedure SetProfundidadeAquifero(const Value: double);
-    function getEvapotranspiracao: double;
-    function getId: integer;
-    function getIrrigacao: double;
-    function getPorosidadeAquifero: double;
-    function getPrecipitacao: double;
-    function getProfundidadeAquifero: double;
+        FPrecipitacao: double;
+        FId: integer;
+        FProfundidadeAquifero: double;
+        FEvapotranspiracao: double;
+        FPorosidadeAquifero: double;
+        FIrrigacao: double;
+        procedure SetEvapotranspiracao(const Value: double);
+        procedure SetId(const Value: integer);
+        procedure SetIrrigacao(const Value: double);
+        procedure SetPorosidadeAquifero(const Value: double);
+        procedure SetPrecipitacao(const Value: double);
+        procedure SetProfundidadeAquifero(const Value: double);
+        function getEvapotranspiracao: double;
+        function getId: integer;
+        function getIrrigacao: double;
+        function getPorosidadeAquifero: double;
+        function getPrecipitacao: double;
+        function getProfundidadeAquifero: double;
 
       published
         property Id: integer read getId write SetId;
