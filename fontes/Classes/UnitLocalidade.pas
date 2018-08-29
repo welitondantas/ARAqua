@@ -2,7 +2,7 @@ unit UnitLocalidade;
 
 interface
   type
-    TForm = class(TForm)
+    TLocalidade = class
       private
         FPrecipitacao: double;
         FId: integer;
@@ -35,62 +35,62 @@ implementation
 
 { TForm }
 
-function TForm.getEvapotranspiracao: double;
+function TLocalidade.getEvapotranspiracao: double;
 begin
   Result := FEvapotranspiracao;
 end;
 
-function TForm.getId: integer;
+function TLocalidade.getId: integer;
 begin
   Result := FId;
 end;
 
-function TForm.getIrrigacao: double;
+function TLocalidade.getIrrigacao: double;
 begin
   Result := FIrrigacao;
 end;
 
-function TForm.getPorosidadeAquifero: double;
+function TLocalidade.getPorosidadeAquifero: double;
 begin
   Result := FPorosidadeAquifero;
 end;
 
-function TForm.getPrecipitacao: double;
+function TLocalidade.getPrecipitacao: double;
 begin
   Result := FPrecipitacao;
 end;
 
-function TForm.getProfundidadeAquifero: double;
+function TLocalidade.getProfundidadeAquifero: double;
 begin
   Result := FProfundidadeAquifero;
 end;
 
-procedure TForm.SetEvapotranspiracao(const Value: double);
+procedure TLocalidade.SetEvapotranspiracao(const Value: double);
 begin
   FEvapotranspiracao := Value;
 end;
 
-procedure TForm.SetId(const Value: integer);
+procedure TLocalidade.SetId(const Value: integer);
 begin
   FId := Value;
 end;
 
-procedure TForm.SetIrrigacao(const Value: double);
+procedure TLocalidade.SetIrrigacao(const Value: double);
 begin
   FIrrigacao := Value;
 end;
 
-procedure TForm.SetPorosidadeAquifero(const Value: double);
+procedure TLocalidade.SetPorosidadeAquifero(const Value: double);
 begin
   FPorosidadeAquifero := Value;
 end;
 
-procedure TForm.SetPrecipitacao(const Value: double);
+procedure TLocalidade.SetPrecipitacao(const Value: double);
 begin
   FPrecipitacao := Value;
 end;
 
-procedure TForm.SetProfundidadeAquifero(const Value: double);
+procedure TLocalidade.SetProfundidadeAquifero(const Value: double);
 begin
   FProfundidadeAquifero := Value;
 end;
