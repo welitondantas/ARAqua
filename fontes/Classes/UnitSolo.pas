@@ -3,7 +3,7 @@ unit UnitSolo;
 interface
 
   type
-    TForm = class(TForm)
+    TSolo = class
 
     private
       FCapacidadeDeCampo: double;
@@ -20,7 +20,7 @@ interface
       procedure SetDensidade(const Value: Double);
       procedure SetID(const Value: integer);
       procedure SetNome(const Value: String);
-      procedure SetProfundidadeDeCamada1(const Value: array of double);
+      procedure SetProfundidadeDeCamada1(const Value: double);
       procedure SetProfundidadeDeCamada2(const Value: double);
       procedure SetProfundidadeDeCamada3(const Value: double);
       procedure SetProfundidadeDeCamada4(const Value: double);
@@ -29,7 +29,7 @@ interface
       function getDensidade: Double;
       function getID: integer;
       function getNome: String;
-      function getProfundidadeDeCamada1:  double;
+      function getProfundidadeDeCamada1: double;
       function getProfundidadeDeCamada2: double;
       function getProfundidadeDeCamada3: double;
       function getProfundidadeDeCamada4: double;
@@ -52,92 +52,92 @@ implementation
 
 { TForm }
 
-function TForm.getCapacidadeDeCampo: double;
+function TSolo.getCapacidadeDeCampo: double;
 begin
   Result := FCapacidadeDeCampo;
 end;
 
-function TForm.getCarbonoOrganico: double;
+function TSolo.getCarbonoOrganico: double;
 begin
   Result := FCarbonoOrganico;
 end;
 
-function TForm.getDensidade: double;
+function TSolo.getDensidade: double;
 begin
   Result := FDensidade;
 end;
 
-function TForm.getID: integer;
+function TSolo.getID: integer;
 begin
   Result := FID;
 end;
 
-function TForm.getNome: String;
+function TSolo.getNome: String;
 begin
   Result := FNome;
 end;
 
-function TForm.getProfundidadeDeCamada1: double;
+function TSolo.getProfundidadeDeCamada1: double;
 begin
   Result := FProfundidadeDeCamada1;
 end;
 
-function TForm.getProfundidadeDeCamada2: double;
+function TSolo.getProfundidadeDeCamada2: double;
 begin
   Result := FProfundidadeDeCamada2;
 end;
 
-function TForm.getProfundidadeDeCamada3: double;
+function TSolo.getProfundidadeDeCamada3: double;
 begin
   Result := FProfundidadeDeCamada3;
 end;
 
-function TForm.getProfundidadeDeCamada4: double;
+function TSolo.getProfundidadeDeCamada4: double;
 begin
   Result := FProfundidadeDeCamada4;
 end;
 
-procedure TForm.SetCapacidadeDeCampo(const Value: double);
+procedure TSolo.SetCapacidadeDeCampo(const Value: double);
 begin
   FCapacidadeDeCampo := Value;
 end;
 
-procedure TForm.SetCarbonoOrganico(const Value: double);
+procedure TSolo.SetCarbonoOrganico(const Value: double);
 begin
   FCarbonoOrganico := Value;
 end;
 
-procedure TForm.SetDensidade(const Value: double);
+procedure TSolo.SetDensidade(const Value: double);
 begin
   FDensidade := Value;
 end;
 
-procedure TForm.SetID(const Value: integer);
+procedure TSolo.SetID(const Value: integer);
 begin
   FID := Value;
 end;
 
-procedure TForm.SetNome(const Value: String);
+procedure TSolo.SetNome(const Value: String);
 begin
   FNome := Value;
 end;
 
-procedure TForm.SetProfundidadeDeCamada1(const Value: double);
+procedure TSolo.SetProfundidadeDeCamada1(const Value: double);
 begin
   FProfundidadeDeCamada1 := Value;
 end;
 
-procedure TForm.SetProfundidadeDeCamada2(const Value: double);
+procedure TSolo.SetProfundidadeDeCamada2(const Value: double);
 begin
   FProfundidadeDeCamada2 := Value;
 end;
 
-procedure TForm.SetProfundidadeDeCamada3(const Value: double);
+procedure TSolo.SetProfundidadeDeCamada3(const Value: double);
 begin
   FProfundidadeDeCamada3 := Value;
 end;
 
-procedure TForm.SetProfundidadeDeCamada4(const Value: double);
+procedure TSolo.SetProfundidadeDeCamada4(const Value: double);
 begin
   FProfundidadeDeCamada4 := Value;
 end;
