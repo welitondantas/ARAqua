@@ -2,7 +2,7 @@ unit UnitAgrotoxico;
 
 interface
   type
-    TForm = class(TForm)
+    TAgrotoxico = class
 
       private
         FPrincipioAtivo: String;
@@ -32,52 +32,52 @@ implementation
 
 { TForm }
 
-function TForm.getCoeficienteSorcao: double;
+function TAgrotoxico.getCoeficienteSorcao: double;
 begin
   Result := FCoeficienteSorcao;
 end;
 
-function TForm.getDose: double;
+function TAgrotoxico.getDose: double;
 begin
   Result := FDose;
 end;
 
-function TForm.getId: integer;
+function TAgrotoxico.getId: integer;
 begin
   Result := FId;
 end;
 
-function TForm.getMeiaVida: double;
+function TAgrotoxico.getMeiaVida: double;
 begin
   Result := FMeiaVida;
 end;
 
-function TForm.getPrincipioAtivo: String;
+function TAgrotoxico.getPrincipioAtivo: String;
 begin
   Result := FPrincipioAtivo;
 end;
 
-procedure TForm.SetCoeficienteSorcao(const Value: double);
+procedure TAgrotoxico.SetCoeficienteSorcao(const Value: double);
 begin
   FCoeficienteSorcao := Value;
 end;
 
-procedure TForm.SetDose(const Value: double);
+procedure TAgrotoxico.SetDose(const Value: double);
 begin
   FDose := Value;
 end;
 
-procedure TForm.SetId(const Value: integer);
+procedure TAgrotoxico.SetId(const Value: integer);
 begin
   FId := Value;
 end;
 
-procedure TForm.SetMeiaVida(const Value: double);
+procedure TAgrotoxico.SetMeiaVida(const Value: double);
 begin
   FMeiaVida := Value;
 end;
 
-procedure TForm.SetPrincipioAtivo(const Value: String);
+procedure TAgrotoxico.SetPrincipioAtivo(const Value: String);
 begin
   FPrincipioAtivo := Value;
 end;
