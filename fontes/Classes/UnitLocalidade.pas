@@ -10,18 +10,21 @@ interface
         FEvapotranspiracao: double;
         FPorosidadeAquifero: double;
         FIrrigacao: double;
+        FDescricao: String;
         procedure SetEvapotranspiracao(const Value: double);
         procedure SetId(const Value: integer);
         procedure SetIrrigacao(const Value: double);
         procedure SetPorosidadeAquifero(const Value: double);
         procedure SetPrecipitacao(const Value: double);
         procedure SetProfundidadeAquifero(const Value: double);
+        procedure SetDescricao(const Value: String);
         function getEvapotranspiracao: double;
         function getId: integer;
         function getIrrigacao: double;
         function getPorosidadeAquifero: double;
         function getPrecipitacao: double;
         function getProfundidadeAquifero: double;
+        function getDescricao: String;
 
       published
         property Id: integer read getId write SetId;
@@ -30,10 +33,16 @@ interface
         property Irrigacao: double read getIrrigacao write SetIrrigacao;
         property PorosidadeAquifero: double read getPorosidadeAquifero write SetPorosidadeAquifero;
         property ProfundidadeAquifero: double read getProfundidadeAquifero write SetProfundidadeAquifero;
+        property Descricao: String read getDescricao write SetDescricao;
     end;
 implementation
 
 { TForm }
+
+function TLocalidade.getDescricao: String;
+begin
+  Result := FDescricao;
+end;
 
 function TLocalidade.getEvapotranspiracao: double;
 begin
@@ -63,6 +72,11 @@ end;
 function TLocalidade.getProfundidadeAquifero: double;
 begin
   Result := FProfundidadeAquifero;
+end;
+
+procedure TLocalidade.SetDescricao(const Value: String);
+begin
+  FDescricao := Value;
 end;
 
 procedure TLocalidade.SetEvapotranspiracao(const Value: double);
