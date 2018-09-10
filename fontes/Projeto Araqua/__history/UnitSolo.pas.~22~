@@ -1,0 +1,36 @@
+unit UnitSolo;
+
+interface
+
+  type
+    TSolo = class
+
+    private
+
+    public
+
+    published
+      property ID: integer;
+      property Nome: String;
+      property ProfundidadeDeCamada1: integer;
+      property ProfundidadeDeCamada2: integer;
+      property ProfundidadeDeCamada3: integer;
+      property ProfundidadeDeCamada4: integer;
+      property CapacidadeDeCampo1: double;
+      property CapacidadeDeCampo2: double;
+      property CapacidadeDeCampo3: double;
+      property CapacidadeDeCampo4: double;
+      property DensidadeSolo1: double;
+      property DensidadeSolo2: double;
+      property DensidadeSolo3: double;
+      property DensidadeSolo4: double;
+      property CarbonoOrganico: double;
+    end;
+
+implementation
+
+{ TForm }
+
+
+
+end.

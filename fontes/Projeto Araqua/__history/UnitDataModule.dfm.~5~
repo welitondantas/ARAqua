@@ -1,0 +1,21 @@
+object DataModule1: TDataModule1
+  OldCreateOrder = False
+  Height = 376
+  Width = 575
+  object FDConnection1: TFDConnection
+    Params.Strings = (
+      'Database=dbaraqua'
+      'User_Name=root'
+      'DriverID=MySQL')
+    LoginPrompt = False
+    Left = 40
+    Top = 24
+  end
+  object FDTableAgro: TFDTable
+    Connection = FDConnection1
+    UpdateOptions.UpdateTableName = 'dbaraqua.agrotoxico'
+    TableName = 'dbaraqua.agrotoxico'
+    Left = 40
+    Top = 88
+  end
+end

@@ -1,0 +1,112 @@
+unit UnitLocalidade;
+
+interface
+  type
+    TLocalidade = class
+      private
+        FPrecipitacao: double;
+        FId: integer;
+        FProfundidadeAquifero: double;
+        FEvapotranspiracao: double;
+        FPorosidadeAquifero: double;
+        FIrrigacao: double;
+        FDescricao: String;
+        procedure SetEvapotranspiracao(const Value: double);
+        procedure SetId(const Value: integer);
+        procedure SetIrrigacao(const Value: double);
+        procedure SetPorosidadeAquifero(const Value: double);
+        procedure SetPrecipitacao(const Value: double);
+        procedure SetProfundidadeAquifero(const Value: double);
+        procedure SetDescricao(const Value: String);
+        function getEvapotranspiracao: double;
+        function getId: integer;
+        function getIrrigacao: double;
+        function getPorosidadeAquifero: double;
+        function getPrecipitacao: double;
+        function getProfundidadeAquifero: double;
+        function getDescricao: String;
+
+      published
+        property Id: integer read getId write SetId;
+        property Precipitacao: double read getPrecipitacao write SetPrecipitacao;
+        property Evapotranspiracao: double read getEvapotranspiracao write SetEvapotranspiracao;
+        property Irrigacao: double read getIrrigacao write SetIrrigacao;
+        property PorosidadeAquifero: double read getPorosidadeAquifero write SetPorosidadeAquifero;
+        property ProfundidadeAquifero: double read getProfundidadeAquifero write SetProfundidadeAquifero;
+        property Descricao: String read getDescricao write SetDescricao;
+    end;
+implementation
+
+{ TForm }
+
+function TLocalidade.getDescricao: String;
+begin
+  Result := FDescricao;
+end;
+
+function TLocalidade.getEvapotranspiracao: double;
+begin
+  Result := FEvapotranspiracao;
+end;
+
+function TLocalidade.getId: integer;
+begin
+  Result := FId;
+end;
+
+function TLocalidade.getIrrigacao: double;
+begin
+  Result := FIrrigacao;
+end;
+
+function TLocalidade.getPorosidadeAquifero: double;
+begin
+  Result := FPorosidadeAquifero;
+end;
+
+function TLocalidade.getPrecipitacao: double;
+begin
+  Result := FPrecipitacao;
+end;
+
+function TLocalidade.getProfundidadeAquifero: double;
+begin
+  Result := FProfundidadeAquifero;
+end;
+
+procedure TLocalidade.SetDescricao(const Value: String);
+begin
+  FDescricao := Value;
+end;
+
+procedure TLocalidade.SetEvapotranspiracao(const Value: double);
+begin
+  FEvapotranspiracao := Value;
+end;
+
+procedure TLocalidade.SetId(const Value: integer);
+begin
+  FId := Value;
+end;
+
+procedure TLocalidade.SetIrrigacao(const Value: double);
+begin
+  FIrrigacao := Value;
+end;
+
+procedure TLocalidade.SetPorosidadeAquifero(const Value: double);
+begin
+  FPorosidadeAquifero := Value;
+end;
+
+procedure TLocalidade.SetPrecipitacao(const Value: double);
+begin
+  FPrecipitacao := Value;
+end;
+
+procedure TLocalidade.SetProfundidadeAquifero(const Value: double);
+begin
+  FProfundidadeAquifero := Value;
+end;
+
+end.

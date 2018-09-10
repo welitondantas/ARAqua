@@ -1,0 +1,79 @@
+object FormCadastroUsuario: TFormCadastroUsuario
+  Left = 0
+  Top = 0
+  Caption = 'Cadastro de Usu'#225'rios'
+  ClientHeight = 305
+  ClientWidth = 274
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  PixelsPerInch = 96
+  TextHeight = 13
+  object paneFormCad: TPanel
+    Left = 0
+    Top = 0
+    Width = 274
+    Height = 305
+    Align = alClient
+    Color = 16055795
+    ParentBackground = False
+    TabOrder = 0
+    ExplicitWidth = 347
+    ExplicitHeight = 254
+    object dbEditNomeUsuario: TDBEdit
+      Left = 72
+      Top = 64
+      Width = 121
+      Height = 21
+      TabOrder = 0
+    end
+    object dbEditSenha: TDBEdit
+      Left = 72
+      Top = 117
+      Width = 121
+      Height = 21
+      TabOrder = 1
+    end
+    object editRedigiteSenha: TEdit
+      Left = 72
+      Top = 152
+      Width = 121
+      Height = 21
+      TabOrder = 2
+    end
+    object dbComboAcesso: TDBComboBox
+      Left = 72
+      Top = 192
+      Width = 121
+      Height = 21
+      TabOrder = 3
+    end
+    object dbEditLogin: TDBEdit
+      Left = 72
+      Top = 91
+      Width = 121
+      Height = 21
+      TabOrder = 4
+    end
+    object btnSalvar: TButton
+      Left = 144
+      Top = 256
+      Width = 75
+      Height = 25
+      Caption = 'Salvar'
+      TabOrder = 5
+    end
+    object btnCancelar: TButton
+      Left = 48
+      Top = 256
+      Width = 75
+      Height = 25
+      Caption = 'Cancelar'
+      TabOrder = 6
+    end
+  end
+end

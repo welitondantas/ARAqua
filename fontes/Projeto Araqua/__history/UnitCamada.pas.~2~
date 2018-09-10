@@ -1,0 +1,10 @@
+unit UnitCamada;
+
+interface
+  type
+    TForm = class(TForm)
+
+    end;
+implementation
+
+end.

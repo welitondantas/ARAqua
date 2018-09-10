@@ -1,0 +1,30 @@
+unit UnitCalculoResultado;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, Vcl.ComCtrls;
+
+type
+  TFormCalculoResultado = class(TForm)
+    PanelFundo: TPanel;
+    PageControl1: TPageControl;
+    TabSheetLixiviacao: TTabSheet;
+    TabSheetCarreamento: TTabSheet;
+    PanelTabLixiviacao: TPanel;
+    PanelTabCarreamento: TPanel;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  FormCalculoResultado: TFormCalculoResultado;
+
+implementation
+
+{$R *.dfm}
+
+end.

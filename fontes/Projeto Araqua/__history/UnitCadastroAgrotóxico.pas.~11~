@@ -1,0 +1,68 @@
+unit UnitCadastroAgrotóxico;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, Vcl.StdCtrls, Vcl.Mask,
+  Vcl.DBCtrls, Data.DB, Vcl.Grids, Vcl.DBGrids;
+
+type
+  TFormAgrotoxico = class(TForm)
+    panelAgro: TPanel;
+    Panel1: TPanel;
+    Panel2: TPanel;
+    DBEditIngredienteAtivo: TDBEdit;
+    Label1: TLabel;
+    Panel3: TPanel;
+    DBEditDose: TDBEdit;
+    Label2: TLabel;
+    Panel4: TPanel;
+    DBGrid1: TDBGrid;
+    Panel5: TPanel;
+    Label3: TLabel;
+    Label4: TLabel;
+    Label5: TLabel;
+    Label6: TLabel;
+    Label7: TLabel;
+    DBEditCamada1: TDBEdit;
+    DBEditCamada2: TDBEdit;
+    DBEditCamada3: TDBEdit;
+    DBEditCamada4: TDBEdit;
+    Panel6: TPanel;
+    Label8: TLabel;
+    Label9: TLabel;
+    DBEditMeiaVidaCam1: TDBEdit;
+    DBEditMeiaVidaCam2: TDBEdit;
+    DBEditMeiaVidaCam3: TDBEdit;
+    DBEditMeiaVidaCam4: TDBEdit;
+    DBEditPadraoPort: TDBEdit;
+    Label10: TLabel;
+    DBEditParamOrganAqua: TDBEdit;
+    Panel7: TPanel;
+    btnSalvarAgro: TButton;
+    btnCancelarAgro: TButton;
+    DataSourceAgro: TDataSource;
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  FormAgrotoxico: TFormAgrotoxico;
+
+implementation
+
+{$R *.dfm}
+
+uses UnitDataModule;
+
+procedure TFormAgrotoxico.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+  FormAgrotoxico := nil;
+  Action := caFree;
+end;
+
+end.

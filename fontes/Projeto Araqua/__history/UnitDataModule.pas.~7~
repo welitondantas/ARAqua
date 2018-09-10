@@ -1,0 +1,51 @@
+unit UnitDataModule;
+
+interface
+
+uses
+  System.SysUtils, System.Classes, FireDAC.Stan.Intf, FireDAC.Stan.Option,
+  FireDAC.Stan.Error, FireDAC.UI.Intf, FireDAC.Phys.Intf, FireDAC.Stan.Def,
+  FireDAC.Stan.Pool, FireDAC.Stan.Async, FireDAC.Phys, FireDAC.VCLUI.Wait,
+  Data.DB, FireDAC.Comp.Client, FireDAC.Phys.MySQL, FireDAC.Phys.MySQLDef,
+  FireDAC.Stan.Param, FireDAC.DatS, FireDAC.DApt.Intf, FireDAC.DApt,
+  FireDAC.Comp.DataSet;
+
+type
+  TDataModule1 = class(TDataModule)
+    FDConnection1: TFDConnection;
+    FDTableAgro: TFDTable;
+    FDQueryAgro: TFDQuery;
+    FDTableAgroid: TFDAutoIncField;
+    FDTableAgrodose: TSingleField;
+    FDTableAgrocoeficienteSorcaoCam1: TSingleField;
+    FDTableAgrocoeficienteSorcaoCam2: TSingleField;
+    FDTableAgrocoeficienteSorcaoCam3: TSingleField;
+    FDTableAgrocoeficienteSorcaoCam4: TSingleField;
+    FDTableAgromeiaVidaCam1: TIntegerField;
+    FDTableAgromeiaVidaCam2: TIntegerField;
+    FDTableAgromeiaVidaCam3: TIntegerField;
+    FDTableAgromeiaVidaCam4: TIntegerField;
+    FDTableAgroprincipioAtivo: TStringField;
+    FDQueryUsuario: TFDQuery;
+    FDTableUsuario: TFDTable;
+    FDTableUsuarioid: TFDAutoIncField;
+    FDTableUsuarionome: TStringField;
+    FDTableUsuariologin: TStringField;
+    FDTableUsuariosenha: TStringField;
+    FDTableUsuarioacesso: TIntegerField;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  DataModule1: TDataModule1;
+
+implementation
+
+{%CLASSGROUP 'Vcl.Controls.TControl'}
+
+{$R *.dfm}
+
+end.

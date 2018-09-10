@@ -1,0 +1,44 @@
+unit UnitDataModule;
+
+interface
+
+uses
+  System.SysUtils, System.Classes, FireDAC.Stan.Intf, FireDAC.Stan.Option,
+  FireDAC.Stan.Error, FireDAC.UI.Intf, FireDAC.Phys.Intf, FireDAC.Stan.Def,
+  FireDAC.Stan.Pool, FireDAC.Stan.Async, FireDAC.Phys, FireDAC.VCLUI.Wait,
+  Data.DB, FireDAC.Comp.Client, FireDAC.Phys.MySQL, FireDAC.Phys.MySQLDef,
+  FireDAC.Stan.Param, FireDAC.DatS, FireDAC.DApt.Intf, FireDAC.DApt,
+  FireDAC.Comp.DataSet;
+
+type
+  TDataModule1 = class(TDataModule)
+    FDConnection1: TFDConnection;
+    FDTableAgro: TFDTable;
+    FDTableAgroid: TFDAutoIncField;
+    FDTableAgroprincipioAtiivo: TStringField;
+    FDTableAgrodose: TSingleField;
+    FDTableAgrocoeficienteSorcaoCam1: TSingleField;
+    FDTableAgrocoeficienteSorcaoCam2: TSingleField;
+    FDTableAgrocoeficienteSorcaoCam3: TSingleField;
+    FDTableAgrocoeficienteSorcaoCam4: TSingleField;
+    FDTableAgromeiaVidaCam1: TSingleField;
+    FDTableAgromeiaVidaCam2: TSingleField;
+    FDTableAgromeiaVidaCam3: TSingleField;
+    FDTableAgromeiaVidaCam4: TSingleField;
+    FDQueryAgro: TFDQuery;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  DataModule1: TDataModule1;
+
+implementation
+
+{%CLASSGROUP 'Vcl.Controls.TControl'}
+
+{$R *.dfm}
+
+end.

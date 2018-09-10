@@ -1,0 +1,25 @@
+unit Cadastro;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls;
+
+type
+  TFormCadastroUsuario = class(TForm)
+    paneFormCad: TPanel;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  FormCadastroUsuario: TFormCadastroUsuario;
+
+implementation
+
+{$R *.dfm}
+
+end.

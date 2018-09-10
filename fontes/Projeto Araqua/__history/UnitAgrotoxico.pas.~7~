@@ -1,0 +1,85 @@
+unit UnitAgrotoxico;
+
+interface
+  type
+    TAgrotoxico = class
+
+      private
+        FPrincipioAtivo: String;
+        FId: integer;
+        FMeiaVida: double;
+        FCoeficienteSorcao: double;
+        FDose: double;
+        procedure SetCoeficienteSorcao(const Value: double);
+        procedure SetDose(const Value: double);
+        procedure SetId(const Value: integer);
+        procedure SetMeiaVida(const Value: double);
+        procedure SetPrincipioAtivo(const Value: String);
+        function getCoeficienteSorcao: double;
+        function getDose: double;
+        function getId: integer;
+        function getMeiaVida: double;
+        function getPrincipioAtivo: String;
+
+      published
+        property Id: integer read getId write SetId;
+        property PrincipioAtivo: String read getPrincipioAtivo write SetPrincipioAtivo;
+        property Dose: double read getDose write SetDose;
+        property CoeficienteSorcao: double read getCoeficienteSorcao write SetCoeficienteSorcao;
+        property MeiaVida: double read getMeiaVida write SetMeiaVida;
+    end;
+implementation
+
+{ TForm }
+
+function TAgrotoxico.getCoeficienteSorcao: double;
+begin
+  Result := FCoeficienteSorcao;
+end;
+
+function TAgrotoxico.getDose: double;
+begin
+  Result := FDose;
+end;
+
+function TAgrotoxico.getId: integer;
+begin
+  Result := FId;
+end;
+
+function TAgrotoxico.getMeiaVida: double;
+begin
+  Result := FMeiaVida;
+end;
+
+function TAgrotoxico.getPrincipioAtivo: String;
+begin
+  Result := FPrincipioAtivo;
+end;
+
+procedure TAgrotoxico.SetCoeficienteSorcao(const Value: double);
+begin
+  FCoeficienteSorcao := Value;
+end;
+
+procedure TAgrotoxico.SetDose(const Value: double);
+begin
+  FDose := Value;
+end;
+
+procedure TAgrotoxico.SetId(const Value: integer);
+begin
+  FId := Value;
+end;
+
+procedure TAgrotoxico.SetMeiaVida(const Value: double);
+begin
+  FMeiaVida := Value;
+end;
+
+procedure TAgrotoxico.SetPrincipioAtivo(const Value: String);
+begin
+  FPrincipioAtivo := Value;
+end;
+
+end.

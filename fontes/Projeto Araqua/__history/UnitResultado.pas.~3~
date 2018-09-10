@@ -1,0 +1,20 @@
+unit UnitResultado;
+
+interface
+  type
+    TResultado = class
+      public
+
+      private
+
+      published
+        property Id: integer;
+        property IdLocal: integer;
+        property IdSolo: integer;
+        property IdAgrotoxico: integer;
+
+
+    end;
+implementation
+
+end.

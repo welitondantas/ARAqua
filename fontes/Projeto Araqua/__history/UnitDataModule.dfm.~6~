@@ -1,0 +1,87 @@
+object DataModule1: TDataModule1
+  OldCreateOrder = False
+  Height = 376
+  Width = 575
+  object FDConnection1: TFDConnection
+    Params.Strings = (
+      'Database=dbaraqua'
+      'User_Name=root'
+      'DriverID=MySQL')
+    Connected = True
+    LoginPrompt = False
+    Left = 40
+    Top = 24
+  end
+  object FDTableAgro: TFDTable
+    IndexFieldNames = 'id'
+    Connection = FDConnection1
+    UpdateOptions.UpdateTableName = 'dbaraqua.agrotoxico'
+    TableName = 'dbaraqua.agrotoxico'
+    Left = 40
+    Top = 88
+    object FDTableAgroid: TFDAutoIncField
+      FieldName = 'id'
+      Origin = 'id'
+      ProviderFlags = [pfInWhere, pfInKey]
+    end
+    object FDTableAgroprincipioAtiivo: TStringField
+      FieldName = 'principioAtiivo'
+      Origin = 'principioAtiivo'
+      Required = True
+      Size = 60
+    end
+    object FDTableAgrodose: TSingleField
+      FieldName = 'dose'
+      Origin = 'dose'
+      Required = True
+    end
+    object FDTableAgrocoeficienteSorcaoCam1: TSingleField
+      FieldName = 'coeficienteSorcaoCam1'
+      Origin = 'coeficienteSorcaoCam1'
+      Required = True
+    end
+    object FDTableAgrocoeficienteSorcaoCam2: TSingleField
+      AutoGenerateValue = arDefault
+      FieldName = 'coeficienteSorcaoCam2'
+      Origin = 'coeficienteSorcaoCam2'
+    end
+    object FDTableAgrocoeficienteSorcaoCam3: TSingleField
+      AutoGenerateValue = arDefault
+      FieldName = 'coeficienteSorcaoCam3'
+      Origin = 'coeficienteSorcaoCam3'
+    end
+    object FDTableAgrocoeficienteSorcaoCam4: TSingleField
+      AutoGenerateValue = arDefault
+      FieldName = 'coeficienteSorcaoCam4'
+      Origin = 'coeficienteSorcaoCam4'
+    end
+    object FDTableAgromeiaVidaCam1: TSingleField
+      FieldName = 'meiaVidaCam1'
+      Origin = 'meiaVidaCam1'
+      Required = True
+    end
+    object FDTableAgromeiaVidaCam2: TSingleField
+      AutoGenerateValue = arDefault
+      FieldName = 'meiaVidaCam2'
+      Origin = 'meiaVidaCam2'
+    end
+    object FDTableAgromeiaVidaCam3: TSingleField
+      AutoGenerateValue = arDefault
+      FieldName = 'meiaVidaCam3'
+      Origin = 'meiaVidaCam3'
+    end
+    object FDTableAgromeiaVidaCam4: TSingleField
+      AutoGenerateValue = arDefault
+      FieldName = 'meiaVidaCam4'
+      Origin = 'meiaVidaCam4'
+    end
+  end
+  object FDQueryAgro: TFDQuery
+    Active = True
+    Connection = FDConnection1
+    SQL.Strings = (
+      'select * from agrotoxico')
+    Left = 40
+    Top = 152
+  end
+end

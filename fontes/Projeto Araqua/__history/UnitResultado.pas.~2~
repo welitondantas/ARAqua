@@ -1,0 +1,10 @@
+unit UnitResultado;
+
+interface
+  type
+    TResultado = class
+
+    end;
+implementation
+
+end.

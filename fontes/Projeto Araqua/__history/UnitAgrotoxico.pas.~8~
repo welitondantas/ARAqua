@@ -1,0 +1,26 @@
+unit UnitAgrotoxico;
+
+interface
+  type
+    TAgrotoxico = class
+
+      private
+
+      published
+        property Id: integer;
+        property PrincipioAtivo: String;
+        property Dose: double;
+        property CoeficienteSorcaoCamada1: double;
+        property CoeficienteSorcaoCamada2: double;
+        property CoeficienteSorcaoCamada3: double;
+        property CoeficienteSorcaoCamada4: double;
+        property MeiaVidaCamada1: double;
+        property MeiaVidaCamada2: double;
+        property MeiaVidaCamada3: double;
+        property MeiaVidaCamada4: double;
+    end;
+implementation
+
+{ TForm }
+
+end.

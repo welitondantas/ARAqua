@@ -1,0 +1,13 @@
+unit UnitLocalidade;
+
+interface
+  type
+    TForm = class(TForm)
+      private
+
+      published
+
+    end;
+implementation
+
+end.
