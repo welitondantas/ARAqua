@@ -1,0 +1,27 @@
+riscos
+
+001 - atraso na entrega(EMPREGO) - 7,358,57
+
+002 - risco de pessoal(ARaqua) - 8,735,15
+
+003 - riscos de negocio(DESENVOLVIMENTO E MODELAGEM) 43,863,25
+
+004 - riscos de requisitos (COMUNICAÇÃO) - 29,920,9
+
+005 - risco de cronograma(PLANEJAMENTO) - 42,167,4
+
+VALOR ESTIMADO PROJETO: 157,232,70
+RISCO POR PESSOAS : 8,735,15
+RISCO POR DIAS DO PROJETO 4,031,61
+
+13/08 - 01/10 - 39 DIAS
+
+(PESSOAL)
+1 DIA - 223,98
+30 DIAS - 6,719,34
+15 DIAS - 3,359,67
+
+(COMUNICAÇÃO)
+1 DIA - 767,20
+
+
