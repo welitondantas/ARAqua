@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: 10-Set-2018 às 01:07
+-- Generation Time: 11-Set-2018 às 02:27
 -- Versão do servidor: 10.1.16-MariaDB
 -- PHP Version: 5.5.38
 
@@ -43,7 +43,7 @@ CREATE TABLE IF NOT EXISTS `agrotoxico` (
   `meiaVidaCam3` int(11) DEFAULT NULL,
   `meiaVidaCam4` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -60,6 +60,25 @@ CREATE TABLE IF NOT EXISTS `localidade` (
   `profundidadeAquifero` float NOT NULL,
   `descricao` varchar(100) NOT NULL,
   PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `resultado`
+--
+
+CREATE TABLE IF NOT EXISTS `resultado` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `recargaHidrica` int(11) NOT NULL,
+  `concentracaoEstimada` int(11) NOT NULL,
+  `solo_id` int(11) NOT NULL,
+  `agrotoxico_id` int(11) NOT NULL,
+  `localidade_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `solo_fk` (`solo_id`),
+  KEY `agrotoxico_fk` (`agrotoxico_id`),
+  KEY `localidade_fk` (`localidade_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -103,7 +122,19 @@ CREATE TABLE IF NOT EXISTS `usuario` (
   `senha` varchar(10) NOT NULL,
   `acesso` int(2) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Limitadores para a tabela `resultado`
+--
+ALTER TABLE `resultado`
+  ADD CONSTRAINT `agrotoxico_fk` FOREIGN KEY (`agrotoxico_id`) REFERENCES `agrotoxico` (`id`),
+  ADD CONSTRAINT `localidade_fk` FOREIGN KEY (`localidade_id`) REFERENCES `localidade` (`id`),
+  ADD CONSTRAINT `solo_fk` FOREIGN KEY (`solo_id`) REFERENCES `solo` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
