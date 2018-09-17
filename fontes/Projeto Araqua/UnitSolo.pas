@@ -42,24 +42,24 @@ interface
       procedure SetProfundidadeDeCamada2(const Value: integer);
       procedure SetProfundidadeDeCamada3(const Value: integer);
       procedure SetProfundidadeDeCamada4(const Value: integer);
-    function getCapacidadeDeCampo1: double;
-    function getCapacidadeDeCampo2: double;
-    function getCapacidadeDeCampo3: double;
-    function getCapacidadeDeCampo4: double;
-    function getCarbonoOrganico1: double;
-    function getCarbonoOrganico2: double;
-    function getCarbonoOrganico3: double;
-    function getCarbonoOrganico4: double;
-    function getDensidadeSolo1: double;
-    function getDensidadeSolo2: double;
-    function getDensidadeSolo3: double;
-    function getDensidadeSolo4: double;
-    function getID: integer;
-    function getNome: String;
-    function getProfundidadeDeCamada1: integer;
-    function getProfundidadeDeCamada2: integer;
-    function getProfundidadeDeCamada3: integer;
-    function getProfundidadeDeCamada4: integer;
+      function getCapacidadeDeCampo1: double;
+      function getCapacidadeDeCampo2: double;
+      function getCapacidadeDeCampo3: double;
+      function getCapacidadeDeCampo4: double;
+      function getCarbonoOrganico1: double;
+      function getCarbonoOrganico2: double;
+      function getCarbonoOrganico3: double;
+      function getCarbonoOrganico4: double;
+      function getDensidadeSolo1: double;
+      function getDensidadeSolo2: double;
+      function getDensidadeSolo3: double;
+      function getDensidadeSolo4: double;
+      function getID: integer;
+      function getNome: String;
+      function getProfundidadeDeCamada1: integer;
+      function getProfundidadeDeCamada2: integer;
+      function getProfundidadeDeCamada3: integer;
+      function getProfundidadeDeCamada4: integer;
 
     public
 
@@ -85,10 +85,6 @@ interface
     end;
 
 implementation
-
-{ TForm }
-
-
 
 { TSolo }
 

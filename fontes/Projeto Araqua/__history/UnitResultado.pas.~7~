@@ -1,0 +1,27 @@
+unit UnitResultado;
+
+interface
+
+  uses UnitSolo, UnitLocalidade, UnitAgrotoxico, UnitCalculo;
+
+  type
+    TResultado = class
+      public
+
+      private
+
+
+      published
+        property Id: integer;
+        property Localidade: T
+        property IdSolo: integer read getIdSolo write SetIdSolo;
+        property IdAgrotoxico: integer read getIdAgrotoxico write SetIdAgrotoxico;
+        property RecargaHidrica: integer read getRecargaHidrica write SetRecargaHidrica;
+        property ConcentracaoEstimada: integer read getConcentracaoEstimada write SetConcentracaoEstimada;
+
+    end;
+implementation
+
+{ TResultado }
+
+end.

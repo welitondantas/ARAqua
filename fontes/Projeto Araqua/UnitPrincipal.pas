@@ -4,7 +4,8 @@ interface
 
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Imaging.pngimage, Vcl.ExtCtrls;
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Imaging.pngimage, Vcl.ExtCtrls,
+  Vcl.StdCtrls;
 
 type
   TFormPrincipal = class(TForm)
@@ -19,6 +20,11 @@ type
     Image5: TImage;
     Image3: TImage;
     Image4: TImage;
+    Label1: TLabel;
+    Label2: TLabel;
+    Label3: TLabel;
+    Label4: TLabel;
+    Label5: TLabel;
     procedure Image1Click(Sender: TObject);
     procedure Image4Click(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);

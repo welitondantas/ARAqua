@@ -1,44 +1,49 @@
 unit UnitResultado;
 
 interface
+
+  uses UnitSolo, UnitLocalidade, UnitAgrotoxico, UnitCalculo;
+
   type
     TResultado = class
       public
 
       private
-        FIdAgrotoxico: integer;
-        FIdLocalidade: integer;
-        FConcentracaoEstimada: integer;
+        FConcentracaoEstimada: double;
         FId: integer;
-        FIdSolo: integer;
-        FRecargaHidrica: integer;
-        procedure SetConcentracaoEstimada(const Value: integer);
+        FRecargaHidrica: double;
+        FId_Solo: integer;
+        FId_Agrotoxico: integer;
+        FId_Localidade: integer;
+        procedure SetConcentracaoEstimada(const Value: double);
         procedure SetId(const Value: integer);
-        procedure SetIdAgrotoxico(const Value: integer);
-        procedure SetIdLocalidade(const Value: integer);
-        procedure SetIdSolo(const Value: integer);
-        procedure SetRecargaHidrica(const Value: integer);
-        function getConcentracaoEstimada: integer;
+        procedure SetRecargaHidrica(const Value: double);
+        procedure SetId_Agrotoxico(const Value: integer);
+        procedure SetId_Localidade(const Value: integer);
+        procedure SetId_Solo(const Value: integer);
+        function getConcentracaoEstimada: double;
         function getId: integer;
-        function getIdAgrotoxico: integer;
-        function getIdLocalidade: integer;
-        function getIdSolo: integer;
-        function getRecargaHidrica: integer;
+        function getRecargaHidrica: double;
+        function getId_Agrotoxico: integer;
+        function getId_Localidade: integer;
+        function getId_Solo: integer;
+
 
       published
         property Id: integer read getId write SetId;
-        property IdLocalidade: integer read getIdLocalidade write SetIdLocalidade;
-        property IdSolo: integer read getIdSolo write SetIdSolo;
-        property IdAgrotoxico: integer read getIdAgrotoxico write SetIdAgrotoxico;
-        property RecargaHidrica: integer read getRecargaHidrica write SetRecargaHidrica;
-        property ConcentracaoEstimada: integer read getConcentracaoEstimada write SetConcentracaoEstimada;
-
+        property RecargaHidrica: double read getRecargaHidrica write SetRecargaHidrica;
+        property ConcentracaoEstimada: double read getConcentracaoEstimada write SetConcentracaoEstimada;
+        property Id_Solo: integer read getId_Solo write SetId_Solo;
+        property Id_Agrotoxico: integer read getId_Agrotoxico write SetId_Agrotoxico;
+        property Id_Localidade: integer read getId_Localidade write SetId_Localidade;
     end;
 implementation
 
 { TResultado }
 
-function TResultado.getConcentracaoEstimada: integer;
+{ TResultado }
+
+function TResultado.getConcentracaoEstimada: double;
 begin
   Result := FConcentracaoEstimada;
 end;
@@ -48,27 +53,27 @@ begin
   Result := FId;
 end;
 
-function TResultado.getIdAgrotoxico: integer;
+function TResultado.getId_Agrotoxico: integer;
 begin
-  Result := FIdAgrotoxico;
+  Result := FId_Agrotoxico;
 end;
 
-function TResultado.getIdLocalidade: integer;
+function TResultado.getId_Localidade: integer;
 begin
-  Result := FIdLocalidade;
+  Result := FId_Localidade;
 end;
 
-function TResultado.getIdSolo: integer;
+function TResultado.getId_Solo: integer;
 begin
-  Result := FIdSolo;
+  Result := FId_Solo;
 end;
 
-function TResultado.getRecargaHidrica: integer;
+function TResultado.getRecargaHidrica: double;
 begin
   Result := FRecargaHidrica;
 end;
 
-procedure TResultado.SetConcentracaoEstimada(const Value: integer);
+procedure TResultado.SetConcentracaoEstimada(const Value: double);
 begin
   FConcentracaoEstimada := Value;
 end;
@@ -78,22 +83,22 @@ begin
   FId := Value;
 end;
 
-procedure TResultado.SetIdAgrotoxico(const Value: integer);
+procedure TResultado.SetId_Agrotoxico(const Value: integer);
 begin
-  FIdAgrotoxico := Value;
+  FId_Agrotoxico := Value;
 end;
 
-procedure TResultado.SetIdLocalidade(const Value: integer);
+procedure TResultado.SetId_Localidade(const Value: integer);
 begin
-  FIdLocalidade := Value;
+  FId_Localidade := Value;
 end;
 
-procedure TResultado.SetIdSolo(const Value: integer);
+procedure TResultado.SetId_Solo(const Value: integer);
 begin
-  FIdSolo := Value;
+  FId_Solo := Value;
 end;
 
-procedure TResultado.SetRecargaHidrica(const Value: integer);
+procedure TResultado.SetRecargaHidrica(const Value: double);
 begin
   FRecargaHidrica := Value;
 end;

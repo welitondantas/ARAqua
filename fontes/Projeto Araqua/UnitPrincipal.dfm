@@ -1,9 +1,11 @@
 object FormPrincipal: TFormPrincipal
   Left = 0
   Top = 0
+  BorderIcons = [biSystemMenu, biMinimize]
+  BorderStyle = bsSingle
   Caption = 'Araqu'#225
-  ClientHeight = 300
-  ClientWidth = 409
+  ClientHeight = 547
+  ClientWidth = 740
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -11,39 +13,42 @@ object FormPrincipal: TFormPrincipal
   Font.Name = 'Tahoma'
   Font.Style = []
   OldCreateOrder = False
+  WindowState = wsMaximized
   OnClose = FormClose
   DesignSize = (
-    409
-    300)
+    740
+    547)
   PixelsPerInch = 96
   TextHeight = 13
   object panelFundoPrincipal: TPanel
     Left = 0
     Top = 0
-    Width = 409
-    Height = 302
+    Width = 740
+    Height = 549
     Anchors = [akLeft, akTop, akRight, akBottom]
     Color = 15859440
     ParentBackground = False
     TabOrder = 0
+    ExplicitWidth = 419
+    ExplicitHeight = 312
     DesignSize = (
-      409
-      302)
+      740
+      549)
     object paneCadLocalidade: TPanel
-      Left = 280
-      Top = 174
-      Width = 104
-      Height = 109
+      Left = 391
+      Top = 286
+      Width = 170
+      Height = 176
       Anchors = [akBottom]
       TabOrder = 0
       DesignSize = (
-        104
-        109)
+        170
+        176)
       object Image5: TImage
         Left = 0
         Top = 0
-        Width = 105
-        Height = 105
+        Width = 170
+        Height = 153
         Anchors = [akLeft, akTop, akRight, akBottom]
         Picture.Data = {
           0954506E67496D61676589504E470D0A1A0A0000000D49484452000001010000
@@ -223,22 +228,29 @@ object FormPrincipal: TFormPrincipal
         Proportional = True
         OnClick = Image5Click
       end
+      object Label5: TLabel
+        Left = 40
+        Top = 159
+        Width = 101
+        Height = 13
+        Caption = 'Cadastrar Localidade'
+      end
     end
     object paneCadAgro: TPanel
-      Left = 152
-      Top = 176
-      Width = 105
-      Height = 105
+      Left = 221
+      Top = 286
+      Width = 164
+      Height = 176
       Anchors = [akBottom]
       TabOrder = 1
       DesignSize = (
-        105
-        105)
+        164
+        176)
       object Image4: TImage
-        Left = 0
+        Left = 8
         Top = 0
-        Width = 105
-        Height = 105
+        Width = 145
+        Height = 153
         Anchors = [akLeft, akTop, akRight, akBottom]
         Picture.Data = {
           0954506E67496D61676589504E470D0A1A0A0000000D494844520000028A0000
@@ -3852,22 +3864,29 @@ object FormPrincipal: TFormPrincipal
         Proportional = True
         OnClick = Image4Click
       end
+      object Label4: TLabel
+        Left = 32
+        Top = 159
+        Width = 103
+        Height = 13
+        Caption = 'Cadastrar Agrot'#243'xico'
+      end
     end
     object paneCadSolo: TPanel
-      Left = 16
-      Top = 176
-      Width = 105
-      Height = 105
+      Left = 24
+      Top = 286
+      Width = 183
+      Height = 176
       Anchors = [akBottom]
       TabOrder = 2
       DesignSize = (
-        105
-        105)
+        183
+        176)
       object Image3: TImage
-        Left = 0
+        Left = 8
         Top = 0
-        Width = 105
-        Height = 105
+        Width = 161
+        Height = 153
         Anchors = [akLeft, akTop, akRight, akBottom]
         Picture.Data = {
           0954506E67496D61676589504E470D0A1A0A0000000D49484452000002000000
@@ -4293,22 +4312,29 @@ object FormPrincipal: TFormPrincipal
         Proportional = True
         OnClick = Image3Click
       end
+      object Label3: TLabel
+        Left = 56
+        Top = 159
+        Width = 71
+        Height = 13
+        Caption = 'Cadastrar Solo'
+      end
     end
     object paneCalculadora: TPanel
-      Left = 208
-      Top = 32
-      Width = 105
-      Height = 105
+      Left = 288
+      Top = 48
+      Width = 155
+      Height = 169
       Anchors = [akTop]
       TabOrder = 3
       DesignSize = (
-        105
-        105)
+        155
+        169)
       object Image2: TImage
-        Left = 0
+        Left = 8
         Top = 0
-        Width = 105
-        Height = 105
+        Width = 139
+        Height = 145
         Anchors = [akLeft, akTop, akRight, akBottom]
         Picture.Data = {
           0954506E67496D61676589504E470D0A1A0A0000000D49484452000002000000
@@ -4923,22 +4949,29 @@ object FormPrincipal: TFormPrincipal
         Proportional = True
         OnClick = Image2Click
       end
+      object Label2: TLabel
+        Left = 40
+        Top = 151
+        Width = 80
+        Height = 13
+        Caption = 'Realizar C'#225'lculos'
+      end
     end
     object paneCadUser: TPanel
-      Left = 81
-      Top = 32
-      Width = 105
-      Height = 105
-      Anchors = [akTop]
+      Left = 567
+      Top = 286
+      Width = 162
+      Height = 176
+      Anchors = [akBottom]
       TabOrder = 4
       DesignSize = (
-        105
-        105)
+        162
+        176)
       object Image1: TImage
-        Left = 0
+        Left = 8
         Top = 0
-        Width = 105
-        Height = 105
+        Width = 146
+        Height = 152
         Anchors = [akLeft, akTop, akRight, akBottom]
         Picture.Data = {
           0954506E67496D61676589504E470D0A1A0A0000000D49484452000001000000
@@ -6153,6 +6186,15 @@ object FormPrincipal: TFormPrincipal
           AE426082}
         Proportional = True
         OnClick = Image1Click
+        ExplicitWidth = 137
+        ExplicitHeight = 145
+      end
+      object Label1: TLabel
+        Left = 32
+        Top = 158
+        Width = 87
+        Height = 13
+        Caption = 'Cadastrar Usu'#225'rio'
       end
     end
   end

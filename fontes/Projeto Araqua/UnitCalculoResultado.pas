@@ -5,7 +5,10 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, Vcl.ComCtrls,
-  Vcl.StdCtrls, Vcl.Mask, Vcl.DBCtrls;
+  Vcl.StdCtrls, Vcl.Mask, Vcl.DBCtrls, Data.DB, FireDAC.Stan.Intf,
+  FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS,
+  FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt,
+  FireDAC.Comp.DataSet, FireDAC.Comp.Client;
 
 type
   TFormCalculoResultado = class(TForm)
@@ -15,37 +18,44 @@ type
     TabSheetCarreamento: TTabSheet;
     PanelTabLixiviacao: TPanel;
     PanelTabCarreamento: TPanel;
-    GroupBox1: TGroupBox;
-    GroupBox2: TGroupBox;
-    GroupBox3: TGroupBox;
+    GroupBoxLocal: TGroupBox;
+    GroupBoxSolo: TGroupBox;
+    GroupBoxAgrotoxico: TGroupBox;
     GroupBox4: TGroupBox;
     Label3: TLabel;
-    DBComboBox1: TDBComboBox;
-    DBComboBox2: TDBComboBox;
-    DBComboBox3: TDBComboBox;
-    CheckBox1: TCheckBox;
-    Edit1: TEdit;
+    CheckBoxInserirManual: TCheckBox;
+    EditDoseManual: TEdit;
     Panel1: TPanel;
-    Panel2: TPanel;
-    Panel3: TPanel;
     Panel4: TPanel;
     Label1: TLabel;
-    Edit2: TEdit;
-    Label2: TLabel;
-    Edit3: TEdit;
-    Label4: TLabel;
-    Label5: TLabel;
-    Edit4: TEdit;
-    Label6: TLabel;
     Label7: TLabel;
-    Edit5: TEdit;
     Label8: TLabel;
     Label9: TLabel;
     Label10: TLabel;
     Panel5: TPanel;
     btnCalcular: TButton;
     btnLimpar: TButton;
+    DBEditRecargaHidrica: TDBEdit;
+    DBEditConcentracaoEstimada: TDBEdit;
+    btnSalvar: TButton;
+    FDQueryResultado: TFDQuery;
+    DataSourceResultado: TDataSource;
+    DBLookupComboLocal: TDBLookupComboBox;
+    DBLookupComboBoxSolo: TDBLookupComboBox;
+    DBLookupComboAgro: TDBLookupComboBox;
+    FDQuerySolo: TFDQuery;
+    FDQueryLocalidade: TFDQuery;
+    FDQueryAgro: TFDQuery;
+    DataSourceSolo: TDataSource;
+    DataSourceLocalidade: TDataSource;
+    DataSourceAgro: TDataSource;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure btnSalvarClick(Sender: TObject);
+    procedure realizaCalculos();
+    procedure btnCalcularClick(Sender: TObject);
+    procedure FDQueryResultadoBeforePost(DataSet: TDataSet);
+    procedure FDQueryResultadoAfterPost(DataSet: TDataSet);
+    procedure btnLimparClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -59,11 +69,112 @@ implementation
 
 {$R *.dfm}
 
+uses UnitDataModule, UnitCalculo, UnitResultado, UnitAgrotoxico, UnitLocalidade,
+  UnitSolo;
+
+procedure TFormCalculoResultado.btnCalcularClick(Sender: TObject);
+begin
+  realizaCalculos;
+end;
+
+procedure TFormCalculoResultado.btnLimparClick(Sender: TObject);
+begin
+  FDQueryResultado.Insert;
+end;
+
+procedure TFormCalculoResultado.btnSalvarClick(Sender: TObject);
+begin
+  FDQueryResultado.Post;
+end;
+
+procedure TFormCalculoResultado.FDQueryResultadoAfterPost(DataSet: TDataSet);
+begin
+  Application.MessageBox('Consulta salva com sucesso!', 'Consulta salva');
+end;
+
+procedure TFormCalculoResultado.FDQueryResultadoBeforePost(DataSet: TDataSet);
+  var res: TResultado;
+begin
+  res := TResultado.Create;
+
+  res.Id_Solo := DBLookupComboBoxSolo.KeyValue;
+  res.Id_Agrotoxico := DBLookupComboAgro.KeyValue;
+  res.Id_Localidade := DBLookupComboLocal.KeyValue;
+  res.RecargaHidrica := StrToFloat(DBEditRecargaHidrica.Text);
+  res.ConcentracaoEstimada := StrToFloat(DBEditConcentracaoEstimada.Text);
+
+  with FDQueryResultado do
+  begin
+    FieldByName('recargaHidrica').AsFloat := res.RecargaHidrica;
+    FieldByName('concentracaoEstimada').AsFloat := res.ConcentracaoEstimada;
+    FieldByName('solo_id').AsInteger := res.Id_Solo;
+    FieldByName('agrotoxico_id').AsInteger := res.Id_Agrotoxico;
+    FieldByName('localidade_id').AsInteger := res.Id_Localidade;
+  end;
+end;
+
 procedure TFormCalculoResultado.FormClose(Sender: TObject;
   var Action: TCloseAction);
 begin
   FormCalculoResultado := NIL;
   Action := caFree;
+end;
+
+procedure TFormCalculoResultado.realizaCalculos;
+  var solo: TSolo;
+      local: TLocalidade;
+      agro: TAgrotoxico;
+      calc: TCalculos;
+      rf, bd, oc, koc, fc: double;
+      tr, q, k, af: double;
+      m, d, p, da, a, cf: double;
+      l, t: integer;
+
+begin
+  //iniciando as variaveis
+  solo := TSolo.Create;
+  local := TLocalidade.Create;
+  agro := TAgrotoxico.Create;
+  calc := TCalculos.Create;
+
+  //recuperando os valores dos objetos através das querys
+  solo.DensidadeSolo1 := FDQuerySolo.FieldByName('densidadeSolo1').AsFloat;
+  solo.CarbonoOrganico1 := FDQuerySolo.FieldByName('carbonoOrganico1').AsFloat;
+  solo.ProfundidadeDeCamada1 := FDQuerySolo.FieldByName('profundidadeCamada1').AsInteger;
+  agro.CoeficienteSorcaoCamada1 := FDQueryAgro.FieldByName('coeficienteSorcaoCam1').AsFloat;
+  agro.MeiaVidaCamada1 := FDQueryAgro.FieldByName('meiaVidaCam1').AsInteger;
+  agro.Dose := FDQueryAgro.FieldByName('dose').AsFloat;
+  local.Precipitacao := FDQueryLocalidade.FieldByName('precipitacao').AsFloat;
+  local.Irrigacao := FDQueryLocalidade.FieldByName('irrigacao').AsFloat;
+  local.Evapotranspiracao := FDQueryLocalidade.FieldByName('evapotranspiracao').AsFloat;
+  local.PorosidadeAquifero := FDQueryLocalidade.FieldByName('porosidadeAquifero').AsFloat;
+
+  //setando os valores necessarios para os calculos
+  bd := solo.DensidadeSolo1;
+  oc := solo.CarbonoOrganico1;
+  koc := agro.CoeficienteSorcaoCamada1;
+  fc := local.Precipitacao; //eu nao sei se é isso mesmo, diz umidade na capacidade de campo do solo
+  l := solo.ProfundidadeDeCamada1; //nao sei se é isso, diz distancia pro corpo de agua subterraneo
+  q := calc.recargaHidrica(local.Precipitacao, local.Irrigacao, local.Evapotranspiracao);
+  t := agro.MeiaVidaCamada1; //eu nao sei se é isso mesmo
+  k := calc.meiaVidaAgro(t);
+  d := agro.Dose;
+  p := local.PorosidadeAquifero;
+  a := 10.000;
+  da := 2;
+
+
+  //realizando o calculo
+  rf := calc.fatorRetardamento(bd, oc, koc, fc);
+  tr := calc.tempoPercurso(l, fc, q, rf);
+  af := calc.lixiviacao(tr, k);
+  m := calc.massaPrevista(d, af);
+  cf := calc.concentracaoAgroAguaSubterranea(m, p, da, a);
+
+  DBEditConcentracaoEstimada.Text := FloatToStr(cf);
+  DBEditConcentracaoEstimada.Color := clYellow;
+  DBEditRecargaHidrica.Text := FloatToStr(q);
+
 end;
 
 end.

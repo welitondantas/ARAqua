@@ -1,0 +1,40 @@
+unit UnitLogin;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, Vcl.Imaging.pngimage,
+  Vcl.StdCtrls, Vcl.Mask, Vcl.DBCtrls, FireDAC.Stan.Intf, FireDAC.Stan.Option,
+  FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf,
+  FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt, Data.DB,
+  FireDAC.Comp.DataSet, FireDAC.Comp.Client;
+
+type
+  TFormLogin = class(TForm)
+    PanelFundoLogin: TPanel;
+    Label1: TLabel;
+    Label2: TLabel;
+    DBEditLogin: TDBEdit;
+    DBEditSenha: TDBEdit;
+    Image1: TImage;
+    Image2: TImage;
+    btnLogar: TButton;
+    FDQueryUsuario: TFDQuery;
+    DataSourceUsuario: TDataSource;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  FormLogin: TFormLogin;
+
+implementation
+
+{$R *.dfm}
+
+uses UnitDataModule;
+
+end.

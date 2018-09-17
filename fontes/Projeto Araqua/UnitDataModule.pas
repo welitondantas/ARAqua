@@ -13,35 +13,6 @@ uses
 type
   TDataModule1 = class(TDataModule)
     FDConnection1: TFDConnection;
-    FDTableAgro: TFDTable;
-    FDQueryAgro: TFDQuery;
-    FDTableAgroid: TFDAutoIncField;
-    FDTableAgrodose: TSingleField;
-    FDTableAgrocoeficienteSorcaoCam1: TSingleField;
-    FDTableAgrocoeficienteSorcaoCam2: TSingleField;
-    FDTableAgrocoeficienteSorcaoCam3: TSingleField;
-    FDTableAgrocoeficienteSorcaoCam4: TSingleField;
-    FDTableAgromeiaVidaCam1: TIntegerField;
-    FDTableAgromeiaVidaCam2: TIntegerField;
-    FDTableAgromeiaVidaCam3: TIntegerField;
-    FDTableAgromeiaVidaCam4: TIntegerField;
-    FDTableAgroprincipioAtivo: TStringField;
-    FDQueryUsuario: TFDQuery;
-    FDTableUsuario: TFDTable;
-    FDTableUsuarioid: TFDAutoIncField;
-    FDTableUsuarionome: TStringField;
-    FDTableUsuariologin: TStringField;
-    FDTableUsuariosenha: TStringField;
-    FDTableUsuarioacesso: TIntegerField;
-    FDQueryLocalidade: TFDQuery;
-    FDTableLocalidade: TFDTable;
-    FDTableLocalidadeid: TFDAutoIncField;
-    FDTableLocalidadeprecipitacao: TSingleField;
-    FDTableLocalidadeevapotranspiracao: TSingleField;
-    FDTableLocalidadeirrigacao: TSingleField;
-    FDTableLocalidadeporosidadeAquifero: TSingleField;
-    FDTableLocalidadeprofundidadeAquifero: TSingleField;
-    FDTableLocalidadedescricao: TStringField;
   private
     { Private declarations }
   public
