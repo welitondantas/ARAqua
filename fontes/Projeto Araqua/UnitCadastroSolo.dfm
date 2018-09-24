@@ -51,6 +51,7 @@ object FormCadastroSolo: TFormCadastroSolo
         Height = 21
         DataField = 'nome'
         DataSource = DataSourceSolo
+        Enabled = False
         TabOrder = 0
       end
     end
@@ -141,6 +142,7 @@ object FormCadastroSolo: TFormCadastroSolo
         Height = 21
         DataField = 'profundidadeCamada1'
         DataSource = DataSourceSolo
+        Enabled = False
         TabOrder = 0
       end
       object DBEditProfunCam2: TDBEdit
@@ -150,6 +152,7 @@ object FormCadastroSolo: TFormCadastroSolo
         Height = 21
         DataField = 'profundidadeCamada2'
         DataSource = DataSourceSolo
+        Enabled = False
         TabOrder = 1
       end
       object DBEditProfunCam3: TDBEdit
@@ -159,6 +162,7 @@ object FormCadastroSolo: TFormCadastroSolo
         Height = 21
         DataField = 'profundidadeCamada3'
         DataSource = DataSourceSolo
+        Enabled = False
         TabOrder = 2
       end
       object DBEditProfunCam4: TDBEdit
@@ -168,6 +172,7 @@ object FormCadastroSolo: TFormCadastroSolo
         Height = 21
         DataField = 'profundidadeCamada4'
         DataSource = DataSourceSolo
+        Enabled = False
         TabOrder = 3
       end
       object DBEditCapacCampo1: TDBEdit
@@ -177,6 +182,7 @@ object FormCadastroSolo: TFormCadastroSolo
         Height = 21
         DataField = 'capacidadeCampo1'
         DataSource = DataSourceSolo
+        Enabled = False
         TabOrder = 4
       end
       object DBEditCapacCampo3: TDBEdit
@@ -186,6 +192,7 @@ object FormCadastroSolo: TFormCadastroSolo
         Height = 21
         DataField = 'capacidadeCampo3'
         DataSource = DataSourceSolo
+        Enabled = False
         TabOrder = 5
       end
       object DBEditCapacCampo4: TDBEdit
@@ -195,6 +202,7 @@ object FormCadastroSolo: TFormCadastroSolo
         Height = 21
         DataField = 'capacidadeCampo4'
         DataSource = DataSourceSolo
+        Enabled = False
         TabOrder = 6
       end
       object DBEditDensidade1: TDBEdit
@@ -204,6 +212,7 @@ object FormCadastroSolo: TFormCadastroSolo
         Height = 21
         DataField = 'densidadeSolo1'
         DataSource = DataSourceSolo
+        Enabled = False
         TabOrder = 7
       end
       object DBEditDensidade2: TDBEdit
@@ -213,6 +222,7 @@ object FormCadastroSolo: TFormCadastroSolo
         Height = 21
         DataField = 'densidadeSolo2'
         DataSource = DataSourceSolo
+        Enabled = False
         TabOrder = 8
       end
       object DBEditDensidade3: TDBEdit
@@ -222,6 +232,7 @@ object FormCadastroSolo: TFormCadastroSolo
         Height = 21
         DataField = 'densidadeSolo3'
         DataSource = DataSourceSolo
+        Enabled = False
         TabOrder = 9
       end
       object DBEditDensidade4: TDBEdit
@@ -231,6 +242,7 @@ object FormCadastroSolo: TFormCadastroSolo
         Height = 21
         DataField = 'densidadeSolo4'
         DataSource = DataSourceSolo
+        Enabled = False
         TabOrder = 10
       end
       object DBEditCarbOrg1: TDBEdit
@@ -240,6 +252,7 @@ object FormCadastroSolo: TFormCadastroSolo
         Height = 21
         DataField = 'carbonoOrganico1'
         DataSource = DataSourceSolo
+        Enabled = False
         TabOrder = 11
       end
       object DBEditCarbOrg2: TDBEdit
@@ -249,6 +262,7 @@ object FormCadastroSolo: TFormCadastroSolo
         Height = 21
         DataField = 'carbonoOrganico2'
         DataSource = DataSourceSolo
+        Enabled = False
         TabOrder = 12
       end
       object DBEditCarbOrg3: TDBEdit
@@ -258,6 +272,7 @@ object FormCadastroSolo: TFormCadastroSolo
         Height = 21
         DataField = 'carbonoOrganico3'
         DataSource = DataSourceSolo
+        Enabled = False
         TabOrder = 13
       end
       object DBEditCarbOrg4: TDBEdit
@@ -267,6 +282,7 @@ object FormCadastroSolo: TFormCadastroSolo
         Height = 21
         DataField = 'carbonoOrganico4'
         DataSource = DataSourceSolo
+        Enabled = False
         TabOrder = 14
       end
       object DBEditCapacCampo2: TDBEdit
@@ -276,6 +292,7 @@ object FormCadastroSolo: TFormCadastroSolo
         Height = 21
         DataField = 'capacidadeCampo2'
         DataSource = DataSourceSolo
+        Enabled = False
         TabOrder = 15
       end
     end
@@ -292,6 +309,7 @@ object FormCadastroSolo: TFormCadastroSolo
         Width = 75
         Height = 25
         Caption = 'Cancelar'
+        Enabled = False
         TabOrder = 0
         OnClick = btnCancelarClick
       end
@@ -301,6 +319,7 @@ object FormCadastroSolo: TFormCadastroSolo
         Width = 75
         Height = 25
         Caption = 'Salvar'
+        Enabled = False
         TabOrder = 1
         OnClick = btnSalvarClick
       end
@@ -319,6 +338,7 @@ object FormCadastroSolo: TFormCadastroSolo
         Width = 75
         Height = 25
         Caption = 'Excluir'
+        Enabled = False
         TabOrder = 3
         OnClick = btnExcluirClick
       end
@@ -394,24 +414,19 @@ object FormCadastroSolo: TFormCadastroSolo
     Top = 24
   end
   object FDQuerySolo: TFDQuery
+    Active = True
     BeforePost = FDQuerySoloBeforePost
     AfterPost = FDQuerySoloAfterPost
     Connection = DataModule1.FDConnection1
     SQL.Strings = (
       'select * from solo')
-    Left = 512
-    Top = 32
+    Left = 672
+    Top = 24
     object FDQuerySoloid: TFDAutoIncField
       FieldName = 'id'
       Origin = 'id'
       ProviderFlags = [pfInWhere, pfInKey]
       ReadOnly = True
-    end
-    object FDQuerySolonome: TStringField
-      FieldName = 'nome'
-      Origin = 'nome'
-      Required = True
-      Size = 15
     end
     object FDQuerySoloprofundidadeCamada1: TIntegerField
       FieldName = 'profundidadeCamada1'
@@ -492,6 +507,12 @@ object FormCadastroSolo: TFormCadastroSolo
       FieldName = 'carbonoOrganico4'
       Origin = 'carbonoOrganico4'
       Required = True
+    end
+    object FDQuerySolonome: TStringField
+      FieldName = 'nome'
+      Origin = 'nome'
+      Required = True
+      Size = 40
     end
   end
 end

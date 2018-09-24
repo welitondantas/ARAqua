@@ -3,8 +3,8 @@ object FormCalculoResultado: TFormCalculoResultado
   Top = 0
   BorderIcons = [biSystemMenu, biMinimize]
   Caption = 'C'#225'lculos'
-  ClientHeight = 448
-  ClientWidth = 618
+  ClientHeight = 441
+  ClientWidth = 694
   Color = 15201254
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -13,20 +13,21 @@ object FormCalculoResultado: TFormCalculoResultado
   Font.Style = []
   OldCreateOrder = False
   OnClose = FormClose
+  OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
   object PanelFundo: TPanel
     Left = 0
     Top = 0
-    Width = 618
-    Height = 448
+    Width = 694
+    Height = 441
     Align = alClient
     TabOrder = 0
     object PageControl1: TPageControl
       Left = 1
       Top = 1
-      Width = 616
-      Height = 446
+      Width = 692
+      Height = 439
       ActivePage = TabSheetLixiviacao
       Align = alClient
       TabOrder = 0
@@ -35,17 +36,17 @@ object FormCalculoResultado: TFormCalculoResultado
         object PanelTabLixiviacao: TPanel
           Left = 0
           Top = 0
-          Width = 608
-          Height = 418
+          Width = 684
+          Height = 411
           Align = alClient
           Color = 15463914
           ParentBackground = False
           TabOrder = 0
           DesignSize = (
-            608
-            418)
+            684
+            411)
           object GroupBoxLocal: TGroupBox
-            Left = 28
+            Left = 49
             Top = 8
             Width = 281
             Height = 81
@@ -69,10 +70,11 @@ object FormCalculoResultado: TFormCalculoResultado
             end
           end
           object GroupBoxSolo: TGroupBox
-            Left = 23
+            Left = 43
             Top = 105
             Width = 281
             Height = 89
+            Anchors = [akTop]
             Caption = 'Solo'
             Color = 15529450
             ParentBackground = False
@@ -92,10 +94,11 @@ object FormCalculoResultado: TFormCalculoResultado
             end
           end
           object GroupBoxAgrotoxico: TGroupBox
-            Left = 23
+            Left = 43
             Top = 208
             Width = 281
             Height = 113
+            Anchors = [akTop]
             Caption = 'Agrot'#243'xico'
             Color = 15529450
             ParentBackground = False
@@ -137,10 +140,11 @@ object FormCalculoResultado: TFormCalculoResultado
             end
           end
           object GroupBox4: TGroupBox
-            Left = 326
+            Left = 360
             Top = 8
-            Width = 259
+            Width = 305
             Height = 313
+            Anchors = [akTop]
             Caption = 'C'#225'lculos'
             Color = 15529450
             ParentBackground = False
@@ -149,7 +153,7 @@ object FormCalculoResultado: TFormCalculoResultado
             object Panel1: TPanel
               Left = 24
               Top = 35
-              Width = 209
+              Width = 241
               Height = 82
               BorderStyle = bsSingle
               TabOrder = 0
@@ -167,7 +171,7 @@ object FormCalculoResultado: TFormCalculoResultado
                 ParentFont = False
               end
               object Label9: TLabel
-                Left = 144
+                Left = 184
                 Top = 36
                 Width = 46
                 Height = 13
@@ -176,17 +180,18 @@ object FormCalculoResultado: TFormCalculoResultado
               object DBEditRecargaHidrica: TDBEdit
                 Left = 16
                 Top = 32
-                Width = 122
+                Width = 162
                 Height = 21
                 DataField = 'recargaHidrica'
                 DataSource = DataSourceResultado
+                Enabled = False
                 TabOrder = 0
               end
             end
             object Panel4: TPanel
               Left = 24
               Top = 165
-              Width = 209
+              Width = 241
               Height = 125
               BorderStyle = bsSingle
               TabOrder = 1
@@ -217,7 +222,7 @@ object FormCalculoResultado: TFormCalculoResultado
                 ParentFont = False
               end
               object Label10: TLabel
-                Left = 143
+                Left = 183
                 Top = 75
                 Width = 48
                 Height = 13
@@ -226,7 +231,7 @@ object FormCalculoResultado: TFormCalculoResultado
               object DBEditConcentracaoEstimada: TDBEdit
                 Left = 16
                 Top = 72
-                Width = 121
+                Width = 161
                 Height = 21
                 DataField = 'concentracaoEstimada'
                 DataSource = DataSourceResultado
@@ -235,14 +240,14 @@ object FormCalculoResultado: TFormCalculoResultado
             end
           end
           object Panel5: TPanel
-            Left = 57
-            Top = 326
+            Left = 84
+            Top = 335
             Width = 498
-            Height = 83
+            Height = 59
             Anchors = [akBottom]
             TabOrder = 4
             object btnCalcular: TButton
-              Left = 408
+              Left = 400
               Top = 16
               Width = 75
               Height = 25
@@ -250,23 +255,33 @@ object FormCalculoResultado: TFormCalculoResultado
               TabOrder = 0
               OnClick = btnCalcularClick
             end
-            object btnLimpar: TButton
-              Left = 181
+            object btnNovaConsulta: TButton
+              Left = 142
               Top = 16
               Width = 110
               Height = 25
               Caption = 'Nova Consulta'
+              Enabled = False
               TabOrder = 1
-              OnClick = btnLimparClick
+              OnClick = btnNovaConsultaClick
             end
             object btnSalvar: TButton
-              Left = 313
+              Left = 293
               Top = 16
               Width = 75
               Height = 25
               Caption = 'Salvar'
               TabOrder = 2
               OnClick = btnSalvarClick
+            end
+            object btnCancelar: TButton
+              Left = 30
+              Top = 16
+              Width = 75
+              Height = 25
+              Caption = 'Cancelar'
+              TabOrder = 3
+              OnClick = btnCancelarClick
             end
           end
         end
@@ -275,15 +290,11 @@ object FormCalculoResultado: TFormCalculoResultado
         Caption = 'Carreamento Superficial'
         Enabled = False
         ImageIndex = 1
-        ExplicitLeft = 0
-        ExplicitTop = 0
-        ExplicitWidth = 0
-        ExplicitHeight = 0
         object PanelTabCarreamento: TPanel
           Left = 0
           Top = 0
-          Width = 608
-          Height = 418
+          Width = 684
+          Height = 411
           Align = alClient
           Color = 15463657
           ParentBackground = False
@@ -293,53 +304,57 @@ object FormCalculoResultado: TFormCalculoResultado
     end
   end
   object FDQueryResultado: TFDQuery
+    Active = True
     BeforePost = FDQueryResultadoBeforePost
     AfterPost = FDQueryResultadoAfterPost
     Connection = DataModule1.FDConnection1
     SQL.Strings = (
       'select * from resultado')
-    Left = 576
-    Top = 96
+    Left = 648
+    Top = 112
   end
   object DataSourceResultado: TDataSource
     DataSet = FDQueryResultado
     Left = 499
-    Top = 25
+    Top = 1
   end
   object FDQuerySolo: TFDQuery
+    Active = True
     Connection = DataModule1.FDConnection1
     SQL.Strings = (
       'select * from solo')
-    Left = 574
-    Top = 39
+    Left = 646
+    Top = 55
   end
   object FDQueryLocalidade: TFDQuery
+    Active = True
     Connection = DataModule1.FDConnection1
     SQL.Strings = (
       'select * from localidade')
-    Left = 566
-    Top = 367
+    Left = 630
+    Top = 335
   end
   object FDQueryAgro: TFDQuery
+    Active = True
     Connection = DataModule1.FDConnection1
     SQL.Strings = (
       'select * from agrotoxico')
-    Left = 574
-    Top = 151
+    Left = 582
+    Top = 65535
   end
   object DataSourceSolo: TDataSource
     DataSet = FDQuerySolo
-    Left = 572
-    Top = 209
+    Left = 644
+    Top = 169
   end
   object DataSourceLocalidade: TDataSource
     DataSet = FDQueryLocalidade
-    Left = 572
-    Top = 265
+    Left = 652
+    Top = 225
   end
   object DataSourceAgro: TDataSource
     DataSet = FDQueryAgro
-    Left = 563
-    Top = 321
+    Left = 643
+    Top = 281
   end
 end

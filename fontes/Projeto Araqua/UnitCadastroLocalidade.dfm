@@ -49,6 +49,7 @@ object FormCadastroLocalidade: TFormCadastroLocalidade
         Height = 46
         DataField = 'descricao'
         DataSource = DataSourceLocalidade
+        Enabled = False
         TabOrder = 0
       end
     end
@@ -97,6 +98,7 @@ object FormCadastroLocalidade: TFormCadastroLocalidade
         Height = 21
         DataField = 'precipitacao'
         DataSource = DataSourceLocalidade
+        Enabled = False
         TabOrder = 0
       end
       object DBEditIrrigacao: TDBEdit
@@ -106,6 +108,7 @@ object FormCadastroLocalidade: TFormCadastroLocalidade
         Height = 21
         DataField = 'irrigacao'
         DataSource = DataSourceLocalidade
+        Enabled = False
         TabOrder = 1
       end
       object DBEditEvapotranspiracao: TDBEdit
@@ -115,6 +118,7 @@ object FormCadastroLocalidade: TFormCadastroLocalidade
         Height = 21
         DataField = 'evapotranspiracao'
         DataSource = DataSourceLocalidade
+        Enabled = False
         TabOrder = 2
       end
     end
@@ -154,6 +158,7 @@ object FormCadastroLocalidade: TFormCadastroLocalidade
         Height = 21
         DataField = 'porosidadeAquifero'
         DataSource = DataSourceLocalidade
+        Enabled = False
         TabOrder = 0
       end
       object DBEditProfundidade: TDBEdit
@@ -163,6 +168,7 @@ object FormCadastroLocalidade: TFormCadastroLocalidade
         Height = 21
         DataField = 'profundidadeAquifero'
         DataSource = DataSourceLocalidade
+        Enabled = False
         TabOrder = 1
       end
     end
@@ -181,6 +187,7 @@ object FormCadastroLocalidade: TFormCadastroLocalidade
         Width = 75
         Height = 25
         Caption = 'Salvar'
+        Enabled = False
         TabOrder = 0
         OnClick = btnSalvarClick
       end
@@ -194,20 +201,22 @@ object FormCadastroLocalidade: TFormCadastroLocalidade
         OnClick = btnEditarClick
       end
       object btnCancelar: TButton
-        Left = 306
-        Top = 16
+        Left = 426
+        Top = 14
         Width = 75
         Height = 25
         Caption = 'Cancelar'
+        Enabled = False
         TabOrder = 2
         OnClick = btnCancelarClick
       end
       object btnExcluir: TButton
-        Left = 402
+        Left = 330
         Top = 15
         Width = 75
         Height = 25
         Caption = 'Excluir'
+        Enabled = False
         TabOrder = 3
         OnClick = btnExcluirClick
       end
@@ -287,6 +296,7 @@ object FormCadastroLocalidade: TFormCadastroLocalidade
     Top = 16
   end
   object FDQueryLocalidade: TFDQuery
+    Active = True
     BeforePost = FDQueryLocalidadeBeforePost
     AfterPost = FDQueryLocalidadeAfterPost
     Connection = DataModule1.FDConnection1

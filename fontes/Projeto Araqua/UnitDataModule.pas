@@ -13,6 +13,7 @@ uses
 type
   TDataModule1 = class(TDataModule)
     FDConnection1: TFDConnection;
+    FDQueryUsuario: TFDQuery;
   private
     { Private declarations }
   public

@@ -11,6 +11,8 @@ object FormLogin: TFormLogin
   Font.Name = 'Tahoma'
   Font.Style = []
   OldCreateOrder = False
+  Position = poDesktopCenter
+  OnClose = FormClose
   PixelsPerInch = 96
   TextHeight = 13
   object PanelFundoLogin: TPanel
@@ -1571,15 +1573,7 @@ object FormLogin: TFormLogin
     PasswordChar = '*'
     TabOrder = 2
   end
-  object FDQueryUsuario: TFDQuery
-    Connection = DataModule1.FDConnection1
-    SQL.Strings = (
-      'select * from usuario')
-    Left = 200
-    Top = 112
-  end
   object DataSourceUsuario: TDataSource
-    DataSet = FDQueryUsuario
     Left = 296
     Top = 112
   end

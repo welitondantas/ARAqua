@@ -136,6 +136,8 @@ type
     procedure FDQueryAgroBeforePost(DataSet: TDataSet);
     procedure FDQueryAgroAfterPost(DataSet: TDataSet);
     procedure EditBuscaAgroChange(Sender: TObject);
+    function VerificaPrimeiraCamada(campo: String): boolean;
+    function VerificaCampos(campo: String): String;
   private
     { Private declarations }
   public
@@ -154,26 +156,95 @@ uses UnitDataModule, UnitAgrotoxico;
 procedure TFormAgrotoxico.btnCancelarAgroClick(Sender: TObject);
 begin
   FDQueryAgro.Cancel;
+  DBEditPrincipioAtivo.Enabled := false;
+  DBEditDose.Enabled := false;
+  DBEditKocCamada1.Enabled := false;
+  DBEditKocCamada2.Enabled := false;
+  DBEditKocCamada3.Enabled := false;
+  DBEditKocCamada4.Enabled := false;
+  DBEditMeiaVidaCam1.Enabled := false;
+  DBEditMeiaVidaCam2.Enabled := false;
+  DBEditMeiaVidaCam3.Enabled := false;
+  DBEditMeiaVidaCam4.Enabled := false;
+  btnEditar.Enabled := true;
+  btnNovo.Enabled := true;
+  btnSalvarAgro.Enabled := false;
+  btnExcluir.Enabled := false;
+  btnCancelarAgro.Enabled := false;
 end;
 
 procedure TFormAgrotoxico.btnEditarClick(Sender: TObject);
 begin
   FDQueryAgro.Edit;
+  DBEditPrincipioAtivo.Enabled := true;
+  DBEditDose.Enabled := true;
+  DBEditKocCamada1.Enabled := true;
+  DBEditKocCamada2.Enabled := true;
+  DBEditKocCamada3.Enabled := true;
+  DBEditKocCamada4.Enabled := true;
+  DBEditMeiaVidaCam1.Enabled := true;
+  DBEditMeiaVidaCam2.Enabled := true;
+  DBEditMeiaVidaCam3.Enabled := true;
+  DBEditMeiaVidaCam4.Enabled := true;
+  btnEditar.Enabled := false;
+  btnNovo.Enabled := false;
+  btnSalvarAgro.Enabled := true;
+  btnExcluir.Enabled := true;
+  btnCancelarAgro.Enabled := true;
 end;
 
 procedure TFormAgrotoxico.btnExcluirClick(Sender: TObject);
 begin
-  FDQueryAgro.Delete;
+  if (messageBox(HANDLE, 'Deseja realmente excluir esse registro?', 'Excluir',
+                        MB_YESNO + MB_ICONQUESTION) = ID_YES) then
+    begin
+      FDQueryAgro.Delete;
+    end;
+  btnEditar.Enabled := true;
+  btnNovo.Enabled := true;
+  btnSalvarAgro.Enabled := false;
+  btnExcluir.Enabled := false;
+  btnCancelarAgro.Enabled := false;
 end;
 
 procedure TFormAgrotoxico.btnNovoClick(Sender: TObject);
 begin
   FDQueryAgro.Insert;
+  DBEditPrincipioAtivo.Enabled := true;
+  DBEditDose.Enabled := true;
+  DBEditKocCamada1.Enabled := true;
+  DBEditKocCamada2.Enabled := true;
+  DBEditKocCamada3.Enabled := true;
+  DBEditKocCamada4.Enabled := true;
+  DBEditMeiaVidaCam1.Enabled := true;
+  DBEditMeiaVidaCam2.Enabled := true;
+  DBEditMeiaVidaCam3.Enabled := true;
+  DBEditMeiaVidaCam4.Enabled := true;
+  btnEditar.Enabled := false;
+  btnNovo.Enabled := false;
+  btnSalvarAgro.Enabled := true;
+  btnExcluir.Enabled := false;
+  btnCancelarAgro.Enabled := true;
 end;
 
 procedure TFormAgrotoxico.btnSalvarAgroClick(Sender: TObject);
 begin
   FDQueryAgro.Post;
+  DBEditPrincipioAtivo.Enabled := false;
+  DBEditDose.Enabled := false;
+  DBEditKocCamada1.Enabled := false;
+  DBEditKocCamada2.Enabled := false;
+  DBEditKocCamada3.Enabled := false;
+  DBEditKocCamada4.Enabled := false;
+  DBEditMeiaVidaCam1.Enabled := false;
+  DBEditMeiaVidaCam2.Enabled := false;
+  DBEditMeiaVidaCam3.Enabled := false;
+  DBEditMeiaVidaCam4.Enabled := false;
+  btnEditar.Enabled := true;
+  btnNovo.Enabled := true;
+  btnSalvarAgro.Enabled := false;
+  btnExcluir.Enabled := false;
+  btnCancelarAgro.Enabled := false;
 end;
 
 procedure TFormAgrotoxico.EditBuscaAgroChange(Sender: TObject);
@@ -198,14 +269,30 @@ begin
   agro :=  TAgrotoxico.Create;
   agro.PrincipioAtivo := DBEditPrincipioAtivo.Text;
   agro.Dose := StrToFloat(DBEditDose.Text);
-  agro.CoeficienteSorcaoCamada1 := StrToFloat(DBEditKocCamada1.Text);
-  agro.CoeficienteSorcaoCamada2 := StrToFloat(DBEditKocCamada2.Text);
-  agro.CoeficienteSorcaoCamada3 := StrToFloat(DBEditKocCamada3.Text);
-  agro.CoeficienteSorcaoCamada4 := StrToFloat(DBEditKocCamada4.Text);
-  agro.MeiaVidaCamada1 := StrToInt(DBEditMeiaVidaCam1.Text);
-  agro.MeiaVidaCamada2 := StrToInt(DBEditMeiaVidaCam2.Text);
-  agro.MeiaVidaCamada3 := StrToInt(DBEditMeiaVidaCam3.Text);
-  agro.MeiaVidaCamada4 := StrToInt(DBEditMeiaVidaCam4.Text);
+  if (VerificaPrimeiraCamada(DBEditKocCamada1.Text)) then
+    begin
+      agro.CoeficienteSorcaoCamada1 := StrToFloat(DBEditKocCamada1.Text);
+    end
+  else
+    begin
+      Application.MessageBox('A primeira camada não pode ser 0 ou em branco.', 'Aviso');
+      DBEditKocCamada1.SetFocus;
+    end;
+  agro.CoeficienteSorcaoCamada2 := StrToFloat(VerificaCampos(DBEditKocCamada2.Text));
+  agro.CoeficienteSorcaoCamada3 := StrToFloat(VerificaCampos(DBEditKocCamada3.Text));
+  agro.CoeficienteSorcaoCamada4 := StrToFloat(VerificaCampos(DBEditKocCamada4.Text));
+  if (VerificaPrimeiraCamada(DBEditMeiaVidaCam1.Text)) then
+    begin
+        agro.MeiaVidaCamada1 := StrToInt(DBEditMeiaVidaCam1.Text);
+    end
+  else
+    begin
+      Application.MessageBox('A primeira camada não pode ser 0 ou em branco.', 'Aviso');
+      DBEditMeiaVidaCam1.SetFocus;
+    end;
+  agro.MeiaVidaCamada2 := StrToInt(VerificaCampos(DBEditMeiaVidaCam2.Text));
+  agro.MeiaVidaCamada3 := StrToInt(VerificaCampos(DBEditMeiaVidaCam3.Text));
+  agro.MeiaVidaCamada4 := StrToInt(VerificaCampos(DBEditMeiaVidaCam4.Text));
   FDQueryAgro.FieldByName('principioAtivo').AsString := agro.PrincipioAtivo;
   FDQueryAgro.FieldByName('dose').AsFloat := agro.Dose;
   FDQueryAgro.FieldByName('coeficienteSorcaoCam1').AsFloat := agro.CoeficienteSorcaoCamada1;
@@ -222,6 +309,30 @@ procedure TFormAgrotoxico.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
   FormAgrotoxico := nil;
   Action := caFree;
+end;
+
+function TFormAgrotoxico.VerificaCampos(campo: String): String;
+begin
+  if (campo='') then
+    begin
+      Result := '0';
+    end
+  else
+    begin
+      Result := campo;
+    end;
+end;
+
+function TFormAgrotoxico.VerificaPrimeiraCamada(campo: String): boolean;
+begin
+  if ((campo='') OR (campo='0')) then
+    begin
+      Result := false;
+    end
+  else
+    begin
+      Result := true;
+    end;
 end;
 
 end.

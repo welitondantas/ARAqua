@@ -69,26 +69,75 @@ uses UnitDataModule;
 procedure TFormCadastroUsuario.btnCancelarClick(Sender: TObject);
 begin
   FDQueryUsuario.Cancel;
+  DBEditNome.Enabled := false;
+  DBEditLogin.Enabled := false;
+  DBEditSenha.Enabled := false;
+  EditRedigite.Enabled := false;
+  DBComboBoxAcesso.Enabled := false;
+  btnEditar.Enabled := true;
+  btnNovo.Enabled := true;
+  btnSalvar.Enabled := false;
+  btnExcluir.Enabled := false;
+  btnCancelar.Enabled := false;
 end;
 
 procedure TFormCadastroUsuario.btnEditarClick(Sender: TObject);
 begin
   FDQueryUsuario.Edit;
+  DBEditNome.Enabled := true;
+  DBEditLogin.Enabled := true;
+  DBEditSenha.Enabled := true;
+  EditRedigite.Enabled := true;
+  DBComboBoxAcesso.Enabled := true;
+  btnEditar.Enabled := false;
+  btnNovo.Enabled := false;
+  btnSalvar.Enabled := true;
+  btnExcluir.Enabled := true;
+  btnCancelar.Enabled := true;
 end;
 
 procedure TFormCadastroUsuario.btnExcluirClick(Sender: TObject);
 begin
-  FDQueryUsuario.Delete;
+  if (messageBox(HANDLE, 'Deseja realmente excluir esse registro?', 'Excluir',
+                        MB_YESNO + MB_ICONQUESTION) = ID_YES) then
+    begin
+      FDQueryUsuario.Delete;
+    end;
+  btnEditar.Enabled := true;
+  btnNovo.Enabled := true;
+  btnSalvar.Enabled := false;
+  btnExcluir.Enabled := false;
+  btnCancelar.Enabled := false;
 end;
 
 procedure TFormCadastroUsuario.btnNovoClick(Sender: TObject);
 begin
   FDQueryUsuario.Insert;
+  DBEditNome.Enabled := true;
+  DBEditLogin.Enabled := true;
+  DBEditSenha.Enabled := true;
+  EditRedigite.Enabled := true;
+  DBComboBoxAcesso.Enabled := true;
+  btnEditar.Enabled := false;
+  btnNovo.Enabled := false;
+  btnSalvar.Enabled := true;
+  btnExcluir.Enabled := false;
+  btnCancelar.Enabled := true;
 end;
 
 procedure TFormCadastroUsuario.btnSalvarClick(Sender: TObject);
 begin
   FDQueryUsuario.Post;
+  DBEditNome.Enabled := false;
+  DBEditLogin.Enabled := false;
+  DBEditSenha.Enabled := false;
+  EditRedigite.Enabled := false;
+  DBComboBoxAcesso.Enabled := false;
+  btnEditar.Enabled := true;
+  btnNovo.Enabled := true;
+  btnSalvar.Enabled := false;
+  btnExcluir.Enabled := false;
+  btnCancelar.Enabled := false;
 end;
 
 procedure TFormCadastroUsuario.EditBuscaUsuarioChange(Sender: TObject);

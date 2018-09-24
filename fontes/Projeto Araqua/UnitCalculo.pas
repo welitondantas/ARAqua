@@ -35,7 +35,7 @@ end;
 
 function TCalculos.lixiviacao(tr, k: double): double;
 begin
-  Result := Power(-tr, k);
+  Result := Exp(-tr*k);
 end;
 
 function TCalculos.massaPrevista(d, af: double): double;

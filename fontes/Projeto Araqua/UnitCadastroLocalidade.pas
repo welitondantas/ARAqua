@@ -67,26 +67,79 @@ uses UnitDataModule, UnitLocalidade;
 procedure TFormCadastroLocalidade.btnCancelarClick(Sender: TObject);
 begin
   FDQueryLocalidade.Cancel;
+  DBMemoDescricao.Enabled := false;
+  DBEditPrecipitacao.Enabled := false;
+  DBEditIrrigacao.Enabled := false;
+  DBEditEvapotranspiracao.Enabled := false;
+  DBEditPorosidade.Enabled := false;
+  DBEditProfundidade.Enabled := false;
+  btnEditar.Enabled := true;
+  btnNovo.Enabled := true;
+  btnSalvar.Enabled := false;
+  btnExcluir.Enabled := false;
+  btnCancelar.Enabled := false;
 end;
 
 procedure TFormCadastroLocalidade.btnEditarClick(Sender: TObject);
 begin
   FDQueryLocalidade.Edit;
+  DBMemoDescricao.Enabled := true;
+  DBEditPrecipitacao.Enabled := true;
+  DBEditIrrigacao.Enabled := true;
+  DBEditEvapotranspiracao.Enabled := true;
+  DBEditPorosidade.Enabled := true;
+  DBEditProfundidade.Enabled := true;
+  btnEditar.Enabled := false;
+  btnNovo.Enabled := false;
+  btnSalvar.Enabled := true;
+  btnExcluir.Enabled := true;
+  btnCancelar.Enabled := true;
 end;
 
 procedure TFormCadastroLocalidade.btnExcluirClick(Sender: TObject);
 begin
-  FDQueryLocalidade.Delete;
+  if (messageBox(HANDLE, 'Deseja realmente excluir esse registro?', 'Excluir',
+                        MB_YESNO + MB_ICONQUESTION) = ID_YES) then
+    begin
+      FDQueryLocalidade.Delete;
+    end;
+  btnEditar.Enabled := true;
+  btnNovo.Enabled := true;
+  btnSalvar.Enabled := false;
+  btnExcluir.Enabled := false;
+  btnCancelar.Enabled := false;
 end;
 
 procedure TFormCadastroLocalidade.btnNovoClick(Sender: TObject);
 begin
   FDQueryLocalidade.Insert;
+  DBMemoDescricao.Enabled := true;
+  DBEditPrecipitacao.Enabled := true;
+  DBEditIrrigacao.Enabled := true;
+  DBEditEvapotranspiracao.Enabled := true;
+  DBEditPorosidade.Enabled := true;
+  DBEditProfundidade.Enabled := true;
+  btnEditar.Enabled := false;
+  btnNovo.Enabled := false;
+  btnSalvar.Enabled := true;
+  btnExcluir.Enabled := false;
+  btnCancelar.Enabled := true;
 end;
 
 procedure TFormCadastroLocalidade.btnSalvarClick(Sender: TObject);
 begin
   FDQueryLocalidade.Post;
+  DBMemoDescricao.Enabled := false;
+  DBEditPrecipitacao.Enabled := false;
+  DBEditIrrigacao.Enabled := false;
+  DBEditEvapotranspiracao.Enabled := false;
+  DBEditPorosidade.Enabled := false;
+  DBEditProfundidade.Enabled := false;
+  btnEditar.Enabled := true;
+  btnNovo.Enabled := true;
+  btnSalvar.Enabled := false;
+  btnExcluir.Enabled := false;
+  btnCancelar.Enabled := false;
 end;
 
 procedure TFormCadastroLocalidade.EditBuscaLocalChange(Sender: TObject);

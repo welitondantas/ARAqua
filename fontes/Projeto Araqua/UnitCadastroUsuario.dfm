@@ -202,6 +202,7 @@ object FormCadastroUsuario: TFormCadastroUsuario
         Height = 21
         DataField = 'acesso'
         DataSource = DataSourceUsuario
+        Enabled = False
         Items.Strings = (
           '1 '
           '2')
@@ -214,6 +215,7 @@ object FormCadastroUsuario: TFormCadastroUsuario
         Height = 21
         DataField = 'login'
         DataSource = DataSourceUsuario
+        Enabled = False
         TabOrder = 1
       end
       object DBEditNome: TDBEdit
@@ -223,6 +225,7 @@ object FormCadastroUsuario: TFormCadastroUsuario
         Height = 21
         DataField = 'nome'
         DataSource = DataSourceUsuario
+        Enabled = False
         TabOrder = 2
       end
       object DBEditSenha: TDBEdit
@@ -232,6 +235,7 @@ object FormCadastroUsuario: TFormCadastroUsuario
         Height = 21
         DataField = 'senha'
         DataSource = DataSourceUsuario
+        Enabled = False
         PasswordChar = '*'
         TabOrder = 3
       end
@@ -240,6 +244,7 @@ object FormCadastroUsuario: TFormCadastroUsuario
         Top = 162
         Width = 121
         Height = 21
+        Enabled = False
         PasswordChar = '*'
         TabOrder = 4
       end
@@ -247,17 +252,18 @@ object FormCadastroUsuario: TFormCadastroUsuario
   end
   object DataSourceUsuario: TDataSource
     DataSet = FDQueryUsuario
-    Left = 120
-    Top = 328
+    Left = 112
+    Top = 336
   end
   object FDQueryUsuario: TFDQuery
+    Active = True
     BeforePost = FDQueryUsuarioBeforePost
     AfterPost = FDQueryUsuarioAfterPost
     Connection = DataModule1.FDConnection1
     SQL.Strings = (
       'select * from usuario')
     Left = 200
-    Top = 328
+    Top = 344
     object FDQueryUsuarioid: TFDAutoIncField
       FieldName = 'id'
       Origin = 'id'

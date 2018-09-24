@@ -57,6 +57,7 @@ object FormAgrotoxico: TFormAgrotoxico
           Height = 21
           DataField = 'principioAtivo'
           DataSource = DataSourceAgro
+          Enabled = False
           TabOrder = 0
         end
       end
@@ -81,6 +82,7 @@ object FormAgrotoxico: TFormAgrotoxico
           Height = 21
           DataField = 'dose'
           DataSource = DataSourceAgro
+          Enabled = False
           TabOrder = 0
         end
       end
@@ -141,6 +143,7 @@ object FormAgrotoxico: TFormAgrotoxico
         Height = 21
         DataField = 'coeficienteSorcaoCam1'
         DataSource = DataSourceAgro
+        Enabled = False
         TabOrder = 0
       end
       object DBEditKocCamada2: TDBEdit
@@ -150,6 +153,7 @@ object FormAgrotoxico: TFormAgrotoxico
         Height = 21
         DataField = 'coeficienteSorcaoCam2'
         DataSource = DataSourceAgro
+        Enabled = False
         TabOrder = 1
       end
       object DBEditKocCamada3: TDBEdit
@@ -159,6 +163,7 @@ object FormAgrotoxico: TFormAgrotoxico
         Height = 21
         DataField = 'coeficienteSorcaoCam3'
         DataSource = DataSourceAgro
+        Enabled = False
         TabOrder = 2
       end
       object DBEditKocCamada4: TDBEdit
@@ -168,6 +173,7 @@ object FormAgrotoxico: TFormAgrotoxico
         Height = 21
         DataField = 'coeficienteSorcaoCam4'
         DataSource = DataSourceAgro
+        Enabled = False
         TabOrder = 3
       end
       object DBEditMeiaVidaCam1: TDBEdit
@@ -177,6 +183,7 @@ object FormAgrotoxico: TFormAgrotoxico
         Height = 21
         DataField = 'meiaVidaCam1'
         DataSource = DataSourceAgro
+        Enabled = False
         TabOrder = 4
       end
       object DBEditMeiaVidaCam2: TDBEdit
@@ -186,6 +193,7 @@ object FormAgrotoxico: TFormAgrotoxico
         Height = 21
         DataField = 'meiaVidaCam2'
         DataSource = DataSourceAgro
+        Enabled = False
         TabOrder = 5
       end
       object DBEditMeiaVidaCam3: TDBEdit
@@ -195,6 +203,7 @@ object FormAgrotoxico: TFormAgrotoxico
         Height = 21
         DataField = 'meiaVidaCam3'
         DataSource = DataSourceAgro
+        Enabled = False
         TabOrder = 6
       end
       object DBEditMeiaVidaCam4: TDBEdit
@@ -204,6 +213,7 @@ object FormAgrotoxico: TFormAgrotoxico
         Height = 21
         DataField = 'meiaVidaCam4'
         DataSource = DataSourceAgro
+        Enabled = False
         TabOrder = 7
       end
     end
@@ -220,6 +230,7 @@ object FormAgrotoxico: TFormAgrotoxico
         Width = 75
         Height = 25
         Caption = 'Salvar'
+        Enabled = False
         TabOrder = 0
         OnClick = btnSalvarAgroClick
       end
@@ -229,6 +240,7 @@ object FormAgrotoxico: TFormAgrotoxico
         Width = 75
         Height = 25
         Caption = 'Cancelar'
+        Enabled = False
         TabOrder = 1
         OnClick = btnCancelarAgroClick
       end
@@ -247,6 +259,7 @@ object FormAgrotoxico: TFormAgrotoxico
         Width = 75
         Height = 25
         Caption = 'Excluir'
+        Enabled = False
         TabOrder = 3
         OnClick = btnExcluirClick
       end
@@ -332,6 +345,7 @@ object FormAgrotoxico: TFormAgrotoxico
     Top = 248
   end
   object FDQueryAgro: TFDQuery
+    Active = True
     BeforePost = FDQueryAgroBeforePost
     AfterPost = FDQueryAgroAfterPost
     Connection = DataModule1.FDConnection1
