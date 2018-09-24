@@ -1,8 +1,9 @@
 object FormCadastroLocalidade: TFormCadastroLocalidade
   Left = 0
   Top = 0
+  BorderIcons = [biSystemMenu, biMinimize]
   Caption = 'Cadastro de Local'
-  ClientHeight = 393
+  ClientHeight = 452
   ClientWidth = 618
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -18,46 +19,50 @@ object FormCadastroLocalidade: TFormCadastroLocalidade
     Left = 0
     Top = 0
     Width = 618
-    Height = 393
+    Height = 452
     Align = alClient
     Color = 15070437
     ParentBackground = False
     TabOrder = 0
     DesignSize = (
       618
-      393)
+      452)
     object PanelDescricao: TPanel
       Left = 13
       Top = 16
-      Width = 593
+      Width = 307
       Height = 89
       Anchors = [akTop]
       BevelOuter = bvNone
       TabOrder = 0
       object Label1: TLabel
-        Left = 178
+        Left = 2
         Top = 8
         Width = 50
         Height = 13
         Caption = 'Descri'#231#227'o:'
       end
-      object DBMemo1: TDBMemo
-        Left = 178
+      object DBMemoDescricao: TDBMemo
+        Left = 2
         Top = 27
-        Width = 265
-        Height = 62
+        Width = 305
+        Height = 46
         DataField = 'descricao'
         DataSource = DataSourceLocalidade
+        Enabled = False
         TabOrder = 0
       end
     end
-    object GroupBox1: TGroupBox
+    object GroupBoxClima: TGroupBox
       Left = 15
-      Top = 111
+      Top = 95
       Width = 305
       Height = 122
       Anchors = [akTop]
       Caption = 'Clima'
+      Color = 15201511
+      ParentBackground = False
+      ParentColor = False
       TabOrder = 1
       object Label2: TLabel
         Left = 23
@@ -86,42 +91,45 @@ object FormCadastroLocalidade: TFormCadastroLocalidade
         Color = 15332585
         ParentColor = False
       end
-      object DBEdit1: TDBEdit
+      object DBEditPrecipitacao: TDBEdit
         Left = 193
         Top = 24
         Width = 65
         Height = 21
         DataField = 'precipitacao'
         DataSource = DataSourceLocalidade
+        Enabled = False
         TabOrder = 0
       end
-      object DBEdit2: TDBEdit
+      object DBEditIrrigacao: TDBEdit
         Left = 193
         Top = 56
         Width = 65
         Height = 21
         DataField = 'irrigacao'
         DataSource = DataSourceLocalidade
+        Enabled = False
         TabOrder = 1
       end
-      object DBEdit3: TDBEdit
+      object DBEditEvapotranspiracao: TDBEdit
         Left = 193
         Top = 87
         Width = 65
         Height = 21
         DataField = 'evapotranspiracao'
         DataSource = DataSourceLocalidade
+        Enabled = False
         TabOrder = 2
       end
     end
-    object GroupBox2: TGroupBox
-      Left = 332
-      Top = 111
-      Width = 273
+    object GroupBoxAquifero: TGroupBox
+      Left = 12
+      Top = 223
+      Width = 308
       Height = 122
       Anchors = [akTop]
       Caption = 'Aqu'#237'fero'
-      Color = 15201511
+      Color = 15332585
       ParentBackground = False
       ParentColor = False
       TabOrder = 2
@@ -143,96 +151,49 @@ object FormCadastroLocalidade: TFormCadastroLocalidade
         Color = 15398121
         ParentColor = False
       end
-      object DBEdit4: TDBEdit
+      object DBEditPorosidade: TDBEdit
         Left = 152
         Top = 21
         Width = 62
         Height = 21
         DataField = 'porosidadeAquifero'
         DataSource = DataSourceLocalidade
+        Enabled = False
         TabOrder = 0
       end
-      object DBEdit5: TDBEdit
+      object DBEditProfundidade: TDBEdit
         Left = 152
         Top = 56
         Width = 65
         Height = 21
         DataField = 'profundidadeAquifero'
         DataSource = DataSourceLocalidade
+        Enabled = False
         TabOrder = 1
       end
     end
-    object DBGridLocalidade: TDBGrid
-      Left = 64
-      Top = 239
-      Width = 482
-      Height = 74
-      Anchors = [akTop]
-      DataSource = DataSourceLocalidade
-      TabOrder = 3
-      TitleFont.Charset = DEFAULT_CHARSET
-      TitleFont.Color = clWindowText
-      TitleFont.Height = -11
-      TitleFont.Name = 'Tahoma'
-      TitleFont.Style = []
-      Columns = <
-        item
-          Expanded = False
-          FieldName = 'id'
-          Visible = True
-        end
-        item
-          Expanded = False
-          FieldName = 'precipitacao'
-          Visible = True
-        end
-        item
-          Expanded = False
-          FieldName = 'evapotranspiracao'
-          Visible = True
-        end
-        item
-          Expanded = False
-          FieldName = 'irrigacao'
-          Visible = True
-        end
-        item
-          Expanded = False
-          FieldName = 'porosidadeAquifero'
-          Visible = True
-        end
-        item
-          Expanded = False
-          FieldName = 'profundidadeAquifero'
-          Visible = True
-        end
-        item
-          Expanded = False
-          FieldName = 'descricao'
-          Visible = True
-        end>
-    end
     object PanelBotoes: TPanel
-      Left = 117
-      Top = 328
-      Width = 393
-      Height = 49
+      Left = 44
+      Top = 351
+      Width = 517
+      Height = 73
       Anchors = [akBottom]
       BevelInner = bvRaised
       BevelOuter = bvNone
-      TabOrder = 4
+      TabOrder = 3
       object btnSalvar: TButton
-        Left = 304
-        Top = 16
+        Left = 215
+        Top = 15
         Width = 75
         Height = 25
         Caption = 'Salvar'
+        Enabled = False
         TabOrder = 0
         OnClick = btnSalvarClick
       end
       object btnEditar: TButton
-        Left = 208
-        Top = 16
+        Left = 120
+        Top = 15
         Width = 75
         Height = 25
         Caption = 'Editar'
@@ -240,19 +201,108 @@ object FormCadastroLocalidade: TFormCadastroLocalidade
         OnClick = btnEditarClick
       end
       object btnCancelar: TButton
-        Left = 40
-        Top = 16
+        Left = 426
+        Top = 14
         Width = 75
         Height = 25
         Caption = 'Cancelar'
+        Enabled = False
         TabOrder = 2
         OnClick = btnCancelarClick
+      end
+      object btnExcluir: TButton
+        Left = 330
+        Top = 15
+        Width = 75
+        Height = 25
+        Caption = 'Excluir'
+        Enabled = False
+        TabOrder = 3
+        OnClick = btnExcluirClick
+      end
+      object DBNavigator1: TDBNavigator
+        Left = 120
+        Top = 46
+        Width = 220
+        Height = 25
+        DataSource = DataSourceLocalidade
+        VisibleButtons = [nbFirst, nbPrior, nbNext, nbLast]
+        TabOrder = 4
+      end
+      object btnNovo: TButton
+        Left = 17
+        Top = 15
+        Width = 75
+        Height = 25
+        Caption = 'Novo'
+        TabOrder = 5
+        OnClick = btnNovoClick
+      end
+    end
+    object GroupBoxBuscaLocal: TGroupBox
+      Left = 326
+      Top = 24
+      Width = 283
+      Height = 321
+      Anchors = [akTop]
+      Caption = 'Busca de Local'
+      Color = 15201511
+      ParentBackground = False
+      ParentColor = False
+      TabOrder = 4
+      DesignSize = (
+        283
+        321)
+      object DBGridLocalidade: TDBGrid
+        Left = 16
+        Top = 58
+        Width = 257
+        Height = 258
+        Anchors = [akTop]
+        DataSource = DataSourceLocalidade
+        TabOrder = 0
+        TitleFont.Charset = DEFAULT_CHARSET
+        TitleFont.Color = clWindowText
+        TitleFont.Height = -11
+        TitleFont.Name = 'Tahoma'
+        TitleFont.Style = []
+        Columns = <
+          item
+            Expanded = False
+            FieldName = 'id'
+            Width = 32
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'descricao'
+            Width = 189
+            Visible = True
+          end>
+      end
+      object EditBuscaLocal: TEdit
+        Left = 16
+        Top = 31
+        Width = 257
+        Height = 21
+        TabOrder = 1
+        OnChange = EditBuscaLocalChange
       end
     end
   end
   object DataSourceLocalidade: TDataSource
-    DataSet = DataModule1.FDQueryLocalidade
-    Left = 536
-    Top = 328
+    DataSet = FDQueryLocalidade
+    Left = 512
+    Top = 16
+  end
+  object FDQueryLocalidade: TFDQuery
+    Active = True
+    BeforePost = FDQueryLocalidadeBeforePost
+    AfterPost = FDQueryLocalidadeAfterPost
+    Connection = DataModule1.FDConnection1
+    SQL.Strings = (
+      'select * from localidade')
+    Left = 509
+    Top = 72
   end
 end

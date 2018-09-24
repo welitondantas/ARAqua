@@ -1,0 +1,71 @@
+unit UnitResultado;
+
+interface
+
+  uses UnitSolo, UnitLocalidade, UnitAgrotoxico, UnitCalculo;
+
+  type
+    TResultado = class
+      public
+
+      private
+    FSolo: TSolo;
+    FConcentracaoEstimada: double;
+    FId: integer;
+    FAgrotoxico: TAgrotoxico;
+    FLocalidade: TLocalidade;
+    FRecargaHidrica: integer;
+    procedure SetAgrotoxico(const Value: TAgrotoxico);
+    procedure SetConcentracaoEstimada(const Value: double);
+    procedure SetId(const Value: integer);
+    procedure SetLocalidade(const Value: TLocalidade);
+    procedure SetRecargaHidrica(const Value: integer);
+    procedure SetSolo(const Value: TSolo);
+
+
+      published
+        property Id: integer read getId write SetId;
+        property Localidade: TLocalidade read getLocalidade write SetLocalidade;
+        property Solo: TSolo read getSolo write SetSolo;
+        property Agrotoxico: TAgrotoxico read getAgrotoxico write SetAgrotoxico;
+        property RecargaHidrica: integer read getRecargaHidrica write SetRecargaHidrica;
+        property ConcentracaoEstimada: double read getConcentracaoEstimada write SetConcentracaoEstimada;
+
+    end;
+implementation
+
+{ TResultado }
+
+{ TResultado }
+
+procedure TResultado.SetAgrotoxico(const Value: TAgrotoxico);
+begin
+  FAgrotoxico := Value;
+end;
+
+procedure TResultado.SetConcentracaoEstimada(const Value: double);
+begin
+  FConcentracaoEstimada := Value;
+end;
+
+procedure TResultado.SetId(const Value: integer);
+begin
+  FId := Value;
+end;
+
+procedure TResultado.SetLocalidade(const Value: TLocalidade);
+begin
+  FLocalidade := Value;
+end;
+
+procedure TResultado.SetRecargaHidrica(const Value: integer);
+begin
+  FRecargaHidrica := Value;
+end;
+
+procedure TResultado.SetSolo(const Value: TSolo);
+begin
+  FSolo := Value;
+end;
+
+end.

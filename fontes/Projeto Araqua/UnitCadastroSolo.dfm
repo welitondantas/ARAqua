@@ -1,9 +1,10 @@
 object FormCadastroSolo: TFormCadastroSolo
   Left = 0
   Top = 0
+  BorderIcons = [biSystemMenu, biMinimize]
   Caption = 'Cadastro de Solo'
-  ClientHeight = 399
-  ClientWidth = 793
+  ClientHeight = 418
+  ClientWidth = 822
   Color = 15332585
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -17,28 +18,23 @@ object FormCadastroSolo: TFormCadastroSolo
   object panelFundoSolo: TPanel
     Left = 0
     Top = 0
-    Width = 793
-    Height = 399
+    Width = 822
+    Height = 418
     Align = alClient
     Color = 14478812
     ParentBackground = False
     TabOrder = 0
-    ExplicitLeft = 176
-    ExplicitTop = 200
-    ExplicitWidth = 185
-    ExplicitHeight = 41
     DesignSize = (
-      793
-      399)
+      822
+      418)
     object GroupBoxSolo: TGroupBox
-      Left = 39
+      Left = 293
       Top = 16
       Width = 233
       Height = 89
       Anchors = [akTop]
       Caption = ' Solo '
       TabOrder = 0
-      ExplicitLeft = 16
       object Label1: TLabel
         Left = 24
         Top = 24
@@ -48,64 +44,25 @@ object FormCadastroSolo: TFormCadastroSolo
         Color = 14609884
         ParentColor = False
       end
-      object DBEdit1: TDBEdit
+      object DBEditTipo: TDBEdit
         Left = 24
         Top = 43
         Width = 121
         Height = 21
+        DataField = 'nome'
+        DataSource = DataSourceSolo
+        Enabled = False
         TabOrder = 0
-      end
-    end
-    object GroupBoxCarreaSuper: TGroupBox
-      Left = 39
-      Top = 111
-      Width = 233
-      Height = 162
-      Anchors = [akTop]
-      Caption = ' Carreamento Superficial '
-      TabOrder = 1
-      ExplicitLeft = 16
-      object Label2: TLabel
-        Left = 24
-        Top = 27
-        Width = 90
-        Height = 13
-        Caption = 'Perda Solo (Kg/ha)'
-        Color = 14806492
-        ParentColor = False
-      end
-      object Label3: TLabel
-        Left = 24
-        Top = 93
-        Width = 97
-        Height = 13
-        Caption = 'Perda '#193'gua (m3/ha)'
-        Color = 14609884
-        ParentColor = False
-      end
-      object DBEdit2: TDBEdit
-        Left = 24
-        Top = 46
-        Width = 121
-        Height = 21
-        TabOrder = 0
-      end
-      object DBEdit3: TDBEdit
-        Left = 24
-        Top = 112
-        Width = 121
-        Height = 21
-        TabOrder = 1
       end
     end
     object GroupBoxLixiviacao: TGroupBox
-      Left = 278
-      Top = 16
+      Left = 294
+      Top = 111
       Width = 501
-      Height = 257
+      Height = 225
       Anchors = [akTop]
       Caption = ' Lixivia'#231#227'o '
-      TabOrder = 2
+      TabOrder = 1
       object Label4: TLabel
         Left = 9
         Top = 49
@@ -178,143 +135,384 @@ object FormCadastroSolo: TFormCadastroSolo
         Color = 14609884
         ParentColor = False
       end
-      object DBEdit4: TDBEdit
+      object DBEditProfunCam1: TDBEdit
         Left = 64
         Top = 43
         Width = 49
         Height = 21
+        DataField = 'profundidadeCamada1'
+        DataSource = DataSourceSolo
+        Enabled = False
         TabOrder = 0
       end
-      object DBEdit5: TDBEdit
+      object DBEditProfunCam2: TDBEdit
         Left = 64
         Top = 88
         Width = 49
         Height = 21
+        DataField = 'profundidadeCamada2'
+        DataSource = DataSourceSolo
+        Enabled = False
         TabOrder = 1
       end
-      object DBEdit6: TDBEdit
-        Left = 64
+      object DBEditProfunCam3: TDBEdit
+        Left = 63
         Top = 133
         Width = 49
         Height = 21
+        DataField = 'profundidadeCamada3'
+        DataSource = DataSourceSolo
+        Enabled = False
         TabOrder = 2
       end
-      object DBEdit7: TDBEdit
+      object DBEditProfunCam4: TDBEdit
         Left = 64
         Top = 174
         Width = 49
         Height = 21
+        DataField = 'profundidadeCamada4'
+        DataSource = DataSourceSolo
+        Enabled = False
         TabOrder = 3
       end
-      object DBEdit8: TDBEdit
+      object DBEditCapacCampo1: TDBEdit
         Left = 176
         Top = 43
         Width = 57
         Height = 21
+        DataField = 'capacidadeCampo1'
+        DataSource = DataSourceSolo
+        Enabled = False
         TabOrder = 4
       end
-      object DBEdit9: TDBEdit
+      object DBEditCapacCampo3: TDBEdit
         Left = 176
         Top = 133
         Width = 57
         Height = 21
+        DataField = 'capacidadeCampo3'
+        DataSource = DataSourceSolo
+        Enabled = False
         TabOrder = 5
       end
-      object DBEdit10: TDBEdit
+      object DBEditCapacCampo4: TDBEdit
         Left = 176
         Top = 174
         Width = 57
         Height = 21
+        DataField = 'capacidadeCampo4'
+        DataSource = DataSourceSolo
+        Enabled = False
         TabOrder = 6
       end
-      object DBEdit11: TDBEdit
+      object DBEditDensidade1: TDBEdit
         Left = 296
         Top = 43
         Width = 57
         Height = 21
+        DataField = 'densidadeSolo1'
+        DataSource = DataSourceSolo
+        Enabled = False
         TabOrder = 7
       end
-      object DBEdit12: TDBEdit
+      object DBEditDensidade2: TDBEdit
         Left = 296
         Top = 88
         Width = 57
         Height = 21
+        DataField = 'densidadeSolo2'
+        DataSource = DataSourceSolo
+        Enabled = False
         TabOrder = 8
       end
-      object DBEdit13: TDBEdit
+      object DBEditDensidade3: TDBEdit
         Left = 296
         Top = 133
         Width = 57
         Height = 21
+        DataField = 'densidadeSolo3'
+        DataSource = DataSourceSolo
+        Enabled = False
         TabOrder = 9
       end
-      object DBEdit14: TDBEdit
+      object DBEditDensidade4: TDBEdit
         Left = 296
         Top = 174
         Width = 57
         Height = 21
+        DataField = 'densidadeSolo4'
+        DataSource = DataSourceSolo
+        Enabled = False
         TabOrder = 10
       end
-      object DBEdit15: TDBEdit
+      object DBEditCarbOrg1: TDBEdit
         Left = 407
         Top = 43
         Width = 58
         Height = 21
+        DataField = 'carbonoOrganico1'
+        DataSource = DataSourceSolo
+        Enabled = False
         TabOrder = 11
       end
-      object DBEdit16: TDBEdit
+      object DBEditCarbOrg2: TDBEdit
         Left = 407
         Top = 88
         Width = 58
         Height = 21
+        DataField = 'carbonoOrganico2'
+        DataSource = DataSourceSolo
+        Enabled = False
         TabOrder = 12
       end
-      object DBEdit17: TDBEdit
+      object DBEditCarbOrg3: TDBEdit
         Left = 408
         Top = 133
         Width = 57
         Height = 21
+        DataField = 'carbonoOrganico3'
+        DataSource = DataSourceSolo
+        Enabled = False
         TabOrder = 13
       end
-      object DBEdit18: TDBEdit
+      object DBEditCarbOrg4: TDBEdit
         Left = 408
         Top = 174
         Width = 57
         Height = 21
+        DataField = 'carbonoOrganico4'
+        DataSource = DataSourceSolo
+        Enabled = False
         TabOrder = 14
       end
-      object DBEdit19: TDBEdit
+      object DBEditCapacCampo2: TDBEdit
         Left = 176
         Top = 88
         Width = 57
         Height = 21
+        DataField = 'capacidadeCampo2'
+        DataSource = DataSourceSolo
+        Enabled = False
         TabOrder = 15
       end
     end
     object Panel1: TPanel
-      Left = 165
-      Top = 304
-      Width = 458
+      Left = 155
+      Top = 342
+      Width = 475
       Height = 65
       Anchors = [akTop]
-      TabOrder = 3
-      ExplicitLeft = 151
+      TabOrder = 2
       object btnCancelar: TButton
-        Left = 40
-        Top = 24
+        Left = 377
+        Top = 8
         Width = 75
         Height = 25
         Caption = 'Cancelar'
+        Enabled = False
         TabOrder = 0
+        OnClick = btnCancelarClick
       end
       object btnSalvar: TButton
-        Left = 328
-        Top = 24
+        Left = 192
+        Top = 8
         Width = 75
         Height = 25
         Caption = 'Salvar'
+        Enabled = False
         TabOrder = 1
+        OnClick = btnSalvarClick
       end
+      object btnEditar: TButton
+        Left = 8
+        Top = 8
+        Width = 75
+        Height = 25
+        Caption = 'Editar'
+        TabOrder = 2
+        OnClick = btnEditarClick
+      end
+      object btnExcluir: TButton
+        Left = 281
+        Top = 8
+        Width = 75
+        Height = 25
+        Caption = 'Excluir'
+        Enabled = False
+        TabOrder = 3
+        OnClick = btnExcluirClick
+      end
+      object DBNavigator1: TDBNavigator
+        Left = 114
+        Top = 39
+        Width = 224
+        Height = 25
+        DataSource = DataSourceSolo
+        VisibleButtons = [nbFirst, nbPrior, nbNext, nbLast]
+        TabOrder = 4
+      end
+      object btnNovo: TButton
+        Left = 105
+        Top = 8
+        Width = 75
+        Height = 25
+        Caption = 'Novo'
+        TabOrder = 5
+        OnClick = btnNovoClick
+      end
+    end
+    object GroupBoxBusca: TGroupBox
+      Left = 24
+      Top = 16
+      Width = 263
+      Height = 320
+      Anchors = [akTop]
+      Caption = 'Busca de Solo'
+      Color = 14609884
+      ParentBackground = False
+      ParentColor = False
+      TabOrder = 3
+      object EditBuscaSolo: TEdit
+        Left = 16
+        Top = 24
+        Width = 225
+        Height = 21
+        TabOrder = 0
+        OnChange = EditBuscaSoloChange
+      end
+      object DBGridSolo: TDBGrid
+        Left = 16
+        Top = 51
+        Width = 225
+        Height = 254
+        DataSource = DataSourceSolo
+        TabOrder = 1
+        TitleFont.Charset = DEFAULT_CHARSET
+        TitleFont.Color = clWindowText
+        TitleFont.Height = -11
+        TitleFont.Name = 'Tahoma'
+        TitleFont.Style = []
+        Columns = <
+          item
+            Expanded = False
+            FieldName = 'id'
+            Width = 25
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'nome'
+            Width = 178
+            Visible = True
+          end>
+      end
+    end
+  end
+  object DataSourceSolo: TDataSource
+    DataSet = FDQuerySolo
+    Left = 592
+    Top = 24
+  end
+  object FDQuerySolo: TFDQuery
+    Active = True
+    BeforePost = FDQuerySoloBeforePost
+    AfterPost = FDQuerySoloAfterPost
+    Connection = DataModule1.FDConnection1
+    SQL.Strings = (
+      'select * from solo')
+    Left = 672
+    Top = 24
+    object FDQuerySoloid: TFDAutoIncField
+      FieldName = 'id'
+      Origin = 'id'
+      ProviderFlags = [pfInWhere, pfInKey]
+      ReadOnly = True
+    end
+    object FDQuerySoloprofundidadeCamada1: TIntegerField
+      FieldName = 'profundidadeCamada1'
+      Origin = 'profundidadeCamada1'
+      Required = True
+    end
+    object FDQuerySoloprofundidadeCamada2: TIntegerField
+      AutoGenerateValue = arDefault
+      FieldName = 'profundidadeCamada2'
+      Origin = 'profundidadeCamada2'
+    end
+    object FDQuerySoloprofundidadeCamada3: TIntegerField
+      AutoGenerateValue = arDefault
+      FieldName = 'profundidadeCamada3'
+      Origin = 'profundidadeCamada3'
+    end
+    object FDQuerySoloprofundidadeCamada4: TIntegerField
+      AutoGenerateValue = arDefault
+      FieldName = 'profundidadeCamada4'
+      Origin = 'profundidadeCamada4'
+    end
+    object FDQuerySolocapacidadeCampo1: TSingleField
+      FieldName = 'capacidadeCampo1'
+      Origin = 'capacidadeCampo1'
+      Required = True
+    end
+    object FDQuerySolocapacidadeCampo2: TSingleField
+      FieldName = 'capacidadeCampo2'
+      Origin = 'capacidadeCampo2'
+      Required = True
+    end
+    object FDQuerySolocapacidadeCampo3: TSingleField
+      FieldName = 'capacidadeCampo3'
+      Origin = 'capacidadeCampo3'
+      Required = True
+    end
+    object FDQuerySolocapacidadeCampo4: TSingleField
+      FieldName = 'capacidadeCampo4'
+      Origin = 'capacidadeCampo4'
+      Required = True
+    end
+    object FDQuerySolodensidadeSolo1: TSingleField
+      FieldName = 'densidadeSolo1'
+      Origin = 'densidadeSolo1'
+      Required = True
+    end
+    object FDQuerySolodensidadeSolo2: TSingleField
+      FieldName = 'densidadeSolo2'
+      Origin = 'densidadeSolo2'
+      Required = True
+    end
+    object FDQuerySolodensidadeSolo3: TSingleField
+      FieldName = 'densidadeSolo3'
+      Origin = 'densidadeSolo3'
+      Required = True
+    end
+    object FDQuerySolodensidadeSolo4: TSingleField
+      FieldName = 'densidadeSolo4'
+      Origin = 'densidadeSolo4'
+      Required = True
+    end
+    object FDQuerySolocarbonoOrganico1: TSingleField
+      FieldName = 'carbonoOrganico1'
+      Origin = 'carbonoOrganico1'
+      Required = True
+    end
+    object FDQuerySolocarbonoOrganico2: TSingleField
+      FieldName = 'carbonoOrganico2'
+      Origin = 'carbonoOrganico2'
+      Required = True
+    end
+    object FDQuerySolocarbonoOrganico3: TSingleField
+      FieldName = 'carbonoOrganico3'
+      Origin = 'carbonoOrganico3'
+      Required = True
+    end
+    object FDQuerySolocarbonoOrganico4: TSingleField
+      FieldName = 'carbonoOrganico4'
+      Origin = 'carbonoOrganico4'
+      Required = True
+    end
+    object FDQuerySolonome: TStringField
+      FieldName = 'nome'
+      Origin = 'nome'
+      Required = True
+      Size = 40
     end
   end
 end

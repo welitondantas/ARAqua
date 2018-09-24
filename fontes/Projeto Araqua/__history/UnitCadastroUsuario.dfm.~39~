@@ -1,0 +1,291 @@
+object FormCadastroUsuario: TFormCadastroUsuario
+  Left = 0
+  Top = 0
+  AlphaBlend = True
+  BorderIcons = [biSystemMenu, biMinimize]
+  Caption = 'Cadastro de Usu'#225'rios'
+  ClientHeight = 389
+  ClientWidth = 774
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  OnClose = FormClose
+  PixelsPerInch = 96
+  TextHeight = 13
+  object paneFormCad: TPanel
+    Left = 0
+    Top = 0
+    Width = 774
+    Height = 389
+    Align = alClient
+    Color = 16055795
+    ParentBackground = False
+    TabOrder = 0
+    ExplicitWidth = 397
+    ExplicitHeight = 440
+    DesignSize = (
+      774
+      389)
+    object GroupBoxBuscaUsr: TGroupBox
+      Left = 352
+      Top = 24
+      Width = 385
+      Height = 219
+      Anchors = [akTop]
+      Caption = 'Busca de Usu'#225'rios'
+      Color = 16121076
+      ParentBackground = False
+      ParentColor = False
+      TabOrder = 0
+      object EditBuscaUsuario: TEdit
+        Left = 40
+        Top = 24
+        Width = 321
+        Height = 21
+        TabOrder = 0
+      end
+      object DBGridUsuarios: TDBGrid
+        Left = 40
+        Top = 66
+        Width = 320
+        Height = 126
+        DataSource = DataSourceUsuario
+        TabOrder = 1
+        TitleFont.Charset = DEFAULT_CHARSET
+        TitleFont.Color = clWindowText
+        TitleFont.Height = -11
+        TitleFont.Name = 'Tahoma'
+        TitleFont.Style = []
+        Columns = <
+          item
+            Expanded = False
+            FieldName = 'id'
+            Width = 27
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'nome'
+            Width = 159
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'login'
+            Width = 94
+            Visible = True
+          end>
+      end
+    end
+    object PanelBotoes: TPanel
+      Left = 130
+      Top = 271
+      Width = 535
+      Height = 72
+      TabOrder = 1
+      object btnCancelar: TButton
+        Left = 441
+        Top = 7
+        Width = 75
+        Height = 25
+        Caption = 'Cancelar'
+        TabOrder = 0
+        OnClick = btnCancelarClick
+      end
+      object btnEditar: TButton
+        Left = 23
+        Top = 7
+        Width = 75
+        Height = 25
+        Caption = 'Editar'
+        TabOrder = 1
+        OnClick = btnEditarClick
+      end
+      object btnExcluir: TButton
+        Left = 350
+        Top = 7
+        Width = 75
+        Height = 25
+        Caption = 'Excluir'
+        TabOrder = 2
+        OnClick = btnExcluirClick
+      end
+      object btnNovo: TButton
+        Left = 125
+        Top = 7
+        Width = 75
+        Height = 25
+        Caption = 'Novo'
+        TabOrder = 3
+        OnClick = btnNovoClick
+      end
+      object btnSalvar: TButton
+        Left = 233
+        Top = 7
+        Width = 75
+        Height = 25
+        Caption = 'Salvar'
+        TabOrder = 4
+        OnClick = btnSalvarClick
+      end
+      object DBNavigator1: TDBNavigator
+        Left = 151
+        Top = 38
+        Width = 232
+        Height = 25
+        DataSource = DataSourceUsuario
+        VisibleButtons = [nbFirst, nbPrior, nbNext, nbLast]
+        TabOrder = 5
+      end
+    end
+    object PanelDados: TPanel
+      Left = 48
+      Top = 24
+      Width = 250
+      Height = 233
+      Anchors = [akTop]
+      TabOrder = 2
+      object Label1: TLabel
+        Left = 17
+        Top = 5
+        Width = 31
+        Height = 13
+        Caption = 'Nome:'
+        Color = 16121076
+        ParentColor = False
+      end
+      object Label2: TLabel
+        Left = 19
+        Top = 51
+        Width = 29
+        Height = 13
+        Caption = 'Login:'
+        Color = 16121076
+        ParentColor = False
+      end
+      object Label3: TLabel
+        Left = 19
+        Top = 97
+        Width = 34
+        Height = 13
+        Caption = 'Senha:'
+        Color = 16121076
+        ParentColor = False
+      end
+      object Label4: TLabel
+        Left = 19
+        Top = 143
+        Width = 84
+        Height = 13
+        Caption = 'Redigite a senha:'
+        Color = 16121076
+        ParentColor = False
+      end
+      object Label5: TLabel
+        Left = 19
+        Top = 189
+        Width = 78
+        Height = 13
+        Caption = 'N'#237'vel de acesso:'
+        Color = 16121076
+        ParentColor = False
+      end
+      object DBComboBoxAcesso: TDBComboBox
+        Left = 19
+        Top = 208
+        Width = 145
+        Height = 21
+        DataField = 'acesso'
+        DataSource = DataSourceUsuario
+        Items.Strings = (
+          '1 '
+          '2')
+        TabOrder = 0
+      end
+      object DBEditLogin: TDBEdit
+        Left = 19
+        Top = 70
+        Width = 121
+        Height = 21
+        DataField = 'login'
+        DataSource = DataSourceUsuario
+        TabOrder = 1
+      end
+      object DBEditNome: TDBEdit
+        Left = 17
+        Top = 24
+        Width = 121
+        Height = 21
+        DataField = 'nome'
+        DataSource = DataSourceUsuario
+        TabOrder = 2
+      end
+      object DBEditSenha: TDBEdit
+        Left = 19
+        Top = 116
+        Width = 121
+        Height = 21
+        DataField = 'senha'
+        DataSource = DataSourceUsuario
+        PasswordChar = '*'
+        TabOrder = 3
+      end
+      object EditRedigite: TEdit
+        Left = 19
+        Top = 162
+        Width = 121
+        Height = 21
+        PasswordChar = '*'
+        TabOrder = 4
+      end
+    end
+  end
+  object DataSourceUsuario: TDataSource
+    DataSet = FDQueryUsuario
+    Left = 256
+    Top = 104
+  end
+  object FDQueryUsuario: TFDQuery
+    Active = True
+    BeforePost = FDQueryUsuarioBeforePost
+    AfterPost = FDQueryUsuarioAfterPost
+    Connection = DataModule1.FDConnection1
+    SQL.Strings = (
+      'select * from usuario')
+    Left = 288
+    Top = 32
+    object FDQueryUsuarioid: TFDAutoIncField
+      FieldName = 'id'
+      Origin = 'id'
+      ProviderFlags = [pfInWhere, pfInKey]
+      ReadOnly = True
+    end
+    object FDQueryUsuarionome: TStringField
+      FieldName = 'nome'
+      Origin = 'nome'
+      Required = True
+      Size = 40
+    end
+    object FDQueryUsuariologin: TStringField
+      FieldName = 'login'
+      Origin = 'login'
+      Required = True
+      Size = 40
+    end
+    object FDQueryUsuariosenha: TStringField
+      FieldName = 'senha'
+      Origin = 'senha'
+      Required = True
+      Size = 10
+    end
+    object FDQueryUsuarioacesso: TIntegerField
+      FieldName = 'acesso'
+      Origin = 'acesso'
+      Required = True
+    end
+  end
+end

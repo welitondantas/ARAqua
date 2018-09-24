@@ -5,37 +5,35 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, Vcl.StdCtrls, Vcl.Mask,
-  Vcl.DBCtrls;
+  Vcl.DBCtrls, Data.DB, FireDAC.Stan.Intf, FireDAC.Stan.Option,
+  FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf,
+  FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt, FireDAC.Comp.DataSet,
+  FireDAC.Comp.Client, Vcl.Grids, Vcl.DBGrids, UnitSolo;
 
 type
   TFormCadastroSolo = class(TForm)
     panelFundoSolo: TPanel;
     GroupBoxSolo: TGroupBox;
-    GroupBoxCarreaSuper: TGroupBox;
     GroupBoxLixiviacao: TGroupBox;
     Panel1: TPanel;
-    DBEdit1: TDBEdit;
+    DBEditTipo: TDBEdit;
     Label1: TLabel;
-    DBEdit2: TDBEdit;
-    DBEdit3: TDBEdit;
-    Label2: TLabel;
-    Label3: TLabel;
-    DBEdit4: TDBEdit;
-    DBEdit5: TDBEdit;
-    DBEdit6: TDBEdit;
-    DBEdit7: TDBEdit;
-    DBEdit8: TDBEdit;
-    DBEdit9: TDBEdit;
-    DBEdit10: TDBEdit;
-    DBEdit11: TDBEdit;
-    DBEdit12: TDBEdit;
-    DBEdit13: TDBEdit;
-    DBEdit14: TDBEdit;
-    DBEdit15: TDBEdit;
-    DBEdit16: TDBEdit;
-    DBEdit17: TDBEdit;
-    DBEdit18: TDBEdit;
-    DBEdit19: TDBEdit;
+    DBEditProfunCam1: TDBEdit;
+    DBEditProfunCam2: TDBEdit;
+    DBEditProfunCam3: TDBEdit;
+    DBEditProfunCam4: TDBEdit;
+    DBEditCapacCampo1: TDBEdit;
+    DBEditCapacCampo3: TDBEdit;
+    DBEditCapacCampo4: TDBEdit;
+    DBEditDensidade1: TDBEdit;
+    DBEditDensidade2: TDBEdit;
+    DBEditDensidade3: TDBEdit;
+    DBEditDensidade4: TDBEdit;
+    DBEditCarbOrg1: TDBEdit;
+    DBEditCarbOrg2: TDBEdit;
+    DBEditCarbOrg3: TDBEdit;
+    DBEditCarbOrg4: TDBEdit;
+    DBEditCapacCampo2: TDBEdit;
     Label4: TLabel;
     Label5: TLabel;
     Label6: TLabel;
@@ -46,7 +44,44 @@ type
     Label11: TLabel;
     btnCancelar: TButton;
     btnSalvar: TButton;
+    btnEditar: TButton;
+    btnExcluir: TButton;
+    DataSourceSolo: TDataSource;
+    DBNavigator1: TDBNavigator;
+    btnNovo: TButton;
+    FDQuerySolo: TFDQuery;
+    FDQuerySoloid: TFDAutoIncField;
+    FDQuerySoloprofundidadeCamada1: TIntegerField;
+    FDQuerySoloprofundidadeCamada2: TIntegerField;
+    FDQuerySoloprofundidadeCamada3: TIntegerField;
+    FDQuerySoloprofundidadeCamada4: TIntegerField;
+    FDQuerySolocapacidadeCampo1: TSingleField;
+    FDQuerySolocapacidadeCampo2: TSingleField;
+    FDQuerySolocapacidadeCampo3: TSingleField;
+    FDQuerySolocapacidadeCampo4: TSingleField;
+    FDQuerySolodensidadeSolo1: TSingleField;
+    FDQuerySolodensidadeSolo2: TSingleField;
+    FDQuerySolodensidadeSolo3: TSingleField;
+    FDQuerySolodensidadeSolo4: TSingleField;
+    FDQuerySolocarbonoOrganico1: TSingleField;
+    FDQuerySolocarbonoOrganico2: TSingleField;
+    FDQuerySolocarbonoOrganico3: TSingleField;
+    FDQuerySolocarbonoOrganico4: TSingleField;
+    GroupBoxBusca: TGroupBox;
+    EditBuscaSolo: TEdit;
+    DBGridSolo: TDBGrid;
+    FDQuerySolonome: TStringField;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure btnExcluirClick(Sender: TObject);
+    procedure btnCancelarClick(Sender: TObject);
+    procedure btnEditarClick(Sender: TObject);
+    procedure btnSalvarClick(Sender: TObject);
+    procedure btnNovoClick(Sender: TObject);
+    procedure FDQuerySoloBeforePost(DataSet: TDataSet);
+    procedure FDQuerySoloAfterPost(DataSet: TDataSet);
+    procedure EditBuscaSoloChange(Sender: TObject);
+    function VerificaCampos(campo: String): String;
+    function VerificaPrimeiraCamada(campo: String): Boolean;
   private
     { Private declarations }
   public
@@ -60,11 +95,258 @@ implementation
 
 {$R *.dfm}
 
+uses UnitDataModule;
+
+procedure TFormCadastroSolo.btnCancelarClick(Sender: TObject);
+begin
+  FDQuerySolo.Cancel;
+  DBEditTipo.Enabled := false;
+  DBEditProfunCam1.Enabled := false;
+  DBEditProfunCam2.Enabled := false;
+  DBEditProfunCam3.Enabled := false;
+  DBEditProfunCam4.Enabled := false;
+  DBEditCapacCampo1.Enabled := false;
+  DBEditCapacCampo2.Enabled := false;
+  DBEditCapacCampo3.Enabled := false;
+  DBEditCapacCampo4.Enabled := false;
+  DBEditDensidade1.Enabled := false;
+  DBEditDensidade2.Enabled := false;
+  DBEditDensidade3.Enabled := false;
+  DBEditDensidade4.Enabled := false;
+  DBEditCarbOrg1.Enabled := false;
+  DBEditCarbOrg2.Enabled := false;
+  DBEditCarbOrg3.Enabled := false;
+  DBEditCarbOrg4.Enabled := false;
+  btnEditar.Enabled := true;
+  btnNovo.Enabled := true;
+  btnSalvar.Enabled := false;
+  btnExcluir.Enabled := false;
+  btnCancelar.Enabled := false;
+end;
+
+procedure TFormCadastroSolo.btnEditarClick(Sender: TObject);
+begin
+  FDQuerySolo.Edit;
+  DBEditTipo.Enabled := true;
+  DBEditProfunCam1.Enabled := true;
+  DBEditProfunCam2.Enabled := true;
+  DBEditProfunCam3.Enabled := true;
+  DBEditProfunCam4.Enabled := true;
+  DBEditCapacCampo1.Enabled := true;
+  DBEditCapacCampo2.Enabled := true;
+  DBEditCapacCampo3.Enabled := true;
+  DBEditCapacCampo4.Enabled := true;
+  DBEditDensidade1.Enabled := true;
+  DBEditDensidade2.Enabled := true;
+  DBEditDensidade3.Enabled := true;
+  DBEditDensidade4.Enabled := true;
+  DBEditCarbOrg1.Enabled := true;
+  DBEditCarbOrg2.Enabled := true;
+  DBEditCarbOrg3.Enabled := true;
+  DBEditCarbOrg4.Enabled := true;
+  btnEditar.Enabled := false;
+  btnNovo.Enabled := false;
+  btnSalvar.Enabled := true;
+  btnExcluir.Enabled := true;
+  btnCancelar.Enabled := true;
+end;
+
+procedure TFormCadastroSolo.btnExcluirClick(Sender: TObject);
+begin
+  if (messageBox(HANDLE, 'Deseja realmente excluir esse registro?', 'Excluir',
+                        MB_YESNO + MB_ICONQUESTION) = ID_YES) then
+    begin
+      FDQuerySolo.Delete;
+    end;
+  btnEditar.Enabled := true;
+  btnNovo.Enabled := true;
+  btnSalvar.Enabled := false;
+  btnExcluir.Enabled := false;
+  btnCancelar.Enabled := false;
+end;
+
+procedure TFormCadastroSolo.btnNovoClick(Sender: TObject);
+begin
+  FDQuerySolo.Insert;
+  DBEditTipo.Enabled := true;
+  DBEditProfunCam1.Enabled := true;
+  DBEditProfunCam2.Enabled := true;
+  DBEditProfunCam3.Enabled := true;
+  DBEditProfunCam4.Enabled := true;
+  DBEditCapacCampo1.Enabled := true;
+  DBEditCapacCampo2.Enabled := true;
+  DBEditCapacCampo3.Enabled := true;
+  DBEditCapacCampo4.Enabled := true;
+  DBEditDensidade1.Enabled := true;
+  DBEditDensidade2.Enabled := true;
+  DBEditDensidade3.Enabled := true;
+  DBEditDensidade4.Enabled := true;
+  DBEditCarbOrg1.Enabled := true;
+  DBEditCarbOrg2.Enabled := true;
+  DBEditCarbOrg3.Enabled := true;
+  DBEditCarbOrg4.Enabled := true;
+  btnEditar.Enabled := false;
+  btnNovo.Enabled := false;
+  btnSalvar.Enabled := true;
+  btnExcluir.Enabled := false;
+  btnCancelar.Enabled := true;
+end;
+
+procedure TFormCadastroSolo.btnSalvarClick(Sender: TObject);
+begin
+  FDQuerySolo.Post;
+  DBEditTipo.Enabled := false;
+  DBEditProfunCam1.Enabled := false;
+  DBEditProfunCam2.Enabled := false;
+  DBEditProfunCam3.Enabled := false;
+  DBEditProfunCam4.Enabled := false;
+  DBEditCapacCampo1.Enabled := false;
+  DBEditCapacCampo2.Enabled := false;
+  DBEditCapacCampo3.Enabled := false;
+  DBEditCapacCampo4.Enabled := false;
+  DBEditDensidade1.Enabled := false;
+  DBEditDensidade2.Enabled := false;
+  DBEditDensidade3.Enabled := false;
+  DBEditDensidade4.Enabled := false;
+  DBEditCarbOrg1.Enabled := false;
+  DBEditCarbOrg2.Enabled := false;
+  DBEditCarbOrg3.Enabled := false;
+  DBEditCarbOrg4.Enabled := false;
+  btnEditar.Enabled := true;
+  btnNovo.Enabled := true;
+  btnSalvar.Enabled := false;
+  btnExcluir.Enabled := false;
+  btnCancelar.Enabled := false;
+end;
+
+procedure TFormCadastroSolo.EditBuscaSoloChange(Sender: TObject);
+begin
+  with FDQuerySolo do
+    begin
+      Close;
+      SQL.Text := 'select * from solo where nome like :nome';
+      ParamByName('nome').Value := '%' + EditBuscaSolo.Text + '%';
+      Open;
+    end;
+end;
+
+procedure TFormCadastroSolo.FDQuerySoloAfterPost(DataSet: TDataSet);
+begin
+  Application.MessageBox('Solo salvo com sucesso!', 'Solo salvo');
+end;
+
+procedure TFormCadastroSolo.FDQuerySoloBeforePost(DataSet: TDataSet);
+var solo: TSolo;
+    cont: integer;
+begin
+ solo := TSolo.Create;
+ solo.Nome := DBEditTipo.Text;
+ cont := 0;
+ if (VerificaPrimeiraCamada(DBEditProfunCam1.Text)) then
+    begin
+      solo.ProfundidadeDeCamada1 := StrToInt(DBEditProfunCam1.Text);
+      cont := cont+1;
+    end
+  else
+    begin
+      Application.MessageBox('A primeira camada não pode ser 0 ou em branco.', 'Aviso');
+      DBEditProfunCam1.SetFocus;
+    end;
+ solo.ProfundidadeDeCamada2 := StrToInt(VerificaCampos(DBEditProfunCam2.Text));
+ solo.ProfundidadeDeCamada3 := StrToInt(VerificaCampos(DBEditProfunCam3.Text));
+ solo.ProfundidadeDeCamada4 := StrToInt(VerificaCampos(DBEditProfunCam4.Text));
+ if (VerificaPrimeiraCamada(DBEditCapacCampo1.Text)) then
+  begin
+   solo.CapacidadeDeCampo1 := StrToFloat(DBEditCapacCampo1.Text);
+   cont := cont+1;
+  end
+ else
+  begin
+    Application.MessageBox('A primeira camada não pode ser 0 ou em branco.', 'Aviso');
+    DBEditCapacCampo1.SetFocus;
+  end;
+
+ solo.CapacidadeDeCampo2 := StrToFloat(VerificaCampos(DBEditCapacCampo2.Text));
+ solo.CapacidadeDeCampo3 := StrToFloat(VerificaCampos(DBEditCapacCampo3.Text));
+ solo.CapacidadeDeCampo4 := StrToFloat(VerificaCampos(DBEditCapacCampo4.Text));
+ if (VerificaPrimeiraCamada(DBEditDensidade1.Text)) then
+    begin
+      solo.DensidadeSolo1 := StrToFloat(DBEditDensidade1.Text);
+      cont := cont+1;
+    end
+ else
+  begin
+    Application.MessageBox('A primeira camada não pode ser 0 ou em branco.', 'Aviso');
+    DBEditDensidade1.SetFocus;
+  end;
+ solo.DensidadeSolo2 := StrToFloat(VerificaCampos(DBEditDensidade2.Text));
+ solo.DensidadeSolo3 := StrToFloat(VerificaCampos(DBEditDensidade3.Text));
+ solo.DensidadeSolo4 := StrToFloat(VerificaCampos(DBEditDensidade4.Text));
+
+ if (VerificaPrimeiraCamada(DBEditCarbOrg1.Text)) then
+  begin
+   solo.CarbonoOrganico1 := StrToFloat(DBEditCarbOrg1.Text);
+   cont := cont+1;
+  end
+ else
+  begin
+    Application.MessageBox('A primeira camada não pode ser 0 ou em branco.', 'Aviso');
+    DBEditCapacCampo1.SetFocus;
+  end;
+ if (cont=4) then
+  begin
+   solo.CarbonoOrganico2 := StrToFloat(VerificaCampos(DBEditCarbOrg2.Text));
+   solo.CarbonoOrganico3 := StrToFloat(VerificaCampos(DBEditCarbOrg3.Text));
+   solo.CarbonoOrganico4 := StrToFloat(VerificaCampos(DBEditCarbOrg4.Text));
+   FDQuerySolo.FieldByName('nome').AsString := solo.Nome;
+   FDQuerySolo.FieldByName('profundidadeCamada1').AsInteger := solo.ProfundidadeDeCamada1;
+   FDQuerySolo.FieldByName('profundidadeCamada2').AsInteger := solo.ProfundidadeDeCamada2;
+   FDQuerySolo.FieldByName('profundidadeCamada3').AsInteger := solo.ProfundidadeDeCamada3;
+   FDQuerySolo.FieldByName('profundidadeCamada4').AsInteger := solo.ProfundidadeDeCamada4;
+   FDQuerySolo.FieldByName('capacidadeCampo1').AsFloat := solo.CapacidadeDeCampo1;
+   FDQuerySolo.FieldByName('capacidadeCampo2').AsFloat := solo.CapacidadeDeCampo2;
+   FDQuerySolo.FieldByName('capacidadeCampo3').AsFloat := solo.CapacidadeDeCampo3;
+   FDQuerySolo.FieldByName('capacidadeCampo4').AsFloat := solo.CapacidadeDeCampo4;
+   FDQuerySolo.FieldByName('densidadeSolo1').AsFloat := solo.DensidadeSolo1;
+   FDQuerySolo.FieldByName('densidadeSolo2').AsFloat := solo.DensidadeSolo2;
+   FDQuerySolo.FieldByName('densidadeSolo3').AsFloat := solo.DensidadeSolo3;
+   FDQuerySolo.FieldByName('densidadeSolo4').AsFloat := solo.DensidadeSolo4;
+   FDQuerySolo.FieldByName('carbonoOrganico1').AsFloat := solo.CarbonoOrganico1;
+   FDQuerySolo.FieldByName('carbonoOrganico2').AsFloat := solo.CarbonoOrganico2;
+   FDQuerySolo.FieldByName('carbonoOrganico3').AsFloat := solo.CarbonoOrganico3;
+   FDQuerySolo.FieldByName('carbonoOrganico4').AsFloat := solo.CarbonoOrganico4;
+  end;
+end;
+
 procedure TFormCadastroSolo.FormClose(Sender: TObject;
   var Action: TCloseAction);
 begin
   FormCadastroSolo := nil;
   Action := caFree;
+end;
+
+function TFormCadastroSolo.VerificaCampos(campo: String): String;
+begin
+  if (campo='') then
+    begin
+      Result := '0';
+    end
+  else
+    begin
+      Result := campo;
+    end;
+end;
+
+function TFormCadastroSolo.VerificaPrimeiraCamada(campo: String): Boolean;
+begin
+    if ((campo='') OR (campo='0')) then
+      begin
+        Result := false;
+      end
+    else
+      begin
+        Result := true;
+      end;
 end;
 
 end.
