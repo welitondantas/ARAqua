@@ -302,7 +302,7 @@ object FormCadastroLocalidade: TFormCadastroLocalidade
     Connection = DataModule1.FDConnection1
     SQL.Strings = (
       'select * from localidade')
-    Left = 509
+    Left = 517
     Top = 72
   end
 end

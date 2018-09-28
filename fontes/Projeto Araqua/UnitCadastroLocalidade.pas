@@ -168,13 +168,13 @@ begin
   local.Irrigacao := StrToFloat(DBEditIrrigacao.Text);
   local.Evapotranspiracao := StrToFloat(DBEditEvapotranspiracao.Text);
   local.PorosidadeAquifero := StrToFloat(DBEditPorosidade.Text);
-  local.ProfundidadeAquifero := StrToFloat(DBEditProfundidade.Text);
+  local.ProfundidadeAquifero := StrToInt(DBEditProfundidade.Text);
   FDQueryLocalidade.FieldByName('descricao').AsString := local.Descricao;
   FDQueryLocalidade.FieldByName('precipitacao').AsFloat := local.Precipitacao;
   FDQueryLocalidade.FieldByName('irrigacao').AsFloat := local.Irrigacao;
   FDQueryLocalidade.FieldByName('evapotranspiracao').AsFloat := local.Evapotranspiracao;
   FDQueryLocalidade.FieldByName('porosidadeAquifero').AsFloat := local.PorosidadeAquifero;
-  FDQueryLocalidade.FieldByName('profundidadeAquifero').AsFloat := local.ProfundidadeAquifero;
+  FDQueryLocalidade.FieldByName('profundidadeAquifero').AsInteger := local.ProfundidadeAquifero;
 end;
 
 procedure TFormCadastroLocalidade.FormClose(Sender: TObject;

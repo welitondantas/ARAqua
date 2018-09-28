@@ -4,7 +4,7 @@ object FormCalculoResultado: TFormCalculoResultado
   BorderIcons = [biSystemMenu, biMinimize]
   Caption = 'C'#225'lculos'
   ClientHeight = 441
-  ClientWidth = 694
+  ClientWidth = 662
   Color = 15201254
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -19,14 +19,14 @@ object FormCalculoResultado: TFormCalculoResultado
   object PanelFundo: TPanel
     Left = 0
     Top = 0
-    Width = 694
+    Width = 662
     Height = 441
     Align = alClient
     TabOrder = 0
     object PageControl1: TPageControl
       Left = 1
       Top = 1
-      Width = 692
+      Width = 660
       Height = 439
       ActivePage = TabSheetLixiviacao
       Align = alClient
@@ -36,17 +36,17 @@ object FormCalculoResultado: TFormCalculoResultado
         object PanelTabLixiviacao: TPanel
           Left = 0
           Top = 0
-          Width = 684
+          Width = 652
           Height = 411
           Align = alClient
           Color = 15463914
           ParentBackground = False
           TabOrder = 0
           DesignSize = (
-            684
+            652
             411)
           object GroupBoxLocal: TGroupBox
-            Left = 49
+            Left = 40
             Top = 8
             Width = 281
             Height = 81
@@ -70,7 +70,7 @@ object FormCalculoResultado: TFormCalculoResultado
             end
           end
           object GroupBoxSolo: TGroupBox
-            Left = 43
+            Left = 34
             Top = 105
             Width = 281
             Height = 89
@@ -94,7 +94,7 @@ object FormCalculoResultado: TFormCalculoResultado
             end
           end
           object GroupBoxAgrotoxico: TGroupBox
-            Left = 43
+            Left = 34
             Top = 208
             Width = 281
             Height = 113
@@ -140,7 +140,7 @@ object FormCalculoResultado: TFormCalculoResultado
             end
           end
           object GroupBox4: TGroupBox
-            Left = 360
+            Left = 336
             Top = 8
             Width = 305
             Height = 313
@@ -240,7 +240,7 @@ object FormCalculoResultado: TFormCalculoResultado
             end
           end
           object Panel5: TPanel
-            Left = 84
+            Left = 68
             Top = 335
             Width = 498
             Height = 59
@@ -260,7 +260,7 @@ object FormCalculoResultado: TFormCalculoResultado
               Top = 16
               Width = 110
               Height = 25
-              Caption = 'Nova Consulta'
+              Caption = 'Novo C'#225'lculo'
               Enabled = False
               TabOrder = 1
               OnClick = btnNovaConsultaClick
@@ -293,7 +293,7 @@ object FormCalculoResultado: TFormCalculoResultado
         object PanelTabCarreamento: TPanel
           Left = 0
           Top = 0
-          Width = 684
+          Width = 652
           Height = 411
           Align = alClient
           Color = 15463657
@@ -333,6 +333,43 @@ object FormCalculoResultado: TFormCalculoResultado
       'select * from localidade')
     Left = 630
     Top = 335
+    object FDQueryLocalidadeid: TFDAutoIncField
+      FieldName = 'id'
+      Origin = 'id'
+      ProviderFlags = [pfInWhere, pfInKey]
+      ReadOnly = True
+    end
+    object FDQueryLocalidadeprecipitacao: TSingleField
+      FieldName = 'precipitacao'
+      Origin = 'precipitacao'
+      Required = True
+    end
+    object FDQueryLocalidadeevapotranspiracao: TSingleField
+      FieldName = 'evapotranspiracao'
+      Origin = 'evapotranspiracao'
+      Required = True
+    end
+    object FDQueryLocalidadeirrigacao: TSingleField
+      FieldName = 'irrigacao'
+      Origin = 'irrigacao'
+      Required = True
+    end
+    object FDQueryLocalidadeporosidadeAquifero: TSingleField
+      FieldName = 'porosidadeAquifero'
+      Origin = 'porosidadeAquifero'
+      Required = True
+    end
+    object FDQueryLocalidadeprofundidadeAquifero: TIntegerField
+      FieldName = 'profundidadeAquifero'
+      Origin = 'profundidadeAquifero'
+      Required = True
+    end
+    object FDQueryLocalidadedescricao: TStringField
+      FieldName = 'descricao'
+      Origin = 'descricao'
+      Required = True
+      Size = 100
+    end
   end
   object FDQueryAgro: TFDQuery
     Active = True

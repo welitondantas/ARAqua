@@ -13,7 +13,7 @@ object FormPrincipal: TFormPrincipal
   Font.Name = 'Tahoma'
   Font.Style = []
   OldCreateOrder = False
-  WindowState = wsMaximized
+  WindowState = wsMinimized
   OnClose = FormClose
   OnCreate = FormCreate
   DesignSize = (
