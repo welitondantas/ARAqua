@@ -8,7 +8,8 @@ uses
   Vcl.StdCtrls, Vcl.Mask, Vcl.DBCtrls, Data.DB, FireDAC.Stan.Intf,
   FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS,
   FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt,
-  FireDAC.Comp.DataSet, FireDAC.Comp.Client;
+  FireDAC.Comp.DataSet, FireDAC.Comp.Client, UnitAgrotoxico, UnitLocalidade, UnitCalculo,
+  UnitSolo;
 
 type
   TFormCalculoResultado = class(TForm)
@@ -50,6 +51,13 @@ type
     DataSourceLocalidade: TDataSource;
     DataSourceAgro: TDataSource;
     btnCancelar: TButton;
+    FDQueryLocalidadeid: TFDAutoIncField;
+    FDQueryLocalidadeprecipitacao: TSingleField;
+    FDQueryLocalidadeevapotranspiracao: TSingleField;
+    FDQueryLocalidadeirrigacao: TSingleField;
+    FDQueryLocalidadeporosidadeAquifero: TSingleField;
+    FDQueryLocalidadeprofundidadeAquifero: TIntegerField;
+    FDQueryLocalidadedescricao: TStringField;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure btnSalvarClick(Sender: TObject);
     procedure realizaCalculos();
@@ -60,7 +68,12 @@ type
     procedure FormCreate(Sender: TObject);
     procedure btnCancelarClick(Sender: TObject);
     function verificaCamposParaCalculo(): Boolean;
-    function espessuraCamada(cam1, cam2: integer): integer;
+    function calculaProfundidade(camada, profundidade: integer): integer;
+    function calculaCamada1(solo: TSolo; agro: TAgrotoxico; local: TLocalidade): double;
+    function calculaCamada2(solo: TSolo; agro: TAgrotoxico; local: TLocalidade): double;
+    function calculaCamada3(solo: TSolo; agro: TAgrotoxico; local: TLocalidade): double;
+    function calculaCamada4(solo: TSolo; agro: TAgrotoxico; local: TLocalidade): double;
+    procedure CheckBoxInserirManualClick(Sender: TObject);
 
   private
     { Private declarations }
@@ -69,14 +82,18 @@ type
   end;
 
 var
-  FormCalculoResultado: TFormCalculoResultado;
+      FormCalculoResultado: TFormCalculoResultado;
+      rf, bd, oc, koc, fc: double;
+      tr, q, k, af: double;
+      m, d, p, da, a, cf: double;
+      l, t: integer;
+      calc: TCalculos;
 
 implementation
 
 {$R *.dfm}
 
-uses UnitDataModule, UnitCalculo, UnitResultado, UnitAgrotoxico, UnitLocalidade,
-  UnitSolo;
+uses UnitDataModule, UnitResultado, UnitPrincipal;
 
 procedure TFormCalculoResultado.btnCalcularClick(Sender: TObject);
 begin
@@ -131,9 +148,128 @@ begin
   btnCalcular.Enabled := false;
 end;
 
-function TFormCalculoResultado.espessuraCamada(cam1, cam2: integer): integer;
+function TFormCalculoResultado.calculaCamada1(solo: TSolo; agro: TAgrotoxico;
+  local: TLocalidade): double;
+  begin
+    calc := TCalculos.Create;
+    //setando os valores necessarios para os calculos da camada 1
+     bd := solo.DensidadeSolo1;
+     oc := solo.CarbonoOrganico1;
+     koc := agro.CoeficienteSorcaoCamada1;
+     fc := solo.CapacidadeDeCampo1;
+     if ((solo.ProfundidadeDeCamada2=0) OR (solo.CapacidadeDeCampo2=0) OR
+      (solo.DensidadeSolo2=0) OR (solo.CarbonoOrganico2=0)) then
+        begin
+          l := calculaProfundidade(solo.ProfundidadeDeCamada1, local.ProfundidadeAquifero);
+        end
+      else
+        begin
+          l := calculaProfundidade(0, solo.ProfundidadeDeCamada1);
+        end;
+      t := agro.MeiaVidaCamada1;
+      k := calc.meiaVidaAgro(t);
+
+      //realizando o calculo da camada 1
+      q := calc.recargaHidrica(local.Precipitacao, local.Irrigacao, local.Evapotranspiracao);
+      rf := calc.fatorRetardamento(bd, oc, koc, fc);
+      tr := calc.tempoPercurso(l, fc, q, rf);
+      af := calc.lixiviacao(tr, k);
+      Result := af;
+end;
+
+function TFormCalculoResultado.calculaCamada2(solo: TSolo; agro: TAgrotoxico;
+  local: TLocalidade): double;
 begin
-  Result := cam2 - cam1;
+  calc := TCalculos.Create;
+  bd := solo.DensidadeSolo2;
+  oc := solo.CarbonoOrganico2;
+  koc := agro.CoeficienteSorcaoCamada2;
+  fc := solo.CapacidadeDeCampo2;
+  if ((solo.ProfundidadeDeCamada3=0) OR (solo.CapacidadeDeCampo3=0) OR
+      (solo.DensidadeSolo3=0) OR (solo.CarbonoOrganico3=0)) then
+    begin
+      l := calculaProfundidade(solo.ProfundidadeDeCamada2, local.ProfundidadeAquifero);
+    end
+  else
+    begin
+      l := calculaProfundidade(solo.ProfundidadeDeCamada1, solo.ProfundidadeDeCamada2);
+    end;
+  t := agro.MeiaVidaCamada2;
+  k := calc.meiaVidaAgro(t);
+
+  //realizando o calculo da camada 2
+  q := calc.recargaHidrica(local.Precipitacao, local.Irrigacao, local.Evapotranspiracao);
+  rf := calc.fatorRetardamento(bd, oc, koc, fc);
+  tr := calc.tempoPercurso(l, fc, q, rf);
+  af := calc.lixiviacao(tr, k);
+  Result := af;
+end;
+
+function TFormCalculoResultado.calculaCamada3(solo: TSolo; agro: TAgrotoxico;
+  local: TLocalidade): double;
+begin
+  calc := TCalculos.Create;
+  //setando os valores necessarios para os calculos da camada 3
+  bd := solo.DensidadeSolo3;
+  oc := solo.CarbonoOrganico3;
+  koc := agro.CoeficienteSorcaoCamada3;
+  fc := solo.CapacidadeDeCampo3;
+  if ((solo.ProfundidadeDeCamada4=0) OR (solo.CapacidadeDeCampo4=0) OR
+      (solo.DensidadeSolo4=0) OR (solo.CarbonoOrganico4=0)) then
+    begin
+      l := calculaProfundidade(solo.ProfundidadeDeCamada3, local.ProfundidadeAquifero);
+    end
+  else
+    begin
+      l := calculaProfundidade(solo.ProfundidadeDeCamada2, solo.ProfundidadeDeCamada3);
+    end;
+  t := agro.MeiaVidaCamada3;
+  k := calc.meiaVidaAgro(t);
+
+  //realizando o calculo da camada 3
+  q := calc.recargaHidrica(local.Precipitacao, local.Irrigacao, local.Evapotranspiracao);
+  rf := calc.fatorRetardamento(bd, oc, koc, fc);
+  tr := calc.tempoPercurso(l, fc, q, rf);
+  af := calc.lixiviacao(tr, k);
+  Result := af;
+end;
+
+function TFormCalculoResultado.calculaCamada4(solo: TSolo; agro: TAgrotoxico;
+  local: TLocalidade): double;
+begin
+  calc := TCalculos.Create;
+  //setando os valores necessarios para os calculos da camada 4
+  bd := solo.DensidadeSolo4;
+  oc := solo.CarbonoOrganico4;
+  koc := agro.CoeficienteSorcaoCamada4;
+  fc := solo.CapacidadeDeCampo4;
+  l := calculaProfundidade(solo.ProfundidadeDeCamada3, local.ProfundidadeAquifero);
+  t := agro.MeiaVidaCamada4;
+  k := calc.meiaVidaAgro(t);
+
+  //realizando o calculo da camada 4
+  q := calc.recargaHidrica(local.Precipitacao, local.Irrigacao, local.Evapotranspiracao);
+  rf := calc.fatorRetardamento(bd, oc, koc, fc);
+  tr := calc.tempoPercurso(l, fc, q, rf);
+  af := calc.lixiviacao(tr, k);
+  Result := af;
+end;
+
+function TFormCalculoResultado.calculaProfundidade(camada, profundidade: integer): integer;
+begin
+  Result := profundidade - camada;
+end;
+
+procedure TFormCalculoResultado.CheckBoxInserirManualClick(Sender: TObject);
+begin
+  if (CheckBoxInserirManual.Checked) then
+    begin
+      EditDoseManual.Enabled := true;
+    end
+  else
+    begin
+      EditDoseManual.Enabled := false;
+    end;
 end;
 
 procedure TFormCalculoResultado.FDQueryResultadoAfterPost(DataSet: TDataSet);
@@ -171,6 +307,10 @@ end;
 
 procedure TFormCalculoResultado.FormCreate(Sender: TObject);
 begin
+  FDQueryResultado.Active := True;
+  FDQuerySolo.Active := True;
+  FDQueryLocalidade.Active := True;
+  FDQueryAgro.Active := True;
   FDQueryResultado.Insert;
   DBLookupComboLocal.KeyValue := -1;
   DBLookupComboBoxSolo.KeyValue := -1;
@@ -181,12 +321,6 @@ procedure TFormCalculoResultado.realizaCalculos;
   var solo: TSolo;
       local: TLocalidade;
       agro: TAgrotoxico;
-      calc: TCalculos;
-      rf, bd, oc, koc, fc: double;
-      tr, q, k, af: double;
-      m, d, p, da, a, cf: double;
-      l, t: integer;
-
 begin
   //iniciando as variaveis
   solo := TSolo.Create;
@@ -221,6 +355,10 @@ begin
   agro.MeiaVidaCamada4 := FDQueryAgro.FieldByName('meiaVidaCam4').AsInteger;
   if (CheckBoxInserirManual.Checked) then
     begin
+      if (EditDoseManual.Text='') then
+        begin
+          EditDoseManual.Text :=  '0';
+        end;
       agro.Dose := StrToFloat(EditDoseManual.Text);
     end
   else
@@ -231,102 +369,39 @@ begin
   local.Irrigacao := FDQueryLocalidade.FieldByName('irrigacao').AsFloat;
   local.Evapotranspiracao := FDQueryLocalidade.FieldByName('evapotranspiracao').AsFloat;
   local.PorosidadeAquifero := FDQueryLocalidade.FieldByName('porosidadeAquifero').AsFloat;
-  //nao esta usando profundidade aquifero
+  local.ProfundidadeAquifero := FDQueryLocalidade.FieldByName('profundidadeAquifero').AsInteger;
 
-  //setando os valores necessarios para os calculos da camada 1
-  bd := solo.DensidadeSolo1;
-  oc := solo.CarbonoOrganico1;
-  koc := agro.CoeficienteSorcaoCamada1;
-  fc := solo.CapacidadeDeCampo1;
-  l := espessuraCamada(0, solo.ProfundidadeDeCamada1);
+  //verifica se há novas camadas. Se houver, é realizado um novo calculo sobre o af
+  af:= calculaCamada1(solo, agro, local);
+  if ((solo.ProfundidadeDeCamada2<>0) AND (solo.CapacidadeDeCampo2<>0) AND
+      (solo.DensidadeSolo2<>0) AND (solo.CarbonoOrganico2<>0)) then
+    begin
+      af  := af * calculaCamada2(solo, agro, local);
+    end;
+
+  if ((solo.ProfundidadeDeCamada3<>0) AND (solo.CapacidadeDeCampo3<>0) AND
+      (solo.DensidadeSolo3<>0) AND (solo.CarbonoOrganico3<>0)) then
+    begin
+      af  := af * calculaCamada3(solo, agro, local);
+    end;
+
+  if ((solo.ProfundidadeDeCamada4<>0)AND (solo.CapacidadeDeCampo4<>0) AND
+      (solo.DensidadeSolo4<>0) AND (solo.CarbonoOrganico4<>0)) then
+    begin
+      af  := af * calculaCamada4(solo, agro, local);
+    end;
+
+  //parte final dos calculos
   q := calc.recargaHidrica(local.Precipitacao, local.Irrigacao, local.Evapotranspiracao);
-  t := agro.MeiaVidaCamada1;
-  k := calc.meiaVidaAgro(t);
   d := agro.Dose;
   p := local.PorosidadeAquifero;
-  a := 10.000;  //sera q eh isso mesmo
-  da := 2; //sera q eh isso mesmo
+  a := 10000;
+  da := 2;
 
 
-  //realizando o calculo da camada 1
-  rf := calc.fatorRetardamento(bd, oc, koc, fc);
-  tr := calc.tempoPercurso(l, fc, q, rf);
-  af := calc.lixiviacao(tr, k);
   m := calc.massaPrevista(d, af);
 
-  if ((solo.ProfundidadeDeCamada2=0) OR (solo.CapacidadeDeCampo2=0) OR
-      (solo.DensidadeSolo2=0) OR (solo.CarbonoOrganico2=0)) then
-      begin
-
-      end
-  else
-      begin
-      //setando os valores necessarios para os calculos da camada 2
-        bd := solo.DensidadeSolo2;
-        oc := solo.CarbonoOrganico2;
-        koc := agro.CoeficienteSorcaoCamada2;
-        fc := solo.CapacidadeDeCampo2;
-        l := espessuraCamada(solo.ProfundidadeDeCamada1, solo.ProfundidadeDeCamada2);
-        t := agro.MeiaVidaCamada2;
-        k := calc.meiaVidaAgro(t);
-
-        //realizando o calculo da camada 2
-        rf := calc.fatorRetardamento(bd, oc, koc, fc);
-        tr := calc.tempoPercurso(l, fc, q, rf);
-        af := af * calc.lixiviacao(tr, k);
-        m := calc.massaPrevista(d, af);
-
-      end;
-
-  if ((solo.ProfundidadeDeCamada3=0) OR (solo.CapacidadeDeCampo3=0) OR
-      (solo.DensidadeSolo3=0) OR (solo.CarbonoOrganico3=0)) then
-      begin
-
-      end
-  else
-      begin
-      //setando os valores necessarios para os calculos da camada 3
-        bd := solo.DensidadeSolo3;
-        oc := solo.CarbonoOrganico3;
-        koc := agro.CoeficienteSorcaoCamada3;
-        fc := solo.CapacidadeDeCampo3;
-        l := espessuraCamada(solo.ProfundidadeDeCamada2, solo.ProfundidadeDeCamada3);
-        t := agro.MeiaVidaCamada3;
-        k := calc.meiaVidaAgro(t);
-
-        //realizando o calculo da camada 3
-        rf := calc.fatorRetardamento(bd, oc, koc, fc);
-        tr := calc.tempoPercurso(l, fc, q, rf);
-        af := af * calc.lixiviacao(tr, k);
-        m := calc.massaPrevista(d, af);
-
-      end;
-
-  if ((solo.ProfundidadeDeCamada4=0) OR (solo.CapacidadeDeCampo4=0) OR
-      (solo.DensidadeSolo4=0) OR (solo.CarbonoOrganico4=0)) then
-      begin
-
-      end
-  else
-      begin
-      //setando os valores necessarios para os calculos da camada 4
-        bd := solo.DensidadeSolo4;
-        oc := solo.CarbonoOrganico4;
-        koc := agro.CoeficienteSorcaoCamada4;
-        fc := solo.CapacidadeDeCampo4;
-        l := espessuraCamada(solo.ProfundidadeDeCamada3, solo.ProfundidadeDeCamada4);
-        t := agro.MeiaVidaCamada4;
-        k := calc.meiaVidaAgro(t);
-
-        //realizando o calculo da camada 2
-        rf := calc.fatorRetardamento(bd, oc, koc, fc);
-        tr := calc.tempoPercurso(l, fc, q, rf);
-        af := af * calc.lixiviacao(tr, k);
-        m := calc.massaPrevista(d, af);
-
-      end;
-
-      cf := calc.concentracaoAgroAguaSubterranea(m, p, da, a);
+  cf := calc.concentracaoAgroAguaSubterranea(m, p, da, a);
 
   DBEditConcentracaoEstimada.Text := FloatToStr(cf);
   DBEditConcentracaoEstimada.Color := clYellow;

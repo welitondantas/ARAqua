@@ -2,9 +2,10 @@ object FormCalculoResultado: TFormCalculoResultado
   Left = 0
   Top = 0
   BorderIcons = [biSystemMenu, biMinimize]
+  BorderStyle = bsSingle
   Caption = 'C'#225'lculos'
-  ClientHeight = 441
-  ClientWidth = 694
+  ClientHeight = 451
+  ClientWidth = 672
   Color = 15201254
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -12,6 +13,7 @@ object FormCalculoResultado: TFormCalculoResultado
   Font.Name = 'Tahoma'
   Font.Style = []
   OldCreateOrder = False
+  Position = poDesktopCenter
   OnClose = FormClose
   OnCreate = FormCreate
   PixelsPerInch = 96
@@ -19,34 +21,42 @@ object FormCalculoResultado: TFormCalculoResultado
   object PanelFundo: TPanel
     Left = 0
     Top = 0
-    Width = 694
-    Height = 441
+    Width = 672
+    Height = 451
     Align = alClient
     TabOrder = 0
+    ExplicitWidth = 662
+    ExplicitHeight = 441
     object PageControl1: TPageControl
       Left = 1
       Top = 1
-      Width = 692
-      Height = 439
+      Width = 670
+      Height = 449
       ActivePage = TabSheetLixiviacao
       Align = alClient
       TabOrder = 0
+      ExplicitWidth = 660
+      ExplicitHeight = 439
       object TabSheetLixiviacao: TTabSheet
         Caption = 'Lixivia'#231#227'o'
+        ExplicitWidth = 652
+        ExplicitHeight = 411
         object PanelTabLixiviacao: TPanel
           Left = 0
           Top = 0
-          Width = 684
-          Height = 411
+          Width = 662
+          Height = 421
           Align = alClient
           Color = 15463914
           ParentBackground = False
           TabOrder = 0
+          ExplicitWidth = 652
+          ExplicitHeight = 411
           DesignSize = (
-            684
-            411)
+            662
+            421)
           object GroupBoxLocal: TGroupBox
-            Left = 49
+            Left = 43
             Top = 8
             Width = 281
             Height = 81
@@ -56,6 +66,7 @@ object FormCalculoResultado: TFormCalculoResultado
             ParentBackground = False
             ParentColor = False
             TabOrder = 0
+            ExplicitLeft = 40
             object DBLookupComboLocal: TDBLookupComboBox
               Left = 19
               Top = 35
@@ -70,7 +81,7 @@ object FormCalculoResultado: TFormCalculoResultado
             end
           end
           object GroupBoxSolo: TGroupBox
-            Left = 43
+            Left = 37
             Top = 105
             Width = 281
             Height = 89
@@ -80,6 +91,7 @@ object FormCalculoResultado: TFormCalculoResultado
             ParentBackground = False
             ParentColor = False
             TabOrder = 1
+            ExplicitLeft = 34
             object DBLookupComboBoxSolo: TDBLookupComboBox
               Left = 24
               Top = 32
@@ -94,7 +106,7 @@ object FormCalculoResultado: TFormCalculoResultado
             end
           end
           object GroupBoxAgrotoxico: TGroupBox
-            Left = 43
+            Left = 37
             Top = 208
             Width = 281
             Height = 113
@@ -104,6 +116,7 @@ object FormCalculoResultado: TFormCalculoResultado
             ParentBackground = False
             ParentColor = False
             TabOrder = 2
+            ExplicitLeft = 34
             object Label3: TLabel
               Left = 215
               Top = 40
@@ -118,12 +131,14 @@ object FormCalculoResultado: TFormCalculoResultado
               Height = 17
               Caption = 'Inserir dose manualmente'
               TabOrder = 0
+              OnClick = CheckBoxInserirManualClick
             end
             object EditDoseManual: TEdit
               Left = 24
               Top = 85
               Width = 89
               Height = 21
+              Enabled = False
               TabOrder = 1
             end
             object DBLookupComboAgro: TDBLookupComboBox
@@ -140,7 +155,7 @@ object FormCalculoResultado: TFormCalculoResultado
             end
           end
           object GroupBox4: TGroupBox
-            Left = 360
+            Left = 343
             Top = 8
             Width = 305
             Height = 313
@@ -150,6 +165,7 @@ object FormCalculoResultado: TFormCalculoResultado
             ParentBackground = False
             ParentColor = False
             TabOrder = 3
+            ExplicitLeft = 336
             object Panel1: TPanel
               Left = 24
               Top = 35
@@ -240,18 +256,22 @@ object FormCalculoResultado: TFormCalculoResultado
             end
           end
           object Panel5: TPanel
-            Left = 84
-            Top = 335
+            Left = 73
+            Top = 345
             Width = 498
             Height = 59
             Anchors = [akBottom]
             TabOrder = 4
+            ExplicitLeft = 68
+            ExplicitTop = 335
             object btnCalcular: TButton
               Left = 400
               Top = 16
               Width = 75
               Height = 25
               Caption = 'Calcular'
+              ImageIndex = 6
+              Images = FormPrincipal.ImageList1
               TabOrder = 0
               OnClick = btnCalcularClick
             end
@@ -260,8 +280,10 @@ object FormCalculoResultado: TFormCalculoResultado
               Top = 16
               Width = 110
               Height = 25
-              Caption = 'Nova Consulta'
+              Caption = 'Novo C'#225'lculo'
               Enabled = False
+              ImageIndex = 0
+              Images = FormPrincipal.ImageList1
               TabOrder = 1
               OnClick = btnNovaConsultaClick
             end
@@ -271,6 +293,9 @@ object FormCalculoResultado: TFormCalculoResultado
               Width = 75
               Height = 25
               Caption = 'Salvar'
+              Enabled = False
+              ImageIndex = 2
+              Images = FormPrincipal.ImageList1
               TabOrder = 2
               OnClick = btnSalvarClick
             end
@@ -280,6 +305,8 @@ object FormCalculoResultado: TFormCalculoResultado
               Width = 75
               Height = 25
               Caption = 'Cancelar'
+              ImageIndex = 1
+              Images = FormPrincipal.ImageList1
               TabOrder = 3
               OnClick = btnCancelarClick
             end
@@ -290,10 +317,14 @@ object FormCalculoResultado: TFormCalculoResultado
         Caption = 'Carreamento Superficial'
         Enabled = False
         ImageIndex = 1
+        ExplicitLeft = 0
+        ExplicitTop = 0
+        ExplicitWidth = 0
+        ExplicitHeight = 0
         object PanelTabCarreamento: TPanel
           Left = 0
           Top = 0
-          Width = 684
+          Width = 652
           Height = 411
           Align = alClient
           Color = 15463657
@@ -304,14 +335,13 @@ object FormCalculoResultado: TFormCalculoResultado
     end
   end
   object FDQueryResultado: TFDQuery
-    Active = True
     BeforePost = FDQueryResultadoBeforePost
     AfterPost = FDQueryResultadoAfterPost
     Connection = DataModule1.FDConnection1
     SQL.Strings = (
       'select * from resultado')
-    Left = 648
-    Top = 112
+    Left = 616
+    Top = 104
   end
   object DataSourceResultado: TDataSource
     DataSet = FDQueryResultado
@@ -319,23 +349,57 @@ object FormCalculoResultado: TFormCalculoResultado
     Top = 1
   end
   object FDQuerySolo: TFDQuery
-    Active = True
     Connection = DataModule1.FDConnection1
     SQL.Strings = (
       'select * from solo')
-    Left = 646
-    Top = 55
+    Left = 614
+    Top = 47
   end
   object FDQueryLocalidade: TFDQuery
-    Active = True
     Connection = DataModule1.FDConnection1
     SQL.Strings = (
       'select * from localidade')
     Left = 630
     Top = 335
+    object FDQueryLocalidadeid: TFDAutoIncField
+      FieldName = 'id'
+      Origin = 'id'
+      ProviderFlags = [pfInWhere, pfInKey]
+      ReadOnly = True
+    end
+    object FDQueryLocalidadeprecipitacao: TSingleField
+      FieldName = 'precipitacao'
+      Origin = 'precipitacao'
+      Required = True
+    end
+    object FDQueryLocalidadeevapotranspiracao: TSingleField
+      FieldName = 'evapotranspiracao'
+      Origin = 'evapotranspiracao'
+      Required = True
+    end
+    object FDQueryLocalidadeirrigacao: TSingleField
+      FieldName = 'irrigacao'
+      Origin = 'irrigacao'
+      Required = True
+    end
+    object FDQueryLocalidadeporosidadeAquifero: TSingleField
+      FieldName = 'porosidadeAquifero'
+      Origin = 'porosidadeAquifero'
+      Required = True
+    end
+    object FDQueryLocalidadeprofundidadeAquifero: TIntegerField
+      FieldName = 'profundidadeAquifero'
+      Origin = 'profundidadeAquifero'
+      Required = True
+    end
+    object FDQueryLocalidadedescricao: TStringField
+      FieldName = 'descricao'
+      Origin = 'descricao'
+      Required = True
+      Size = 100
+    end
   end
   object FDQueryAgro: TFDQuery
-    Active = True
     Connection = DataModule1.FDConnection1
     SQL.Strings = (
       'select * from agrotoxico')

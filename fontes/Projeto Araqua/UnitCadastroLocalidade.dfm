@@ -2,9 +2,10 @@ object FormCadastroLocalidade: TFormCadastroLocalidade
   Left = 0
   Top = 0
   BorderIcons = [biSystemMenu, biMinimize]
+  BorderStyle = bsSingle
   Caption = 'Cadastro de Local'
-  ClientHeight = 452
-  ClientWidth = 618
+  ClientHeight = 462
+  ClientWidth = 628
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -12,29 +13,34 @@ object FormCadastroLocalidade: TFormCadastroLocalidade
   Font.Name = 'Tahoma'
   Font.Style = []
   OldCreateOrder = False
+  Position = poDesktopCenter
   OnClose = FormClose
+  OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
   object panelFundoLocal: TPanel
     Left = 0
     Top = 0
-    Width = 618
-    Height = 452
+    Width = 628
+    Height = 462
     Align = alClient
     Color = 15070437
     ParentBackground = False
     TabOrder = 0
+    ExplicitWidth = 618
+    ExplicitHeight = 452
     DesignSize = (
-      618
-      452)
+      628
+      462)
     object PanelDescricao: TPanel
-      Left = 13
+      Left = 16
       Top = 16
       Width = 307
       Height = 89
       Anchors = [akTop]
       BevelOuter = bvNone
       TabOrder = 0
+      ExplicitLeft = 13
       object Label1: TLabel
         Left = 2
         Top = 8
@@ -54,7 +60,7 @@ object FormCadastroLocalidade: TFormCadastroLocalidade
       end
     end
     object GroupBoxClima: TGroupBox
-      Left = 15
+      Left = 18
       Top = 95
       Width = 305
       Height = 122
@@ -64,6 +70,7 @@ object FormCadastroLocalidade: TFormCadastroLocalidade
       ParentBackground = False
       ParentColor = False
       TabOrder = 1
+      ExplicitLeft = 15
       object Label2: TLabel
         Left = 23
         Top = 24
@@ -123,7 +130,7 @@ object FormCadastroLocalidade: TFormCadastroLocalidade
       end
     end
     object GroupBoxAquifero: TGroupBox
-      Left = 12
+      Left = 15
       Top = 223
       Width = 308
       Height = 122
@@ -133,6 +140,7 @@ object FormCadastroLocalidade: TFormCadastroLocalidade
       ParentBackground = False
       ParentColor = False
       TabOrder = 2
+      ExplicitLeft = 12
       object Label5: TLabel
         Left = 32
         Top = 56
@@ -173,14 +181,16 @@ object FormCadastroLocalidade: TFormCadastroLocalidade
       end
     end
     object PanelBotoes: TPanel
-      Left = 44
-      Top = 351
+      Left = 49
+      Top = 361
       Width = 517
       Height = 73
       Anchors = [akBottom]
       BevelInner = bvRaised
       BevelOuter = bvNone
       TabOrder = 3
+      ExplicitLeft = 44
+      ExplicitTop = 351
       object btnSalvar: TButton
         Left = 215
         Top = 15
@@ -188,6 +198,8 @@ object FormCadastroLocalidade: TFormCadastroLocalidade
         Height = 25
         Caption = 'Salvar'
         Enabled = False
+        ImageIndex = 2
+        Images = FormPrincipal.ImageList1
         TabOrder = 0
         OnClick = btnSalvarClick
       end
@@ -197,6 +209,8 @@ object FormCadastroLocalidade: TFormCadastroLocalidade
         Width = 75
         Height = 25
         Caption = 'Editar'
+        ImageIndex = 4
+        Images = FormPrincipal.ImageList1
         TabOrder = 1
         OnClick = btnEditarClick
       end
@@ -207,6 +221,8 @@ object FormCadastroLocalidade: TFormCadastroLocalidade
         Height = 25
         Caption = 'Cancelar'
         Enabled = False
+        ImageIndex = 1
+        Images = FormPrincipal.ImageList1
         TabOrder = 2
         OnClick = btnCancelarClick
       end
@@ -217,6 +233,8 @@ object FormCadastroLocalidade: TFormCadastroLocalidade
         Height = 25
         Caption = 'Excluir'
         Enabled = False
+        ImageIndex = 3
+        Images = FormPrincipal.ImageList1
         TabOrder = 3
         OnClick = btnExcluirClick
       end
@@ -235,12 +253,14 @@ object FormCadastroLocalidade: TFormCadastroLocalidade
         Width = 75
         Height = 25
         Caption = 'Novo'
+        ImageIndex = 0
+        Images = FormPrincipal.ImageList1
         TabOrder = 5
         OnClick = btnNovoClick
       end
     end
     object GroupBoxBuscaLocal: TGroupBox
-      Left = 326
+      Left = 334
       Top = 24
       Width = 283
       Height = 321
@@ -250,6 +270,7 @@ object FormCadastroLocalidade: TFormCadastroLocalidade
       ParentBackground = False
       ParentColor = False
       TabOrder = 4
+      ExplicitLeft = 326
       DesignSize = (
         283
         321)
@@ -296,13 +317,12 @@ object FormCadastroLocalidade: TFormCadastroLocalidade
     Top = 16
   end
   object FDQueryLocalidade: TFDQuery
-    Active = True
     BeforePost = FDQueryLocalidadeBeforePost
     AfterPost = FDQueryLocalidadeAfterPost
     Connection = DataModule1.FDConnection1
     SQL.Strings = (
       'select * from localidade')
-    Left = 509
+    Left = 517
     Top = 72
   end
 end

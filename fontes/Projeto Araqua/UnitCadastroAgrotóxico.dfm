@@ -2,9 +2,10 @@ object FormAgrotoxico: TFormAgrotoxico
   Left = 0
   Top = 0
   BorderIcons = [biSystemMenu, biMinimize]
+  BorderStyle = bsSingle
   Caption = 'Agrot'#243'xicos'
-  ClientHeight = 362
-  ClientWidth = 629
+  ClientHeight = 372
+  ClientWidth = 639
   Color = 15397866
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -12,37 +13,43 @@ object FormAgrotoxico: TFormAgrotoxico
   Font.Name = 'Tahoma'
   Font.Style = []
   OldCreateOrder = False
+  Position = poDesktopCenter
   OnClose = FormClose
+  OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
   object panelAgro: TPanel
     Left = 0
     Top = 0
-    Width = 629
-    Height = 362
+    Width = 639
+    Height = 372
     Align = alClient
     TabOrder = 0
+    ExplicitWidth = 629
+    ExplicitHeight = 362
     DesignSize = (
-      629
-      362)
+      639
+      372)
     object PanelDadosSimples: TPanel
       Left = 24
       Top = 16
-      Width = 297
+      Width = 307
       Height = 66
       Anchors = [akLeft, akTop, akRight]
       BevelOuter = bvNone
       TabOrder = 0
+      ExplicitWidth = 297
       DesignSize = (
-        297
+        307
         66)
       object PanelPrincipio: TPanel
-        Left = 7
+        Left = 10
         Top = 8
         Width = 137
         Height = 49
         Anchors = [akTop]
         TabOrder = 0
+        ExplicitLeft = 7
         object Label1: TLabel
           Left = 8
           Top = 5
@@ -62,12 +69,13 @@ object FormAgrotoxico: TFormAgrotoxico
         end
       end
       object PanelDose: TPanel
-        Left = 150
+        Left = 157
         Top = 7
         Width = 138
         Height = 51
         Anchors = [akTop]
         TabOrder = 1
+        ExplicitLeft = 150
         object Label2: TLabel
           Left = 8
           Top = 4
@@ -90,10 +98,11 @@ object FormAgrotoxico: TFormAgrotoxico
     object PanelCamadas: TPanel
       Left = 24
       Top = 88
-      Width = 297
+      Width = 307
       Height = 153
       Anchors = [akLeft, akTop, akRight]
       TabOrder = 1
+      ExplicitWidth = 297
       object Label3: TLabel
         Left = 15
         Top = 14
@@ -218,12 +227,14 @@ object FormAgrotoxico: TFormAgrotoxico
       end
     end
     object PanelBotoes: TPanel
-      Left = 80
-      Top = 254
+      Left = 85
+      Top = 264
       Width = 473
       Height = 70
       Anchors = [akBottom]
       TabOrder = 2
+      ExplicitLeft = 80
+      ExplicitTop = 254
       object btnSalvarAgro: TButton
         Left = 200
         Top = 8
@@ -231,6 +242,8 @@ object FormAgrotoxico: TFormAgrotoxico
         Height = 25
         Caption = 'Salvar'
         Enabled = False
+        ImageIndex = 2
+        Images = FormPrincipal.ImageList1
         TabOrder = 0
         OnClick = btnSalvarAgroClick
       end
@@ -241,6 +254,8 @@ object FormAgrotoxico: TFormAgrotoxico
         Height = 25
         Caption = 'Cancelar'
         Enabled = False
+        ImageIndex = 1
+        Images = FormPrincipal.ImageList1
         TabOrder = 1
         OnClick = btnCancelarAgroClick
       end
@@ -250,6 +265,8 @@ object FormAgrotoxico: TFormAgrotoxico
         Width = 75
         Height = 25
         Caption = 'Editar'
+        ImageIndex = 4
+        Images = FormPrincipal.ImageList1
         TabOrder = 2
         OnClick = btnEditarClick
       end
@@ -260,6 +277,8 @@ object FormAgrotoxico: TFormAgrotoxico
         Height = 25
         Caption = 'Excluir'
         Enabled = False
+        ImageIndex = 3
+        Images = FormPrincipal.ImageList1
         TabOrder = 3
         OnClick = btnExcluirClick
       end
@@ -278,18 +297,21 @@ object FormAgrotoxico: TFormAgrotoxico
         Width = 75
         Height = 25
         Caption = 'Novo'
+        ImageIndex = 0
+        Images = FormPrincipal.ImageList1
         TabOrder = 5
         OnClick = btnNovoClick
       end
     end
     object GroupBoxBuscaAgro: TGroupBox
-      Left = 336
+      Left = 344
       Top = 16
       Width = 281
       Height = 225
       Anchors = [akTop]
       Caption = 'Busca de Agrot'#243'xicos'
       TabOrder = 3
+      ExplicitLeft = 336
       DesignSize = (
         281
         225)
@@ -345,7 +367,6 @@ object FormAgrotoxico: TFormAgrotoxico
     Top = 248
   end
   object FDQueryAgro: TFDQuery
-    Active = True
     BeforePost = FDQueryAgroBeforePost
     AfterPost = FDQueryAgroAfterPost
     Connection = DataModule1.FDConnection1

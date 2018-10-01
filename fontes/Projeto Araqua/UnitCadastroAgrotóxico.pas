@@ -88,7 +88,7 @@ uses
   Vcl.DBCtrls, Data.DB, Vcl.Grids, Vcl.DBGrids, FireDAC.Stan.Intf,
   FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS,
   FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt,
-  FireDAC.Comp.DataSet, FireDAC.Comp.Client;
+  FireDAC.Comp.DataSet, FireDAC.Comp.Client, System.ImageList, Vcl.ImgList;
 
 type
   TFormAgrotoxico = class(TForm)
@@ -138,6 +138,9 @@ type
     procedure EditBuscaAgroChange(Sender: TObject);
     function VerificaPrimeiraCamada(campo: String): boolean;
     function VerificaCampos(campo: String): String;
+    procedure FormCreate(Sender: TObject);
+    function VerificaBrancos(): Boolean;
+
   private
     { Private declarations }
   public
@@ -151,7 +154,7 @@ implementation
 
 {$R *.dfm}
 
-uses UnitDataModule, UnitAgrotoxico;
+uses UnitDataModule, UnitAgrotoxico, UnitPrincipal;
 
 procedure TFormAgrotoxico.btnCancelarAgroClick(Sender: TObject);
 begin
@@ -229,22 +232,30 @@ end;
 
 procedure TFormAgrotoxico.btnSalvarAgroClick(Sender: TObject);
 begin
-  FDQueryAgro.Post;
-  DBEditPrincipioAtivo.Enabled := false;
-  DBEditDose.Enabled := false;
-  DBEditKocCamada1.Enabled := false;
-  DBEditKocCamada2.Enabled := false;
-  DBEditKocCamada3.Enabled := false;
-  DBEditKocCamada4.Enabled := false;
-  DBEditMeiaVidaCam1.Enabled := false;
-  DBEditMeiaVidaCam2.Enabled := false;
-  DBEditMeiaVidaCam3.Enabled := false;
-  DBEditMeiaVidaCam4.Enabled := false;
-  btnEditar.Enabled := true;
-  btnNovo.Enabled := true;
-  btnSalvarAgro.Enabled := false;
-  btnExcluir.Enabled := false;
-  btnCancelarAgro.Enabled := false;
+  if (VerificaBrancos) then
+    begin
+      FDQueryAgro.Post;
+      DBEditPrincipioAtivo.Enabled := false;
+      DBEditDose.Enabled := false;
+      DBEditKocCamada1.Enabled := false;
+      DBEditKocCamada2.Enabled := false;
+      DBEditKocCamada3.Enabled := false;
+      DBEditKocCamada4.Enabled := false;
+      DBEditMeiaVidaCam1.Enabled := false;
+      DBEditMeiaVidaCam2.Enabled := false;
+      DBEditMeiaVidaCam3.Enabled := false;
+      DBEditMeiaVidaCam4.Enabled := false;
+      btnEditar.Enabled := true;
+      btnNovo.Enabled := true;
+      btnSalvarAgro.Enabled := false;
+      btnExcluir.Enabled := false;
+      btnCancelarAgro.Enabled := false;
+    end
+  else
+    begin
+      ShowMessage('Preencha os campos corretamente!');
+    end;
+
 end;
 
 procedure TFormAgrotoxico.EditBuscaAgroChange(Sender: TObject);
@@ -309,6 +320,26 @@ procedure TFormAgrotoxico.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
   FormAgrotoxico := nil;
   Action := caFree;
+end;
+
+procedure TFormAgrotoxico.FormCreate(Sender: TObject);
+begin
+  FDQueryAgro.Active := True;
+end;
+
+function TFormAgrotoxico.VerificaBrancos: Boolean;
+begin
+  if ((DBEditPrincipioAtivo.Text='') OR (DBEditDose.Text='') OR
+      (DBEditKocCamada1.Text='') OR (DBEditMeiaVidaCam1.Text='') OR
+      (DBEditKocCamada1.Text='0') OR (DBEditMeiaVidaCam1.Text='0')) then
+    begin
+      Result := False;
+    end
+  else
+    begin
+      Result := True;;
+    end;
+
 end;
 
 function TFormAgrotoxico.VerificaCampos(campo: String): String;

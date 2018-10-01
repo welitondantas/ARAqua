@@ -6,7 +6,7 @@ interface
       private
         FPrecipitacao: double;
         FId: integer;
-        FProfundidadeAquifero: double;
+        FProfundidadeAquifero: integer;
         FEvapotranspiracao: double;
         FPorosidadeAquifero: double;
         FIrrigacao: double;
@@ -16,14 +16,14 @@ interface
         procedure SetIrrigacao(const Value: double);
         procedure SetPorosidadeAquifero(const Value: double);
         procedure SetPrecipitacao(const Value: double);
-        procedure SetProfundidadeAquifero(const Value: double);
+        procedure SetProfundidadeAquifero(const Value: integer);
         procedure SetDescricao(const Value: String);
         function getEvapotranspiracao: double;
         function getId: integer;
         function getIrrigacao: double;
         function getPorosidadeAquifero: double;
         function getPrecipitacao: double;
-        function getProfundidadeAquifero: double;
+        function getProfundidadeAquifero: integer;
         function getDescricao: String;
 
       published
@@ -32,7 +32,7 @@ interface
         property Evapotranspiracao: double read getEvapotranspiracao write SetEvapotranspiracao;
         property Irrigacao: double read getIrrigacao write SetIrrigacao;
         property PorosidadeAquifero: double read getPorosidadeAquifero write SetPorosidadeAquifero;
-        property ProfundidadeAquifero: double read getProfundidadeAquifero write SetProfundidadeAquifero;
+        property ProfundidadeAquifero: integer read getProfundidadeAquifero write SetProfundidadeAquifero;
         property Descricao: String read getDescricao write SetDescricao;
     end;
 implementation
@@ -69,7 +69,7 @@ begin
   Result := FPrecipitacao;
 end;
 
-function TLocalidade.getProfundidadeAquifero: double;
+function TLocalidade.getProfundidadeAquifero: integer;
 begin
   Result := FProfundidadeAquifero;
 end;
@@ -104,7 +104,7 @@ begin
   FPrecipitacao := Value;
 end;
 
-procedure TLocalidade.SetProfundidadeAquifero(const Value: double);
+procedure TLocalidade.SetProfundidadeAquifero(const Value: integer);
 begin
   FProfundidadeAquifero := Value;
 end;

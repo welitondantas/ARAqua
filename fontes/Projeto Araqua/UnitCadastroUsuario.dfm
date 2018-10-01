@@ -3,9 +3,10 @@ object FormCadastroUsuario: TFormCadastroUsuario
   Top = 0
   AlphaBlend = True
   BorderIcons = [biSystemMenu, biMinimize]
+  BorderStyle = bsSingle
   Caption = 'Cadastro de Usu'#225'rios'
-  ClientHeight = 398
-  ClientWidth = 671
+  ClientHeight = 408
+  ClientWidth = 681
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -13,23 +14,27 @@ object FormCadastroUsuario: TFormCadastroUsuario
   Font.Name = 'Tahoma'
   Font.Style = []
   OldCreateOrder = False
+  Position = poDesktopCenter
   OnClose = FormClose
+  OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
   object paneFormCad: TPanel
     Left = 0
     Top = 0
-    Width = 671
-    Height = 398
+    Width = 681
+    Height = 408
     Align = alClient
     Color = 16055795
     ParentBackground = False
     TabOrder = 0
+    ExplicitWidth = 671
+    ExplicitHeight = 398
     DesignSize = (
-      671
-      398)
+      681
+      408)
     object GroupBoxBuscaUsr: TGroupBox
-      Left = 248
+      Left = 255
       Top = 24
       Width = 409
       Height = 233
@@ -39,6 +44,7 @@ object FormCadastroUsuario: TFormCadastroUsuario
       ParentBackground = False
       ParentColor = False
       TabOrder = 0
+      ExplicitLeft = 248
       object EditBuscaUsuario: TEdit
         Left = 40
         Top = 24
@@ -81,18 +87,23 @@ object FormCadastroUsuario: TFormCadastroUsuario
       end
     end
     object PanelBotoes: TPanel
-      Left = 73
-      Top = 272
+      Left = 78
+      Top = 282
       Width = 584
       Height = 72
       Anchors = [akBottom]
       TabOrder = 1
+      ExplicitLeft = 73
+      ExplicitTop = 272
       object btnCancelar: TButton
         Left = 497
         Top = 7
         Width = 75
         Height = 25
         Caption = 'Cancelar'
+        Enabled = False
+        ImageIndex = 1
+        Images = FormPrincipal.ImageList1
         TabOrder = 0
         OnClick = btnCancelarClick
       end
@@ -102,6 +113,8 @@ object FormCadastroUsuario: TFormCadastroUsuario
         Width = 75
         Height = 25
         Caption = 'Editar'
+        ImageIndex = 4
+        Images = FormPrincipal.ImageList1
         TabOrder = 1
         OnClick = btnEditarClick
       end
@@ -111,6 +124,9 @@ object FormCadastroUsuario: TFormCadastroUsuario
         Width = 75
         Height = 25
         Caption = 'Excluir'
+        Enabled = False
+        ImageIndex = 3
+        Images = FormPrincipal.ImageList1
         TabOrder = 2
         OnClick = btnExcluirClick
       end
@@ -120,6 +136,8 @@ object FormCadastroUsuario: TFormCadastroUsuario
         Width = 75
         Height = 25
         Caption = 'Novo'
+        ImageIndex = 0
+        Images = FormPrincipal.ImageList1
         TabOrder = 3
         OnClick = btnNovoClick
       end
@@ -129,6 +147,9 @@ object FormCadastroUsuario: TFormCadastroUsuario
         Width = 75
         Height = 25
         Caption = 'Salvar'
+        Enabled = False
+        ImageIndex = 2
+        Images = FormPrincipal.ImageList1
         TabOrder = 4
         OnClick = btnSalvarClick
       end
@@ -143,13 +164,14 @@ object FormCadastroUsuario: TFormCadastroUsuario
       end
     end
     object PanelDados: TPanel
-      Left = 35
+      Left = 37
       Top = 24
       Width = 209
       Height = 233
       Anchors = [akTop]
       BevelOuter = bvNone
       TabOrder = 2
+      ExplicitLeft = 35
       object Label1: TLabel
         Left = 17
         Top = 5
@@ -204,7 +226,7 @@ object FormCadastroUsuario: TFormCadastroUsuario
         DataSource = DataSourceUsuario
         Enabled = False
         Items.Strings = (
-          '1 '
+          '1'
           '2')
         TabOrder = 0
       end
@@ -256,7 +278,6 @@ object FormCadastroUsuario: TFormCadastroUsuario
     Top = 336
   end
   object FDQueryUsuario: TFDQuery
-    Active = True
     BeforePost = FDQueryUsuarioBeforePost
     AfterPost = FDQueryUsuarioAfterPost
     Connection = DataModule1.FDConnection1

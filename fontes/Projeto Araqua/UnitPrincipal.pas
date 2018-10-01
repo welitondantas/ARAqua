@@ -5,7 +5,7 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Imaging.pngimage, Vcl.ExtCtrls,
-  Vcl.StdCtrls;
+  Vcl.StdCtrls, System.ImageList, Vcl.ImgList;
 
 type
   TFormPrincipal = class(TForm)
@@ -15,26 +15,27 @@ type
     paneCadSolo: TPanel;
     paneCalculadora: TPanel;
     paneCadUser: TPanel;
-    Image1: TImage;
-    Image2: TImage;
-    Image5: TImage;
-    Image3: TImage;
-    Image4: TImage;
+    ImageUser: TImage;
+    ImgCalcular: TImage;
+    ImageLocal: TImage;
+    ImageSolo: TImage;
+    ImageAgro: TImage;
     Label1: TLabel;
     Label2: TLabel;
     Label3: TLabel;
     Label4: TLabel;
     Label5: TLabel;
     panelLogout: TPanel;
-    Image6: TImage;
-    procedure Image1Click(Sender: TObject);
-    procedure Image4Click(Sender: TObject);
+    ImageLogout: TImage;
+    ImageList1: TImageList;
+    procedure ImageUserClick(Sender: TObject);
+    procedure ImageAgroClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
-    procedure Image3Click(Sender: TObject);
-    procedure Image5Click(Sender: TObject);
-    procedure Image2Click(Sender: TObject);
+    procedure ImageSoloClick(Sender: TObject);
+    procedure ImageLocalClick(Sender: TObject);
+    procedure ImgCalcularClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
-    procedure Image6Click(Sender: TObject);
+    procedure ImageLogoutClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -80,7 +81,7 @@ begin
 
 end;
 
-procedure TFormPrincipal.Image1Click(Sender: TObject);
+procedure TFormPrincipal.ImageUserClick(Sender: TObject);
 begin
     if FormCadastroUsuario=NIL then
       begin
@@ -89,7 +90,7 @@ begin
       end;
 end;
 
-procedure TFormPrincipal.Image2Click(Sender: TObject);
+procedure TFormPrincipal.ImgCalcularClick(Sender: TObject);
 begin
   if FormCalculoResultado = NIL then
     begin
@@ -98,7 +99,7 @@ begin
     end;
 end;
 
-procedure TFormPrincipal.Image3Click(Sender: TObject);
+procedure TFormPrincipal.ImageSoloClick(Sender: TObject);
 begin
     if FormCadastroSolo = NIL then
       begin
@@ -107,7 +108,7 @@ begin
       end;
 end;
 
-procedure TFormPrincipal.Image4Click(Sender: TObject);
+procedure TFormPrincipal.ImageAgroClick(Sender: TObject);
 begin
     if FormAgrotoxico = NIL then
       begin
@@ -117,16 +118,16 @@ begin
 
 end;
 
-procedure TFormPrincipal.Image5Click(Sender: TObject);
+procedure TFormPrincipal.ImageLocalClick(Sender: TObject);
 begin
     if FormCadastroLocalidade = NIL then
-      begin
+      begin      
         FormCadastroLocalidade := TFormCadastroLocalidade.Create(self);
         FormCadastroLocalidade.ShowModal;
       end;
 end;
 
-procedure TFormPrincipal.Image6Click(Sender: TObject);
+procedure TFormPrincipal.ImageLogoutClick(Sender: TObject);
 begin
   FormLogin := TFormLogin.Create(Self);
   FormLogin.Show;

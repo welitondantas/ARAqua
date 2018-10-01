@@ -2,9 +2,10 @@ object FormCadastroSolo: TFormCadastroSolo
   Left = 0
   Top = 0
   BorderIcons = [biSystemMenu, biMinimize]
+  BorderStyle = bsSingle
   Caption = 'Cadastro de Solo'
-  ClientHeight = 418
-  ClientWidth = 822
+  ClientHeight = 428
+  ClientWidth = 832
   Color = 15332585
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -12,29 +13,34 @@ object FormCadastroSolo: TFormCadastroSolo
   Font.Name = 'Tahoma'
   Font.Style = []
   OldCreateOrder = False
+  Position = poDesktopCenter
   OnClose = FormClose
+  OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
   object panelFundoSolo: TPanel
     Left = 0
     Top = 0
-    Width = 822
-    Height = 418
+    Width = 832
+    Height = 428
     Align = alClient
-    Color = 14478812
+    Color = 15857392
     ParentBackground = False
     TabOrder = 0
+    ExplicitWidth = 822
+    ExplicitHeight = 418
     DesignSize = (
-      822
-      418)
+      832
+      428)
     object GroupBoxSolo: TGroupBox
-      Left = 293
+      Left = 298
       Top = 16
       Width = 233
       Height = 89
       Anchors = [akTop]
       Caption = ' Solo '
       TabOrder = 0
+      ExplicitLeft = 293
       object Label1: TLabel
         Left = 24
         Top = 24
@@ -56,13 +62,14 @@ object FormCadastroSolo: TFormCadastroSolo
       end
     end
     object GroupBoxLixiviacao: TGroupBox
-      Left = 294
+      Left = 301
       Top = 111
       Width = 501
       Height = 225
       Anchors = [akTop]
       Caption = ' Lixivia'#231#227'o '
       TabOrder = 1
+      ExplicitLeft = 294
       object Label4: TLabel
         Left = 9
         Top = 49
@@ -297,12 +304,13 @@ object FormCadastroSolo: TFormCadastroSolo
       end
     end
     object Panel1: TPanel
-      Left = 155
+      Left = 160
       Top = 342
       Width = 475
       Height = 65
       Anchors = [akTop]
       TabOrder = 2
+      ExplicitLeft = 155
       object btnCancelar: TButton
         Left = 377
         Top = 8
@@ -310,6 +318,8 @@ object FormCadastroSolo: TFormCadastroSolo
         Height = 25
         Caption = 'Cancelar'
         Enabled = False
+        ImageIndex = 1
+        Images = FormPrincipal.ImageList1
         TabOrder = 0
         OnClick = btnCancelarClick
       end
@@ -320,6 +330,8 @@ object FormCadastroSolo: TFormCadastroSolo
         Height = 25
         Caption = 'Salvar'
         Enabled = False
+        ImageIndex = 2
+        Images = FormPrincipal.ImageList1
         TabOrder = 1
         OnClick = btnSalvarClick
       end
@@ -329,6 +341,8 @@ object FormCadastroSolo: TFormCadastroSolo
         Width = 75
         Height = 25
         Caption = 'Editar'
+        ImageIndex = 4
+        Images = FormPrincipal.ImageList1
         TabOrder = 2
         OnClick = btnEditarClick
       end
@@ -339,6 +353,8 @@ object FormCadastroSolo: TFormCadastroSolo
         Height = 25
         Caption = 'Excluir'
         Enabled = False
+        ImageIndex = 3
+        Images = FormPrincipal.ImageList1
         TabOrder = 3
         OnClick = btnExcluirClick
       end
@@ -357,21 +373,24 @@ object FormCadastroSolo: TFormCadastroSolo
         Width = 75
         Height = 25
         Caption = 'Novo'
+        ImageIndex = 0
+        Images = FormPrincipal.ImageList1
         TabOrder = 5
         OnClick = btnNovoClick
       end
     end
     object GroupBoxBusca: TGroupBox
-      Left = 24
+      Left = 26
       Top = 16
       Width = 263
       Height = 320
       Anchors = [akTop]
       Caption = 'Busca de Solo'
-      Color = 14609884
+      Color = 15463402
       ParentBackground = False
       ParentColor = False
       TabOrder = 3
+      ExplicitLeft = 24
       object EditBuscaSolo: TEdit
         Left = 16
         Top = 24
@@ -414,7 +433,6 @@ object FormCadastroSolo: TFormCadastroSolo
     Top = 24
   end
   object FDQuerySolo: TFDQuery
-    Active = True
     BeforePost = FDQuerySoloBeforePost
     AfterPost = FDQuerySoloAfterPost
     Connection = DataModule1.FDConnection1
@@ -422,97 +440,5 @@ object FormCadastroSolo: TFormCadastroSolo
       'select * from solo')
     Left = 672
     Top = 24
-    object FDQuerySoloid: TFDAutoIncField
-      FieldName = 'id'
-      Origin = 'id'
-      ProviderFlags = [pfInWhere, pfInKey]
-      ReadOnly = True
-    end
-    object FDQuerySoloprofundidadeCamada1: TIntegerField
-      FieldName = 'profundidadeCamada1'
-      Origin = 'profundidadeCamada1'
-      Required = True
-    end
-    object FDQuerySoloprofundidadeCamada2: TIntegerField
-      AutoGenerateValue = arDefault
-      FieldName = 'profundidadeCamada2'
-      Origin = 'profundidadeCamada2'
-    end
-    object FDQuerySoloprofundidadeCamada3: TIntegerField
-      AutoGenerateValue = arDefault
-      FieldName = 'profundidadeCamada3'
-      Origin = 'profundidadeCamada3'
-    end
-    object FDQuerySoloprofundidadeCamada4: TIntegerField
-      AutoGenerateValue = arDefault
-      FieldName = 'profundidadeCamada4'
-      Origin = 'profundidadeCamada4'
-    end
-    object FDQuerySolocapacidadeCampo1: TSingleField
-      FieldName = 'capacidadeCampo1'
-      Origin = 'capacidadeCampo1'
-      Required = True
-    end
-    object FDQuerySolocapacidadeCampo2: TSingleField
-      FieldName = 'capacidadeCampo2'
-      Origin = 'capacidadeCampo2'
-      Required = True
-    end
-    object FDQuerySolocapacidadeCampo3: TSingleField
-      FieldName = 'capacidadeCampo3'
-      Origin = 'capacidadeCampo3'
-      Required = True
-    end
-    object FDQuerySolocapacidadeCampo4: TSingleField
-      FieldName = 'capacidadeCampo4'
-      Origin = 'capacidadeCampo4'
-      Required = True
-    end
-    object FDQuerySolodensidadeSolo1: TSingleField
-      FieldName = 'densidadeSolo1'
-      Origin = 'densidadeSolo1'
-      Required = True
-    end
-    object FDQuerySolodensidadeSolo2: TSingleField
-      FieldName = 'densidadeSolo2'
-      Origin = 'densidadeSolo2'
-      Required = True
-    end
-    object FDQuerySolodensidadeSolo3: TSingleField
-      FieldName = 'densidadeSolo3'
-      Origin = 'densidadeSolo3'
-      Required = True
-    end
-    object FDQuerySolodensidadeSolo4: TSingleField
-      FieldName = 'densidadeSolo4'
-      Origin = 'densidadeSolo4'
-      Required = True
-    end
-    object FDQuerySolocarbonoOrganico1: TSingleField
-      FieldName = 'carbonoOrganico1'
-      Origin = 'carbonoOrganico1'
-      Required = True
-    end
-    object FDQuerySolocarbonoOrganico2: TSingleField
-      FieldName = 'carbonoOrganico2'
-      Origin = 'carbonoOrganico2'
-      Required = True
-    end
-    object FDQuerySolocarbonoOrganico3: TSingleField
-      FieldName = 'carbonoOrganico3'
-      Origin = 'carbonoOrganico3'
-      Required = True
-    end
-    object FDQuerySolocarbonoOrganico4: TSingleField
-      FieldName = 'carbonoOrganico4'
-      Origin = 'carbonoOrganico4'
-      Required = True
-    end
-    object FDQuerySolonome: TStringField
-      FieldName = 'nome'
-      Origin = 'nome'
-      Required = True
-      Size = 40
-    end
   end
 end

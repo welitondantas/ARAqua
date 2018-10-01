@@ -16,11 +16,11 @@ type
     Label1: TLabel;
     Label2: TLabel;
     Image1: TImage;
-    Image2: TImage;
     btnLogar: TButton;
-    DataSourceUsuario: TDataSource;
     EditLogin: TEdit;
     EditSenha: TEdit;
+    Image2: TImage;
+    Image3: TImage;
     procedure btnLogarClick(Sender: TObject);
     procedure verificacoes();
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
@@ -59,33 +59,20 @@ begin
   user.Senha := EditSenha.Text;
   if (Length(EditLogin.Text) > 0) and (Length(EditSenha.Text) > 0) then
     begin
-    if DataModule1.FDQueryUsuario.Active then
-      begin
-        with DataModule1.FDQueryUsuario do
-          begin
-            Close;
-            SQL.Text := 'select * from usuario where login = :login and senha = :senha';
-            ParamByName('login').Value := user.Login;
-            ParamByName('senha').Value := user.Senha;
-            Open;
-          end;
+      with DataModule1.FDQueryUsuario do
+        begin
+          Close;
+          SQL.Text := 'select * from usuario where login = :login and senha = :senha';
+          ParamByName('login').Value := user.Login;
+          ParamByName('senha').Value := user.Senha;
+          Open;
+          Active := True;
+        end;
 
           if ((DataModule1.FDQueryUsuario.FieldByName('login').AsString = user.Login) AND
-              (DataModule1.FDQueryUsuario.FieldByName('senha').AsString = user.senha)) OR
-              ((user.Login='admin') AND (user.Senha='123')) then
+              (DataModule1.FDQueryUsuario.FieldByName('senha').AsString = user.senha)) then
             begin
               Application.MessageBox('Logado com sucesso!','Sucesso!');
-              if (user.Login='admin') then
-                begin
-                  DataModule1.FDQueryUsuario.Edit;
-                  user.Nome :='Administrador';
-                  DataModule1.FDQueryUsuario.FieldByName('nome').AsString := user.Nome;
-                  DataModule1.FDQueryUsuario.FieldByName('login').AsString := user.Login;
-                  DataModule1.FDQueryUsuario.FieldByName('senha').AsString := user.Senha;
-                  user.Acesso := 2;
-                  DataModule1.FDQueryUsuario.FieldByName('acesso').AsInteger := user.Acesso;;
-                  DataModule1.FDQueryUsuario.Post;
-                end;
               FormPrincipal := TFormPrincipal.Create(self);
               FormPrincipal.Show;
               FormLogin.Hide;
@@ -94,18 +81,6 @@ begin
             begin
               Application.MessageBox('Login ou senha incorretos!','Erro');
             end;
-      end
-      else
-        begin
-          if (EditLogin.Text='admin') AND (EditSenha.Text='123') then
-          begin
-              Application.MessageBox('Logado com sucesso!','Sucesso!');
-              FormPrincipal := TFormPrincipal.Create(self);
-              FormPrincipal.Show;
-              FormLogin.Hide;
-          end;
-        end;
-
     end
     else
       begin

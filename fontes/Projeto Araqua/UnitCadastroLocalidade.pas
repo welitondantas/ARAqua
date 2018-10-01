@@ -49,6 +49,7 @@ type
     procedure FDQueryLocalidadeBeforePost(DataSet: TDataSet);
     procedure FDQueryLocalidadeAfterPost(DataSet: TDataSet);
     procedure EditBuscaLocalChange(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
   private
     { Private declarations }
   public
@@ -62,7 +63,7 @@ implementation
 
 {$R *.dfm}
 
-uses UnitDataModule, UnitLocalidade;
+uses UnitDataModule, UnitLocalidade, UnitPrincipal;
 
 procedure TFormCadastroLocalidade.btnCancelarClick(Sender: TObject);
 begin
@@ -168,13 +169,13 @@ begin
   local.Irrigacao := StrToFloat(DBEditIrrigacao.Text);
   local.Evapotranspiracao := StrToFloat(DBEditEvapotranspiracao.Text);
   local.PorosidadeAquifero := StrToFloat(DBEditPorosidade.Text);
-  local.ProfundidadeAquifero := StrToFloat(DBEditProfundidade.Text);
+  local.ProfundidadeAquifero := StrToInt(DBEditProfundidade.Text);
   FDQueryLocalidade.FieldByName('descricao').AsString := local.Descricao;
   FDQueryLocalidade.FieldByName('precipitacao').AsFloat := local.Precipitacao;
   FDQueryLocalidade.FieldByName('irrigacao').AsFloat := local.Irrigacao;
   FDQueryLocalidade.FieldByName('evapotranspiracao').AsFloat := local.Evapotranspiracao;
   FDQueryLocalidade.FieldByName('porosidadeAquifero').AsFloat := local.PorosidadeAquifero;
-  FDQueryLocalidade.FieldByName('profundidadeAquifero').AsFloat := local.ProfundidadeAquifero;
+  FDQueryLocalidade.FieldByName('profundidadeAquifero').AsInteger := local.ProfundidadeAquifero;
 end;
 
 procedure TFormCadastroLocalidade.FormClose(Sender: TObject;
@@ -182,6 +183,11 @@ procedure TFormCadastroLocalidade.FormClose(Sender: TObject;
 begin
   FormCadastroLocalidade := NIL;
   Action := caFree;
+end;
+
+procedure TFormCadastroLocalidade.FormCreate(Sender: TObject);
+begin
+  FDQueryLocalidade.Active := True;
 end;
 
 end.
