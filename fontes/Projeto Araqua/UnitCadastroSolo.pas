@@ -50,27 +50,9 @@ type
     DBNavigator1: TDBNavigator;
     btnNovo: TButton;
     FDQuerySolo: TFDQuery;
-    FDQuerySoloid: TFDAutoIncField;
-    FDQuerySoloprofundidadeCamada1: TIntegerField;
-    FDQuerySoloprofundidadeCamada2: TIntegerField;
-    FDQuerySoloprofundidadeCamada3: TIntegerField;
-    FDQuerySoloprofundidadeCamada4: TIntegerField;
-    FDQuerySolocapacidadeCampo1: TSingleField;
-    FDQuerySolocapacidadeCampo2: TSingleField;
-    FDQuerySolocapacidadeCampo3: TSingleField;
-    FDQuerySolocapacidadeCampo4: TSingleField;
-    FDQuerySolodensidadeSolo1: TSingleField;
-    FDQuerySolodensidadeSolo2: TSingleField;
-    FDQuerySolodensidadeSolo3: TSingleField;
-    FDQuerySolodensidadeSolo4: TSingleField;
-    FDQuerySolocarbonoOrganico1: TSingleField;
-    FDQuerySolocarbonoOrganico2: TSingleField;
-    FDQuerySolocarbonoOrganico3: TSingleField;
-    FDQuerySolocarbonoOrganico4: TSingleField;
     GroupBoxBusca: TGroupBox;
     EditBuscaSolo: TEdit;
     DBGridSolo: TDBGrid;
-    FDQuerySolonome: TStringField;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure btnExcluirClick(Sender: TObject);
     procedure btnCancelarClick(Sender: TObject);
@@ -82,6 +64,8 @@ type
     procedure EditBuscaSoloChange(Sender: TObject);
     function VerificaCampos(campo: String): String;
     function VerificaPrimeiraCamada(campo: String): Boolean;
+    procedure FormCreate(Sender: TObject);
+    function VerificaBranco(): Boolean;
   private
     { Private declarations }
   public
@@ -95,7 +79,7 @@ implementation
 
 {$R *.dfm}
 
-uses UnitDataModule;
+uses UnitDataModule, UnitPrincipal;
 
 procedure TFormCadastroSolo.btnCancelarClick(Sender: TObject);
 begin
@@ -194,29 +178,36 @@ end;
 
 procedure TFormCadastroSolo.btnSalvarClick(Sender: TObject);
 begin
-  FDQuerySolo.Post;
-  DBEditTipo.Enabled := false;
-  DBEditProfunCam1.Enabled := false;
-  DBEditProfunCam2.Enabled := false;
-  DBEditProfunCam3.Enabled := false;
-  DBEditProfunCam4.Enabled := false;
-  DBEditCapacCampo1.Enabled := false;
-  DBEditCapacCampo2.Enabled := false;
-  DBEditCapacCampo3.Enabled := false;
-  DBEditCapacCampo4.Enabled := false;
-  DBEditDensidade1.Enabled := false;
-  DBEditDensidade2.Enabled := false;
-  DBEditDensidade3.Enabled := false;
-  DBEditDensidade4.Enabled := false;
-  DBEditCarbOrg1.Enabled := false;
-  DBEditCarbOrg2.Enabled := false;
-  DBEditCarbOrg3.Enabled := false;
-  DBEditCarbOrg4.Enabled := false;
-  btnEditar.Enabled := true;
-  btnNovo.Enabled := true;
-  btnSalvar.Enabled := false;
-  btnExcluir.Enabled := false;
-  btnCancelar.Enabled := false;
+  if (VerificaBranco) then
+    begin
+      FDQuerySolo.Post;
+      DBEditTipo.Enabled := false;
+      DBEditProfunCam1.Enabled := false;
+      DBEditProfunCam2.Enabled := false;
+      DBEditProfunCam3.Enabled := false;
+      DBEditProfunCam4.Enabled := false;
+      DBEditCapacCampo1.Enabled := false;
+      DBEditCapacCampo2.Enabled := false;
+      DBEditCapacCampo3.Enabled := false;
+      DBEditCapacCampo4.Enabled := false;
+      DBEditDensidade1.Enabled := false;
+      DBEditDensidade2.Enabled := false;
+      DBEditDensidade3.Enabled := false;
+      DBEditDensidade4.Enabled := false;
+      DBEditCarbOrg1.Enabled := false;
+      DBEditCarbOrg2.Enabled := false;
+      DBEditCarbOrg3.Enabled := false;
+      DBEditCarbOrg4.Enabled := false;
+      btnEditar.Enabled := true;
+      btnNovo.Enabled := true;
+      btnSalvar.Enabled := false;
+      btnExcluir.Enabled := false;
+      btnCancelar.Enabled := false;
+    end
+  else
+    begin
+      ShowMessage('Você precisa preencher todos os campos da camada 1 com valores diferentes de 0.');
+    end;
 end;
 
 procedure TFormCadastroSolo.EditBuscaSoloChange(Sender: TObject);
@@ -323,6 +314,26 @@ procedure TFormCadastroSolo.FormClose(Sender: TObject;
 begin
   FormCadastroSolo := nil;
   Action := caFree;
+end;
+
+procedure TFormCadastroSolo.FormCreate(Sender: TObject);
+begin
+  FDQuerySolo.Active := True;
+end;
+
+function TFormCadastroSolo.VerificaBranco: Boolean;
+begin
+  if ((DBEditProfunCam1.Text='') OR (DBEditCapacCampo1.Text='') OR
+      (DBEditDensidade1.Text='') OR (DBEditCarbOrg1.Text='') OR (DBEditProfunCam1.Text='0')
+       OR (DBEditCapacCampo1.Text='0') OR (DBEditDensidade1.Text='0')
+       OR (DBEditCarbOrg1.Text='0')) then
+    begin
+      Result := False;
+    end
+  else
+    begin
+      Result := true;
+    end;
 end;
 
 function TFormCadastroSolo.VerificaCampos(campo: String): String;

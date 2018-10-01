@@ -51,6 +51,8 @@ type
     procedure FDQueryUsuarioBeforePost(DataSet: TDataSet);
     procedure FDQueryUsuarioAfterPost(DataSet: TDataSet);
     procedure EditBuscaUsuarioChange(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
+    function verificaCamposEmBranco(): Boolean;
   private
     { Private declarations }
   public
@@ -64,7 +66,7 @@ implementation
 
 {$R *.dfm}
 
-uses UnitDataModule;
+uses UnitDataModule, UnitPrincipal;
 
 procedure TFormCadastroUsuario.btnCancelarClick(Sender: TObject);
 begin
@@ -127,17 +129,31 @@ end;
 
 procedure TFormCadastroUsuario.btnSalvarClick(Sender: TObject);
 begin
-  FDQueryUsuario.Post;
-  DBEditNome.Enabled := false;
-  DBEditLogin.Enabled := false;
-  DBEditSenha.Enabled := false;
-  EditRedigite.Enabled := false;
-  DBComboBoxAcesso.Enabled := false;
-  btnEditar.Enabled := true;
-  btnNovo.Enabled := true;
-  btnSalvar.Enabled := false;
-  btnExcluir.Enabled := false;
-  btnCancelar.Enabled := false;
+  if (verificaCamposEmBranco) then
+    begin
+      if (DBEditSenha.Text=EditRedigite.Text) then
+        begin
+          FDQueryUsuario.Post;
+          DBEditNome.Enabled := false;
+          DBEditLogin.Enabled := false;
+          DBEditSenha.Enabled := false;
+          EditRedigite.Enabled := false;
+          DBComboBoxAcesso.Enabled := false;
+          btnEditar.Enabled := true;
+          btnNovo.Enabled := true;
+          btnSalvar.Enabled := false;
+          btnExcluir.Enabled := false;
+          btnCancelar.Enabled := false;
+        end
+      else
+        begin
+          ShowMessage('As senhas não conferem!');
+        end;
+    end
+  else
+    begin
+      ShowMessage('Preencha todos os campos.');
+    end;
 end;
 
 procedure TFormCadastroUsuario.EditBuscaUsuarioChange(Sender: TObject);
@@ -175,6 +191,25 @@ procedure TFormCadastroUsuario.FormClose(Sender: TObject;
 begin
   FormCadastroUsuario := nil;
   Action := caFree;
+end;
+
+procedure TFormCadastroUsuario.FormCreate(Sender: TObject);
+begin
+  FDQueryUsuario.Active := true;
+  DBComboBoxAcesso.ItemIndex := -1;
+end;
+
+function TFormCadastroUsuario.verificaCamposEmBranco: Boolean;
+begin
+  if ((DBEditNome.Text='') OR (DBEditLogin.Text='') OR (DBEditSenha.Text='')
+    OR (EditRedigite.Text='') OR (DBComboBoxAcesso.ItemIndex=-1)) then
+    begin
+      Result := False;
+    end
+  else
+    begin
+      Result := True;
+    end;
 end;
 
 end.

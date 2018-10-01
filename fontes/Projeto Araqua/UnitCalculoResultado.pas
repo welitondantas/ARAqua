@@ -73,6 +73,7 @@ type
     function calculaCamada2(solo: TSolo; agro: TAgrotoxico; local: TLocalidade): double;
     function calculaCamada3(solo: TSolo; agro: TAgrotoxico; local: TLocalidade): double;
     function calculaCamada4(solo: TSolo; agro: TAgrotoxico; local: TLocalidade): double;
+    procedure CheckBoxInserirManualClick(Sender: TObject);
 
   private
     { Private declarations }
@@ -92,7 +93,7 @@ implementation
 
 {$R *.dfm}
 
-uses UnitDataModule, UnitResultado;
+uses UnitDataModule, UnitResultado, UnitPrincipal;
 
 procedure TFormCalculoResultado.btnCalcularClick(Sender: TObject);
 begin
@@ -259,6 +260,18 @@ begin
   Result := profundidade - camada;
 end;
 
+procedure TFormCalculoResultado.CheckBoxInserirManualClick(Sender: TObject);
+begin
+  if (CheckBoxInserirManual.Checked) then
+    begin
+      EditDoseManual.Enabled := true;
+    end
+  else
+    begin
+      EditDoseManual.Enabled := false;
+    end;
+end;
+
 procedure TFormCalculoResultado.FDQueryResultadoAfterPost(DataSet: TDataSet);
 begin
   Application.MessageBox('Consulta salva com sucesso!', 'Consulta salva');
@@ -294,6 +307,10 @@ end;
 
 procedure TFormCalculoResultado.FormCreate(Sender: TObject);
 begin
+  FDQueryResultado.Active := True;
+  FDQuerySolo.Active := True;
+  FDQueryLocalidade.Active := True;
+  FDQueryAgro.Active := True;
   FDQueryResultado.Insert;
   DBLookupComboLocal.KeyValue := -1;
   DBLookupComboBoxSolo.KeyValue := -1;
@@ -338,6 +355,10 @@ begin
   agro.MeiaVidaCamada4 := FDQueryAgro.FieldByName('meiaVidaCam4').AsInteger;
   if (CheckBoxInserirManual.Checked) then
     begin
+      if (EditDoseManual.Text='') then
+        begin
+          EditDoseManual.Text :=  '0';
+        end;
       agro.Dose := StrToFloat(EditDoseManual.Text);
     end
   else
