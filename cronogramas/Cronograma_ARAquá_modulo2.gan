@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><project name="ARAquá - Avaliação de Risco Ambiental de Agrotóxico" company="Faculdade Eduvale de Avaré" webLink="http://www.cnpm.embrapa.br/" view-date="2018-10-03" view-index="0" gantt-divider-location="858" resource-divider-location="893" version="2.8.7" locale="pt_BR">
+<?xml version="1.0" encoding="UTF-8"?><project name="ARAquá - Avaliação de Risco Ambiental de Agrotóxico" company="Faculdade Eduvale de Avaré" webLink="http://www.cnpm.embrapa.br/" view-date="2018-11-20" view-index="0" gantt-divider-location="858" resource-divider-location="893" version="2.8.7" locale="pt_BR">
     <description><![CDATA[http://www.cnpm.embrapa.br/]]></description>
     <view zooming-state="default:2" id="gantt-chart">
         <field id="tpd3" name="Nome" width="300" order="0"/>
@@ -76,7 +76,7 @@
             <taskproperty id="tpd8" name="coordinator" type="default" valuetype="text"/>
             <taskproperty id="tpd9" name="predecessorsr" type="default" valuetype="text"/>
         </taskproperties>
-        <task id="6" name="ARAquá modulo 2" color="#000000" meeting="false" project="true" start="2018-10-08" duration="39" complete="11" thirdDate="2018-10-08" thirdDate-constraint="0" expand="true">
+        <task id="6" name="ARAquá modulo 2" color="#000000" meeting="false" project="true" start="2018-10-08" duration="39" complete="15" thirdDate="2018-10-08" thirdDate-constraint="0" expand="true">
             <task id="7" name="Comunicação" color="#8cb6ce" meeting="false" start="2018-10-08" duration="33" complete="12" thirdDate="2018-08-14" thirdDate-constraint="0" expand="true">
                 <task id="13" name="Reunião com o Cliente" color="#8cb6ce" meeting="false" start="2018-10-08" duration="1" complete="100" thirdDate="2018-08-16" thirdDate-constraint="0" expand="true"/>
                 <task id="37" name="Reunião com Equipe de Projetos" color="#8cb6ce" meeting="false" start="2018-10-09" duration="1" complete="100" thirdDate="2018-10-09" thirdDate-constraint="0" expand="true"/>
@@ -84,35 +84,17 @@
                 <task id="209" name="Especificação de Requisitos de Software" color="#8cb6ce" meeting="false" start="2018-10-10" duration="3" complete="100" thirdDate="2018-10-10" thirdDate-constraint="0" expand="true"/>
                 <task id="197" name="Requisitos de Sistema e Não Funcionais" color="#8cb6ce" meeting="false" start="2018-10-15" duration="4" complete="100" thirdDate="2018-08-20" thirdDate-constraint="0" expand="true"/>
                 <task id="215" name="Feedback de Versões" color="#000000" meeting="false" start="2018-10-16" duration="28" complete="0" thirdDate="2018-08-24" thirdDate-constraint="0" expand="true">
-                    <task id="216" name="Feedback da versão Protótipo" color="#ff0000" meeting="false" start="2018-10-16" duration="1" complete="0" thirdDate="2018-08-24" thirdDate-constraint="0" expand="true">
-                        <notes><![CDATA[Não gerou artefato e não teve manifestação no grupo.]]></notes>
-                    </task>
-                    <task id="217" name="Feedback da versão Pré-Alpha" color="#ff0000" meeting="false" start="2018-10-23" duration="1" complete="0" thirdDate="2018-10-17" thirdDate-constraint="0" expand="true" cost-manual-value="179.95" cost-calculated="false">
-                        <notes><![CDATA[Não gerou artefato e não teve manifestação no grupo.]]></notes>
-                    </task>
-                    <task id="218" name="Feedback da versão Alpha" color="#ff0000" meeting="false" start="2018-10-30" duration="1" complete="0" thirdDate="2018-09-06" thirdDate-constraint="0" expand="true">
-                        <notes><![CDATA[Não gerou artefato e não teve manifestação no grupo.]]></notes>
-                    </task>
-                    <task id="219" name="Feedback da versão Beta" color="#ff0000" meeting="false" start="2018-11-05" duration="1" complete="0" thirdDate="2018-09-14" thirdDate-constraint="0" expand="true">
-                        <notes><![CDATA[Não gerou artefato e não teve manifestação no grupo.]]></notes>
-                    </task>
-                    <task id="220" name="Feedback da versão Release Candidate" color="#ff0000" meeting="false" start="2018-11-12" duration="1" complete="0" thirdDate="2018-09-21" thirdDate-constraint="0" expand="true" cost-manual-value="179.95" cost-calculated="false">
-                        <notes><![CDATA[Não gerou artefato e não teve manifestação no grupo.]]></notes>
-                    </task>
-                    <task id="221" name="Feedback da versão RTM" color="#ff0000" meeting="false" start="2018-11-19" duration="1" complete="0" thirdDate="2018-09-25" thirdDate-constraint="0" expand="true" cost-manual-value="179.95" cost-calculated="false">
-                        <notes><![CDATA[Não gerou artefato e não teve manifestação no grupo.]]></notes>
-                    </task>
-                    <task id="222" name="Feedback da versão GA" color="#ff0000" meeting="false" start="2018-11-26" duration="1" complete="0" thirdDate="2018-09-27" thirdDate-constraint="0" expand="true" cost-manual-value="179.95" cost-calculated="false">
-                        <notes><![CDATA[Não gerou artefato e não teve manifestação no grupo.]]></notes>
-                    </task>
+                    <task id="216" name="Feedback da versão Protótipo" color="#ff0000" meeting="false" start="2018-10-16" duration="1" complete="0" thirdDate="2018-10-16" thirdDate-constraint="0" expand="true"/>
+                    <task id="217" name="Feedback da versão Pré-Alpha" color="#ff0000" meeting="true" start="2018-10-23" duration="0" complete="0" thirdDate="2018-10-23" thirdDate-constraint="0" expand="true" cost-manual-value="179.95" cost-calculated="false"/>
+                    <task id="218" name="Feedback da versão Alpha" color="#ff0000" meeting="false" start="2018-10-30" duration="1" complete="0" thirdDate="2018-10-30" thirdDate-constraint="0" expand="true"/>
+                    <task id="219" name="Feedback da versão Beta" color="#ff0000" meeting="false" start="2018-11-05" duration="1" complete="0" thirdDate="2018-11-05" thirdDate-constraint="0" expand="true"/>
+                    <task id="220" name="Feedback da versão Release Candidate" color="#ff0000" meeting="false" start="2018-11-12" duration="1" complete="0" thirdDate="2018-11-12" thirdDate-constraint="0" expand="true" cost-manual-value="179.95" cost-calculated="false"/>
+                    <task id="221" name="Feedback da versão RTM" color="#ff0000" meeting="false" start="2018-11-19" duration="1" complete="0" thirdDate="2018-11-19" thirdDate-constraint="0" expand="true" cost-manual-value="179.95" cost-calculated="false"/>
+                    <task id="222" name="Feedback da versão GA" color="#ff0000" meeting="false" start="2018-11-26" duration="1" complete="0" thirdDate="2018-11-26" thirdDate-constraint="0" expand="true" cost-manual-value="179.95" cost-calculated="false"/>
                 </task>
-                <task id="199" name="Incrementos de Requisitos" color="#ff0000" meeting="false" start="2018-10-15" duration="29" complete="0" thirdDate="2018-08-20" thirdDate-constraint="0" expand="true">
-                    <notes><![CDATA[Não gerou artefato e não teve manifestação no grupo.]]></notes>
-                </task>
+                <task id="199" name="Incrementos de Requisitos" color="#ff0000" meeting="false" start="2018-10-15" duration="29" complete="0" thirdDate="2018-10-15" thirdDate-constraint="0" expand="true"/>
                 <task id="285" name="Manual de Software e Documentação" color="#8cb6ce" meeting="false" start="2018-10-15" duration="29" complete="20" thirdDate="2018-10-15" thirdDate-constraint="0" expand="true" cost-manual-value="5218.55" cost-calculated="false"/>
-                <task id="284" name="Treinamento Cliente e Suporte" color="#ff0000" meeting="false" start="2018-10-15" duration="29" complete="0" thirdDate="2018-09-06" thirdDate-constraint="0" expand="true">
-                    <notes><![CDATA[Não gerou artefato e não teve manifestação no grupo.]]></notes>
-                </task>
+                <task id="284" name="Treinamento Cliente e Suporte" color="#ff0000" meeting="false" start="2018-10-15" duration="29" complete="0" thirdDate="2018-10-15" thirdDate-constraint="0" expand="true"/>
                 <task id="315" name="Revisão Requisitos" color="#000000" meeting="false" start="2018-10-22" duration="23" complete="0" thirdDate="2018-08-27" thirdDate-constraint="0" expand="true">
                     <task id="316" name="Revisão Protótipo" color="#8cb6ce" meeting="false" start="2018-10-22" duration="4" complete="0" thirdDate="2018-08-27" thirdDate-constraint="0" expand="true"/>
                     <task id="318" name="Revisão Pré-Alpha" color="#8cb6ce" meeting="false" start="2018-10-29" duration="3" complete="0" thirdDate="2018-09-03" thirdDate-constraint="0" expand="true"/>
@@ -123,47 +105,39 @@
                     <task id="325" name="Revisão GA" color="#8cb6ce" meeting="false" start="2018-11-23" duration="1" complete="0" thirdDate="2018-09-28" thirdDate-constraint="0" expand="true" cost-manual-value="330.18" cost-calculated="false"/>
                 </task>
             </task>
-            <task id="8" name="Planejamento" color="#8cb6ce" meeting="false" start="2018-10-09" duration="35" complete="41" thirdDate="2018-08-13" thirdDate-constraint="0" expand="true">
+            <task id="8" name="Planejamento" color="#8cb6ce" meeting="false" start="2018-10-09" duration="35" complete="55" thirdDate="2018-08-13" thirdDate-constraint="0" expand="true">
                 <task id="40" name="Gerenciamento de Risco" color="#000000" meeting="false" start="2018-10-09" duration="33" complete="100" thirdDate="2018-08-14" thirdDate-constraint="0" expand="true">
                     <task id="190" name="Levantamento de Risco" color="#8cb6ce" meeting="false" start="2018-10-09" duration="33" complete="100" thirdDate="2018-08-14" thirdDate-constraint="0" expand="true" cost-manual-value="5555.22" cost-calculated="false"/>
                     <task id="188" name="Revisão do Gerenciamento de Risco" color="#8cb6ce" meeting="false" start="2018-10-19" duration="5" complete="100" thirdDate="2018-09-24" thirdDate-constraint="0" expand="true" cost-manual-value="1650.9" cost-calculated="false"/>
                 </task>
-                <task id="267" name="Supervisão de Atividades das Áreas" color="#8cb6ce" meeting="false" start="2018-10-09" duration="33" complete="15" thirdDate="2018-10-09" thirdDate-constraint="0" expand="true"/>
-                <task id="266" name="Gestão de Qualidade do Software" color="#8cb6ce" meeting="false" start="2018-10-09" duration="33" complete="15" thirdDate="2018-10-09" thirdDate-constraint="0" expand="true"/>
+                <task id="267" name="Supervisão de Atividades das Áreas" color="#8cb6ce" meeting="false" start="2018-10-09" duration="33" complete="30" thirdDate="2018-10-09" thirdDate-constraint="0" expand="true"/>
+                <task id="266" name="Gestão de Qualidade do Software" color="#8cb6ce" meeting="false" start="2018-10-09" duration="33" complete="45" thirdDate="2018-10-09" thirdDate-constraint="0" expand="true"/>
                 <task id="36" name="Construção do Cronograma" color="#8cb6ce" meeting="false" start="2018-10-10" duration="1" complete="100" thirdDate="2018-08-15" thirdDate-constraint="0" expand="true"/>
-                <task id="39" name="Revisão do Cronograma" color="#000000" meeting="false" start="2018-10-15" duration="19" complete="15" thirdDate="2018-08-20" thirdDate-constraint="0" expand="true">
-                    <task id="177" name="Acompanhamento Requisitos" color="#8cb6ce" meeting="false" start="2018-10-15" duration="5" complete="15" thirdDate="2018-10-15" thirdDate-constraint="0" expand="true"/>
-                    <task id="175" name="Acompanhamento Modelagem" color="#8cb6ce" meeting="false" start="2018-10-22" duration="5" complete="15" thirdDate="2018-10-22" thirdDate-constraint="0" expand="true"/>
-                    <task id="176" name="Acompanhamento Desenvolvimento" color="#8cb6ce" meeting="false" start="2018-10-29" duration="4" complete="15" thirdDate="2018-10-29" thirdDate-constraint="0" expand="true"/>
-                    <task id="178" name="Acompanhamento Emprego" color="#8cb6ce" meeting="false" start="2018-11-05" duration="5" complete="15" thirdDate="2018-11-05" thirdDate-constraint="0" expand="true"/>
+                <task id="39" name="Revisão do Cronograma" color="#000000" meeting="false" start="2018-10-15" duration="19" complete="31" thirdDate="2018-08-20" thirdDate-constraint="0" expand="true">
+                    <task id="177" name="Acompanhamento Requisitos" color="#8cb6ce" meeting="false" start="2018-10-15" duration="5" complete="30" thirdDate="2018-10-15" thirdDate-constraint="0" expand="true"/>
+                    <task id="175" name="Acompanhamento Modelagem" color="#8cb6ce" meeting="false" start="2018-10-22" duration="5" complete="45" thirdDate="2018-10-22" thirdDate-constraint="0" expand="true"/>
+                    <task id="176" name="Acompanhamento Desenvolvimento" color="#8cb6ce" meeting="false" start="2018-10-29" duration="4" complete="20" thirdDate="2018-10-29" thirdDate-constraint="0" expand="true"/>
+                    <task id="178" name="Acompanhamento Emprego" color="#8cb6ce" meeting="false" start="2018-11-05" duration="5" complete="30" thirdDate="2018-11-05" thirdDate-constraint="0" expand="true"/>
                 </task>
-                <task id="67" name="Apuração de Custos" color="#8cb6ce" meeting="false" start="2018-10-15" duration="5" complete="100" thirdDate="2018-09-17" thirdDate-constraint="0" expand="true">
+                <task id="67" name="Apuração de Custos" color="#8cb6ce" meeting="false" start="2018-10-15" duration="5" complete="100" thirdDate="2018-10-15" thirdDate-constraint="0" expand="true">
                     <notes><![CDATA[Custo Total do Projeto R$ 157.232,70]]></notes>
                 </task>
-                <task id="193" name="Revisão Documentação e Repositório" color="#8cb6ce" meeting="false" start="2018-11-29" duration="1" complete="22" thirdDate="2018-11-29" thirdDate-constraint="0" expand="true">
-                    <notes><![CDATA[Ultimo commit realizado]]></notes>
-                </task>
+                <task id="193" name="Revisão Documentação e Repositório" color="#8cb6ce" meeting="false" start="2018-11-29" duration="1" complete="22" thirdDate="2018-11-29" thirdDate-constraint="0" expand="true"/>
             </task>
-            <task id="9" name="Modelagem" color="#8cb6ce" meeting="false" start="2018-10-09" duration="36" complete="3" thirdDate="2018-08-13" thirdDate-constraint="0" expand="true">
-                <task id="369" name="Definição de Ferramentas e Padrões" color="#8cb6ce" meeting="false" start="2018-10-09" duration="1" complete="5" thirdDate="2018-10-09" thirdDate-constraint="0" expand="true">
+            <task id="9" name="Modelagem" color="#8cb6ce" meeting="false" start="2018-10-09" duration="36" complete="7" thirdDate="2018-08-13" thirdDate-constraint="0" expand="true">
+                <task id="369" name="Definição de Ferramentas e Padrões" color="#8cb6ce" meeting="false" start="2018-10-09" duration="1" complete="100" thirdDate="2018-10-09" thirdDate-constraint="0" expand="true">
                     <notes><![CDATA[https://github.com/alessandrojv/ARAqua/wiki/LinksFerramentas]]></notes>
                 </task>
-                <task id="195" name="Modelo Entidade Relacionamento" color="#ff0000" meeting="false" start="2018-10-10" duration="8" complete="5" thirdDate="2018-10-10" thirdDate-constraint="0" expand="true"/>
+                <task id="195" name="Modelo Entidade Relacionamento" color="#ff0000" meeting="false" start="2018-10-10" duration="8" complete="10" thirdDate="2018-10-10" thirdDate-constraint="0" expand="true"/>
                 <task id="35" name="Diagrama de Caso de Uso" color="#8cb6ce" meeting="false" start="2018-10-22" duration="5" complete="5" thirdDate="2018-10-22" thirdDate-constraint="0" expand="true"/>
                 <task id="42" name="Diagrama de Atividades" color="#8cb6ce" meeting="false" start="2018-11-05" duration="4" complete="5" thirdDate="2018-11-05" thirdDate-constraint="0" expand="true"/>
-                <task id="57" name="Diagrama de Sequência" color="#ff0000" meeting="false" start="2018-11-12" duration="5" complete="0" thirdDate="2018-11-19" thirdDate-constraint="0" expand="true">
-                    <notes><![CDATA[Não foi gerado artefatos! E não teve manifestação no Grupo.]]></notes>
-                </task>
+                <task id="57" name="Diagrama de Sequência" color="#ff0000" meeting="false" start="2018-11-12" duration="5" complete="0" thirdDate="2018-11-12" thirdDate-constraint="0" expand="true"/>
                 <task id="56" name="Diagrama de Classes" color="#8cb6ce" meeting="false" start="2018-11-19" duration="5" complete="5" thirdDate="2018-11-19" thirdDate-constraint="0" expand="true"/>
                 <task id="299" name="Revisão Modelos e Diagramas" color="#8cb6ce" meeting="false" start="2018-11-26" duration="5" complete="0" thirdDate="2018-11-29" thirdDate-constraint="0" expand="true"/>
             </task>
             <task id="10" name="Desenvolvimento" color="#8cb6ce" meeting="false" start="2018-10-09" duration="38" complete="3" thirdDate="2018-08-13" thirdDate-constraint="0" expand="true">
-                <task id="43" name="Design de Telas e Formulários" color="#ff0000" meeting="false" start="2018-10-09" duration="33" complete="0" thirdDate="2018-08-14" thirdDate-constraint="0" expand="true">
-                    <notes><![CDATA[Não foi gerado artefatos! E não teve manifestação no Grupo.]]></notes>
-                </task>
-                <task id="148" name="Teste unitário e de integração" color="#ff0000" meeting="false" start="2018-10-09" duration="33" complete="0" thirdDate="2018-08-14" thirdDate-constraint="0" expand="true">
-                    <notes><![CDATA[Não foi gerado artefatos! E não teve manifestação no Grupo.]]></notes>
-                </task>
+                <task id="43" name="Design de Telas e Formulários" color="#ff0000" meeting="false" start="2018-10-09" duration="33" complete="0" thirdDate="2018-10-09" thirdDate-constraint="0" expand="true"/>
+                <task id="148" name="Teste unitário e de integração" color="#ff0000" meeting="false" start="2018-10-09" duration="33" complete="0" thirdDate="2018-10-09" thirdDate-constraint="0" expand="true"/>
                 <task id="149" name="Design de Experiência de Uso" color="#ff0000" meeting="false" start="2018-10-09" duration="33" complete="0" thirdDate="2018-08-14" thirdDate-constraint="0" expand="true"/>
                 <task id="260" name="Analise de Regras de Negócio" color="#ff0000" meeting="false" start="2018-10-10" duration="23" complete="0" thirdDate="2018-08-14" thirdDate-constraint="0" expand="true">
                     <notes><![CDATA[Não foi gerado artefatos! E não teve manifestação no Grupo.]]></notes>
