@@ -76,7 +76,7 @@
             <taskproperty id="tpd8" name="coordinator" type="default" valuetype="text"/>
             <taskproperty id="tpd9" name="predecessorsr" type="default" valuetype="text"/>
         </taskproperties>
-        <task id="6" name="ARAquá modulo 2" color="#000000" meeting="false" project="true" start="2018-10-08" duration="39" complete="29" thirdDate="2018-10-08" thirdDate-constraint="0" expand="true">
+        <task id="6" name="ARAquá modulo 2" color="#000000" meeting="false" project="true" start="2018-10-08" duration="39" complete="40" thirdDate="2018-10-08" thirdDate-constraint="0" expand="true">
             <task id="7" name="Comunicação" color="#8cb6ce" meeting="false" start="2018-10-08" duration="33" complete="12" thirdDate="2018-08-14" thirdDate-constraint="0" expand="true">
                 <task id="13" name="Reunião com o Cliente" color="#8cb6ce" meeting="false" start="2018-10-08" duration="1" complete="100" thirdDate="2018-08-16" thirdDate-constraint="0" expand="true"/>
                 <task id="37" name="Reunião com Equipe de Projetos" color="#8cb6ce" meeting="false" start="2018-10-09" duration="1" complete="100" thirdDate="2018-10-09" thirdDate-constraint="0" expand="true"/>
@@ -124,26 +124,26 @@
                 </task>
                 <task id="193" name="Revisão Documentação e Repositório" color="#8cb6ce" meeting="false" start="2018-11-29" duration="1" complete="50" thirdDate="2018-11-29" thirdDate-constraint="0" expand="true"/>
             </task>
-            <task id="9" name="Modelagem" color="#8cb6ce" meeting="false" start="2018-10-09" duration="36" complete="64" thirdDate="2018-08-13" thirdDate-constraint="0" expand="true">
+            <task id="9" name="Modelagem" color="#8cb6ce" meeting="false" start="2018-10-09" duration="36" complete="78" thirdDate="2018-08-13" thirdDate-constraint="0" expand="true">
                 <task id="369" name="Definição de Ferramentas e Padrões" color="#8cb6ce" meeting="false" start="2018-10-09" duration="1" complete="100" thirdDate="2018-10-09" thirdDate-constraint="0" expand="true">
                     <notes><![CDATA[https://github.com/alessandrojv/ARAqua/wiki/LinksFerramentas]]></notes>
                 </task>
                 <task id="195" name="Modelo Entidade Relacionamento" color="#ff0000" meeting="false" start="2018-10-10" duration="8" complete="100" thirdDate="2018-10-10" thirdDate-constraint="0" expand="true"/>
-                <task id="35" name="Diagrama de Caso de Uso" color="#8cb6ce" meeting="false" start="2018-10-22" duration="5" complete="5" thirdDate="2018-10-22" thirdDate-constraint="0" priority="2" expand="true"/>
+                <task id="35" name="Diagrama de Caso de Uso" color="#8cb6ce" meeting="false" start="2018-10-22" duration="5" complete="100" thirdDate="2018-10-22" thirdDate-constraint="0" priority="2" expand="true"/>
                 <task id="42" name="Diagrama de Atividades" color="#8cb6ce" meeting="false" start="2018-11-05" duration="4" complete="100" thirdDate="2018-11-05" thirdDate-constraint="0" expand="true"/>
                 <task id="57" name="Diagrama de Sequência" color="#ff0000" meeting="false" start="2018-11-12" duration="5" complete="0" thirdDate="2018-11-12" thirdDate-constraint="0" expand="true"/>
                 <task id="56" name="Diagrama de Classes" color="#8cb6ce" meeting="false" start="2018-11-19" duration="5" complete="100" thirdDate="2018-11-19" thirdDate-constraint="0" expand="true"/>
                 <task id="299" name="Revisão Modelos e Diagramas" color="#8cb6ce" meeting="false" start="2018-11-26" duration="5" complete="60" thirdDate="2018-11-29" thirdDate-constraint="0" expand="true"/>
             </task>
-            <task id="10" name="Desenvolvimento" color="#8cb6ce" meeting="false" start="2018-10-09" duration="38" complete="3" thirdDate="2018-08-13" thirdDate-constraint="0" expand="true">
-                <task id="43" name="Design de Telas e Formulários" color="#ff0000" meeting="false" start="2018-10-09" duration="33" complete="0" thirdDate="2018-10-09" thirdDate-constraint="0" expand="true"/>
+            <task id="10" name="Desenvolvimento" color="#8cb6ce" meeting="false" start="2018-10-09" duration="38" complete="40" thirdDate="2018-08-13" thirdDate-constraint="0" expand="true">
+                <task id="43" name="Design de Telas e Formulários" color="#ff0000" meeting="false" start="2018-10-09" duration="33" complete="100" thirdDate="2018-10-09" thirdDate-constraint="0" expand="true"/>
                 <task id="148" name="Teste unitário e de integração" color="#ff0000" meeting="false" start="2018-10-09" duration="33" complete="0" thirdDate="2018-10-09" thirdDate-constraint="0" expand="true"/>
-                <task id="149" name="Design de Experiência de Uso" color="#ff0000" meeting="false" start="2018-10-09" duration="33" complete="0" thirdDate="2018-08-14" thirdDate-constraint="0" expand="true"/>
+                <task id="149" name="Design de Experiência de Uso" color="#ff0000" meeting="false" start="2018-10-09" duration="33" complete="100" thirdDate="2018-08-14" thirdDate-constraint="0" expand="true"/>
                 <task id="260" name="Analise de Regras de Negócio" color="#ff0000" meeting="false" start="2018-10-10" duration="23" complete="0" thirdDate="2018-08-14" thirdDate-constraint="0" expand="true">
                     <notes><![CDATA[Não foi gerado artefatos! E não teve manifestação no Grupo.]]></notes>
                 </task>
                 <task id="34" name="Construção da versão Protótipo" color="#8cb6ce" meeting="false" start="2018-10-15" duration="3" complete="10" thirdDate="2018-10-15" thirdDate-constraint="0" expand="true"/>
-                <task id="44" name="Modelo Físico" color="#ff0000" meeting="false" start="2018-10-15" duration="5" complete="10" thirdDate="2018-08-20" thirdDate-constraint="0" expand="true"/>
+                <task id="44" name="Modelo Físico" color="#ff0000" meeting="false" start="2018-10-15" duration="5" complete="80" thirdDate="2018-08-20" thirdDate-constraint="0" expand="true"/>
                 <task id="79" name="Construção da versão Pré-Alpha" color="#8cb6ce" meeting="false" start="2018-10-16" duration="4" complete="10" thirdDate="2018-08-21" thirdDate-constraint="0" expand="true"/>
                 <task id="236" name="Performance e Administração do Banco" color="#8cb6ce" meeting="false" start="2018-10-22" duration="19" complete="10" thirdDate="2018-08-27" thirdDate-constraint="0" expand="true"/>
                 <task id="54" name="Construção da versão Alpha" color="#8cb6ce" meeting="false" start="2018-10-23" duration="4" complete="10" thirdDate="2018-08-28" thirdDate-constraint="0" expand="true"/>
