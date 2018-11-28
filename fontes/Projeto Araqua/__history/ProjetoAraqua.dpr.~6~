@@ -15,8 +15,7 @@ uses
   UnitCadastroLocalidade in 'UnitCadastroLocalidade.pas' {FormCadastroLocalidade},
   UnitCalculoResultado in 'UnitCalculoResultado.pas' {FormCalculoResultado},
   UnitUsuario in 'UnitUsuario.pas',
-  UnitLogin in 'UnitLogin.pas' {FormLogin},
-  Unit_Loc_Aguas in 'Unit_Loc_Aguas.pas' {Form_Localidade};
+  UnitLogin in 'UnitLogin.pas' {FormLogin};
 
 {$R *.res}
 
@@ -25,6 +24,5 @@ begin
   Application.MainFormOnTaskbar := True;
   Application.CreateForm(TDataModule1, DataModule1);
   Application.CreateForm(TFormLogin, FormLogin);
-  Application.CreateForm(TForm_Localidade, Form_Localidade);
   Application.Run;
 end.

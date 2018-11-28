@@ -5,7 +5,7 @@ object FormCalculoResultado: TFormCalculoResultado
   BorderStyle = bsSingle
   Caption = 'C'#225'lculos'
   ClientHeight = 451
-  ClientWidth = 746
+  ClientWidth = 672
   Color = 15201254
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -21,38 +21,42 @@ object FormCalculoResultado: TFormCalculoResultado
   object PanelFundo: TPanel
     Left = 0
     Top = 0
-    Width = 746
+    Width = 672
     Height = 451
     Align = alClient
     TabOrder = 0
-    ExplicitWidth = 672
+    ExplicitWidth = 662
+    ExplicitHeight = 441
     object PageControl1: TPageControl
       Left = 1
       Top = 1
-      Width = 744
+      Width = 670
       Height = 449
       ActivePage = TabSheetLixiviacao
       Align = alClient
       TabOrder = 0
-      ExplicitWidth = 670
+      ExplicitWidth = 660
+      ExplicitHeight = 439
       object TabSheetLixiviacao: TTabSheet
         Caption = 'Lixivia'#231#227'o'
-        ExplicitWidth = 662
+        ExplicitWidth = 652
+        ExplicitHeight = 411
         object PanelTabLixiviacao: TPanel
           Left = 0
           Top = 0
-          Width = 736
+          Width = 662
           Height = 421
           Align = alClient
           Color = 15463914
           ParentBackground = False
           TabOrder = 0
-          ExplicitWidth = 662
+          ExplicitWidth = 652
+          ExplicitHeight = 411
           DesignSize = (
-            736
+            662
             421)
           object GroupBoxLocal: TGroupBox
-            Left = 63
+            Left = 43
             Top = 8
             Width = 281
             Height = 81
@@ -62,7 +66,7 @@ object FormCalculoResultado: TFormCalculoResultado
             ParentBackground = False
             ParentColor = False
             TabOrder = 0
-            ExplicitLeft = 43
+            ExplicitLeft = 40
             object DBLookupComboLocal: TDBLookupComboBox
               Left = 19
               Top = 35
@@ -77,7 +81,7 @@ object FormCalculoResultado: TFormCalculoResultado
             end
           end
           object GroupBoxSolo: TGroupBox
-            Left = 57
+            Left = 37
             Top = 105
             Width = 281
             Height = 89
@@ -87,7 +91,7 @@ object FormCalculoResultado: TFormCalculoResultado
             ParentBackground = False
             ParentColor = False
             TabOrder = 1
-            ExplicitLeft = 37
+            ExplicitLeft = 34
             object DBLookupComboBoxSolo: TDBLookupComboBox
               Left = 24
               Top = 32
@@ -102,7 +106,7 @@ object FormCalculoResultado: TFormCalculoResultado
             end
           end
           object GroupBoxAgrotoxico: TGroupBox
-            Left = 57
+            Left = 37
             Top = 208
             Width = 281
             Height = 113
@@ -112,7 +116,7 @@ object FormCalculoResultado: TFormCalculoResultado
             ParentBackground = False
             ParentColor = False
             TabOrder = 2
-            ExplicitLeft = 37
+            ExplicitLeft = 34
             object Label3: TLabel
               Left = 215
               Top = 40
@@ -151,7 +155,7 @@ object FormCalculoResultado: TFormCalculoResultado
             end
           end
           object GroupBox4: TGroupBox
-            Left = 398
+            Left = 343
             Top = 8
             Width = 305
             Height = 313
@@ -161,7 +165,7 @@ object FormCalculoResultado: TFormCalculoResultado
             ParentBackground = False
             ParentColor = False
             TabOrder = 3
-            ExplicitLeft = 343
+            ExplicitLeft = 336
             object Panel1: TPanel
               Left = 24
               Top = 35
@@ -252,13 +256,14 @@ object FormCalculoResultado: TFormCalculoResultado
             end
           end
           object Panel5: TPanel
-            Left = 109
+            Left = 73
             Top = 345
             Width = 498
             Height = 59
             Anchors = [akBottom]
             TabOrder = 4
-            ExplicitLeft = 73
+            ExplicitLeft = 68
+            ExplicitTop = 335
             object btnCalcular: TButton
               Left = 400
               Top = 16
@@ -312,11 +317,15 @@ object FormCalculoResultado: TFormCalculoResultado
         Caption = 'Carreamento Superficial'
         Enabled = False
         ImageIndex = 1
+        ExplicitLeft = 0
+        ExplicitTop = 0
+        ExplicitWidth = 0
+        ExplicitHeight = 0
         object PanelTabCarreamento: TPanel
           Left = 0
           Top = 0
-          Width = 736
-          Height = 421
+          Width = 652
+          Height = 411
           Align = alClient
           Color = 15463657
           ParentBackground = False
