@@ -9,7 +9,7 @@ uses
   FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS,
   FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt,
   FireDAC.Comp.DataSet, FireDAC.Comp.Client, UnitAgrotoxico, UnitLocalidade, UnitCalculo,
-  UnitSolo;
+  UnitSolo, Vcl.Grids, Vcl.DBGrids;
 
 type
   TFormCalculoResultado = class(TForm)
@@ -58,6 +58,23 @@ type
     FDQueryLocalidadeporosidadeAquifero: TSingleField;
     FDQueryLocalidadeprofundidadeAquifero: TIntegerField;
     FDQueryLocalidadedescricao: TStringField;
+    Panel2: TPanel;
+    DBNavigator1: TDBNavigator;
+    PageControl2: TPageControl;
+    TabSheet1: TTabSheet;
+    Label2: TLabel;
+    Label4: TLabel;
+    Label5: TLabel;
+    Label6: TLabel;
+    Label11: TLabel;
+    Label12: TLabel;
+    DBEdit1: TDBEdit;
+    DBEdit2: TDBEdit;
+    DBEdit3: TDBEdit;
+    DBEdit4: TDBEdit;
+    DBEdit5: TDBEdit;
+    DBEdit6: TDBEdit;
+    DBGrid1: TDBGrid;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure btnSalvarClick(Sender: TObject);
     procedure realizaCalculos();

@@ -11,6 +11,13 @@ object DataModule1: TDataModule1
     Top = 88
   end
   object FDConnection1: TFDConnection
+    Params.Strings = (
+      'Database=dbaraqua'
+      'User_Name=root'
+      'Password=admin'
+      'DriverID=MySQL')
+    Connected = True
+    LoginPrompt = False
     Left = 56
     Top = 24
   end

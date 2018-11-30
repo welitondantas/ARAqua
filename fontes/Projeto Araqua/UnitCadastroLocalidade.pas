@@ -8,38 +8,70 @@ uses
   Vcl.Mask, Data.DB, Vcl.Grids, Vcl.DBGrids, FireDAC.Stan.Intf,
   FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS,
   FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt,
-  FireDAC.Comp.DataSet, FireDAC.Comp.Client;
+  FireDAC.Comp.DataSet, FireDAC.Comp.Client, Vcl.ComCtrls;
 
 type
   TFormCadastroLocalidade = class(TForm)
+    DataSourceLocalidade: TDataSource;
+    FDQueryLocalidade: TFDQuery;
+    PageControl1: TPageControl;
+    TabSheet1: TTabSheet;
     panelFundoLocal: TPanel;
     PanelDescricao: TPanel;
     Label1: TLabel;
+    DBMemoDescricao: TDBMemo;
     GroupBoxClima: TGroupBox;
-    GroupBoxAquifero: TGroupBox;
     Label2: TLabel;
     Label3: TLabel;
     Label4: TLabel;
     DBEditPrecipitacao: TDBEdit;
     DBEditIrrigacao: TDBEdit;
     DBEditEvapotranspiracao: TDBEdit;
-    DBEditPorosidade: TDBEdit;
-    DBEditProfundidade: TDBEdit;
+    GroupBoxAquifero: TGroupBox;
     Label5: TLabel;
     Label6: TLabel;
-    DBGridLocalidade: TDBGrid;
+    DBEditPorosidade: TDBEdit;
+    DBEditProfundidade: TDBEdit;
     PanelBotoes: TPanel;
     btnSalvar: TButton;
     btnEditar: TButton;
     btnCancelar: TButton;
-    DBMemoDescricao: TDBMemo;
-    DataSourceLocalidade: TDataSource;
     btnExcluir: TButton;
     DBNavigator1: TDBNavigator;
     btnNovo: TButton;
-    FDQueryLocalidade: TFDQuery;
     GroupBoxBuscaLocal: TGroupBox;
+    DBGridLocalidade: TDBGrid;
     EditBuscaLocal: TEdit;
+    DataSource1: TDataSource;
+    FDQuery1: TFDQuery;
+    TabSheet2: TTabSheet;
+    Panel1: TPanel;
+    Panel2: TPanel;
+    Label7: TLabel;
+    DBMemo1: TDBMemo;
+    GroupBox1: TGroupBox;
+    Label8: TLabel;
+    Label9: TLabel;
+    Label10: TLabel;
+    DBEdit_Declividade: TDBEdit;
+    DBEdit_InterceptacaoPlantas: TDBEdit;
+    DBEdit_LarguraContencao: TDBEdit;
+    Panel3: TPanel;
+    Button1: TButton;
+    Button2: TButton;
+    Button3: TButton;
+    Button4: TButton;
+    DBNavigator2: TDBNavigator;
+    Button5: TButton;
+    GroupBox3: TGroupBox;
+    DBGrid1: TDBGrid;
+    Edit1: TEdit;
+    DataSource2: TDataSource;
+    FDQuery2: TFDQuery;
+    Label11: TLabel;
+    DBEdit_CoeficienteSuper: TDBEdit;
+    FDQuery_superficial: TFDQuery;
+    DataSource_superficial: TDataSource;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure btnSalvarClick(Sender: TObject);
     procedure btnEditarClick(Sender: TObject);

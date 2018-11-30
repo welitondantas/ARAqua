@@ -25,7 +25,6 @@ object FormCalculoResultado: TFormCalculoResultado
     Height = 451
     Align = alClient
     TabOrder = 0
-    ExplicitWidth = 672
     object PageControl1: TPageControl
       Left = 1
       Top = 1
@@ -34,10 +33,8 @@ object FormCalculoResultado: TFormCalculoResultado
       ActivePage = TabSheetLixiviacao
       Align = alClient
       TabOrder = 0
-      ExplicitWidth = 670
       object TabSheetLixiviacao: TTabSheet
         Caption = 'Lixivia'#231#227'o'
-        ExplicitWidth = 662
         object PanelTabLixiviacao: TPanel
           Left = 0
           Top = 0
@@ -47,7 +44,6 @@ object FormCalculoResultado: TFormCalculoResultado
           Color = 15463914
           ParentBackground = False
           TabOrder = 0
-          ExplicitWidth = 662
           DesignSize = (
             736
             421)
@@ -62,7 +58,6 @@ object FormCalculoResultado: TFormCalculoResultado
             ParentBackground = False
             ParentColor = False
             TabOrder = 0
-            ExplicitLeft = 43
             object DBLookupComboLocal: TDBLookupComboBox
               Left = 19
               Top = 35
@@ -87,7 +82,6 @@ object FormCalculoResultado: TFormCalculoResultado
             ParentBackground = False
             ParentColor = False
             TabOrder = 1
-            ExplicitLeft = 37
             object DBLookupComboBoxSolo: TDBLookupComboBox
               Left = 24
               Top = 32
@@ -112,7 +106,6 @@ object FormCalculoResultado: TFormCalculoResultado
             ParentBackground = False
             ParentColor = False
             TabOrder = 2
-            ExplicitLeft = 37
             object Label3: TLabel
               Left = 215
               Top = 40
@@ -161,7 +154,6 @@ object FormCalculoResultado: TFormCalculoResultado
             ParentBackground = False
             ParentColor = False
             TabOrder = 3
-            ExplicitLeft = 343
             object Panel1: TPanel
               Left = 24
               Top = 35
@@ -258,7 +250,6 @@ object FormCalculoResultado: TFormCalculoResultado
             Height = 59
             Anchors = [akBottom]
             TabOrder = 4
-            ExplicitLeft = 73
             object btnCalcular: TButton
               Left = 400
               Top = 16
@@ -321,6 +312,133 @@ object FormCalculoResultado: TFormCalculoResultado
           Color = 15463657
           ParentBackground = False
           TabOrder = 0
+          object Panel2: TPanel
+            Left = 1
+            Top = 1
+            Width = 734
+            Height = 419
+            Align = alClient
+            TabOrder = 0
+            ExplicitLeft = 2
+            ExplicitTop = 2
+            object DBNavigator1: TDBNavigator
+              Left = 135
+              Top = 552
+              Width = 440
+              Height = 41
+              TabOrder = 0
+            end
+            object PageControl2: TPageControl
+              Left = 1
+              Top = 1
+              Width = 732
+              Height = 400
+              ActivePage = TabSheet1
+              Align = alTop
+              TabOrder = 1
+              ExplicitWidth = 737
+              object TabSheet1: TTabSheet
+                Caption = 'Manuten'#231#227'o /  Consulta'
+                object Label2: TLabel
+                  Left = 140
+                  Top = 26
+                  Width = 118
+                  Height = 13
+                  Caption = 'Descri'#231#227'o da Localidade:'
+                end
+                object Label4: TLabel
+                  Left = 43
+                  Top = 26
+                  Width = 15
+                  Height = 13
+                  Caption = 'ID:'
+                end
+                object Label5: TLabel
+                  Left = 138
+                  Top = 98
+                  Width = 120
+                  Height = 13
+                  Caption = 'Declividade de Terro (%)'
+                end
+                object Label6: TLabel
+                  Left = 99
+                  Top = 170
+                  Width = 156
+                  Height = 13
+                  Caption = 'Intercepta'#231#227'o pelas Plantas (%)'
+                end
+                object Label11: TLabel
+                  Left = 79
+                  Top = 234
+                  Width = 170
+                  Height = 13
+                  Caption = 'Largura da Faixa de Conten'#231#227'o (m)'
+                end
+                object Label12: TLabel
+                  Left = 64
+                  Top = 290
+                  Width = 182
+                  Height = 13
+                  Caption = 'Coeficiente de Escoamento Superficial'
+                end
+              end
+            end
+            object DBEdit1: TDBEdit
+              Left = 76
+              Top = 51
+              Width = 63
+              Height = 21
+              TabOrder = 2
+            end
+            object DBEdit2: TDBEdit
+              Left = 293
+              Top = 51
+              Width = 273
+              Height = 21
+              TabOrder = 3
+            end
+            object DBEdit3: TDBEdit
+              Left = 293
+              Top = 258
+              Width = 121
+              Height = 21
+              TabOrder = 4
+            end
+            object DBEdit4: TDBEdit
+              Left = 293
+              Top = 195
+              Width = 121
+              Height = 21
+              TabOrder = 5
+            end
+            object DBEdit5: TDBEdit
+              Left = 293
+              Top = 123
+              Width = 121
+              Height = 21
+              TabOrder = 6
+            end
+            object DBEdit6: TDBEdit
+              Left = 293
+              Top = 315
+              Width = 121
+              Height = 21
+              TabOrder = 7
+            end
+            object DBGrid1: TDBGrid
+              Left = 1
+              Top = 401
+              Width = 732
+              Height = 120
+              Align = alTop
+              TabOrder = 8
+              TitleFont.Charset = DEFAULT_CHARSET
+              TitleFont.Color = clWindowText
+              TitleFont.Height = -11
+              TitleFont.Name = 'Tahoma'
+              TitleFont.Style = []
+            end
+          end
         end
       end
     end
