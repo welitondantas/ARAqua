@@ -8,22 +8,25 @@ uses
   Vcl.StdCtrls, Vcl.Mask, Vcl.DBCtrls, FireDAC.Stan.Intf, FireDAC.Stan.Option,
   FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf,
   FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt, Data.DB,
-  FireDAC.Comp.DataSet, FireDAC.Comp.Client;
+  FireDAC.Comp.DataSet, FireDAC.Comp.Client, Vcl.ComCtrls;
 
 type
   TFormLogin = class(TForm)
     PanelFundoLogin: TPanel;
     Label1: TLabel;
     Label2: TLabel;
-    Image1: TImage;
     btnLogar: TButton;
     EditLogin: TEdit;
     EditSenha: TEdit;
-    Image2: TImage;
-    Image3: TImage;
+    Button1: TButton;
+    Label3: TLabel;
+    StatusBar1: TStatusBar;
+    CheckBoxLembrar: TCheckBox;
+    Image5: TImage;
     procedure btnLogarClick(Sender: TObject);
     procedure verificacoes();
-    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure Button1Click(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
   private
     { Private declarations }
   public
@@ -32,12 +35,13 @@ type
 
 var
   FormLogin: TFormLogin;
+  tentativas: integer = 0;
 
 implementation
 
 {$R *.dfm}
 
-uses UnitDataModule, UnitUsuario, UnitPrincipal;
+uses UnitDataModule, UnitUsuario, UnitPrincipal, UnitFuncoes;
 
 
 
@@ -46,9 +50,19 @@ begin
   verificacoes;
 end;
 
-procedure TFormLogin.FormClose(Sender: TObject; var Action: TCloseAction);
+procedure TFormLogin.Button1Click(Sender: TObject);
 begin
-  Application.Terminate;
+  ModalResult := mrCancel;
+end;
+
+procedure TFormLogin.FormCreate(Sender: TObject);
+begin
+if (FormPrincipal.LEMBRAR = 'S') then
+  begin
+    EditLogin.Text := FormPrincipal.LOGIN;
+    EditSenha.Text := Crypt('D',FormPrincipal.SENHA);
+    CheckBoxLembrar.Checked := True;
+  end;
 end;
 
 procedure TFormLogin.verificacoes;
@@ -72,14 +86,41 @@ begin
           if ((DataModule1.FDQueryUsuario.FieldByName('login').AsString = user.Login) AND
               (DataModule1.FDQueryUsuario.FieldByName('senha').AsString = user.senha)) then
             begin
-              Application.MessageBox('Logado com sucesso!','Sucesso!');
-              FormPrincipal := TFormPrincipal.Create(self);
-              FormPrincipal.Show;
-              FormLogin.Hide;
+              //Application.MessageBox('Logado com sucesso!','Sucesso!');
+              //FormPrincipal := TFormPrincipal.Create(self);
+              //FormPrincipal.Show;
+              //FormPrincipal.idusuario :=  DataModule1.FDQueryUsuario.FieldByName('id').AsInteger;
+              //FormLogin.Hide;
+                    StatusBar1.Panels[0].Text := '';
+                    FormPrincipal.usuario := DataModule1.FDQueryUsuario.FieldByName('LOGIN').AsString;
+                    FormPrincipal.idTema := DataModule1.FDQueryUsuario.FieldByName('IDTEMAS').AsString;
+                    FormPrincipal.idUsuario := DataModule1.FDQueryUsuario.FieldByName('ID').AsInteger;
+                    FormPrincipal.nomeUsuario := DataModule1.FDQueryUsuario.FieldByName('NOME').AsString;
+                    FormPrincipal.Acesso := DataModule1.FDQueryUsuario.FieldByName('ACESSO').AsInteger;
+                    FormPrincipal.StatusBar1.Panels[0].Text :=  ' Bem Vindo '+ FormataNome(PrimeiroNome(FormPrincipal.nomeUsuario))+' !';
+                    FormPrincipal.logado := True;
+                    ModalResult := mrOK;
             end
           else
             begin
-              Application.MessageBox('Login ou senha incorretos!','Erro');
+              //Application.MessageBox('Login ou senha incorretos!','Erro');
+                    EditLogin.SetFocus;
+                    tentativas := tentativas+1;
+                    if (DataModule1.FDQueryUsuario.FieldByName('IDSTATUS').AsString <> '1') then
+                    begin
+                      StatusBar1.Panels[0].Text := ' Usuário bloqueado ou inativo. Tentativas restantes '+InttoStr((4-tentativas));
+                    end
+                    else
+                    begin
+                      StatusBar1.Panels[0].Text := ' Usuário ou Senha incorretos. Tentativas restantes '+InttoStr((4-tentativas));
+                    end;
+
+            if tentativas > 3 then
+              begin
+                ShowMessage('Excedeu o número de tentativas, o programa será encerrado!');
+                ModalResult := mrCancel; //Application.Terminate;
+              end;
+
             end;
     end
     else

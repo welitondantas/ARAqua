@@ -51,8 +51,12 @@ type
     btnNovo: TButton;
     FDQuerySolo: TFDQuery;
     GroupBoxBusca: TGroupBox;
-    EditBuscaSolo: TEdit;
     DBGridSolo: TDBGrid;
+    Panel2: TPanel;
+    Label2: TLabel;
+    EditBuscaSolo: TEdit;
+    Splitter1: TSplitter;
+    Button1: TButton;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure btnExcluirClick(Sender: TObject);
     procedure btnCancelarClick(Sender: TObject);
@@ -66,6 +70,7 @@ type
     function VerificaPrimeiraCamada(campo: String): Boolean;
     procedure FormCreate(Sender: TObject);
     function VerificaBranco(): Boolean;
+    procedure Button1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -208,6 +213,11 @@ begin
     begin
       ShowMessage('Você precisa preencher todos os campos da camada 1 com valores diferentes de 0.');
     end;
+end;
+
+procedure TFormCadastroSolo.Button1Click(Sender: TObject);
+begin
+  Close;
 end;
 
 procedure TFormCadastroSolo.EditBuscaSoloChange(Sender: TObject);

@@ -1,0 +1,91 @@
+unit UnitTema;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls, Vcl.Styles, Vcl.Themes,
+  Vcl.Imaging.pngimage, System.IOUtils, FireDAC.Stan.Intf, FireDAC.Stan.Option,
+  FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf,
+  FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt, Vcl.DBCtrls, Data.DB,
+  FireDAC.Comp.DataSet, FireDAC.Comp.Client;
+
+type
+  TFmTema = class(TForm)
+    Panel1: TPanel;
+    Panel2: TPanel;
+    Label1: TLabel;
+    Button1: TButton;
+    Button2: TButton;
+    Button3: TButton;
+    Shape1: TShape;
+    DBImageTema: TDBImage;
+    DBLookupComboBox1: TDBLookupComboBox;
+    FDQueryUsuario: TFDQuery;
+    procedure Button1Click(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure Button2Click(Sender: TObject);
+    procedure Button3Click(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  FmTema: TFmTema;
+
+implementation
+
+{$R *.dfm}
+
+uses UnitPrincipal, UnitDataModule;
+
+procedure TFmTema.Button1Click(Sender: TObject);
+var aplicado: integer;
+begin
+  try
+    TStyleManager.TrySetStyle( DMMySql.FDQueryTema.FieldByName('NOMETEMA').AsString );
+    FmPrincipal.StatusBar1.Panels[5].Text := 'Tema : '+ DMMySql.FDQueryTema.FieldByName('NOMETEMA').AsString;
+    FDQueryUsuario.Active := False;
+    FDQueryUsuario.ParamByName('TEMA').AsString := DMMySql.FDQueryTema.FieldByName('idTemas').AsString;
+    FDQueryUsuario.ParamByName('USUARIO').AsInteger := FmPrincipal.idUsuario;
+    FDQueryUsuario.ExecSQL;
+    aplicado := 1;
+    Sleep(500);
+  except
+    ShowMessage('O tema selecionado não pode ser aplicado.');
+  end;
+  if (aplicado = 1) then
+    Close;
+end;
+
+procedure TFmTema.Button2Click(Sender: TObject);
+begin
+  Close;
+end;
+
+procedure TFmTema.Button3Click(Sender: TObject);
+begin
+  TStyleManager.TrySetStyle('Windows');
+  FmPrincipal.StatusBar1.Panels[3].Text := 'Tema : Windows';
+  ShowMessage('Tema padrão aplicado.');
+end;
+
+procedure TFmTema.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+  FmTema := nil;
+  Action := caFree;
+end;
+
+procedure TFmTema.FormCreate(Sender: TObject);
+begin
+  DMMySql.FDQueryTema.Active := False;
+  DMMySql.FDQueryTema.SQL[2] := ' ';
+  DMMySql.FDQueryTema.Active := True;
+  DMMySql.FDQueryTema.Locate('IDTEMAS',FmPrincipal.idTema);
+  DBLookupComboBox1.ListFieldIndex := StrToInt(FmPrincipal.idTema);
+  end;
+
+end.

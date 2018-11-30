@@ -75,6 +75,13 @@ type
     DBEdit5: TDBEdit;
     DBEdit6: TDBEdit;
     DBGrid1: TDBGrid;
+    Button1: TButton;
+    Panel3: TPanel;
+    Panel6: TPanel;
+    DBGrid2: TDBGrid;
+    Edit1: TEdit;
+    Label13: TLabel;
+    DBNavigator2: TDBNavigator;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure btnSalvarClick(Sender: TObject);
     procedure realizaCalculos();
@@ -91,6 +98,7 @@ type
     function calculaCamada3(solo: TSolo; agro: TAgrotoxico; local: TLocalidade): double;
     function calculaCamada4(solo: TSolo; agro: TAgrotoxico; local: TLocalidade): double;
     procedure CheckBoxInserirManualClick(Sender: TObject);
+    procedure Button1Click(Sender: TObject);
 
   private
     { Private declarations }
@@ -163,6 +171,11 @@ begin
   btnNovaConsulta.Enabled := true;
   btnSalvar.Enabled := false;
   btnCalcular.Enabled := false;
+end;
+
+procedure TFormCalculoResultado.Button1Click(Sender: TObject);
+begin
+  Close;
 end;
 
 function TFormCalculoResultado.calculaCamada1(solo: TSolo; agro: TAgrotoxico;

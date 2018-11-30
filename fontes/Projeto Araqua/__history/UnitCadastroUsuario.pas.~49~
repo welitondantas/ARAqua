@@ -1,0 +1,218 @@
+unit UnitCadastroUsuario;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, Vcl.StdCtrls, Vcl.DBCtrls,
+  Vcl.Mask, Data.DB, UnitUsuario, FireDAC.Stan.Intf, FireDAC.Stan.Option,
+  FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf,
+  FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt, FireDAC.Comp.DataSet,
+  FireDAC.Comp.Client, Vcl.Grids, Vcl.DBGrids;
+
+type
+  TFormCadastroUsuario = class(TForm)
+    paneFormCad: TPanel;
+    btnSalvar: TButton;
+    btnCancelar: TButton;
+    Label1: TLabel;
+    Label2: TLabel;
+    Label3: TLabel;
+    Label4: TLabel;
+    Label5: TLabel;
+    DataSourceUsuario: TDataSource;
+    btnEditar: TButton;
+    btnExcluir: TButton;
+    btnNovo: TButton;
+    DBNavigator1: TDBNavigator;
+    DBEditNome: TDBEdit;
+    DBEditLogin: TDBEdit;
+    DBEditSenha: TDBEdit;
+    DBComboBoxAcesso: TDBComboBox;
+    EditRedigite: TEdit;
+    FDQueryUsuario: TFDQuery;
+    FDQueryUsuarioid: TFDAutoIncField;
+    FDQueryUsuarionome: TStringField;
+    FDQueryUsuariologin: TStringField;
+    FDQueryUsuariosenha: TStringField;
+    FDQueryUsuarioacesso: TIntegerField;
+    PanelBotoes: TPanel;
+    GroupBoxBuscaUsr: TGroupBox;
+    DBGridUsuarios: TDBGrid;
+    PanelDados: TPanel;
+    Panel1: TPanel;
+    EditBuscaUsuario: TEdit;
+    Label6: TLabel;
+    Splitter1: TSplitter;
+
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure btnCancelarClick(Sender: TObject);
+    procedure btnSalvarClick(Sender: TObject);
+    procedure btnEditarClick(Sender: TObject);
+    procedure btnExcluirClick(Sender: TObject);
+    procedure btnNovoClick(Sender: TObject);
+    procedure FDQueryUsuarioBeforePost(DataSet: TDataSet);
+    procedure FDQueryUsuarioAfterPost(DataSet: TDataSet);
+    procedure EditBuscaUsuarioChange(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
+    function verificaCamposEmBranco(): Boolean;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  FormCadastroUsuario: TFormCadastroUsuario;
+
+implementation
+
+{$R *.dfm}
+
+uses UnitDataModule, UnitPrincipal;
+
+procedure TFormCadastroUsuario.btnCancelarClick(Sender: TObject);
+begin
+  FDQueryUsuario.Cancel;
+  DBEditNome.Enabled := false;
+  DBEditLogin.Enabled := false;
+  DBEditSenha.Enabled := false;
+  EditRedigite.Enabled := false;
+  DBComboBoxAcesso.Enabled := false;
+  btnEditar.Enabled := true;
+  btnNovo.Enabled := true;
+  btnSalvar.Enabled := false;
+  btnExcluir.Enabled := false;
+  btnCancelar.Enabled := false;
+end;
+
+procedure TFormCadastroUsuario.btnEditarClick(Sender: TObject);
+begin
+  FDQueryUsuario.Edit;
+  DBEditNome.Enabled := true;
+  DBEditLogin.Enabled := true;
+  DBEditSenha.Enabled := true;
+  EditRedigite.Enabled := true;
+  DBComboBoxAcesso.Enabled := true;
+  btnEditar.Enabled := false;
+  btnNovo.Enabled := false;
+  btnSalvar.Enabled := true;
+  btnExcluir.Enabled := true;
+  btnCancelar.Enabled := true;
+end;
+
+procedure TFormCadastroUsuario.btnExcluirClick(Sender: TObject);
+begin
+  if (messageBox(HANDLE, 'Deseja realmente excluir esse registro?', 'Excluir',
+                        MB_YESNO + MB_ICONQUESTION) = ID_YES) then
+    begin
+      FDQueryUsuario.Delete;
+    end;
+  btnEditar.Enabled := true;
+  btnNovo.Enabled := true;
+  btnSalvar.Enabled := false;
+  btnExcluir.Enabled := false;
+  btnCancelar.Enabled := false;
+end;
+
+procedure TFormCadastroUsuario.btnNovoClick(Sender: TObject);
+begin
+  FDQueryUsuario.Insert;
+  DBEditNome.Enabled := true;
+  DBEditLogin.Enabled := true;
+  DBEditSenha.Enabled := true;
+  EditRedigite.Enabled := true;
+  DBComboBoxAcesso.Enabled := true;
+  btnEditar.Enabled := false;
+  btnNovo.Enabled := false;
+  btnSalvar.Enabled := true;
+  btnExcluir.Enabled := false;
+  btnCancelar.Enabled := true;
+end;
+
+procedure TFormCadastroUsuario.btnSalvarClick(Sender: TObject);
+begin
+  if (verificaCamposEmBranco) then
+    begin
+      if (DBEditSenha.Text=EditRedigite.Text) then
+        begin
+          FDQueryUsuario.Post;
+          DBEditNome.Enabled := false;
+          DBEditLogin.Enabled := false;
+          DBEditSenha.Enabled := false;
+          EditRedigite.Enabled := false;
+          DBComboBoxAcesso.Enabled := false;
+          btnEditar.Enabled := true;
+          btnNovo.Enabled := true;
+          btnSalvar.Enabled := false;
+          btnExcluir.Enabled := false;
+          btnCancelar.Enabled := false;
+        end
+      else
+        begin
+          ShowMessage('As senhas não conferem!');
+        end;
+    end
+  else
+    begin
+      ShowMessage('Preencha todos os campos.');
+    end;
+end;
+
+procedure TFormCadastroUsuario.EditBuscaUsuarioChange(Sender: TObject);
+begin
+  with FDQueryUsuario do
+    begin
+      Close;
+      SQL.Text := 'select * from usuario where nome like :nome';
+      ParamByName('nome').Value := '%' + EditBuscaUsuario.Text + '%';
+      Open;
+    end;
+end;
+
+procedure TFormCadastroUsuario.FDQueryUsuarioAfterPost(DataSet: TDataSet);
+begin
+  Application.MessageBox('Salvo com sucesso', 'Salvo');
+end;
+
+procedure TFormCadastroUsuario.FDQueryUsuarioBeforePost(DataSet: TDataSet);
+var user: TUsuario;
+begin
+  user := TUsuario.Create;
+  user.Nome := DBEditNome.Text;
+  user.Login := DBEditLogin.Text;
+  user.Senha := DBEditSenha.Text;
+  user.Acesso := StrToInt(DBComboBoxAcesso.Text);
+  FDQueryUsuario.FieldByName('nome').AsString := user.Nome;
+  FDQueryUsuario.FieldByName('login').AsString := user.Login;
+  FDQueryUsuario.FieldByName('senha').AsString := user.Senha;
+  FDQueryUsuario.FieldByName('acesso').AsInteger := user.Acesso;
+end;
+
+procedure TFormCadastroUsuario.FormClose(Sender: TObject;
+  var Action: TCloseAction);
+begin
+  FormCadastroUsuario := nil;
+  Action := caFree;
+end;
+
+procedure TFormCadastroUsuario.FormCreate(Sender: TObject);
+begin
+  FDQueryUsuario.Active := true;
+  DBComboBoxAcesso.ItemIndex := -1;
+end;
+
+function TFormCadastroUsuario.verificaCamposEmBranco: Boolean;
+begin
+  if ((DBEditNome.Text='') OR (DBEditLogin.Text='') OR (DBEditSenha.Text='')
+    OR (EditRedigite.Text='') OR (DBComboBoxAcesso.ItemIndex=-1)) then
+    begin
+      Result := False;
+    end
+  else
+    begin
+      Result := True;
+    end;
+end;
+
+end.

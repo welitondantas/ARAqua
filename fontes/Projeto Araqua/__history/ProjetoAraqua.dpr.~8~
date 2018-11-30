@@ -1,0 +1,36 @@
+program ProjetoAraqua;
+
+uses
+  Vcl.Forms,
+  UnitPrincipal in 'UnitPrincipal.pas' {FormPrincipal},
+  UnitCadastroUsuario in 'UnitCadastroUsuario.pas' {FormCadastroUsuario},
+  UnitSolo in 'UnitSolo.pas',
+  UnitAgrotoxico in 'UnitAgrotoxico.pas',
+  UnitLocalidade in 'UnitLocalidade.pas',
+  UnitCalculo in 'UnitCalculo.pas',
+  UnitCadastroAgrotóxico in 'UnitCadastroAgrotóxico.pas' {FormAgrotoxico},
+  UnitDataModule in 'UnitDataModule.pas' {DataModule1: TDataModule},
+  UnitResultado in 'UnitResultado.pas',
+  UnitCadastroSolo in 'UnitCadastroSolo.pas' {FormCadastroSolo},
+  UnitCadastroLocalidade in 'UnitCadastroLocalidade.pas' {FormCadastroLocalidade},
+  UnitCalculoResultado in 'UnitCalculoResultado.pas' {FormCalculoResultado},
+  UnitUsuario in 'UnitUsuario.pas',
+  UnitLogin in 'UnitLogin.pas' {FormLogin},
+  Unit_Loc_Aguas in 'Unit_Loc_Aguas.pas' {Form_Localidade},
+  UnitBackup in 'UnitBackup.pas' {FmBackup},
+  UnitAlteraSenha in 'UnitAlteraSenha.pas' {FmAlteraSenha},
+  UnitTrataErro in 'UnitTrataErro.pas' {FmSistema_Trata_Erros};
+
+{$R *.res}
+
+begin
+  Application.Initialize;
+  Application.MainFormOnTaskbar := True;
+  Application.CreateForm(TDataModule1, DataModule1);
+  Application.CreateForm(TFormLogin, FormLogin);
+  Application.CreateForm(TForm_Localidade, Form_Localidade);
+  Application.CreateForm(TFmBackup, FmBackup);
+  Application.CreateForm(TFmAlteraSenha, FmAlteraSenha);
+  Application.CreateForm(TFmSistema_Trata_Erros, FmSistema_Trata_Erros);
+  Application.Run;
+end.

@@ -1,0 +1,23 @@
+object DataModule1: TDataModule1
+  OldCreateOrder = False
+  OnCreate = DataModuleCreate
+  Height = 134
+  Width = 249
+  object FDQueryUsuario: TFDQuery
+    Connection = FDConnection1
+    SQL.Strings = (
+      'select * from usuario')
+    Left = 144
+    Top = 24
+  end
+  object FDConnection1: TFDConnection
+    Params.Strings = (
+      'Database=dbaraqua'
+      'User_Name=araqua'
+      'Password=araqua'
+      'DriverID=MySQL')
+    LoginPrompt = False
+    Left = 56
+    Top = 24
+  end
+end

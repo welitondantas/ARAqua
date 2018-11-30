@@ -2,19 +2,20 @@ object FormCadastroUsuario: TFormCadastroUsuario
   Left = 0
   Top = 0
   AlphaBlend = True
-  BorderIcons = [biSystemMenu, biMinimize]
-  BorderStyle = bsSingle
   Caption = 'Cadastro de Usu'#225'rios'
-  ClientHeight = 408
-  ClientWidth = 681
+  ClientHeight = 491
+  ClientWidth = 994
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -11
   Font.Name = 'Tahoma'
   Font.Style = []
+  FormStyle = fsMDIChild
   OldCreateOrder = False
-  Position = poDesktopCenter
+  Position = poScreenCenter
+  Visible = True
+  WindowState = wsMaximized
   OnClose = FormClose
   OnCreate = FormCreate
   PixelsPerInch = 96
@@ -22,44 +23,39 @@ object FormCadastroUsuario: TFormCadastroUsuario
   object paneFormCad: TPanel
     Left = 0
     Top = 0
-    Width = 681
-    Height = 408
+    Width = 994
+    Height = 491
     Align = alClient
-    Color = 16055795
     ParentBackground = False
     TabOrder = 0
-    ExplicitWidth = 671
-    ExplicitHeight = 398
-    DesignSize = (
-      681
-      408)
+    object Splitter1: TSplitter
+      Left = 410
+      Top = 1
+      Height = 439
+      ExplicitLeft = 416
+      ExplicitTop = 296
+      ExplicitHeight = 100
+    end
     object GroupBoxBuscaUsr: TGroupBox
-      Left = 255
-      Top = 24
+      Left = 1
+      Top = 1
       Width = 409
-      Height = 233
-      Anchors = [akTop]
+      Height = 439
+      Align = alLeft
       Caption = 'Busca de Usu'#225'rios'
-      Color = 16121076
+      Color = clMenu
       ParentBackground = False
       ParentColor = False
       TabOrder = 0
-      ExplicitLeft = 248
-      object EditBuscaUsuario: TEdit
-        Left = 40
-        Top = 24
-        Width = 321
-        Height = 21
-        TabOrder = 0
-        OnChange = EditBuscaUsuarioChange
-      end
+      ExplicitHeight = 438
       object DBGridUsuarios: TDBGrid
-        Left = 16
-        Top = 66
-        Width = 377
-        Height = 151
+        Left = 2
+        Top = 65
+        Width = 405
+        Height = 372
+        Align = alClient
         DataSource = DataSourceUsuario
-        TabOrder = 1
+        TabOrder = 0
         TitleFont.Charset = DEFAULT_CHARSET
         TitleFont.Color = clWindowText
         TitleFont.Height = -11
@@ -85,19 +81,42 @@ object FormCadastroUsuario: TFormCadastroUsuario
             Visible = True
           end>
       end
+      object Panel1: TPanel
+        Left = 2
+        Top = 15
+        Width = 405
+        Height = 50
+        Align = alTop
+        TabOrder = 1
+        object Label6: TLabel
+          Left = 21
+          Top = 16
+          Width = 31
+          Height = 13
+          Caption = 'Nome:'
+        end
+        object EditBuscaUsuario: TEdit
+          Left = 70
+          Top = 12
+          Width = 321
+          Height = 21
+          TabOrder = 0
+          OnChange = EditBuscaUsuarioChange
+        end
+      end
     end
     object PanelBotoes: TPanel
-      Left = 78
-      Top = 282
-      Width = 584
-      Height = 72
-      Anchors = [akBottom]
+      Left = 1
+      Top = 440
+      Width = 992
+      Height = 50
+      Align = alBottom
+      Color = clMenu
+      ParentBackground = False
       TabOrder = 1
-      ExplicitLeft = 73
-      ExplicitTop = 272
       object btnCancelar: TButton
-        Left = 497
-        Top = 7
+        Left = 481
+        Top = 15
         Width = 75
         Height = 25
         Caption = 'Cancelar'
@@ -108,8 +127,8 @@ object FormCadastroUsuario: TFormCadastroUsuario
         OnClick = btnCancelarClick
       end
       object btnEditar: TButton
-        Left = 23
-        Top = 7
+        Left = 7
+        Top = 15
         Width = 75
         Height = 25
         Caption = 'Editar'
@@ -119,8 +138,8 @@ object FormCadastroUsuario: TFormCadastroUsuario
         OnClick = btnEditarClick
       end
       object btnExcluir: TButton
-        Left = 382
-        Top = 7
+        Left = 366
+        Top = 15
         Width = 75
         Height = 25
         Caption = 'Excluir'
@@ -131,8 +150,8 @@ object FormCadastroUsuario: TFormCadastroUsuario
         OnClick = btnExcluirClick
       end
       object btnNovo: TButton
-        Left = 141
-        Top = 7
+        Left = 125
+        Top = 15
         Width = 75
         Height = 25
         Caption = 'Novo'
@@ -142,8 +161,8 @@ object FormCadastroUsuario: TFormCadastroUsuario
         OnClick = btnNovoClick
       end
       object btnSalvar: TButton
-        Left = 255
-        Top = 7
+        Left = 239
+        Top = 15
         Width = 75
         Height = 25
         Caption = 'Salvar'
@@ -154,27 +173,45 @@ object FormCadastroUsuario: TFormCadastroUsuario
         OnClick = btnSalvarClick
       end
       object DBNavigator1: TDBNavigator
-        Left = 175
-        Top = 38
+        Left = 579
+        Top = 14
         Width = 232
         Height = 25
         DataSource = DataSourceUsuario
         VisibleButtons = [nbFirst, nbPrior, nbNext, nbLast]
         TabOrder = 5
       end
+      object Button1: TButton
+        AlignWithMargins = True
+        Left = 906
+        Top = 11
+        Width = 75
+        Height = 28
+        Margins.Left = 10
+        Margins.Top = 10
+        Margins.Right = 10
+        Margins.Bottom = 10
+        Align = alRight
+        Caption = 'Fechar'
+        ImageIndex = 5
+        Images = FormPrincipal.ImageList1
+        TabOrder = 6
+        OnClick = Button1Click
+        ExplicitHeight = 29
+      end
     end
     object PanelDados: TPanel
-      Left = 37
-      Top = 24
-      Width = 209
-      Height = 233
-      Anchors = [akTop]
+      Left = 413
+      Top = 1
+      Width = 580
+      Height = 439
+      Align = alClient
       BevelOuter = bvNone
       TabOrder = 2
-      ExplicitLeft = 35
+      ExplicitHeight = 438
       object Label1: TLabel
-        Left = 17
-        Top = 5
+        Left = 33
+        Top = 15
         Width = 31
         Height = 13
         Caption = 'Nome:'
@@ -182,8 +219,8 @@ object FormCadastroUsuario: TFormCadastroUsuario
         ParentColor = False
       end
       object Label2: TLabel
-        Left = 19
-        Top = 51
+        Left = 35
+        Top = 61
         Width = 29
         Height = 13
         Caption = 'Login:'
@@ -191,8 +228,8 @@ object FormCadastroUsuario: TFormCadastroUsuario
         ParentColor = False
       end
       object Label3: TLabel
-        Left = 19
-        Top = 97
+        Left = 35
+        Top = 107
         Width = 34
         Height = 13
         Caption = 'Senha:'
@@ -200,8 +237,8 @@ object FormCadastroUsuario: TFormCadastroUsuario
         ParentColor = False
       end
       object Label4: TLabel
-        Left = 19
-        Top = 143
+        Left = 35
+        Top = 153
         Width = 84
         Height = 13
         Caption = 'Redigite a senha:'
@@ -209,8 +246,8 @@ object FormCadastroUsuario: TFormCadastroUsuario
         ParentColor = False
       end
       object Label5: TLabel
-        Left = 19
-        Top = 189
+        Left = 35
+        Top = 199
         Width = 78
         Height = 13
         Caption = 'N'#237'vel de acesso:'
@@ -218,8 +255,8 @@ object FormCadastroUsuario: TFormCadastroUsuario
         ParentColor = False
       end
       object DBComboBoxAcesso: TDBComboBox
-        Left = 19
-        Top = 208
+        Left = 35
+        Top = 218
         Width = 145
         Height = 21
         DataField = 'acesso'
@@ -231,8 +268,8 @@ object FormCadastroUsuario: TFormCadastroUsuario
         TabOrder = 0
       end
       object DBEditLogin: TDBEdit
-        Left = 19
-        Top = 70
+        Left = 35
+        Top = 80
         Width = 121
         Height = 21
         DataField = 'login'
@@ -241,8 +278,8 @@ object FormCadastroUsuario: TFormCadastroUsuario
         TabOrder = 1
       end
       object DBEditNome: TDBEdit
-        Left = 17
-        Top = 24
+        Left = 33
+        Top = 34
         Width = 121
         Height = 21
         DataField = 'nome'
@@ -251,8 +288,8 @@ object FormCadastroUsuario: TFormCadastroUsuario
         TabOrder = 2
       end
       object DBEditSenha: TDBEdit
-        Left = 19
-        Top = 116
+        Left = 35
+        Top = 126
         Width = 121
         Height = 21
         DataField = 'senha'
@@ -262,8 +299,8 @@ object FormCadastroUsuario: TFormCadastroUsuario
         TabOrder = 3
       end
       object EditRedigite: TEdit
-        Left = 19
-        Top = 162
+        Left = 35
+        Top = 172
         Width = 121
         Height = 21
         Enabled = False

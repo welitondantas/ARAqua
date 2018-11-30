@@ -1,24 +1,80 @@
 object DataModule1: TDataModule1
   OldCreateOrder = False
   OnCreate = DataModuleCreate
-  Height = 376
-  Width = 575
+  Height = 342
+  Width = 501
   object FDQueryUsuario: TFDQuery
     Connection = FDConnection1
     SQL.Strings = (
       'select * from usuario')
-    Left = 64
-    Top = 88
+    Left = 144
+    Top = 24
   end
   object FDConnection1: TFDConnection
     Params.Strings = (
       'Database=dbaraqua'
-      'User_Name=root'
-      'Password=admin'
+      'User_Name=araqua'
+      'Password=araqua'
       'DriverID=MySQL')
     Connected = True
     LoginPrompt = False
     Left = 56
     Top = 24
+  end
+  object FDQuerySession: TFDQuery
+    Connection = FDConnection1
+    SQL.Strings = (
+      'SELECT * FROM INFORMATION_SCHEMA.PROCESSLIST'
+      'where upper(db) = upper( :DATABASE )')
+    Left = 64
+    Top = 86
+    ParamData = <
+      item
+        Name = 'DATABASE'
+        DataType = ftWideString
+        ParamType = ptInput
+        Value = '%%'
+      end>
+  end
+  object DataSourceSession: TDataSource
+    DataSet = FDQuerySession
+    Left = 177
+    Top = 86
+  end
+  object FDQueryDML: TFDQuery
+    Connection = FDConnection1
+    Left = 264
+    Top = 24
+  end
+  object DataSourceDML: TDataSource
+    DataSet = FDQueryDML
+    Left = 264
+    Top = 80
+  end
+  object FDQueryKill: TFDQuery
+    Connection = FDConnection1
+    SQL.Strings = (
+      'KILL :PROCESSO')
+    Left = 344
+    Top = 22
+    ParamData = <
+      item
+        Name = 'PROCESSO'
+        ParamType = ptInput
+      end>
+  end
+  object FDQueryTema: TFDQuery
+    Connection = FDConnection1
+    SQL.Strings = (
+      'select t.* from temas t'
+      ''
+      'order by nometema;')
+    Left = 168
+    Top = 143
+  end
+  object DataSourceTema: TDataSource
+    DataSet = FDQueryTema
+    Left = 256
+    Top = 143
   end
 end

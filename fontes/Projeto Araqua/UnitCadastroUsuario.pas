@@ -38,9 +38,13 @@ type
     FDQueryUsuarioacesso: TIntegerField;
     PanelBotoes: TPanel;
     GroupBoxBuscaUsr: TGroupBox;
-    EditBuscaUsuario: TEdit;
     DBGridUsuarios: TDBGrid;
     PanelDados: TPanel;
+    Panel1: TPanel;
+    EditBuscaUsuario: TEdit;
+    Label6: TLabel;
+    Splitter1: TSplitter;
+    Button1: TButton;
 
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure btnCancelarClick(Sender: TObject);
@@ -53,6 +57,7 @@ type
     procedure EditBuscaUsuarioChange(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     function verificaCamposEmBranco(): Boolean;
+    procedure Button1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -154,6 +159,11 @@ begin
     begin
       ShowMessage('Preencha todos os campos.');
     end;
+end;
+
+procedure TFormCadastroUsuario.Button1Click(Sender: TObject);
+begin
+  Close;
 end;
 
 procedure TFormCadastroUsuario.EditBuscaUsuarioChange(Sender: TObject);

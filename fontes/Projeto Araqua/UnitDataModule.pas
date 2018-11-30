@@ -14,6 +14,13 @@ type
   TDataModule1 = class(TDataModule)
     FDQueryUsuario: TFDQuery;
     FDConnection1: TFDConnection;
+    FDQuerySession: TFDQuery;
+    DataSourceSession: TDataSource;
+    FDQueryDML: TFDQuery;
+    DataSourceDML: TDataSource;
+    FDQueryKill: TFDQuery;
+    FDQueryTema: TFDQuery;
+    DataSourceTema: TDataSource;
     procedure DataModuleCreate(Sender: TObject);
   private
     { Private declarations }
@@ -33,11 +40,11 @@ uses IniFiles;
 {$R *.dfm}
 
 procedure TDataModule1.DataModuleCreate(Sender: TObject);
-  var
-    ini: TIniFile;
-    arquivo: String;
+//  var
+//    ini: TIniFile;
+//    arquivo: String;
   begin
-    arquivo := ExtractFileDir(GetCurrentDir) + '\Config.ini';
+{    arquivo := ExtractFileDir(GetCurrentDir) + '\Config.ini';
     ini := TIniFile.Create(arquivo);
       if (not FileExists(arquivo)) then
         begin
@@ -71,7 +78,7 @@ procedure TDataModule1.DataModuleCreate(Sender: TObject);
             end;
         except
           
-        end;
+        end;}
 end;
 
 end.

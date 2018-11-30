@@ -1,19 +1,20 @@
 object FormCadastroSolo: TFormCadastroSolo
   Left = 0
   Top = 0
-  BorderIcons = [biSystemMenu, biMinimize]
-  BorderStyle = bsSingle
   Caption = 'Cadastro de Solo'
-  ClientHeight = 428
-  ClientWidth = 832
+  ClientHeight = 545
+  ClientWidth = 949
   Color = 15332585
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -11
   Font.Name = 'Tahoma'
   Font.Style = []
+  FormStyle = fsMDIChild
   OldCreateOrder = False
   Position = poDesktopCenter
+  Visible = True
+  WindowState = wsMaximized
   OnClose = FormClose
   OnCreate = FormCreate
   PixelsPerInch = 96
@@ -21,39 +22,43 @@ object FormCadastroSolo: TFormCadastroSolo
   object panelFundoSolo: TPanel
     Left = 0
     Top = 0
-    Width = 832
-    Height = 428
+    Width = 949
+    Height = 545
     Align = alClient
-    Color = 15857392
     ParentBackground = False
     TabOrder = 0
-    ExplicitWidth = 822
-    ExplicitHeight = 418
     DesignSize = (
-      832
-      428)
+      949
+      545)
+    object Splitter1: TSplitter
+      Left = 339
+      Top = 1
+      Height = 493
+      ExplicitLeft = 344
+      ExplicitTop = 16
+      ExplicitHeight = 100
+    end
     object GroupBoxSolo: TGroupBox
-      Left = 298
+      Left = 354
       Top = 16
-      Width = 233
-      Height = 89
+      Width = 584
+      Height = 81
       Anchors = [akTop]
       Caption = ' Solo '
       TabOrder = 0
-      ExplicitLeft = 293
       object Label1: TLabel
-        Left = 24
-        Top = 24
+        Left = 17
+        Top = 36
         Width = 20
         Height = 13
         Caption = 'Tipo'
-        Color = 14609884
+        Color = clBtnFace
         ParentColor = False
       end
       object DBEditTipo: TDBEdit
-        Left = 24
-        Top = 43
-        Width = 121
+        Left = 64
+        Top = 33
+        Width = 193
         Height = 21
         DataField = 'nome'
         DataSource = DataSourceSolo
@@ -62,14 +67,13 @@ object FormCadastroSolo: TFormCadastroSolo
       end
     end
     object GroupBoxLixiviacao: TGroupBox
-      Left = 301
+      Left = 356
       Top = 111
-      Width = 501
-      Height = 225
+      Width = 584
+      Height = 226
       Anchors = [akTop]
       Caption = ' Lixivia'#231#227'o '
       TabOrder = 1
-      ExplicitLeft = 294
       object Label4: TLabel
         Left = 9
         Top = 49
@@ -107,7 +111,7 @@ object FormCadastroSolo: TFormCadastroSolo
         ParentColor = False
       end
       object Label8: TLabel
-        Left = 40
+        Left = 63
         Top = 24
         Width = 88
         Height = 13
@@ -116,16 +120,16 @@ object FormCadastroSolo: TFormCadastroSolo
         ParentColor = False
       end
       object Label9: TLabel
-        Left = 142
+        Left = 192
         Top = 24
-        Width = 132
+        Width = 119
         Height = 13
-        Caption = 'Capacidade de campo (v/v)'
+        Caption = 'Capacidade Campo (v/v)'
         Color = 14609884
         ParentColor = False
       end
       object Label10: TLabel
-        Left = 280
+        Left = 328
         Top = 24
         Width = 90
         Height = 13
@@ -134,7 +138,7 @@ object FormCadastroSolo: TFormCadastroSolo
         ParentColor = False
       end
       object Label11: TLabel
-        Left = 384
+        Left = 456
         Top = 24
         Width = 114
         Height = 13
@@ -145,7 +149,7 @@ object FormCadastroSolo: TFormCadastroSolo
       object DBEditProfunCam1: TDBEdit
         Left = 64
         Top = 43
-        Width = 49
+        Width = 100
         Height = 21
         DataField = 'profundidadeCamada1'
         DataSource = DataSourceSolo
@@ -155,7 +159,7 @@ object FormCadastroSolo: TFormCadastroSolo
       object DBEditProfunCam2: TDBEdit
         Left = 64
         Top = 88
-        Width = 49
+        Width = 100
         Height = 21
         DataField = 'profundidadeCamada2'
         DataSource = DataSourceSolo
@@ -165,7 +169,7 @@ object FormCadastroSolo: TFormCadastroSolo
       object DBEditProfunCam3: TDBEdit
         Left = 63
         Top = 133
-        Width = 49
+        Width = 100
         Height = 21
         DataField = 'profundidadeCamada3'
         DataSource = DataSourceSolo
@@ -175,7 +179,7 @@ object FormCadastroSolo: TFormCadastroSolo
       object DBEditProfunCam4: TDBEdit
         Left = 64
         Top = 174
-        Width = 49
+        Width = 100
         Height = 21
         DataField = 'profundidadeCamada4'
         DataSource = DataSourceSolo
@@ -183,9 +187,9 @@ object FormCadastroSolo: TFormCadastroSolo
         TabOrder = 3
       end
       object DBEditCapacCampo1: TDBEdit
-        Left = 176
+        Left = 192
         Top = 43
-        Width = 57
+        Width = 100
         Height = 21
         DataField = 'capacidadeCampo1'
         DataSource = DataSourceSolo
@@ -193,9 +197,9 @@ object FormCadastroSolo: TFormCadastroSolo
         TabOrder = 4
       end
       object DBEditCapacCampo3: TDBEdit
-        Left = 176
+        Left = 192
         Top = 133
-        Width = 57
+        Width = 100
         Height = 21
         DataField = 'capacidadeCampo3'
         DataSource = DataSourceSolo
@@ -203,9 +207,9 @@ object FormCadastroSolo: TFormCadastroSolo
         TabOrder = 5
       end
       object DBEditCapacCampo4: TDBEdit
-        Left = 176
+        Left = 192
         Top = 174
-        Width = 57
+        Width = 100
         Height = 21
         DataField = 'capacidadeCampo4'
         DataSource = DataSourceSolo
@@ -213,9 +217,9 @@ object FormCadastroSolo: TFormCadastroSolo
         TabOrder = 6
       end
       object DBEditDensidade1: TDBEdit
-        Left = 296
+        Left = 328
         Top = 43
-        Width = 57
+        Width = 100
         Height = 21
         DataField = 'densidadeSolo1'
         DataSource = DataSourceSolo
@@ -223,9 +227,9 @@ object FormCadastroSolo: TFormCadastroSolo
         TabOrder = 7
       end
       object DBEditDensidade2: TDBEdit
-        Left = 296
+        Left = 328
         Top = 88
-        Width = 57
+        Width = 100
         Height = 21
         DataField = 'densidadeSolo2'
         DataSource = DataSourceSolo
@@ -233,9 +237,9 @@ object FormCadastroSolo: TFormCadastroSolo
         TabOrder = 8
       end
       object DBEditDensidade3: TDBEdit
-        Left = 296
+        Left = 328
         Top = 133
-        Width = 57
+        Width = 100
         Height = 21
         DataField = 'densidadeSolo3'
         DataSource = DataSourceSolo
@@ -243,9 +247,9 @@ object FormCadastroSolo: TFormCadastroSolo
         TabOrder = 9
       end
       object DBEditDensidade4: TDBEdit
-        Left = 296
+        Left = 328
         Top = 174
-        Width = 57
+        Width = 100
         Height = 21
         DataField = 'densidadeSolo4'
         DataSource = DataSourceSolo
@@ -253,9 +257,9 @@ object FormCadastroSolo: TFormCadastroSolo
         TabOrder = 10
       end
       object DBEditCarbOrg1: TDBEdit
-        Left = 407
+        Left = 455
         Top = 43
-        Width = 58
+        Width = 100
         Height = 21
         DataField = 'carbonoOrganico1'
         DataSource = DataSourceSolo
@@ -263,9 +267,9 @@ object FormCadastroSolo: TFormCadastroSolo
         TabOrder = 11
       end
       object DBEditCarbOrg2: TDBEdit
-        Left = 407
+        Left = 455
         Top = 88
-        Width = 58
+        Width = 100
         Height = 21
         DataField = 'carbonoOrganico2'
         DataSource = DataSourceSolo
@@ -273,9 +277,9 @@ object FormCadastroSolo: TFormCadastroSolo
         TabOrder = 12
       end
       object DBEditCarbOrg3: TDBEdit
-        Left = 408
+        Left = 456
         Top = 133
-        Width = 57
+        Width = 100
         Height = 21
         DataField = 'carbonoOrganico3'
         DataSource = DataSourceSolo
@@ -283,9 +287,9 @@ object FormCadastroSolo: TFormCadastroSolo
         TabOrder = 13
       end
       object DBEditCarbOrg4: TDBEdit
-        Left = 408
+        Left = 456
         Top = 174
-        Width = 57
+        Width = 100
         Height = 21
         DataField = 'carbonoOrganico4'
         DataSource = DataSourceSolo
@@ -293,9 +297,9 @@ object FormCadastroSolo: TFormCadastroSolo
         TabOrder = 14
       end
       object DBEditCapacCampo2: TDBEdit
-        Left = 176
+        Left = 192
         Top = 88
-        Width = 57
+        Width = 100
         Height = 21
         DataField = 'capacidadeCampo2'
         DataSource = DataSourceSolo
@@ -304,13 +308,13 @@ object FormCadastroSolo: TFormCadastroSolo
       end
     end
     object Panel1: TPanel
-      Left = 160
-      Top = 342
-      Width = 475
-      Height = 65
-      Anchors = [akTop]
+      Left = 1
+      Top = 494
+      Width = 947
+      Height = 50
+      Align = alBottom
+      ParentBackground = False
       TabOrder = 2
-      ExplicitLeft = 155
       object btnCancelar: TButton
         Left = 377
         Top = 8
@@ -359,8 +363,8 @@ object FormCadastroSolo: TFormCadastroSolo
         OnClick = btnExcluirClick
       end
       object DBNavigator1: TDBNavigator
-        Left = 114
-        Top = 39
+        Left = 490
+        Top = 7
         Width = 224
         Height = 25
         DataSource = DataSourceSolo
@@ -378,34 +382,43 @@ object FormCadastroSolo: TFormCadastroSolo
         TabOrder = 5
         OnClick = btnNovoClick
       end
+      object Button1: TButton
+        AlignWithMargins = True
+        Left = 861
+        Top = 11
+        Width = 75
+        Height = 28
+        Margins.Left = 10
+        Margins.Top = 10
+        Margins.Right = 10
+        Margins.Bottom = 10
+        Align = alRight
+        Caption = 'Fechar'
+        ImageIndex = 5
+        Images = FormPrincipal.ImageList1
+        TabOrder = 6
+        OnClick = Button1Click
+      end
     end
     object GroupBoxBusca: TGroupBox
-      Left = 26
-      Top = 16
-      Width = 263
-      Height = 320
-      Anchors = [akTop]
+      Left = 1
+      Top = 1
+      Width = 338
+      Height = 493
+      Align = alLeft
       Caption = 'Busca de Solo'
-      Color = 15463402
+      Color = clBtnFace
       ParentBackground = False
       ParentColor = False
       TabOrder = 3
-      ExplicitLeft = 24
-      object EditBuscaSolo: TEdit
-        Left = 16
-        Top = 24
-        Width = 225
-        Height = 21
-        TabOrder = 0
-        OnChange = EditBuscaSoloChange
-      end
       object DBGridSolo: TDBGrid
-        Left = 16
-        Top = 51
-        Width = 225
-        Height = 254
+        Left = 2
+        Top = 56
+        Width = 334
+        Height = 435
+        Align = alClient
         DataSource = DataSourceSolo
-        TabOrder = 1
+        TabOrder = 0
         TitleFont.Charset = DEFAULT_CHARSET
         TitleFont.Color = clWindowText
         TitleFont.Height = -11
@@ -415,21 +428,46 @@ object FormCadastroSolo: TFormCadastroSolo
           item
             Expanded = False
             FieldName = 'id'
-            Width = 25
+            Title.Caption = 'C'#243'digo'
+            Width = 45
             Visible = True
           end
           item
             Expanded = False
             FieldName = 'nome'
-            Width = 178
+            Title.Caption = 'Descri'#231#227'o do Solo'
+            Width = 247
             Visible = True
           end>
+      end
+      object Panel2: TPanel
+        Left = 2
+        Top = 15
+        Width = 334
+        Height = 41
+        Align = alTop
+        TabOrder = 1
+        object Label2: TLabel
+          Left = 8
+          Top = 16
+          Width = 24
+          Height = 13
+          Caption = 'Solo:'
+        end
+        object EditBuscaSolo: TEdit
+          Left = 38
+          Top = 12
+          Width = 211
+          Height = 21
+          TabOrder = 0
+          OnChange = EditBuscaSoloChange
+        end
       end
     end
   end
   object DataSourceSolo: TDataSource
     DataSet = FDQuerySolo
-    Left = 592
+    Left = 744
     Top = 24
   end
   object FDQuerySolo: TFDQuery

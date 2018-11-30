@@ -94,28 +94,7 @@ type
   TFormAgrotoxico = class(TForm)
     panelAgro: TPanel;
     PanelDadosSimples: TPanel;
-    PanelPrincipio: TPanel;
-    DBEditPrincipioAtivo: TDBEdit;
-    Label1: TLabel;
-    PanelDose: TPanel;
-    DBEditDose: TDBEdit;
-    Label2: TLabel;
-    PanelCamadas: TPanel;
     DBGridAgro: TDBGrid;
-    Label3: TLabel;
-    Label4: TLabel;
-    Label5: TLabel;
-    Label6: TLabel;
-    Label7: TLabel;
-    DBEditKocCamada1: TDBEdit;
-    DBEditKocCamada2: TDBEdit;
-    DBEditKocCamada3: TDBEdit;
-    DBEditKocCamada4: TDBEdit;
-    Label9: TLabel;
-    DBEditMeiaVidaCam1: TDBEdit;
-    DBEditMeiaVidaCam2: TDBEdit;
-    DBEditMeiaVidaCam3: TDBEdit;
-    DBEditMeiaVidaCam4: TDBEdit;
     PanelBotoes: TPanel;
     btnSalvarAgro: TButton;
     btnCancelarAgro: TButton;
@@ -126,7 +105,33 @@ type
     btnNovo: TButton;
     FDQueryAgro: TFDQuery;
     GroupBoxBuscaAgro: TGroupBox;
+    Panel1: TPanel;
+    PanelPrincipio: TPanel;
+    Label1: TLabel;
+    DBEditPrincipioAtivo: TDBEdit;
+    PanelDose: TPanel;
+    Label2: TLabel;
+    DBEditDose: TDBEdit;
+    PanelCamadas: TPanel;
+    Label3: TLabel;
+    Label4: TLabel;
+    Label5: TLabel;
+    Label6: TLabel;
+    Label7: TLabel;
+    Label9: TLabel;
+    DBEditKocCamada1: TDBEdit;
+    DBEditKocCamada2: TDBEdit;
+    DBEditKocCamada3: TDBEdit;
+    DBEditKocCamada4: TDBEdit;
+    DBEditMeiaVidaCam1: TDBEdit;
+    DBEditMeiaVidaCam2: TDBEdit;
+    DBEditMeiaVidaCam3: TDBEdit;
+    DBEditMeiaVidaCam4: TDBEdit;
+    Splitter1: TSplitter;
+    Panel2: TPanel;
+    Label8: TLabel;
     EditBuscaAgro: TEdit;
+    Button1: TButton;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure btnSalvarAgroClick(Sender: TObject);
     procedure btnCancelarAgroClick(Sender: TObject);
@@ -140,6 +145,7 @@ type
     function VerificaCampos(campo: String): String;
     procedure FormCreate(Sender: TObject);
     function VerificaBrancos(): Boolean;
+    procedure Button1Click(Sender: TObject);
 
   private
     { Private declarations }
@@ -256,6 +262,11 @@ begin
       ShowMessage('Preencha os campos corretamente!');
     end;
 
+end;
+
+procedure TFormAgrotoxico.Button1Click(Sender: TObject);
+begin
+  Close;
 end;
 
 procedure TFormAgrotoxico.EditBuscaAgroChange(Sender: TObject);

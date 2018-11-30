@@ -3,8 +3,8 @@
 	<Transactions>
     <Transaction>2018/07/24 20:23:41.000.878,=C:\Users\Davi\Downloads\Eduvale\Delphi\Unit1.pas</Transaction>
     <Transaction>2018/08/28 14:35:01.000.796,=C:\Users\Davi\Downloads\Eduvale\Delphi\Unit1.pas</Transaction>
-    <Transaction>2018/08/28 14:35:55.000.595,C:\Users\Davi\Downloads\Eduvale\Delphi\Unit1.pas=C:\Users\Davi\Downloads\Eduvale\6º termo - Laboratório de Sistemas II - Diego\Davi Projeto pra lembrar\UnitPrincipal.pas</Transaction>
     <Transaction>2018/08/28 14:35:55.000.595,C:\Users\Davi\Downloads\Eduvale\Delphi\Unit1.dfm=C:\Users\Davi\Downloads\Eduvale\6º termo - Laboratório de Sistemas II - Diego\Davi Projeto pra lembrar\UnitPrincipal.dfm</Transaction>
+    <Transaction>2018/08/28 14:35:55.000.595,C:\Users\Davi\Downloads\Eduvale\Delphi\Unit1.pas=C:\Users\Davi\Downloads\Eduvale\6º termo - Laboratório de Sistemas II - Diego\Davi Projeto pra lembrar\UnitPrincipal.pas</Transaction>
     <Transaction>2018/08/28 14:36:02.000.726,C:\Users\Davi\Downloads\Eduvale\Delphi\Project1.dproj=C:\Users\Davi\Downloads\Eduvale\6º termo - Laboratório de Sistemas II - Diego\Davi Projeto pra lembrar\ProjectEstudar.dproj</Transaction>
     <Transaction>2018/08/28 16:19:25.000.797,=C:\Users\Davi\Downloads\Eduvale\6º termo - Laboratório de Sistemas II - Diego\Davi Projeto pra lembrar\Unit1.pas</Transaction>
     <Transaction>2018/08/28 16:19:48.000.829,C:\Users\Davi\Downloads\Eduvale\6º termo - Laboratório de Sistemas II - Diego\Davi Projeto pra lembrar\Unit1.pas=C:\Users\Davi\Downloads\Eduvale\6º termo - Laboratório de Sistemas II - Diego\Davi Projeto pra lembrar\FormCadastro.pas</Transaction>
@@ -20,10 +20,10 @@
     <Transaction>2018/08/31 13:07:28.000.838,C:\Users\Davi\Downloads\Eduvale\6º termo - Laboratório de Sistemas II - Diego\Davi Projeto pra lembrar\UnitCamada.pas=</Transaction>
     <Transaction>2018/08/31 13:07:34.000.857,=C:\Users\Davi\Downloads\Eduvale\6º termo - Laboratório de Sistemas II - Diego\Davi Projeto pra lembrar\Unit1.pas</Transaction>
     <Transaction>2018/08/31 13:07:52.000.197,C:\Users\Davi\Downloads\Eduvale\6º termo - Laboratório de Sistemas II - Diego\Davi Projeto pra lembrar\Unit1.pas=C:\Users\Davi\Downloads\Eduvale\6º termo - Laboratório de Sistemas II - Diego\Davi Projeto pra lembrar\UnitAbrirTelas.pas</Transaction>
-    <Transaction>2018/08/31 13:52:47.000.804,C:\Users\Davi\Downloads\Eduvale\6º termo - Laboratório de Sistemas II - Diego\Davi Projeto pra lembrar\FormCadastro.dfm=C:\Users\Davi\Downloads\Eduvale\6º termo - Laboratório de Sistemas II - Diego\Davi Projeto pra lembrar\uNITCadastro.dfm</Transaction>
     <Transaction>2018/08/31 13:52:47.000.804,C:\Users\Davi\Downloads\Eduvale\6º termo - Laboratório de Sistemas II - Diego\Davi Projeto pra lembrar\FormCadastro.pas=C:\Users\Davi\Downloads\Eduvale\6º termo - Laboratório de Sistemas II - Diego\Davi Projeto pra lembrar\uNITCadastro.pas</Transaction>
-    <Transaction>2018/08/31 13:53:04.000.036,C:\Users\Davi\Downloads\Eduvale\6º termo - Laboratório de Sistemas II - Diego\Davi Projeto pra lembrar\uNITCadastro.pas=C:\Users\Davi\Downloads\Eduvale\6º termo - Laboratório de Sistemas II - Diego\Davi Projeto pra lembrar\Cadastro.pas</Transaction>
+    <Transaction>2018/08/31 13:52:47.000.804,C:\Users\Davi\Downloads\Eduvale\6º termo - Laboratório de Sistemas II - Diego\Davi Projeto pra lembrar\FormCadastro.dfm=C:\Users\Davi\Downloads\Eduvale\6º termo - Laboratório de Sistemas II - Diego\Davi Projeto pra lembrar\uNITCadastro.dfm</Transaction>
     <Transaction>2018/08/31 13:53:04.000.036,C:\Users\Davi\Downloads\Eduvale\6º termo - Laboratório de Sistemas II - Diego\Davi Projeto pra lembrar\uNITCadastro.dfm=C:\Users\Davi\Downloads\Eduvale\6º termo - Laboratório de Sistemas II - Diego\Davi Projeto pra lembrar\Cadastro.dfm</Transaction>
+    <Transaction>2018/08/31 13:53:04.000.036,C:\Users\Davi\Downloads\Eduvale\6º termo - Laboratório de Sistemas II - Diego\Davi Projeto pra lembrar\uNITCadastro.pas=C:\Users\Davi\Downloads\Eduvale\6º termo - Laboratório de Sistemas II - Diego\Davi Projeto pra lembrar\Cadastro.pas</Transaction>
     <Transaction>2018/08/31 13:53:11.000.104,C:\Users\Davi\Downloads\Eduvale\6º termo - Laboratório de Sistemas II - Diego\Davi Projeto pra lembrar\Cadastro.dfm=C:\Users\Davi\Downloads\Eduvale\6º termo - Laboratório de Sistemas II - Diego\Davi Projeto pra lembrar\UnitCadastro.dfm</Transaction>
     <Transaction>2018/08/31 13:53:11.000.104,C:\Users\Davi\Downloads\Eduvale\6º termo - Laboratório de Sistemas II - Diego\Davi Projeto pra lembrar\Cadastro.pas=C:\Users\Davi\Downloads\Eduvale\6º termo - Laboratório de Sistemas II - Diego\Davi Projeto pra lembrar\UnitCadastro.pas</Transaction>
     <Transaction>2018/08/31 14:07:03.000.605,=C:\Users\Davi\Downloads\Eduvale\6º termo - Laboratório de Sistemas II - Diego\Davi Projeto pra lembrar\Unit1.pas</Transaction>
@@ -38,8 +38,8 @@
     <Transaction>2018/09/09 20:23:04.000.823,=C:\Users\Davi\Downloads\Eduvale\6º termo - Laboratório de Sistemas II - Diego\Davi Projeto pra lembrar\Unit1.pas</Transaction>
     <Transaction>2018/09/09 20:25:45.000.554,C:\Users\Davi\Downloads\Eduvale\6º termo - Laboratório de Sistemas II - Diego\Davi Projeto pra lembrar\Unit1.pas=C:\Users\Davi\Downloads\Eduvale\6º termo - Laboratório de Sistemas II - Diego\Davi Projeto pra lembrar\UnitResultado.pas</Transaction>
     <Transaction>2018/09/09 20:53:13.000.756,=C:\Users\Davi\Downloads\Eduvale\6º termo - Laboratório de Sistemas II - Diego\Davi Projeto pra lembrar\Unit1.pas</Transaction>
-    <Transaction>2018/09/09 20:54:27.000.262,C:\Users\Davi\Downloads\Eduvale\6º termo - Laboratório de Sistemas II - Diego\Davi Projeto pra lembrar\Unit1.dfm=C:\Users\Davi\Downloads\Eduvale\6º termo - Laboratório de Sistemas II - Diego\Davi Projeto pra lembrar\UnitCadastroSolo.dfm</Transaction>
     <Transaction>2018/09/09 20:54:27.000.262,C:\Users\Davi\Downloads\Eduvale\6º termo - Laboratório de Sistemas II - Diego\Davi Projeto pra lembrar\Unit1.pas=C:\Users\Davi\Downloads\Eduvale\6º termo - Laboratório de Sistemas II - Diego\Davi Projeto pra lembrar\UnitCadastroSolo.pas</Transaction>
+    <Transaction>2018/09/09 20:54:27.000.262,C:\Users\Davi\Downloads\Eduvale\6º termo - Laboratório de Sistemas II - Diego\Davi Projeto pra lembrar\Unit1.dfm=C:\Users\Davi\Downloads\Eduvale\6º termo - Laboratório de Sistemas II - Diego\Davi Projeto pra lembrar\UnitCadastroSolo.dfm</Transaction>
     <Transaction>2018/09/10 00:01:34.000.434,C:\Users\Davi\Downloads\Eduvale\6º termo - Laboratório de Sistemas II - Diego\Davi Projeto pra lembrar\UnitCadastroUsuario.dfm=C:\Users\Davi\Downloads\Eduvale\6º termo - Laboratório de Sistemas II - Diego\Davi Projeto pra lembrar\UnitCadastro.dfm</Transaction>
     <Transaction>2018/09/10 00:01:34.000.434,C:\Users\Davi\Downloads\Eduvale\6º termo - Laboratório de Sistemas II - Diego\Davi Projeto pra lembrar\UnitCadastroUsuario.pas=C:\Users\Davi\Downloads\Eduvale\6º termo - Laboratório de Sistemas II - Diego\Davi Projeto pra lembrar\UnitCadastro.pas</Transaction>
     <Transaction>2018/09/10 00:11:46.000.178,=C:\Users\Davi\Downloads\Eduvale\6º termo - Laboratório de Sistemas II - Diego\Davi Projeto pra lembrar\Unit1.pas</Transaction>
@@ -64,6 +64,13 @@
     <Transaction>2018/11/12 19:47:41.000.161,=C:\Users\Emerson\Documents\GitHub\ARAqua\fontes\Projeto Araqua\Unit1.pas</Transaction>
     <Transaction>2018/11/12 20:04:39.000.225,C:\Users\Emerson\Documents\GitHub\ARAqua\fontes\Projeto Araqua\Unit1.dfm=C:\Users\Emerson\Documents\GitHub\ARAqua\fontes\Projeto Araqua\Unit_Loc_Aguas.dfm</Transaction>
     <Transaction>2018/11/12 20:04:39.000.225,C:\Users\Emerson\Documents\GitHub\ARAqua\fontes\Projeto Araqua\Unit1.pas=C:\Users\Emerson\Documents\GitHub\ARAqua\fontes\Projeto Araqua\Unit_Loc_Aguas.pas</Transaction>
+    <Transaction>2018/11/30 10:32:28.000.859,=D:\GitHub\ARAqua\ARAqua\fontes\Projeto Araqua\UnitBackup.pas</Transaction>
+    <Transaction>2018/11/30 10:32:47.000.030,=D:\GitHub\ARAqua\ARAqua\fontes\Projeto Araqua\UnitAlteraSenha.pas</Transaction>
+    <Transaction>2018/11/30 10:33:11.000.646,=D:\GitHub\ARAqua\ARAqua\fontes\Projeto Araqua\UnitFuncoes.pas</Transaction>
+    <Transaction>2018/11/30 10:33:51.000.997,D:\GitHub\ARAqua\ARAqua\fontes\Projeto Araqua\UnitFuncoes.pas=</Transaction>
+    <Transaction>2018/11/30 10:34:17.000.515,=D:\GitHub\ARAqua\ARAqua\fontes\Projeto Araqua\UnitTrataErro.pas</Transaction>
+    <Transaction>2018/11/30 10:50:20.000.974,=D:\GitHub\ARAqua\ARAqua\fontes\Projeto Araqua\UnitFuncoes.pas</Transaction>
+    <Transaction>2018/11/30 12:05:49.000.810,=D:\GitHub\ARAqua\ARAqua\fontes\Projeto Araqua\UnitTema.pas</Transaction>
   </Transactions>
 	<ProjectSortOrder AutoSort="0" SortType="0">
     <File Path="UnitPrincipal.pas"/>
@@ -90,5 +97,14 @@
     <File Path="UnitLogin.dfm"/>
     <File Path="Unit_Loc_Aguas.pas"/>
     <File Path="Unit_Loc_Aguas.dfm"/>
+    <File Path="UnitBackup.pas"/>
+    <File Path="UnitBackup.dfm"/>
+    <File Path="UnitAlteraSenha.pas"/>
+    <File Path="UnitAlteraSenha.dfm"/>
+    <File Path="UnitTrataErro.pas"/>
+    <File Path="UnitTrataErro.dfm"/>
+    <File Path="UnitFuncoes.pas"/>
+    <File Path="UnitTema.pas"/>
+    <File Path="UnitTema.dfm"/>
   </ProjectSortOrder>
 </BorlandProject>
