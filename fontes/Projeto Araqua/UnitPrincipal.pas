@@ -60,6 +60,7 @@ type
     Timer1: TTimer;
     CalendarView1: TCalendarView;
     Calendrio1: TMenuItem;
+    Label9: TLabel;
     procedure ImageUserClick(Sender: TObject);
     procedure ImageAgroClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);

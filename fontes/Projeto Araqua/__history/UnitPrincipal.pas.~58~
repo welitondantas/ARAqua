@@ -6,12 +6,10 @@ uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Imaging.pngimage, Vcl.ExtCtrls,
   Vcl.StdCtrls, System.ImageList, Vcl.ImgList, Vcl.Imaging.GIFImg, Vcl.ComCtrls,
-  Vcl.Menus, IniFiles, Vcl.Themes, Vcl.WinXCalendars;
+  Vcl.Menus, IniFiles, Vcl.Themes, Vcl.WinXCalendars, Vcl.ToolWin;
 
 type
   TFormPrincipal = class(TForm)
-    panelFundoPrincipal: TPanel;
-    panelLogout: TPanel;
     ImageList1: TImageList;
     MainMenu1: TMainMenu;
     Usurio1: TMenuItem;
@@ -75,6 +73,8 @@ type
     procedure Timer1Timer(Sender: TObject);
     procedure Calendrio1Click(Sender: TObject);
     procedure FormShow(Sender: TObject);
+    procedure rocarUsurio1Click(Sender: TObject);
+    procedure Sair1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -101,9 +101,10 @@ uses UnitCadastroUsuario, UnitCadastroAgrotóxico, UnitSolo,
 procedure TFormPrincipal.AlterarSenha1Click(Sender: TObject);
 begin
    if FmAlteraSenha = nil then
-    FmAlteraSenha := FmAlteraSenha.Create(Self)
-  else
-    FmAlteraSenha.Show;
+    begin
+      FmAlteraSenha := TFmAlteraSenha.Create(Self);
+      FmAlteraSenha.Showmodal;
+    end;
 end;
 
 procedure TFormPrincipal.AlterarTema1Click(Sender: TObject);
@@ -272,7 +273,6 @@ end;
 procedure TFormPrincipal.FormShow(Sender: TObject);
 var I:integer;
     Wallpaper:String;
-
 begin
 
 //Fecha todos os formulário se ocorrer troca de usuário.
@@ -301,8 +301,10 @@ begin
     if FormCadastroUsuario=NIL then
       begin
         FormCadastroUsuario := TFormCadastroUsuario.Create(self);
-        FormCadastroUsuario.ShowModal;
-      end;
+        FormCadastroUsuario.Show;
+      end
+      else
+      FormCadastroUsuario.Show;
 end;
 
 procedure TFormPrincipal.ImgCalcularClick(Sender: TObject);
@@ -310,8 +312,30 @@ begin
   if FormCalculoResultado = NIL then
     begin
       FormCalculoResultado := TFormCalculoResultado.Create(self);
-      FormCalculoResultado.ShowModal;
+      FormCalculoResultado.Show;
+    end
+    else
+      FormCalculoResultado.Show;
+end;
+
+procedure TFormPrincipal.rocarUsurio1Click(Sender: TObject);
+begin
+  FormCreate(nil);
+end;
+
+procedure TFormPrincipal.Sair1Click(Sender: TObject);
+begin
+  case MessageDlg('Deseja encerrar a aplicação?', mtConfirmation, [mbYES, mbNO], 0) of
+  mrYES:
+    begin
+    // Write code here for pressing button OK
+    Application.Terminate;
     end;
+  mrNO:
+    begin
+
+    end;
+  end;
 end;
 
 procedure TFormPrincipal.Timer1Timer(Sender: TObject);
@@ -324,8 +348,10 @@ begin
     if FormCadastroSolo = NIL then
       begin
         FormCadastroSolo := TFormCadastroSolo.Create(self);
-        FormCadastroSolo.ShowModal;
-      end;
+        FormCadastroSolo.Show;
+      end
+      else
+        FormCadastroSolo.Show;
 end;
 
 procedure TFormPrincipal.ImageAgroClick(Sender: TObject);
@@ -333,18 +359,21 @@ begin
     if FormAgrotoxico = NIL then
       begin
         FormAgrotoxico := TFormAgrotoxico.Create(self);
-        FormAgrotoxico.ShowModal;
-      end;
-
+        FormAgrotoxico.Show;
+      end
+      else
+        FormAgrotoxico.Show;
 end;
 
 procedure TFormPrincipal.ImageLocalClick(Sender: TObject);
 begin
     if FormCadastroLocalidade = NIL then
-      begin      
+      begin
         FormCadastroLocalidade := TFormCadastroLocalidade.Create(self);
-        FormCadastroLocalidade.ShowModal;
-      end;
+        FormCadastroLocalidade.Show;
+      end
+      else
+        FormCadastroLocalidade.Show;
 end;
 
 procedure TFormPrincipal.ImageLogoutClick(Sender: TObject);

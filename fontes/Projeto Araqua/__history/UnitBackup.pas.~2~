@@ -23,6 +23,7 @@ type
     ButtonConsulta: TButton;
     EditNome: TEdit;
     FileListBox1: TFileListBox;
+    AdvMemo1: TAdvMemo;
     ButtonExec: TButton;
     DirectoryListBox1: TDirectoryListBox;
     FilterComboBox1: TFilterComboBox;
@@ -41,6 +42,7 @@ type
     DBGrid1: TDBGrid;
     ButtonKill: TButton;
     ButtonKillAll: TButton;
+    AdvSQLMemoStyler1: TAdvSQLMemoStyler;
     procedure ButtonSairClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure ButtonExecClick(Sender: TObject);
