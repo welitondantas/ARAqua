@@ -1,11 +1,9 @@
 object FormPrincipal: TFormPrincipal
   Left = 0
   Top = 0
-  BorderIcons = [biSystemMenu, biMinimize]
-  BorderStyle = bsSingle
   Caption = 'Araqu'#225
-  ClientHeight = 713
-  ClientWidth = 1155
+  ClientHeight = 703
+  ClientWidth = 1145
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -16,6 +14,7 @@ object FormPrincipal: TFormPrincipal
   Menu = MainMenu1
   OldCreateOrder = False
   Position = poScreenCenter
+  WindowState = wsMaximized
   OnClose = FormClose
   OnCreate = FormCreate
   OnShow = FormShow
@@ -24,8 +23,8 @@ object FormPrincipal: TFormPrincipal
   object Image1: TImage
     Left = 0
     Top = 145
-    Width = 1155
-    Height = 544
+    Width = 1145
+    Height = 534
     Align = alClient
     Picture.Data = {
       0954506E67496D61676589504E470D0A1A0A0000000D494844520000047B0000
@@ -19516,27 +19515,22 @@ object FormPrincipal: TFormPrincipal
       6219D97C5C6B95E597B928983C4907133C290143E463BB7DDAA1EC8F65C15032
       D38A42080BFCAC6362B33195FDCC2421CC52BCE9D3048CFA1BF6C37F0382479F
       6C4E1866440000000049454E44AE426082}
+    Stretch = True
     ExplicitLeft = 552
     ExplicitTop = 184
     ExplicitWidth = 105
     ExplicitHeight = 105
   end
-  object Label9: TLabel
-    Left = 488
-    Top = 224
-    Width = 163
-    Height = 49
-    Caption = 'Label9'
-  end
   object PanelBotoes: TPanel
     Left = 0
     Top = 0
-    Width = 1155
+    Width = 1145
     Height = 145
     Align = alTop
     Color = cl3DLight
     ParentBackground = False
     TabOrder = 0
+    ExplicitWidth = 1155
     object paneCadAgro: TPanel
       Left = 131
       Top = 1
@@ -25071,7 +25065,7 @@ object FormPrincipal: TFormPrincipal
       DesignSize = (
         130
         143)
-      object ImgCalcular: TImage
+      object ImgBackup: TImage
         Left = 6
         Top = 1
         Width = 107
@@ -25508,7 +25502,7 @@ object FormPrincipal: TFormPrincipal
           C6E200E0E24A6371007071A5B13800B8B8D2581C005C5C692C0E002EAE341607
           0017571A8B03808B2B8DF5FFB5F9E83D630857DD0000000049454E44AE426082}
         Proportional = True
-        OnClick = ImgCalcularClick
+        OnClick = ImgBackupClick
       end
       object Label2: TLabel
         Left = 6
@@ -26074,7 +26068,6 @@ object FormPrincipal: TFormPrincipal
           A003087400003A80400700A003087400003A80400700A003FE0FBDBE4C44DA5E
           72F80000000049454E44AE426082}
         Proportional = True
-        OnClick = ImgCalcularClick
       end
       object Label7: TLabel
         Left = 6
@@ -26094,7 +26087,7 @@ object FormPrincipal: TFormPrincipal
       DesignSize = (
         130
         143)
-      object Image3: TImage
+      object ImageCalcular: TImage
         Left = 6
         Top = 1
         Width = 107
@@ -26711,7 +26704,7 @@ object FormPrincipal: TFormPrincipal
           210A000000214401000020842800000084100500008010A20000001042140000
           0042E8FF07F15D9AED3E4A428F0000000049454E44AE426082}
         Proportional = True
-        OnClick = ImgCalcularClick
+        OnClick = ImageCalcularClick
       end
       object Label8: TLabel
         Left = 6
@@ -27208,8 +27201,8 @@ object FormPrincipal: TFormPrincipal
   end
   object StatusBar1: TStatusBar
     Left = 0
-    Top = 689
-    Width = 1155
+    Top = 679
+    Width = 1145
     Height = 24
     Panels = <
       item
@@ -27235,6 +27228,8 @@ object FormPrincipal: TFormPrincipal
       item
         Width = 50
       end>
+    ExplicitTop = 689
+    ExplicitWidth = 1155
   end
   object MainMenu1: TMainMenu
     Left = 1088
@@ -27261,6 +27256,7 @@ object FormPrincipal: TFormPrincipal
       object Solo1: TMenuItem
         Caption = 'Solo'
         ShortCut = 116
+        OnClick = Solo1Click
       end
       object Agrotxicos1: TMenuItem
         Caption = 'Agrot'#243'xicos'
@@ -27276,6 +27272,7 @@ object FormPrincipal: TFormPrincipal
       object Gerais1: TMenuItem
         Caption = 'Gerais'
         ShortCut = 120
+        OnClick = Gerais1Click
       end
     end
     object Relatrios1: TMenuItem
@@ -27290,6 +27287,7 @@ object FormPrincipal: TFormPrincipal
       object Backup1: TMenuItem
         Caption = 'Rotinas de Backup'
         ShortCut = 122
+        OnClick = Backup1Click
       end
       object Configuraes1: TMenuItem
         Caption = 'Configura'#231#245'es'
@@ -27317,7 +27315,7 @@ object FormPrincipal: TFormPrincipal
     Left = 1096
     Top = 24
     Bitmap = {
-      494C010107008800040010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C0101070088006C0010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000002000000001002000000000000020
       0000000000000000000000000000000000000000000000000000000000000000
       0000F7F7F7090000000000000000000000000000000000000000000000000000

@@ -16,9 +16,7 @@ type
     FDQueryLocalidade: TFDQuery;
     PageControl1: TPageControl;
     TabSheet1: TTabSheet;
-    panelFundoLocal: TPanel;
     PanelDescricao: TPanel;
-    Label1: TLabel;
     GroupBoxClima: TGroupBox;
     Label2: TLabel;
     Label3: TLabel;
@@ -41,23 +39,13 @@ type
     GroupBoxBuscaLocal: TGroupBox;
     DBGridLocalidade: TDBGrid;
     EditBuscaLocal: TEdit;
-    DataSource1: TDataSource;
-    FDQuery1: TFDQuery;
     TabSheet2: TTabSheet;
     Panel1: TPanel;
     Panel2: TPanel;
     Label7: TLabel;
     Panel3: TPanel;
-    Button1: TButton;
-    Button2: TButton;
-    Button3: TButton;
-    Button4: TButton;
-    DBNavigator2: TDBNavigator;
-    Button5: TButton;
     GroupBox3: TGroupBox;
     DBGrid1: TDBGrid;
-    DataSource2: TDataSource;
-    FDQuery2: TFDQuery;
     FDQuery_superficial: TFDQuery;
     DataSource_superficial: TDataSource;
     Button6: TButton;
@@ -65,10 +53,9 @@ type
     Panel4: TPanel;
     Splitter1: TSplitter;
     DBEditDescricao: TDBEdit;
-    Label12: TLabel;
-    DBEdit2: TDBEdit;
+    DBEditDescAguaSup: TDBEdit;
     Panel5: TPanel;
-    Edit1: TEdit;
+    EditSuperficial: TEdit;
     Label13: TLabel;
     GroupBox1: TGroupBox;
     Label8: TLabel;
@@ -80,6 +67,10 @@ type
     DBEdit_LarguraContencao: TDBEdit;
     DBEdit_CoeficienteSuper: TDBEdit;
     Splitter2: TSplitter;
+    panelFundoLocal: TPanel;
+    Label1: TLabel;
+    Label12: TLabel;
+    DBNavigator2: TDBNavigator;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure btnSalvarClick(Sender: TObject);
     procedure btnEditarClick(Sender: TObject);
@@ -92,6 +83,7 @@ type
     procedure FormCreate(Sender: TObject);
     procedure Button7Click(Sender: TObject);
     procedure Button6Click(Sender: TObject);
+    procedure EditSuperficialChange(Sender: TObject);
   private
     { Private declarations }
   public
@@ -195,6 +187,17 @@ begin
   Close;
 end;
 
+procedure TFormCadastroLocalidade.EditSuperficialChange(Sender: TObject);
+begin
+  with FDQuery_superficial do
+    begin
+      Close;
+      SQL.Text := 'select * from localidade_superficial where descricao like :descricao';
+      ParamByName('descricao').Value := '%' + EditSuperficial.Text + '%';
+      Open;
+    end;
+end;
+
 procedure TFormCadastroLocalidade.EditBuscaLocalChange(Sender: TObject);
 begin
   with FDQueryLocalidade do
@@ -240,6 +243,7 @@ end;
 procedure TFormCadastroLocalidade.FormCreate(Sender: TObject);
 begin
   FDQueryLocalidade.Active := True;
+  FDQuery_superficial.Active := True;
 end;
 
 end.

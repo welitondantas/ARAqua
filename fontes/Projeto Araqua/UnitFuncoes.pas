@@ -3,7 +3,8 @@ unit UnitFuncoes;
 interface
 
 uses Winapi.Windows, Winapi.Messages,System.SysUtils,DB,Vcl.Forms,Menus,Vcl.Dialogs,
-     ZDataset,ComCtrls, StdCtrls, Classes, System.Variants,
+    // ZDataset
+    ComCtrls, StdCtrls, Classes, System.Variants,
      IdComponent,
      IdTCPConnection,
      IdTCPClient,
@@ -29,10 +30,10 @@ type
      iChave : integer;
   end;
 
-procedure SendAfterCancel(DataSet: TDataSet);
-procedure SendAfterPost(DataSet: TDataSet);
-procedure SendAfterDelete(DataSet: TDataSet);
-procedure AdicionaLog(Linha, Caminho: String);
+//procedure SendAfterCancel(DataSet: TDataSet);
+//procedure SendAfterPost(DataSet: TDataSet);
+//procedure SendAfterDelete(DataSet: TDataSet);
+//procedure AdicionaLog(Linha, Caminho: String);
 function tbKeyIsDown(const Key: integer): boolean;
 function Crypt(Action, Src: String): String;
 function isCPF(CPF: string): boolean;
@@ -57,40 +58,39 @@ implementation
 
 uses UnitDataModule;
 
-procedure SendAfterDelete(DataSet: TDataSet);
-begin
-  Try
-     TZQuery(DataSet).Connection.StartTransaction;
-     TZQuery(DataSet).ApplyUpdates;
-     TZQuery(DataSet).CommitUpdates;
-     TZQuery(DataSet).Connection.Commit;
-   except
-     Try TZQuery(DataSet).Connection.Rollback; Except end;
-      TZQuery(DataSet).CancelUpdates;
-     Raise;
-     Abort;
-   end;
-end;
+//procedure SendAfterDelete(DataSet: TDataSet);
+//begin
+  //Try
+    // TZQuery(DataSet).Connection.StartTransaction;
+     //TZQuery(DataSet).ApplyUpdates;
+    // TZQuery(DataSet).CommitUpdates;
+    // TZQuery(DataSet).Connection.Commit;
+  // except
+    // Try TZQuery(DataSet).Connection.Rollback; Except end;
+   //   TZQuery(DataSet).CancelUpdates;
+   //  Raise;
+   //  Abort;
+  // end;
+//end;
 
-procedure SendAfterPost(DataSet: TDataSet);
-begin
-  Try
-     TZQuery(DataSet).Connection.StartTransaction;
-     TZQuery(DataSet).ApplyUpdates;
-     TZQuery(DataSet).CommitUpdates;
-     TZQuery(DataSet).Connection.Commit;
-   except
-     Try TZQuery(DataSet).Connection.Rollback; Except end;
-      TZQuery(DataSet).Edit;
-     Raise;
-     Abort;
-   end;
-end;
+//procedure SendAfterPost(DataSet: TDataSet);
+//begin
+ // Try
+  //   TZQuery(DataSet).Connection.StartTransaction;
+  //   TZQuery(DataSet).CommitUpdates;
+  //   TZQuery(DataSet).Connection.Commit;
+  // except
+  //   Try TZQuery(DataSet).Connection.Rollback; Except end;
+  //    TZQuery(DataSet).Edit;
+  //   Raise;
+  //   Abort;
+ //  end;
+//end;
 
-procedure SendAfterCancel(DataSet: TDataSet);
-begin
-      TZQuery(DataSet).CancelUpdates;
-end;
+//procedure SendAfterCancel(DataSet: TDataSet);
+//begin
+ //     TZQuery(DataSet).CancelUpdates;
+//end;
 
 procedure AdicionaLog(Linha, Caminho: String);
 var

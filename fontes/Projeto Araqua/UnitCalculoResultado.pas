@@ -13,12 +13,6 @@ uses
 
 type
   TFormCalculoResultado = class(TForm)
-    PanelFundo: TPanel;
-    PageControl1: TPageControl;
-    TabSheetLixiviacao: TTabSheet;
-    TabSheetCarreamento: TTabSheet;
-    PanelTabLixiviacao: TPanel;
-    PanelTabCarreamento: TPanel;
     GroupBoxLocal: TGroupBox;
     GroupBoxSolo: TGroupBox;
     GroupBoxAgrotoxico: TGroupBox;
@@ -26,22 +20,10 @@ type
     Label3: TLabel;
     CheckBoxInserirManual: TCheckBox;
     EditDoseManual: TEdit;
-    Panel1: TPanel;
-    Panel4: TPanel;
-    Label1: TLabel;
-    Label7: TLabel;
-    Label8: TLabel;
-    Label9: TLabel;
-    Label10: TLabel;
     Panel5: TPanel;
-    btnCalcular: TButton;
-    btnNovaConsulta: TButton;
-    DBEditRecargaHidrica: TDBEdit;
-    DBEditConcentracaoEstimada: TDBEdit;
-    btnSalvar: TButton;
     FDQueryResultado: TFDQuery;
     DataSourceResultado: TDataSource;
-    DBLookupComboLocal: TDBLookupComboBox;
+    DBLookupComboSup: TDBLookupComboBox;
     DBLookupComboBoxSolo: TDBLookupComboBox;
     DBLookupComboAgro: TDBLookupComboBox;
     FDQuerySolo: TFDQuery;
@@ -50,7 +32,6 @@ type
     DataSourceSolo: TDataSource;
     DataSourceLocalidade: TDataSource;
     DataSourceAgro: TDataSource;
-    btnCancelar: TButton;
     FDQueryLocalidadeid: TFDAutoIncField;
     FDQueryLocalidadeprecipitacao: TSingleField;
     FDQueryLocalidadeevapotranspiracao: TSingleField;
@@ -58,30 +39,38 @@ type
     FDQueryLocalidadeporosidadeAquifero: TSingleField;
     FDQueryLocalidadeprofundidadeAquifero: TIntegerField;
     FDQueryLocalidadedescricao: TStringField;
-    Panel2: TPanel;
-    DBNavigator1: TDBNavigator;
-    PageControl2: TPageControl;
-    TabSheet1: TTabSheet;
-    Label2: TLabel;
-    Label4: TLabel;
-    Label5: TLabel;
-    Label6: TLabel;
-    Label11: TLabel;
-    Label12: TLabel;
-    DBEdit1: TDBEdit;
-    DBEdit2: TDBEdit;
-    DBEdit3: TDBEdit;
-    DBEdit4: TDBEdit;
-    DBEdit5: TDBEdit;
-    DBEdit6: TDBEdit;
-    DBGrid1: TDBGrid;
     Button1: TButton;
     Panel3: TPanel;
     Panel6: TPanel;
     DBGrid2: TDBGrid;
     Edit1: TEdit;
     Label13: TLabel;
+    FDQueryResult: TFDQuery;
+    DSResult: TDataSource;
+    Panel7: TPanel;
+    btnCalcular: TButton;
+    btnSalvar: TButton;
+    btnCancelar: TButton;
+    btnNovaConsulta: TButton;
     DBNavigator2: TDBNavigator;
+    Splitter1: TSplitter;
+    GroupBox3: TGroupBox;
+    RadioButtonSup: TRadioButton;
+    RadioButtonSub: TRadioButton;
+    RadioButtonAS: TRadioButton;
+    RadioButtonAB: TRadioButton;
+    RadioButtonAT: TRadioButton;
+    GroupBox1: TGroupBox;
+    Label9: TLabel;
+    DBEditRecargaHidrica: TDBEdit;
+    GroupBox2: TGroupBox;
+    Label10: TLabel;
+    DBEditConcentracaoEstimada: TDBEdit;
+    GroupBoxSub: TGroupBox;
+    DataSourceSuper: TDataSource;
+    FDQuerySuper: TFDQuery;
+    ButtonConsultar: TButton;
+    DBLookupComboBoxLocal: TDBLookupComboBox;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure btnSalvarClick(Sender: TObject);
     procedure realizaCalculos();
@@ -99,6 +88,13 @@ type
     function calculaCamada4(solo: TSolo; agro: TAgrotoxico; local: TLocalidade): double;
     procedure CheckBoxInserirManualClick(Sender: TObject);
     procedure Button1Click(Sender: TObject);
+    procedure Edit1Change(Sender: TObject);
+    procedure RadioButtonSubClick(Sender: TObject);
+    procedure RadioButtonSupClick(Sender: TObject);
+    procedure ButtonConsultarClick(Sender: TObject);
+    procedure RadioButtonASClick(Sender: TObject);
+    procedure RadioButtonABClick(Sender: TObject);
+    procedure RadioButtonATClick(Sender: TObject);
 
   private
     { Private declarations }
@@ -134,7 +130,7 @@ end;
 procedure TFormCalculoResultado.btnCancelarClick(Sender: TObject);
 begin
   FDQueryResultado.Cancel;
-  DBLookupComboLocal.Enabled := false;
+  DBLookupComboBoxLocal.Enabled := false;
   DBLookupComboBoxSolo.Enabled := false;
   DBLookupComboAgro.Enabled := false;
   CheckBoxInserirManual.Enabled := false;
@@ -148,7 +144,7 @@ end;
 procedure TFormCalculoResultado.btnNovaConsultaClick(Sender: TObject);
 begin
   FDQueryResultado.Insert;
-  DBLookupComboLocal.Enabled := true;
+  DBLookupComboBoxLocal.Enabled := true;
   DBLookupComboBoxSolo.Enabled := true;
   DBLookupComboAgro.Enabled := true;
   CheckBoxInserirManual.Enabled := true;
@@ -162,7 +158,7 @@ end;
 procedure TFormCalculoResultado.btnSalvarClick(Sender: TObject);
 begin
   FDQueryResultado.Post;
-  DBLookupComboLocal.Enabled := false;
+  DBLookupComboBoxLocal.Enabled := false;
   DBLookupComboBoxSolo.Enabled := false;
   DBLookupComboAgro.Enabled := false;
   CheckBoxInserirManual.Enabled := false;
@@ -176,6 +172,19 @@ end;
 procedure TFormCalculoResultado.Button1Click(Sender: TObject);
 begin
   Close;
+end;
+
+procedure TFormCalculoResultado.ButtonConsultarClick(Sender: TObject);
+begin
+  FDQueryResult.Active := False;
+  FDQueryResult.ParamByName('AGRO').AsString := '%'+Edit1.Text+'%';
+  FDQueryResult.ParamByName('LOCAL').AsString := '%'+Edit1.Text+'%';
+  FDQueryResult.ParamByName('SOLO').AsString := '%'+Edit1.Text+'%';
+  FDQueryResult.ParamByName('ID').AsString := Edit1.Text;
+  if RadioButtonAS.Checked then FDQueryResult.SQL[18] := 'and tipo = 2';
+  if RadioButtonAB.Checked then FDQueryResult.SQL[18] := 'and tipo = 1';
+  if RadioButtonAT.Checked then FDQueryResult.SQL[18] := '';
+  FDQueryResult.Active := True;
 end;
 
 function TFormCalculoResultado.calculaCamada1(solo: TSolo; agro: TAgrotoxico;
@@ -302,6 +311,11 @@ begin
     end;
 end;
 
+procedure TFormCalculoResultado.Edit1Change(Sender: TObject);
+begin
+  ButtonConsultar.Click;
+end;
+
 procedure TFormCalculoResultado.FDQueryResultadoAfterPost(DataSet: TDataSet);
 begin
   Application.MessageBox('Consulta salva com sucesso!', 'Consulta salva');
@@ -314,7 +328,7 @@ begin
 
   res.Id_Solo := DBLookupComboBoxSolo.KeyValue;
   res.Id_Agrotoxico := DBLookupComboAgro.KeyValue;
-  res.Id_Localidade := DBLookupComboLocal.KeyValue;
+  res.Id_Localidade := DBLookupComboBoxLocal.KeyValue;
   res.RecargaHidrica := StrToFloat(DBEditRecargaHidrica.Text);
   res.ConcentracaoEstimada := StrToFloat(DBEditConcentracaoEstimada.Text);
 
@@ -337,14 +351,62 @@ end;
 
 procedure TFormCalculoResultado.FormCreate(Sender: TObject);
 begin
+  FDQueryResult.Active := True;
   FDQueryResultado.Active := True;
   FDQuerySolo.Active := True;
   FDQueryLocalidade.Active := True;
+  FDQuerySuper.Active := True;
   FDQueryAgro.Active := True;
   FDQueryResultado.Insert;
-  DBLookupComboLocal.KeyValue := -1;
+  DBLookupComboBoxLocal.KeyValue := -1;
   DBLookupComboBoxSolo.KeyValue := -1;
   DBLookupComboAgro.KeyValue := -1;
+  DBLookupComboSup.KeyValue := -1;
+  ButtonConsultar.Click;
+end;
+
+procedure TFormCalculoResultado.RadioButtonABClick(Sender: TObject);
+begin
+ ButtonConsultar.Click;
+end;
+
+procedure TFormCalculoResultado.RadioButtonASClick(Sender: TObject);
+begin
+  ButtonConsultar.Click;
+end;
+
+procedure TFormCalculoResultado.RadioButtonATClick(Sender: TObject);
+begin
+ ButtonConsultar.Click;
+end;
+
+procedure TFormCalculoResultado.RadioButtonSubClick(Sender: TObject);
+begin
+ if RadioButtonSub.Checked then
+ begin
+    DBLookupComboBoxLocal.Enabled := True;
+    DBLookupComboSup.Enabled := False;
+ end
+ else
+ begin
+    DBLookupComboBoxLocal.Enabled := False;
+    DBLookupComboSup.Enabled := True;
+ end;
+end;
+
+procedure TFormCalculoResultado.RadioButtonSupClick(Sender: TObject);
+begin
+ if RadioButtonSub.Checked then
+ begin
+    DBLookupComboBoxLocal.Enabled := True;
+    DBLookupComboSup.Enabled := False;
+ end
+ else
+ begin
+    DBLookupComboBoxLocal.Enabled := False;
+    DBLookupComboSup.Enabled := True;
+ end;
+
 end;
 
 procedure TFormCalculoResultado.realizaCalculos;
@@ -440,10 +502,10 @@ end;
 
 function TFormCalculoResultado.verificaCamposParaCalculo: Boolean;
 begin
-  if (DBLookupComboLocal.KeyValue = -1) then
+  if (DBLookupComboBoxLocal.KeyValue = -1) then
     begin
       Application.MessageBox('Você deve preencher o Local.', 'Local não preenchido');
-      DBLookupComboLocal.SetFocus;
+      DBLookupComboBoxLocal.SetFocus;
       Result := false;
     end
   else if (DBLookupComboBoxSolo.KeyValue = -1) then

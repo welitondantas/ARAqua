@@ -29,52 +29,204 @@ object FormCadastroLocalidade: TFormCadastroLocalidade
     TabOrder = 0
     object TabSheet1: TTabSheet
       Caption = #193'gua Subterr'#226'nea'
-      object panelFundoLocal: TPanel
+      object Splitter1: TSplitter
+        Left = 410
+        Top = 0
+        Height = 482
+        ExplicitLeft = 328
+        ExplicitTop = 176
+        ExplicitHeight = 100
+      end
+      object PanelBotoes: TPanel
+        Left = 0
+        Top = 482
+        Width = 969
+        Height = 50
+        Align = alBottom
+        BevelInner = bvRaised
+        BevelOuter = bvNone
+        TabOrder = 0
+        object btnSalvar: TButton
+          Left = 215
+          Top = 15
+          Width = 75
+          Height = 25
+          Caption = 'Salvar'
+          Enabled = False
+          ImageIndex = 2
+          Images = FormPrincipal.ImageList1
+          TabOrder = 0
+          OnClick = btnSalvarClick
+        end
+        object btnEditar: TButton
+          Left = 120
+          Top = 15
+          Width = 75
+          Height = 25
+          Caption = 'Editar'
+          ImageIndex = 4
+          Images = FormPrincipal.ImageList1
+          TabOrder = 1
+          OnClick = btnEditarClick
+        end
+        object btnCancelar: TButton
+          Left = 440
+          Top = 14
+          Width = 75
+          Height = 25
+          Caption = 'Cancelar'
+          Enabled = False
+          ImageIndex = 1
+          Images = FormPrincipal.ImageList1
+          TabOrder = 2
+          OnClick = btnCancelarClick
+        end
+        object btnExcluir: TButton
+          Left = 330
+          Top = 15
+          Width = 75
+          Height = 25
+          Caption = 'Excluir'
+          Enabled = False
+          ImageIndex = 3
+          Images = FormPrincipal.ImageList1
+          TabOrder = 3
+          OnClick = btnExcluirClick
+        end
+        object DBNavigator1: TDBNavigator
+          Left = 546
+          Top = 14
+          Width = 220
+          Height = 25
+          DataSource = DataSourceLocalidade
+          VisibleButtons = [nbFirst, nbPrior, nbNext, nbLast]
+          TabOrder = 4
+        end
+        object btnNovo: TButton
+          Left = 17
+          Top = 15
+          Width = 75
+          Height = 25
+          Caption = 'Novo'
+          ImageIndex = 0
+          Images = FormPrincipal.ImageList1
+          TabOrder = 5
+          OnClick = btnNovoClick
+        end
+        object Button7: TButton
+          AlignWithMargins = True
+          Left = 883
+          Top = 11
+          Width = 75
+          Height = 28
+          Margins.Left = 10
+          Margins.Top = 10
+          Margins.Right = 10
+          Margins.Bottom = 10
+          Align = alRight
+          Caption = 'Fechar'
+          ImageIndex = 5
+          Images = FormPrincipal.ImageList1
+          TabOrder = 6
+          OnClick = Button7Click
+        end
+      end
+      object PanelDescricao: TPanel
         Left = 0
         Top = 0
-        Width = 969
-        Height = 532
-        Align = alClient
-        ParentBackground = False
-        TabOrder = 0
-        DesignSize = (
-          969
-          532)
-        object Splitter1: TSplitter
-          Left = 329
-          Top = 1
-          Height = 480
-          ExplicitLeft = 328
-          ExplicitTop = 176
-          ExplicitHeight = 100
-        end
-        object PanelDescricao: TPanel
-          Left = 359
-          Top = 11
-          Width = 307
-          Height = 89
-          Anchors = [akTop]
-          BevelOuter = bvNone
+        Width = 410
+        Height = 482
+        Align = alLeft
+        BevelOuter = bvNone
+        TabOrder = 1
+        object GroupBoxBuscaLocal: TGroupBox
+          Left = 0
+          Top = 0
+          Width = 410
+          Height = 482
+          Align = alClient
+          Caption = 'Busca de Local'
+          Color = clBtnFace
+          ParentBackground = False
+          ParentColor = False
           TabOrder = 0
-          object Label1: TLabel
+          object Panel4: TPanel
             Left = 2
-            Top = 8
-            Width = 50
-            Height = 13
-            Caption = 'Descri'#231#227'o:'
+            Top = 15
+            Width = 406
+            Height = 41
+            Align = alTop
+            TabOrder = 0
+            object Label1: TLabel
+              Left = 15
+              Top = 15
+              Width = 50
+              Height = 13
+              Caption = 'Descri'#231#227'o:'
+            end
+            object EditBuscaLocal: TEdit
+              Left = 71
+              Top = 12
+              Width = 314
+              Height = 21
+              TabOrder = 0
+              OnChange = EditBuscaLocalChange
+            end
+          end
+          object DBGridLocalidade: TDBGrid
+            Left = 2
+            Top = 56
+            Width = 406
+            Height = 424
+            Align = alClient
+            DataSource = DataSourceLocalidade
+            TabOrder = 1
+            TitleFont.Charset = DEFAULT_CHARSET
+            TitleFont.Color = clWindowText
+            TitleFont.Height = -11
+            TitleFont.Name = 'Tahoma'
+            TitleFont.Style = []
+            Columns = <
+              item
+                Expanded = False
+                FieldName = 'id'
+                Width = 43
+                Visible = True
+              end
+              item
+                Expanded = False
+                FieldName = 'descricao'
+                Width = 335
+                Visible = True
+              end>
           end
         end
+      end
+      object panelFundoLocal: TPanel
+        Left = 413
+        Top = 0
+        Width = 556
+        Height = 482
+        Align = alClient
+        ParentBackground = False
+        TabOrder = 2
+        object Label12: TLabel
+          Left = 34
+          Top = 19
+          Width = 50
+          Height = 13
+          Caption = 'Descri'#231#227'o:'
+        end
         object GroupBoxClima: TGroupBox
-          Left = 357
-          Top = 90
-          Width = 429
+          Left = 27
+          Top = 56
+          Width = 329
           Height = 122
-          Anchors = [akTop]
           Caption = 'Clima'
           Color = clBtnFace
           ParentBackground = False
           ParentColor = False
-          TabOrder = 1
+          TabOrder = 0
           object Label2: TLabel
             Left = 23
             Top = 24
@@ -108,7 +260,7 @@ object FormCadastroLocalidade: TFormCadastroLocalidade
             Width = 100
             Height = 21
             DataField = 'precipitacao'
-            DataSource = DataSource1
+            DataSource = DataSourceLocalidade
             Enabled = False
             TabOrder = 0
           end
@@ -118,7 +270,7 @@ object FormCadastroLocalidade: TFormCadastroLocalidade
             Width = 100
             Height = 21
             DataField = 'irrigacao'
-            DataSource = DataSource1
+            DataSource = DataSourceLocalidade
             Enabled = False
             TabOrder = 1
           end
@@ -128,22 +280,21 @@ object FormCadastroLocalidade: TFormCadastroLocalidade
             Width = 100
             Height = 21
             DataField = 'evapotranspiracao'
-            DataSource = DataSource1
+            DataSource = DataSourceLocalidade
             Enabled = False
             TabOrder = 2
           end
         end
         object GroupBoxAquifero: TGroupBox
-          Left = 356
-          Top = 218
-          Width = 430
+          Left = 27
+          Top = 200
+          Width = 329
           Height = 122
-          Anchors = [akTop]
           Caption = 'Aqu'#237'fero'
           Color = clBtnFace
           ParentBackground = False
           ParentColor = False
-          TabOrder = 2
+          TabOrder = 1
           object Label5: TLabel
             Left = 32
             Top = 56
@@ -168,7 +319,7 @@ object FormCadastroLocalidade: TFormCadastroLocalidade
             Width = 100
             Height = 21
             DataField = 'porosidadeAquifero'
-            DataSource = DataSource1
+            DataSource = DataSourceLocalidade
             Enabled = False
             TabOrder = 0
           end
@@ -178,177 +329,19 @@ object FormCadastroLocalidade: TFormCadastroLocalidade
             Width = 100
             Height = 21
             DataField = 'profundidadeAquifero'
-            DataSource = DataSource1
+            DataSource = DataSourceLocalidade
             Enabled = False
             TabOrder = 1
-          end
-        end
-        object PanelBotoes: TPanel
-          Left = 1
-          Top = 481
-          Width = 967
-          Height = 50
-          Align = alBottom
-          BevelInner = bvRaised
-          BevelOuter = bvNone
-          TabOrder = 3
-          object btnSalvar: TButton
-            Left = 215
-            Top = 15
-            Width = 75
-            Height = 25
-            Caption = 'Salvar'
-            Enabled = False
-            ImageIndex = 2
-            Images = FormPrincipal.ImageList1
-            TabOrder = 0
-            OnClick = btnSalvarClick
-          end
-          object btnEditar: TButton
-            Left = 120
-            Top = 15
-            Width = 75
-            Height = 25
-            Caption = 'Editar'
-            ImageIndex = 4
-            Images = FormPrincipal.ImageList1
-            TabOrder = 1
-            OnClick = btnEditarClick
-          end
-          object btnCancelar: TButton
-            Left = 426
-            Top = 14
-            Width = 75
-            Height = 25
-            Caption = 'Cancelar'
-            Enabled = False
-            ImageIndex = 1
-            Images = FormPrincipal.ImageList1
-            TabOrder = 2
-            OnClick = btnCancelarClick
-          end
-          object btnExcluir: TButton
-            Left = 330
-            Top = 15
-            Width = 75
-            Height = 25
-            Caption = 'Excluir'
-            Enabled = False
-            ImageIndex = 3
-            Images = FormPrincipal.ImageList1
-            TabOrder = 3
-            OnClick = btnExcluirClick
-          end
-          object DBNavigator1: TDBNavigator
-            Left = 520
-            Top = 14
-            Width = 220
-            Height = 25
-            DataSource = DataSource1
-            VisibleButtons = [nbFirst, nbPrior, nbNext, nbLast]
-            TabOrder = 4
-          end
-          object btnNovo: TButton
-            Left = 17
-            Top = 15
-            Width = 75
-            Height = 25
-            Caption = 'Novo'
-            ImageIndex = 0
-            Images = FormPrincipal.ImageList1
-            TabOrder = 5
-            OnClick = btnNovoClick
-          end
-          object Button7: TButton
-            AlignWithMargins = True
-            Left = 881
-            Top = 11
-            Width = 75
-            Height = 28
-            Margins.Left = 10
-            Margins.Top = 10
-            Margins.Right = 10
-            Margins.Bottom = 10
-            Align = alRight
-            Caption = 'Fechar'
-            ImageIndex = 5
-            Images = FormPrincipal.ImageList1
-            TabOrder = 6
-            OnClick = Button7Click
-            ExplicitHeight = 26
-          end
-        end
-        object GroupBoxBuscaLocal: TGroupBox
-          Left = 1
-          Top = 1
-          Width = 328
-          Height = 480
-          Align = alLeft
-          Caption = 'Busca de Local'
-          Color = clBtnFace
-          ParentBackground = False
-          ParentColor = False
-          TabOrder = 4
-          ExplicitHeight = 482
-          object DBGridLocalidade: TDBGrid
-            Left = 2
-            Top = 56
-            Width = 324
-            Height = 422
-            Align = alClient
-            DataSource = DataSource1
-            TabOrder = 0
-            TitleFont.Charset = DEFAULT_CHARSET
-            TitleFont.Color = clWindowText
-            TitleFont.Height = -11
-            TitleFont.Name = 'Tahoma'
-            TitleFont.Style = []
-            Columns = <
-              item
-                Expanded = False
-                FieldName = 'id'
-                Width = 32
-                Visible = True
-              end
-              item
-                Expanded = False
-                FieldName = 'descricao'
-                Width = 189
-                Visible = True
-              end>
-          end
-          object Panel4: TPanel
-            Left = 2
-            Top = 15
-            Width = 324
-            Height = 41
-            Align = alTop
-            TabOrder = 1
-            object Label12: TLabel
-              Left = 8
-              Top = 16
-              Width = 50
-              Height = 13
-              Caption = 'Descri'#231#227'o:'
-            end
-            object EditBuscaLocal: TEdit
-              Left = 72
-              Top = 12
-              Width = 241
-              Height = 21
-              TabOrder = 0
-              OnChange = EditBuscaLocalChange
-            end
           end
         end
         object DBEditDescricao: TDBEdit
-          Left = 374
-          Top = 38
-          Width = 427
+          Left = 90
+          Top = 16
+          Width = 263
           Height = 21
           DataField = 'descricao'
-          DataSource = DataSource1
-          TabOrder = 5
+          DataSource = DataSourceLocalidade
+          TabOrder = 2
         end
       end
     end
@@ -371,10 +364,9 @@ object FormCadastroLocalidade: TFormCadastroLocalidade
           Align = alClient
           BevelOuter = bvNone
           TabOrder = 0
-          ExplicitHeight = 482
           object Label7: TLabel
             Left = 23
-            Top = 35
+            Top = 18
             Width = 50
             Height = 13
             Caption = 'Descri'#231#227'o:'
@@ -387,20 +379,20 @@ object FormCadastroLocalidade: TFormCadastroLocalidade
             ExplicitTop = 24
             ExplicitHeight = 100
           end
-          object DBEdit2: TDBEdit
+          object DBEditDescAguaSup: TDBEdit
             Left = 88
-            Top = 32
-            Width = 225
+            Top = 15
+            Width = 297
             Height = 21
+            DataField = 'descricao'
             DataSource = DataSource_superficial
             TabOrder = 0
           end
           object GroupBox1: TGroupBox
             Left = 23
-            Top = 79
-            Width = 435
+            Top = 55
+            Width = 386
             Height = 178
-            Caption = 'Clima'
             Color = clBtnFace
             ParentBackground = False
             ParentColor = False
@@ -416,7 +408,7 @@ object FormCadastroLocalidade: TFormCadastroLocalidade
             end
             object Label9: TLabel
               Left = 23
-              Top = 56
+              Top = 64
               Width = 156
               Height = 13
               Caption = 'Intercepta'#231#227'o pelas plantas (%)'
@@ -425,7 +417,7 @@ object FormCadastroLocalidade: TFormCadastroLocalidade
             end
             object Label10: TLabel
               Left = 23
-              Top = 88
+              Top = 104
               Width = 166
               Height = 13
               Caption = 'Largura de faixa de conten'#231#227'o (m)'
@@ -434,7 +426,7 @@ object FormCadastroLocalidade: TFormCadastroLocalidade
             end
             object Label11: TLabel
               Left = 23
-              Top = 128
+              Top = 144
               Width = 181
               Height = 13
               Caption = 'Coeficiente de escoamento superficial'
@@ -442,43 +434,39 @@ object FormCadastroLocalidade: TFormCadastroLocalidade
               ParentColor = False
             end
             object DBEdit_Declividade: TDBEdit
-              Left = 250
-              Top = 24
+              Left = 258
+              Top = 21
               Width = 100
               Height = 21
               DataField = 'DeclividadeTerreno'
               DataSource = DataSource_superficial
-              Enabled = False
               TabOrder = 0
             end
             object DBEdit_InterceptacaoPlantas: TDBEdit
-              Left = 250
+              Left = 258
               Top = 60
               Width = 100
               Height = 21
               DataField = 'InterceptacaoPelasPlantas'
               DataSource = DataSource_superficial
-              Enabled = False
               TabOrder = 1
             end
             object DBEdit_LarguraContencao: TDBEdit
-              Left = 250
-              Top = 87
+              Left = 258
+              Top = 103
               Width = 100
               Height = 21
               DataField = 'LarguraFaixaContencao'
               DataSource = DataSource_superficial
-              Enabled = False
               TabOrder = 2
             end
             object DBEdit_CoeficienteSuper: TDBEdit
-              Left = 250
-              Top = 122
+              Left = 258
+              Top = 138
               Width = 100
               Height = 21
               DataField = 'CoeficienteEscoamento'
               DataSource = DataSource_superficial
-              Enabled = False
               TabOrder = 3
             end
           end
@@ -492,72 +480,6 @@ object FormCadastroLocalidade: TFormCadastroLocalidade
           BevelInner = bvRaised
           BevelOuter = bvNone
           TabOrder = 1
-          object Button1: TButton
-            Left = 215
-            Top = 15
-            Width = 75
-            Height = 25
-            Caption = 'Salvar'
-            Enabled = False
-            ImageIndex = 2
-            Images = FormPrincipal.ImageList1
-            TabOrder = 0
-            OnClick = btnSalvarClick
-          end
-          object Button2: TButton
-            Left = 120
-            Top = 15
-            Width = 75
-            Height = 25
-            Caption = 'Editar'
-            ImageIndex = 4
-            Images = FormPrincipal.ImageList1
-            TabOrder = 1
-            OnClick = btnEditarClick
-          end
-          object Button3: TButton
-            Left = 426
-            Top = 14
-            Width = 75
-            Height = 25
-            Caption = 'Cancelar'
-            Enabled = False
-            ImageIndex = 1
-            Images = FormPrincipal.ImageList1
-            TabOrder = 2
-            OnClick = btnCancelarClick
-          end
-          object Button4: TButton
-            Left = 330
-            Top = 15
-            Width = 75
-            Height = 25
-            Caption = 'Excluir'
-            Enabled = False
-            ImageIndex = 3
-            Images = FormPrincipal.ImageList1
-            TabOrder = 3
-            OnClick = btnExcluirClick
-          end
-          object DBNavigator2: TDBNavigator
-            Left = 520
-            Top = 14
-            Width = 220
-            Height = 25
-            DataSource = DataSource2
-            VisibleButtons = [nbFirst, nbPrior, nbNext, nbLast]
-            TabOrder = 4
-          end
-          object Button5: TButton
-            Left = 17
-            Top = 15
-            Width = 75
-            Height = 25
-            Caption = 'Novo'
-            ImageIndex = 0
-            Images = FormPrincipal.ImageList1
-            TabOrder = 5
-          end
           object Button6: TButton
             AlignWithMargins = True
             Left = 881
@@ -572,9 +494,16 @@ object FormCadastroLocalidade: TFormCadastroLocalidade
             Caption = 'Fechar'
             ImageIndex = 5
             Images = FormPrincipal.ImageList1
-            TabOrder = 6
+            TabOrder = 0
             OnClick = Button6Click
-            ExplicitHeight = 26
+          end
+          object DBNavigator2: TDBNavigator
+            Left = 2
+            Top = 8
+            Width = 340
+            Height = 33
+            DataSource = DataSource_superficial
+            TabOrder = 1
           end
         end
         object GroupBox3: TGroupBox
@@ -588,12 +517,11 @@ object FormCadastroLocalidade: TFormCadastroLocalidade
           ParentBackground = False
           ParentColor = False
           TabOrder = 2
-          ExplicitHeight = 482
           object DBGrid1: TDBGrid
             Left = 2
-            Top = 63
+            Top = 56
             Width = 348
-            Height = 415
+            Height = 422
             Align = alClient
             DataSource = DataSource_superficial
             TabOrder = 0
@@ -620,23 +548,23 @@ object FormCadastroLocalidade: TFormCadastroLocalidade
             Left = 2
             Top = 15
             Width = 348
-            Height = 48
+            Height = 41
             Align = alTop
             TabOrder = 1
             object Label13: TLabel
-              Left = 16
-              Top = 16
+              Left = 15
+              Top = 15
               Width = 50
               Height = 13
               Caption = 'Descri'#231#227'o:'
             end
-            object Edit1: TEdit
+            object EditSuperficial: TEdit
               Left = 72
               Top = 12
               Width = 265
               Height = 21
               TabOrder = 0
-              OnChange = EditBuscaLocalChange
+              OnChange = EditSuperficialChange
             end
           end
         end
@@ -645,8 +573,8 @@ object FormCadastroLocalidade: TFormCadastroLocalidade
   end
   object DataSourceLocalidade: TDataSource
     DataSet = FDQueryLocalidade
-    Left = 872
-    Top = 184
+    Left = 480
+    Top = 424
   end
   object FDQueryLocalidade: TFDQuery
     BeforePost = FDQueryLocalidadeBeforePost
@@ -654,47 +582,19 @@ object FormCadastroLocalidade: TFormCadastroLocalidade
     Connection = DataModule1.FDConnection1
     SQL.Strings = (
       'select * from localidade')
-    Left = 877
-    Top = 280
-  end
-  object DataSource1: TDataSource
-    DataSet = FDQuery1
-    Left = 872
-    Top = 248
-  end
-  object FDQuery1: TFDQuery
-    BeforePost = FDQueryLocalidadeBeforePost
-    AfterPost = FDQueryLocalidadeAfterPost
-    Connection = DataModule1.FDConnection1
-    SQL.Strings = (
-      'select * from localidade')
-    Left = 877
-    Top = 136
-  end
-  object DataSource2: TDataSource
-    DataSet = FDQuery2
-    Left = 872
-    Top = 96
-  end
-  object FDQuery2: TFDQuery
-    BeforePost = FDQueryLocalidadeBeforePost
-    AfterPost = FDQueryLocalidadeAfterPost
-    Connection = DataModule1.FDConnection1
-    SQL.Strings = (
-      'select * from localidade')
-    Left = 869
-    Top = 216
+    Left = 477
+    Top = 368
   end
   object FDQuery_superficial: TFDQuery
     Connection = DataModule1.FDConnection1
     SQL.Strings = (
       'select * from localidade_superficial')
-    Left = 876
-    Top = 336
+    Left = 628
+    Top = 368
   end
   object DataSource_superficial: TDataSource
     DataSet = FDQuery_superficial
-    Left = 884
-    Top = 400
+    Left = 628
+    Top = 424
   end
 end

@@ -1,0 +1,380 @@
+unit UnitFuncoes;
+
+interface
+
+uses Winapi.Windows, Winapi.Messages,System.SysUtils,DB,Vcl.Forms,Menus,Vcl.Dialogs,
+    // ZDataset
+    ComCtrls, StdCtrls, Classes, System.Variants,
+     IdComponent,
+     IdTCPConnection,
+     IdTCPClient,
+     IdHTTP,
+     IdBaseComponent,
+     IdMessage,
+     IdExplicitTLSClientServerBase,
+     IdMessageClient,
+     IdSMTPBase,
+     IdSMTP,
+     IdIOHandler,
+     IdIOHandlerSocket,
+     IdIOHandlerStack,
+     IdSSL,
+     IdSSLOpenSSL,
+     IdAttachmentFile,
+     IdText;
+
+type
+
+  TNodeData = class
+     sQueryName, sChaveName  : string;
+     iChave : integer;
+  end;
+
+//procedure SendAfterCancel(DataSet: TDataSet);
+//procedure SendAfterPost(DataSet: TDataSet);
+procedure SendAfterDelete(DataSet: TDataSet);
+procedure AdicionaLog(Linha, Caminho: String);
+function tbKeyIsDown(const Key: integer): boolean;
+function Crypt(Action, Src: String): String;
+function isCPF(CPF: string): boolean;
+function isCNPJ(CNPJ: string): boolean;
+function imprimeCPF(CPF: string): string;
+function imprimeCNPJ(CNPJ: string): string;
+function CreateProcessSimple(cmd: string):boolean;
+function PrimeiroNome (Nome : String) : String;
+function FormataNome(sNome: String): string;
+function EAN13( CodigoDeBarras : String ) : String;
+
+const
+  //ImageList.StateIndex=0 has some bugs, so we add one dummy image to position 0
+  cFlatUnCheck = 0;
+  cFlatChecked = 1;
+  cFlatRadioUnCheck = 3;
+  cFlatRadioChecked = 4;
+
+implementation
+
+//uses ZAbstractRODataset;
+
+uses UnitDataModule;
+
+//procedure SendAfterDelete(DataSet: TDataSet);
+//begin
+  //Try
+    // TZQuery(DataSet).Connection.StartTransaction;
+     //TZQuery(DataSet).ApplyUpdates;
+    // TZQuery(DataSet).CommitUpdates;
+    // TZQuery(DataSet).Connection.Commit;
+  // except
+    // Try TZQuery(DataSet).Connection.Rollback; Except end;
+   //   TZQuery(DataSet).CancelUpdates;
+   //  Raise;
+   //  Abort;
+  // end;
+//end;
+
+//procedure SendAfterPost(DataSet: TDataSet);
+//begin
+ // Try
+  //   TZQuery(DataSet).Connection.StartTransaction;
+  //   TZQuery(DataSet).CommitUpdates;
+  //   TZQuery(DataSet).Connection.Commit;
+  // except
+  //   Try TZQuery(DataSet).Connection.Rollback; Except end;
+  //    TZQuery(DataSet).Edit;
+  //   Raise;
+  //   Abort;
+ //  end;
+//end;
+
+//procedure SendAfterCancel(DataSet: TDataSet);
+//begin
+ //     TZQuery(DataSet).CancelUpdates;
+//end;
+
+procedure AdicionaLog(Linha, Caminho: String);
+var
+  Handle: TextFile;
+  begin
+  try
+    AssignFile(Handle,Caminho);
+     if not FileExists(Caminho) then
+       Rewrite(Handle);
+     Append(Handle);
+     WriteLn(Handle, Linha);
+   finally
+    CloseFile(Handle);
+   end;
+ end;
+
+function CreateProcessSimple(cmd: string):boolean;
+var SUInfo: TStartupInfo;
+ProcInfo: TProcessInformation;
+begin
+  FillChar(SUInfo, SizeOf(SUInfo), #0);
+  SUInfo.cb := SizeOf(SUInfo);
+  SUInfo.dwFlags := STARTF_USESHOWWINDOW;
+  SUInfo.wShowWindow := SW_HIDE;
+  result := CreateProcess(nil, PChar(cmd), nil, nil, false, CREATE_NEW_CONSOLE or NORMAL_PRIORITY_CLASS, nil, nil, SUInfo, ProcInfo);
+  if result then
+    begin
+      WaitForSingleObject(ProcInfo.hProcess, INFINITE);
+      CloseHandle(ProcInfo.hProcess);
+      CloseHandle(ProcInfo.hThread);
+    end;
+end;
+
+function Crypt(Action, Src: String): String;
+Label Fim;
+var KeyLen : Integer;
+        KeyPos : Integer;
+        OffSet : Integer;
+        Dest, Key : String;
+        SrcPos : Integer;
+        SrcAsc : Integer;
+        TmpSrcAsc : Integer;
+        Range : Integer;
+begin
+        if (Src = '') Then
+        begin
+                Result:= '';
+                Goto Fim;
+        end;
+//        Key := 'AQUI VOCE CRIA SUA CHAVE PARA CRIPTOGRAFAR';
+        Key := 'de0bb33b69289448f715488da6b4a89a';  // Ou seja TADS
+        Dest := '';
+        KeyLen := Length(Key);
+        KeyPos := 0;
+        SrcPos := 0;
+        SrcAsc := 0;
+        Range := 256;
+        if (Action = UpperCase('C')) then
+        begin
+                Randomize;
+                OffSet := Random(Range);
+                Dest := Format('%1.2x',[OffSet]);
+                for SrcPos := 1 to Length(Src) do
+                begin
+                        Application.ProcessMessages;
+                        SrcAsc := (Ord(Src[SrcPos]) + OffSet) Mod 255;
+                        if KeyPos < KeyLen then KeyPos := KeyPos + 1 else KeyPos := 1;
+
+                        SrcAsc := SrcAsc Xor Ord(Key[KeyPos]);
+                        Dest := Dest + Format('%1.2x',[SrcAsc]);
+                        OffSet := SrcAsc;
+                end;
+        end
+        Else if (Action = UpperCase('D')) then
+        begin
+                OffSet := StrToInt('$' + copy(Src,1,2));//<-- adiciona o $ entra as aspas simples
+                SrcPos := 3;
+                repeat
+                        SrcAsc := StrToInt('$' + copy(Src,SrcPos,2));//<-- adiciona o $ entra as aspas simples
+                        if (KeyPos < KeyLen) Then KeyPos := KeyPos + 1 else KeyPos := 1;
+                        TmpSrcAsc := SrcAsc Xor Ord(Key[KeyPos]);
+                        if TmpSrcAsc <= OffSet then TmpSrcAsc := 255 + TmpSrcAsc - OffSet
+                        else TmpSrcAsc := TmpSrcAsc - OffSet;
+                        Dest := Dest + Chr(TmpSrcAsc);
+                        OffSet := SrcAsc;
+                        SrcPos := SrcPos + 2;
+                until (SrcPos >= Length(Src));
+        end;
+        Result:= Dest;
+Fim:
+end;
+
+
+function isCPF(CPF: string): boolean;
+var  dig10, dig11: string;
+    s, i, r, peso: integer;
+begin
+// length - retorna o tamanho da string (CPF é um número formado por 11 dígitos)
+  if ((CPF = '00000000000') or (CPF = '11111111111') or
+      (CPF = '22222222222') or (CPF = '33333333333') or
+      (CPF = '44444444444') or (CPF = '55555555555') or
+      (CPF = '66666666666') or (CPF = '77777777777') or
+      (CPF = '88888888888') or (CPF = '99999999999') or
+      (length(CPF) <> 11))
+     then begin
+              isCPF := false;
+              exit;
+            end;
+
+// try - protege o código para eventuais erros de conversão de tipo na função StrToInt
+  try
+{ *-- Cálculo do 1o. Digito Verificador --* }
+    s := 0;
+    peso := 10;
+    for i := 1 to 9 do
+    begin
+// StrToInt converte o i-ésimo caractere do CPF em um número
+      s := s + (StrToInt(CPF[i]) * peso);
+      peso := peso - 1;
+    end;
+    r := 11 - (s mod 11);
+    if ((r = 10) or (r = 11))
+       then dig10 := '0'
+    else str(r:1, dig10); // converte um número no respectivo caractere numérico
+
+{ *-- Cálculo do 2o. Digito Verificador --* }
+    s := 0;
+    peso := 11;
+    for i := 1 to 10 do
+    begin
+      s := s + (StrToInt(CPF[i]) * peso);
+      peso := peso - 1;
+    end;
+    r := 11 - (s mod 11);
+    if ((r = 10) or (r = 11))
+       then dig11 := '0'
+    else str(r:1, dig11);
+
+{ Verifica se os digitos calculados conferem com os digitos informados. }
+    if ((dig10 = CPF[10]) and (dig11 = CPF[11]))
+       then isCPF := true
+    else isCPF := false;
+  except
+    isCPF := false
+  end;
+end;
+
+function imprimeCPF(CPF: string): string;
+begin
+  imprimeCPF := copy(CPF, 1, 3) + '.' + copy(CPF, 4, 3) + '.' +
+    copy(CPF, 7, 3) + '-' + copy(CPF, 10, 2);
+end;
+
+function tbKeyIsDown(const Key: integer): boolean;
+ begin
+ Result := GetKeyState(Key) and 128 > 0;
+ end;
+
+function PrimeiroNome (Nome : String) : String;
+var
+PNome : String;
+begin
+PNome := '';
+if pos (' ', Nome) <> 0 then
+PNome := copy (Nome, 1, pos (' ', Nome) - 1);
+Result := PNome;
+end;
+
+function FormataNome(sNome: String): string;
+const
+excecao: array[0..5] of string = (' da ', ' de ', ' do ', ' das ', ' dos ', ' e ');
+var
+tamanho, j: integer;
+i: byte;
+begin
+Result := AnsiLowerCase(sNome);
+tamanho := Length(Result);
+
+for j := 1 to tamanho do
+// Se é a primeira letra ou se o caracter anterior é um espaço
+if (j = 1) or ((j>1) and (Result[j-1]=Chr(32))) then
+Result[j] := AnsiUpperCase(Result[j])[1];
+for i := 0 to Length(excecao)-1 do
+result:= StringReplace(result,excecao[i],excecao[i],[rfReplaceAll, rfIgnoreCase]);
+end;
+
+Function EAN13( CodigoDeBarras : String ) : String;
+var nX    : Integer;
+   nPeso  : Integer;
+   nSoma  : Double;
+   nMaior : Double;
+   nDigito: Integer;
+Begin
+
+ nPeso := 3;
+ nSoma := 0;
+
+ For nX := 12 DownTo 1 do
+ Begin
+
+     nSoma := nSoma + StrToInt( CodigoDeBarras[ nX ] ) * nPeso;
+
+   If nPeso = 3 Then
+       nPeso := 1
+   Else
+       nPeso := 3;
+
+ End;
+
+ nMaior      := ( ( Trunc( nSoma / 10 ) + 1 ) * 10 );
+ nDigito  := Trunc( nMaior ) - Trunc( nSoma );
+
+ If nDigito = 10 Then
+     nDigito := 0;
+ Result := IntToStr( nDigito );
+
+End;
+// ------------fim do gera codigo de barras
+
+
+
+function isCNPJ(CNPJ: string): boolean;
+var   dig13, dig14: string;
+    sm, i, r, peso: integer;
+begin
+// length - retorna o tamanho da string do CNPJ (CNPJ é um número formado por 14 dígitos)
+  if ((CNPJ = '00000000000000') or (CNPJ = '11111111111111') or
+      (CNPJ = '22222222222222') or (CNPJ = '33333333333333') or
+      (CNPJ = '44444444444444') or (CNPJ = '55555555555555') or
+      (CNPJ = '66666666666666') or (CNPJ = '77777777777777') or
+      (CNPJ = '88888888888888') or (CNPJ = '99999999999999') or
+      (length(CNPJ) <> 14))
+     then begin
+            isCNPJ := false;
+            exit;
+          end;
+
+// "try" - protege o código para eventuais erros de conversão de tipo através da função "StrToInt"
+  try
+{ *-- Cálculo do 1o. Digito Verificador --* }
+    sm := 0;
+    peso := 2;
+    for i := 12 downto 1 do
+    begin
+// StrToInt converte o i-ésimo caractere do CNPJ em um número
+      sm := sm + (StrToInt(CNPJ[i]) * peso);
+      peso := peso + 1;
+      if (peso = 10)
+         then peso := 2;
+    end;
+    r := sm mod 11;
+    if ((r = 0) or (r = 1))
+       then dig13 := '0'
+    else str((11-r):1, dig13); // converte um número no respectivo caractere numérico
+
+{ *-- Cálculo do 2o. Digito Verificador --* }
+    sm := 0;
+    peso := 2;
+    for i := 13 downto 1 do
+    begin
+      sm := sm + (StrToInt(CNPJ[i]) * peso);
+      peso := peso + 1;
+      if (peso = 10)
+         then peso := 2;
+    end;
+    r := sm mod 11;
+    if ((r = 0) or (r = 1))
+       then dig14 := '0'
+    else str((11-r):1, dig14);
+
+{ Verifica se os digitos calculados conferem com os digitos informados. }
+    if ((dig13 = CNPJ[13]) and (dig14 = CNPJ[14]))
+       then isCNPJ := true
+    else isCNPJ := false;
+  except
+    isCNPJ := false
+  end;
+end;
+
+function imprimeCNPJ(CNPJ: string): string;
+begin
+{ máscara do CNPJ: 99.999.999.9999-99 }
+  imprimeCNPJ := copy(CNPJ, 1, 2) + '.' + copy(CNPJ, 3, 3) + '.' +
+    copy(CNPJ, 6, 3) + '.' + copy(CNPJ, 9, 4) + '-' + copy(CNPJ, 13, 2);
+end;
+
+end.
