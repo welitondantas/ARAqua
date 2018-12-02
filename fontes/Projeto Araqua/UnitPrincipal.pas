@@ -19,7 +19,7 @@ type
     Localidade1: TMenuItem;
     Agrotxicos1: TMenuItem;
     Gerais1: TMenuItem;
-    guaSuperficial1: TMenuItem;
+    reportGeral: TMenuItem;
     AlterarSenha1: TMenuItem;
     Utilitrios1: TMenuItem;
     Backup1: TMenuItem;
@@ -50,14 +50,13 @@ type
     Panel2: TPanel;
     ImageCalcular: TImage;
     Label8: TLabel;
-    Configuraes1: TMenuItem;
     Ajuda1: TMenuItem;
     Sobre1: TMenuItem;
     AlterarTema1: TMenuItem;
     Timer1: TTimer;
     CalendarView1: TCalendarView;
     Calendrio1: TMenuItem;
-    procedure ImageUserClick(Sender: TObject);
+    Usurio2: TMenuItem;
     procedure ImageAgroClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure ImageSoloClick(Sender: TObject);
@@ -76,6 +75,12 @@ type
     procedure Gerais1Click(Sender: TObject);
     procedure ImgBackupClick(Sender: TObject);
     procedure ImageCalcularClick(Sender: TObject);
+    procedure Agrotxicos1Click(Sender: TObject);
+    procedure Localidade1Click(Sender: TObject);
+    procedure Usurio2Click(Sender: TObject);
+    procedure ImageUserClick(Sender: TObject);
+    procedure Image2Click(Sender: TObject);
+    procedure reportGeralClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -98,7 +103,18 @@ implementation
 uses UnitCadastroUsuario, UnitCadastroAgrotóxico, UnitSolo,
   UnitCadastroSolo, UnitCadastroLocalidade, UnitCalculoResultado, UnitLogin,
   UnitDataModule, UnitUsuario, UnitFuncoes, UnitTema, UnitAlteraSenha,
-  UnitTrataErro, UnitBackup;
+  UnitTrataErro, UnitBackup, UnitReport;
+
+procedure TFormPrincipal.Agrotxicos1Click(Sender: TObject);
+begin
+    if FormAgrotoxico = NIL then
+      begin
+        FormAgrotoxico := TFormAgrotoxico.Create(self);
+        FormAgrotoxico.Show;
+      end
+      else
+        FormAgrotoxico.Show;
+end;
 
 procedure TFormPrincipal.AlterarSenha1Click(Sender: TObject);
 begin
@@ -233,17 +249,25 @@ begin
     begin
       if (acesso=2) then
         begin
-          paneCadLocalidade.Visible := true;
-          paneCadAgro.Visible := true;
-          paneCadSolo.Visible := true;
-          paneCadUser.Visible := true;
+          paneCadLocalidade.Visible := True;
+          paneCadAgro.Visible := True;
+          paneCadSolo.Visible := True;
+          paneCadUser.Visible := True;
+          Localidade1.Enabled := True;
+          Agrotxicos1.Enabled := True;
+          Solo1.Enabled := True;
+          Usurio2.Enabled := True;
         end
       else
         begin
-          paneCadLocalidade.Visible := false;
-          paneCadAgro.Visible := false;
-          paneCadSolo.Visible := false;
-          paneCadUser.Visible := false;
+          paneCadLocalidade.Visible := False;
+          paneCadAgro.Visible := False;
+          paneCadSolo.Visible := False;
+          paneCadUser.Visible := False;
+          Localidade1.Enabled := False;
+          Agrotxicos1.Enabled := False;
+          Solo1.Enabled := False;
+          Usurio2.Enabled := False;
         end;
 
 
@@ -323,20 +347,26 @@ begin
       FormCalculoResultado.Show;
 end;
 
-procedure TFormPrincipal.ImageUserClick(Sender: TObject);
-begin
-    if FormCadastroUsuario=NIL then
-      begin
-        FormCadastroUsuario := TFormCadastroUsuario.Create(self);
-        FormCadastroUsuario.Show;
-      end
-      else
-      FormCadastroUsuario.Show;
-end;
-
 procedure TFormPrincipal.ImgBackupClick(Sender: TObject);
 begin
   Backup1.Click;
+end;
+
+procedure TFormPrincipal.Localidade1Click(Sender: TObject);
+begin
+     if FormCadastroLocalidade = NIL then
+      begin
+        FormCadastroLocalidade := TFormCadastroLocalidade.Create(self);
+        FormCadastroLocalidade.Show;
+      end
+      else
+        FormCadastroLocalidade.Show;
+end;
+
+procedure TFormPrincipal.reportGeralClick(Sender: TObject);
+begin
+  FmReport := TFmReport.Create(self);
+  FmReport.ShowModal;
 end;
 
 procedure TFormPrincipal.rocarUsurio1Click(Sender: TObject);
@@ -361,17 +391,6 @@ end;
 
 procedure TFormPrincipal.Solo1Click(Sender: TObject);
 begin
-  FormCadastroSolo:= TFormCadastroSolo.Create(self);
-  FormCadastroSolo.ShowModal;
-end;
-
-procedure TFormPrincipal.Timer1Timer(Sender: TObject);
-begin
-  StatusBar1.Panels[1].Text := TimeToStr(Time);
-end;
-
-procedure TFormPrincipal.ImageSoloClick(Sender: TObject);
-begin
     if FormCadastroSolo = NIL then
       begin
         FormCadastroSolo := TFormCadastroSolo.Create(self);
@@ -381,15 +400,40 @@ begin
         FormCadastroSolo.Show;
 end;
 
-procedure TFormPrincipal.ImageAgroClick(Sender: TObject);
+procedure TFormPrincipal.Timer1Timer(Sender: TObject);
 begin
-    if FormAgrotoxico = NIL then
+  StatusBar1.Panels[1].Text := TimeToStr(Time);
+end;
+
+procedure TFormPrincipal.Usurio2Click(Sender: TObject);
+begin
+    if FormCadastroUsuario=NIL then
       begin
-        FormAgrotoxico := TFormAgrotoxico.Create(self);
-        FormAgrotoxico.Show;
+        FormCadastroUsuario := TFormCadastroUsuario.Create(self);
+        FormCadastroUsuario.Show;
       end
       else
-        FormAgrotoxico.Show;
+      FormCadastroUsuario.Show;
+end;
+
+procedure TFormPrincipal.ImageSoloClick(Sender: TObject);
+begin
+  Solo1.Click;
+end;
+
+procedure TFormPrincipal.ImageUserClick(Sender: TObject);
+begin
+  Usurio2.Click;
+end;
+
+procedure TFormPrincipal.Image2Click(Sender: TObject);
+begin
+ reportGeral.Click;
+end;
+
+procedure TFormPrincipal.ImageAgroClick(Sender: TObject);
+begin
+  Agrotxicos1.Click;
 end;
 
 procedure TFormPrincipal.ImageCalcularClick(Sender: TObject);
@@ -399,13 +443,7 @@ end;
 
 procedure TFormPrincipal.ImageLocalClick(Sender: TObject);
 begin
-    if FormCadastroLocalidade = NIL then
-      begin
-        FormCadastroLocalidade := TFormCadastroLocalidade.Create(self);
-        FormCadastroLocalidade.Show;
-      end
-      else
-        FormCadastroLocalidade.Show;
+  Localidade1.Click;
 end;
 
 procedure TFormPrincipal.ImageLogoutClick(Sender: TObject);

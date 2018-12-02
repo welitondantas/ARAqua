@@ -19530,7 +19530,6 @@ object FormPrincipal: TFormPrincipal
     Color = cl3DLight
     ParentBackground = False
     TabOrder = 0
-    ExplicitWidth = 1155
     object paneCadAgro: TPanel
       Left = 131
       Top = 1
@@ -26068,6 +26067,7 @@ object FormPrincipal: TFormPrincipal
           A003087400003A80400700A003087400003A80400700A003FE0FBDBE4C44DA5E
           72F80000000049454E44AE426082}
         Proportional = True
+        OnClick = Image2Click
       end
       object Label7: TLabel
         Left = 6
@@ -27228,8 +27228,6 @@ object FormPrincipal: TFormPrincipal
       item
         Width = 50
       end>
-    ExplicitTop = 689
-    ExplicitWidth = 1155
   end
   object MainMenu1: TMainMenu
     Left = 1088
@@ -27261,10 +27259,17 @@ object FormPrincipal: TFormPrincipal
       object Agrotxicos1: TMenuItem
         Caption = 'Agrot'#243'xicos'
         ShortCut = 117
+        OnClick = Agrotxicos1Click
       end
       object Localidade1: TMenuItem
         Caption = 'Localidade'
         ShortCut = 118
+        OnClick = Localidade1Click
+      end
+      object Usurio2: TMenuItem
+        Caption = 'Usu'#225'rio'
+        ShortCut = 119
+        OnClick = Usurio2Click
       end
     end
     object Clculos1: TMenuItem
@@ -27277,9 +27282,10 @@ object FormPrincipal: TFormPrincipal
     end
     object Relatrios1: TMenuItem
       Caption = '&Relat'#243'rios'
-      object guaSuperficial1: TMenuItem
+      object reportGeral: TMenuItem
         Caption = 'Gerais'
         ShortCut = 121
+        OnClick = reportGeralClick
       end
     end
     object Utilitrios1: TMenuItem
@@ -27288,9 +27294,6 @@ object FormPrincipal: TFormPrincipal
         Caption = 'Rotinas de Backup'
         ShortCut = 122
         OnClick = Backup1Click
-      end
-      object Configuraes1: TMenuItem
-        Caption = 'Configura'#231#245'es'
       end
       object Calendrio1: TMenuItem
         Caption = 'Calend'#225'rio'
@@ -27315,7 +27318,7 @@ object FormPrincipal: TFormPrincipal
     Left = 1096
     Top = 24
     Bitmap = {
-      494C0101070088006C0010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010107008800700010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000002000000001002000000000000020
       0000000000000000000000000000000000000000000000000000000000000000
       0000F7F7F7090000000000000000000000000000000000000000000000000000

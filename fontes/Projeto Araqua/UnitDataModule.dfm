@@ -13,8 +13,8 @@ object DataModule1: TDataModule1
   object FDConnection1: TFDConnection
     Params.Strings = (
       'Database=dbaraqua'
-      'User_Name=root'
-      'Password=admin'
+      'User_Name=araqua'
+      'Password=araqua'
       'DriverID=MySQL')
     Connected = True
     LoginPrompt = False

@@ -23,7 +23,8 @@ uses
   UnitFuncoes in 'UnitFuncoes.pas',
   UnitTema in 'UnitTema.pas' {FmTema},
   Vcl.Themes,
-  Vcl.Styles;
+  Vcl.Styles,
+  UnitReport in 'UnitReport.pas' {FmReport};
 
 {$R *.res}
 
@@ -33,5 +34,6 @@ begin
   Application.CreateForm(TDataModule1, DataModule1);
   Application.CreateForm(TFormPrincipal, FormPrincipal);
   Application.CreateForm(TFmSistema_Trata_Erros, FmSistema_Trata_Erros);
+  Application.CreateForm(TFmReport, FmReport);
   Application.Run;
 end.

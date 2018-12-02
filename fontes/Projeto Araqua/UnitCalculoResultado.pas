@@ -71,6 +71,10 @@ type
     FDQuerySuper: TFDQuery;
     ButtonConsultar: TButton;
     DBLookupComboBoxLocal: TDBLookupComboBox;
+    DateTimePicker2: TDateTimePicker;
+    Label2: TLabel;
+    DateTimePicker1: TDateTimePicker;
+    Label1: TLabel;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure btnSalvarClick(Sender: TObject);
     procedure realizaCalculos();
@@ -184,6 +188,9 @@ begin
   if RadioButtonAS.Checked then FDQueryResult.SQL[18] := 'and tipo = 2';
   if RadioButtonAB.Checked then FDQueryResult.SQL[18] := 'and tipo = 1';
   if RadioButtonAT.Checked then FDQueryResult.SQL[18] := '';
+  FDQueryResult.ParamByName('DATADE').AsString := DateToStr(DateTimePicker1.DateTime);
+  FDQueryResult.ParamByName('DATAATE').AsString := DateToStr(DateTimePicker2.DateTime);
+  showmessage( DateToStr(DateTimePicker1.DateTime) + ' ' + DateToStr(DateTimePicker2.DateTime));
   FDQueryResult.Active := True;
 end;
 

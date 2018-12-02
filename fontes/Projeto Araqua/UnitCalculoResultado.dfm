@@ -37,7 +37,7 @@ object FormCalculoResultado: TFormCalculoResultado
       Left = 1
       Top = 1
       Width = 534
-      Height = 80
+      Height = 116
       Align = alTop
       Color = clMenu
       ParentBackground = False
@@ -48,6 +48,20 @@ object FormCalculoResultado: TFormCalculoResultado
         Width = 52
         Height = 13
         Caption = 'Resultado:'
+      end
+      object Label2: TLabel
+        Left = 269
+        Top = 85
+        Width = 16
+        Height = 13
+        Caption = 'at'#233
+      end
+      object Label1: TLabel
+        Left = 13
+        Top = 85
+        Width = 90
+        Height = 13
+        Caption = 'Data do resultado:'
       end
       object Edit1: TEdit
         Left = 74
@@ -95,12 +109,30 @@ object FormCalculoResultado: TFormCalculoResultado
         TabOrder = 4
         OnClick = ButtonConsultarClick
       end
+      object DateTimePicker2: TDateTimePicker
+        Left = 324
+        Top = 77
+        Width = 106
+        Height = 21
+        Date = 43436.537568402770000000
+        Time = 43436.537568402770000000
+        TabOrder = 5
+      end
+      object DateTimePicker1: TDateTimePicker
+        Left = 133
+        Top = 77
+        Width = 105
+        Height = 21
+        Date = 43435.537568402770000000
+        Time = 43435.537568402770000000
+        TabOrder = 6
+      end
     end
     object DBGrid2: TDBGrid
       Left = 1
-      Top = 81
+      Top = 117
       Width = 534
-      Height = 468
+      Height = 432
       Align = alClient
       DataSource = DSResult
       TabOrder = 1
@@ -563,7 +595,12 @@ object FormCalculoResultado: TFormCalculoResultado
       'or upper(a.principioativo) like upper( :AGRO )'
       'or upper(l.descricao) like upper( :LOCAL )'
       'or r.id = :ID ) '
-      'and tipo = :tipo')
+      'and tipo = :tipo'
+      ''
+      ''
+      
+        'and date(data_resultado) >= STR_TO_DATE(:datade,'#39'%d/%m/%Y'#39') and ' +
+        'date(data_resultado) <= STR_TO_DATE(:dataate,'#39'%d/%m/%Y'#39')')
     Left = 38
     Top = 370
     ParamData = <
@@ -589,13 +626,25 @@ object FormCalculoResultado: TFormCalculoResultado
         Name = 'ID'
         DataType = ftWideString
         ParamType = ptInput
-        Value = '0'
+        Value = '1'
       end
       item
         Name = 'TIPO'
         DataType = ftWideString
         ParamType = ptInput
-        Value = '0'
+        Value = '1'
+      end
+      item
+        Name = 'DATADE'
+        DataType = ftDate
+        ParamType = ptInput
+        Value = 43435d
+      end
+      item
+        Name = 'DATAATE'
+        DataType = ftDate
+        ParamType = ptInput
+        Value = 43436d
       end>
   end
   object DSResult: TDataSource

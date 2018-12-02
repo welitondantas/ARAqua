@@ -1,0 +1,262 @@
+object FmReport: TFmReport
+  Left = 0
+  Top = 0
+  BorderIcons = [biSystemMenu]
+  BorderStyle = bsSingle
+  Caption = 'Relat'#243'rio de C'#225'lculos Realizados'
+  ClientHeight = 257
+  ClientWidth = 485
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  Position = poScreenCenter
+  OnClose = FormClose
+  PixelsPerInch = 96
+  TextHeight = 13
+  object Label1: TLabel
+    Left = 16
+    Top = 104
+    Width = 128
+    Height = 13
+    Caption = 'Data realiza'#231#227'o do c'#225'lculo:'
+  end
+  object Label2: TLabel
+    Left = 313
+    Top = 104
+    Width = 24
+    Height = 13
+    Caption = 'at'#233
+  end
+  object Label3: TLabel
+    Left = 16
+    Top = 139
+    Width = 151
+    Height = 13
+    Caption = 'Localidade, Solo ou Agrot'#243'xico:'
+  end
+  object Button1: TButton
+    Left = 88
+    Top = 176
+    Width = 129
+    Height = 41
+    Caption = 'Gerar Relat'#243'rio'
+    TabOrder = 0
+    OnClick = Button1Click
+  end
+  object GroupBox1: TGroupBox
+    Left = 16
+    Top = 16
+    Width = 449
+    Height = 65
+    Caption = ' Tipo de C'#225'lculo '
+    TabOrder = 1
+    object RadioButtonAS: TRadioButton
+      Left = 24
+      Top = 29
+      Width = 113
+      Height = 17
+      Caption = #193'gua Superficial'
+      TabOrder = 0
+    end
+    object RadioButtonAB: TRadioButton
+      Left = 208
+      Top = 29
+      Width = 113
+      Height = 17
+      Caption = #193'gua Subterr'#226'nea'
+      TabOrder = 1
+    end
+    object RadioButtonAT: TRadioButton
+      Left = 368
+      Top = 29
+      Width = 105
+      Height = 17
+      Caption = 'Todos'
+      Checked = True
+      TabOrder = 2
+      TabStop = True
+    end
+  end
+  object DateTimePicker1: TDateTimePicker
+    Left = 185
+    Top = 96
+    Width = 105
+    Height = 21
+    Date = 43435.537568402770000000
+    Time = 43435.537568402770000000
+    TabOrder = 2
+  end
+  object DateTimePicker2: TDateTimePicker
+    Left = 351
+    Top = 96
+    Width = 106
+    Height = 21
+    Date = 43436.537568402770000000
+    Time = 43436.537568402770000000
+    TabOrder = 3
+  end
+  object Edit1: TEdit
+    Left = 184
+    Top = 136
+    Width = 273
+    Height = 21
+    TabOrder = 4
+  end
+  object Button2: TButton
+    Left = 264
+    Top = 176
+    Width = 129
+    Height = 41
+    Caption = 'Fechar'
+    TabOrder = 5
+    OnClick = Button2Click
+  end
+  object FDQueryRep: TFDQuery
+    Active = True
+    Connection = DataModule1.FDConnection1
+    SQL.Strings = (
+      
+        'SELECT case tipo when 1 then '#39#193'gua Sub.'#39' when 2 then '#39#193'gua Sup.'#39 +
+        ' end as Tipo,'
+      'r.id,'
+      'r.recargahidrica Recarga,'
+      'r.concentracaoestimada Concentracao,'
+      's.nome,'
+      'a.principioativo,'
+      'l.descricao'
+      'from resultado r'
+      'left join solo s on'
+      's.id = r.solo_id'
+      'left join localidade l on'
+      'l.id = r.localidade_id'
+      'left join agrotoxico a on'
+      'a.id = r.agrotoxico_id'
+      'where ( upper(s.nome) like upper( :SOLO )'
+      'or upper(a.principioativo) like upper( :AGRO )'
+      'or upper(l.descricao) like upper( :LOCAL )'
+      'or r.id = :ID ) '
+      'and tipo = :tipo'
+      'and data_resultado between :datade and :dataate')
+    Left = 376
+    Top = 136
+    ParamData = <
+      item
+        Name = 'SOLO'
+        DataType = ftWideString
+        ParamType = ptInput
+        Value = '%%'
+      end
+      item
+        Name = 'AGRO'
+        DataType = ftWideString
+        ParamType = ptInput
+        Value = '%%'
+      end
+      item
+        Name = 'LOCAL'
+        DataType = ftWideString
+        ParamType = ptInput
+        Value = '%'
+      end
+      item
+        Name = 'ID'
+        DataType = ftWideString
+        ParamType = ptInput
+        Value = '%%'
+      end
+      item
+        Name = 'TIPO'
+        DataType = ftWideString
+        ParamType = ptInput
+        Value = '1'
+      end
+      item
+        Name = 'DATADE'
+        DataType = ftWideString
+        ParamType = ptInput
+        Value = '2018/12/01'
+      end
+      item
+        Name = 'DATAATE'
+        DataType = ftWideString
+        ParamType = ptInput
+        Value = '2018/12/02'
+      end>
+  end
+  object DataSourceRep: TDataSource
+    DataSet = FDQueryRep
+    Left = 376
+    Top = 192
+  end
+  object frxReportRep: TfrxReport
+    Version = '5.3.14'
+    DotMatrixReport = False
+    IniFile = '\Software\Fast Reports'
+    PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
+    PreviewOptions.Zoom = 1.000000000000000000
+    PrintOptions.Printer = 'Default'
+    PrintOptions.PrintOnSheet = 0
+    ReportOptions.CreateDate = 43436.554412048610000000
+    ReportOptions.LastChange = 43436.554412048610000000
+    ScriptLanguage = 'PascalScript'
+    ScriptText.Strings = (
+      ''
+      'begin'
+      ''
+      'end.')
+    Left = 432
+    Top = 136
+    Datasets = <>
+    Variables = <>
+    Style = <>
+    object Data: TfrxDataPage
+      Height = 1000.000000000000000000
+      Width = 1000.000000000000000000
+    end
+    object Page1: TfrxReportPage
+      PaperWidth = 210.000000000000000000
+      PaperHeight = 297.000000000000000000
+      PaperSize = 9
+      LeftMargin = 10.000000000000000000
+      RightMargin = 10.000000000000000000
+      TopMargin = 10.000000000000000000
+      BottomMargin = 10.000000000000000000
+    end
+  end
+  object frxDBDatasetRep: TfrxDBDataset
+    UserName = 'frxDBDataset1'
+    CloseDataSource = False
+    DataSource = DataSourceRep
+    BCDToCurrency = False
+    Left = 432
+    Top = 96
+  end
+  object frxPDFExportRep: TfrxPDFExport
+    UseFileCache = True
+    ShowProgress = True
+    OverwritePrompt = False
+    DataOnly = False
+    PrintOptimized = False
+    Outline = False
+    Background = False
+    HTMLTags = True
+    Quality = 95
+    Transparency = False
+    Author = 'FastReport'
+    Subject = 'FastReport PDF export'
+    ProtectionFlags = [ePrint, eModify, eCopy, eAnnot]
+    HideToolbar = False
+    HideMenubar = False
+    HideWindowUI = False
+    FitWindow = False
+    CenterWindow = False
+    PrintScaling = False
+    PdfA = False
+    Left = 432
+    Top = 192
+  end
+end
