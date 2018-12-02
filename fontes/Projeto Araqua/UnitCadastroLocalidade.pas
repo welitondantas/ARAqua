@@ -14,8 +14,6 @@ type
   TFormCadastroLocalidade = class(TForm)
     DataSourceLocalidade: TDataSource;
     FDQueryLocalidade: TFDQuery;
-    PageControl1: TPageControl;
-    TabSheet1: TTabSheet;
     PanelDescricao: TPanel;
     GroupBoxClima: TGroupBox;
     Label2: TLabel;
@@ -39,24 +37,13 @@ type
     GroupBoxBuscaLocal: TGroupBox;
     DBGridLocalidade: TDBGrid;
     EditBuscaLocal: TEdit;
-    TabSheet2: TTabSheet;
-    Panel1: TPanel;
-    Panel2: TPanel;
-    Label7: TLabel;
-    Panel3: TPanel;
-    GroupBox3: TGroupBox;
-    DBGrid1: TDBGrid;
-    FDQuery_superficial: TFDQuery;
-    DataSource_superficial: TDataSource;
-    Button6: TButton;
     Button7: TButton;
     Panel4: TPanel;
     Splitter1: TSplitter;
     DBEditDescricao: TDBEdit;
-    DBEditDescAguaSup: TDBEdit;
-    Panel5: TPanel;
-    EditSuperficial: TEdit;
-    Label13: TLabel;
+    panelFundoLocal: TPanel;
+    Label1: TLabel;
+    Label12: TLabel;
     GroupBox1: TGroupBox;
     Label8: TLabel;
     Label9: TLabel;
@@ -66,11 +53,8 @@ type
     DBEdit_InterceptacaoPlantas: TDBEdit;
     DBEdit_LarguraContencao: TDBEdit;
     DBEdit_CoeficienteSuper: TDBEdit;
-    Splitter2: TSplitter;
-    panelFundoLocal: TPanel;
-    Label1: TLabel;
-    Label12: TLabel;
-    DBNavigator2: TDBNavigator;
+    DBRadioGroup1: TDBRadioGroup;
+    ButtonConsultar: TButton;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure btnSalvarClick(Sender: TObject);
     procedure btnEditarClick(Sender: TObject);
@@ -83,7 +67,7 @@ type
     procedure FormCreate(Sender: TObject);
     procedure Button7Click(Sender: TObject);
     procedure Button6Click(Sender: TObject);
-    procedure EditSuperficialChange(Sender: TObject);
+    procedure ButtonConsultarClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -108,6 +92,10 @@ begin
   DBEditEvapotranspiracao.Enabled := false;
   DBEditPorosidade.Enabled := false;
   DBEditProfundidade.Enabled := false;
+  DBEdit_Declividade.Enabled := false;
+  DBEdit_InterceptacaoPlantas.Enabled := false;
+  DBEdit_LarguraContencao.Enabled := false;
+  DBEdit_CoeficienteSuper.Enabled := false;
   btnEditar.Enabled := true;
   btnNovo.Enabled := true;
   btnSalvar.Enabled := false;
@@ -124,6 +112,10 @@ begin
   DBEditEvapotranspiracao.Enabled := true;
   DBEditPorosidade.Enabled := true;
   DBEditProfundidade.Enabled := true;
+  DBEdit_Declividade.Enabled := True;
+  DBEdit_InterceptacaoPlantas.Enabled := True;
+  DBEdit_LarguraContencao.Enabled := True;
+  DBEdit_CoeficienteSuper.Enabled := True;
   btnEditar.Enabled := false;
   btnNovo.Enabled := false;
   btnSalvar.Enabled := true;
@@ -154,6 +146,10 @@ begin
   DBEditEvapotranspiracao.Enabled := true;
   DBEditPorosidade.Enabled := true;
   DBEditProfundidade.Enabled := true;
+  DBEdit_Declividade.Enabled := True;
+  DBEdit_InterceptacaoPlantas.Enabled := True;
+  DBEdit_LarguraContencao.Enabled := True;
+  DBEdit_CoeficienteSuper.Enabled := True;
   btnEditar.Enabled := false;
   btnNovo.Enabled := false;
   btnSalvar.Enabled := true;
@@ -170,6 +166,10 @@ begin
   DBEditEvapotranspiracao.Enabled := false;
   DBEditPorosidade.Enabled := false;
   DBEditProfundidade.Enabled := false;
+  DBEdit_Declividade.Enabled := false;
+  DBEdit_InterceptacaoPlantas.Enabled := False;
+  DBEdit_LarguraContencao.Enabled := False;
+  DBEdit_CoeficienteSuper.Enabled := False;
   btnEditar.Enabled := true;
   btnNovo.Enabled := true;
   btnSalvar.Enabled := false;
@@ -187,26 +187,16 @@ begin
   Close;
 end;
 
-procedure TFormCadastroLocalidade.EditSuperficialChange(Sender: TObject);
+procedure TFormCadastroLocalidade.ButtonConsultarClick(Sender: TObject);
 begin
-  with FDQuery_superficial do
-    begin
-      Close;
-      SQL.Text := 'select * from localidade_superficial where descricao like :descricao';
-      ParamByName('descricao').Value := '%' + EditSuperficial.Text + '%';
-      Open;
-    end;
+  FDQueryLocalidade.Active := False;
+  FDQueryLocalidade.ParamByName('local').AsString := '%'+EditBuscaLocal.Text+'%';
+  FDQueryLocalidade.Active := True;
 end;
 
 procedure TFormCadastroLocalidade.EditBuscaLocalChange(Sender: TObject);
 begin
-  with FDQueryLocalidade do
-    begin
-      Close;
-      SQL.Text := 'select * from localidade where descricao like :descricao';
-      ParamByName('descricao').Value := '%' + EditBuscaLocal.Text + '%';
-      Open;
-    end;
+  ButtonConsultar.Click;
 end;
 
 procedure TFormCadastroLocalidade.FDQueryLocalidadeAfterPost(DataSet: TDataSet);
@@ -225,12 +215,20 @@ begin
   local.Evapotranspiracao := StrToFloat(DBEditEvapotranspiracao.Text);
   local.PorosidadeAquifero := StrToFloat(DBEditPorosidade.Text);
   local.ProfundidadeAquifero := StrToInt(DBEditProfundidade.Text);
+  local.Decliv := StrToFloat(DBEdit_Declividade.Text);
+  local.Interplan := StrToFloat(DBEdit_InterceptacaoPlantas.Text);
+  local.Fxcont := StrToFloat(DBEdit_LarguraContencao.Text);
+  local.Coefe := StrToFloat(DBEdit_CoeficienteSuper.Text);
   FDQueryLocalidade.FieldByName('descricao').AsString := local.Descricao;
   FDQueryLocalidade.FieldByName('precipitacao').AsFloat := local.Precipitacao;
   FDQueryLocalidade.FieldByName('irrigacao').AsFloat := local.Irrigacao;
   FDQueryLocalidade.FieldByName('evapotranspiracao').AsFloat := local.Evapotranspiracao;
   FDQueryLocalidade.FieldByName('porosidadeAquifero').AsFloat := local.PorosidadeAquifero;
   FDQueryLocalidade.FieldByName('profundidadeAquifero').AsInteger := local.ProfundidadeAquifero;
+  FDQueryLocalidade.FieldByName('decliv').AsFloat := local.Decliv;
+  FDQueryLocalidade.FieldByName('interplan').AsFloat := local.Interplan;
+  FDQueryLocalidade.FieldByName('fxcont').AsFloat := local.Fxcont;
+  FDQueryLocalidade.FieldByName('coefe').AsFloat := local.Coefe;
 end;
 
 procedure TFormCadastroLocalidade.FormClose(Sender: TObject;
@@ -242,8 +240,7 @@ end;
 
 procedure TFormCadastroLocalidade.FormCreate(Sender: TObject);
 begin
-  FDQueryLocalidade.Active := True;
-  FDQuery_superficial.Active := True;
+  ButtonConsultar.Click;
 end;
 
 end.

@@ -8,22 +8,26 @@ interface
       private
         FId: integer;
         FAcesso: integer;
+        FTema: integer;
         FSenha: String;
         FLogin: String;
         FNome: String;
         procedure SetAcesso(const Value: integer);
         procedure SetId(const Value: integer);
+        procedure SetTema(const Value: integer);
         procedure SetLogin(const Value: String);
         procedure SetNome(const Value: String);
         procedure SetSenha(const Value: String);
         function getAcesso: integer;
         function getId: integer;
+        function getTema: integer;
         function getLogin: String;
         function getNome: String;
         function getSenha: String;
 
       published
         property Id: integer read getId write SetId;
+        property Tema: integer read getTema write SetTema;
         property Nome: String read getNome write SetNome;
         property Login: String read getLogin write SetLogin;
         property Senha: String read getSenha write SetSenha;
@@ -58,6 +62,11 @@ begin
   Result := FSenha;
 end;
 
+function TUsuario.getTema: integer;
+begin
+  Result := FTema;
+end;
+
 procedure TUsuario.SetAcesso(const Value: integer);
 begin
   FAcesso := Value;
@@ -81,6 +90,11 @@ end;
 procedure TUsuario.SetSenha(const Value: String);
 begin
   FSenha := Value;
+end;
+
+procedure TUsuario.SetTema(const Value: integer);
+begin
+  FTema := Value;
 end;
 
 end.

@@ -27,7 +27,6 @@ object FormAgrotoxico: TFormAgrotoxico
     Align = alClient
     ParentBackground = False
     TabOrder = 0
-    ExplicitHeight = 406
     DesignSize = (
       843
       403)
@@ -48,7 +47,6 @@ object FormAgrotoxico: TFormAgrotoxico
       Align = alLeft
       Caption = 'Busca de Agrot'#243'xicos'
       TabOrder = 1
-      ExplicitHeight = 404
       object DBGridAgro: TDBGrid
         Left = 2
         Top = 62
@@ -116,7 +114,6 @@ object FormAgrotoxico: TFormAgrotoxico
       Height = 401
       Align = alClient
       TabOrder = 2
-      ExplicitHeight = 404
       object Splitter1: TSplitter
         Left = 1
         Top = 1
@@ -125,105 +122,58 @@ object FormAgrotoxico: TFormAgrotoxico
         ExplicitTop = 40
         ExplicitHeight = 100
       end
-      object PanelPrincipio: TPanel
+      object GroupBox1: TGroupBox
         Left = 28
-        Top = 32
-        Width = 221
-        Height = 73
+        Top = 112
+        Width = 381
+        Height = 177
+        Caption = ' Camadas '
         TabOrder = 0
-        object Label1: TLabel
-          Left = 16
-          Top = 9
-          Width = 71
-          Height = 13
-          Caption = 'Princ'#237'pio Ativo:'
-        end
-        object DBEditPrincipioAtivo: TDBEdit
-          Left = 16
-          Top = 28
-          Width = 185
-          Height = 21
-          DataField = 'principioAtivo'
-          DataSource = DataSourceAgro
-          Enabled = False
-          TabOrder = 0
-        end
-      end
-      object PanelDose: TPanel
-        Left = 266
-        Top = 32
-        Width = 215
-        Height = 73
-        TabOrder = 1
-        object Label2: TLabel
-          Left = 16
-          Top = 9
-          Width = 61
-          Height = 13
-          Caption = 'Dose (g/ha):'
-        end
-        object DBEditDose: TDBEdit
-          Left = 16
-          Top = 28
-          Width = 100
-          Height = 21
-          DataField = 'dose'
-          DataSource = DataSourceAgro
-          Enabled = False
-          TabOrder = 0
-        end
-      end
-      object PanelCamadas: TPanel
-        Left = 28
-        Top = 125
-        Width = 453
-        Height = 153
-        TabOrder = 2
         object Label3: TLabel
-          Left = 15
-          Top = 14
+          Left = 23
+          Top = 30
           Width = 173
           Height = 13
           Caption = 'Coeficiente de Sor'#231#227'o - Koc - (mL/g)'
         end
         object Label4: TLabel
-          Left = 18
-          Top = 36
+          Left = 26
+          Top = 52
           Width = 52
           Height = 13
           Caption = 'Camada 1:'
         end
-        object Label5: TLabel
-          Left = 18
-          Top = 63
-          Width = 52
-          Height = 13
-          Caption = 'Camada 2:'
-        end
-        object Label6: TLabel
-          Left = 18
-          Top = 119
-          Width = 52
-          Height = 13
-          Caption = 'Camada 4:'
-        end
-        object Label7: TLabel
-          Left = 18
-          Top = 90
-          Width = 52
-          Height = 13
-          Caption = 'Camada 3:'
-        end
         object Label9: TLabel
-          Left = 235
-          Top = 14
+          Left = 259
+          Top = 30
           Width = 71
           Height = 13
           Caption = 'Meia-vida (dia)'
         end
+        object Label5: TLabel
+          Left = 26
+          Top = 79
+          Width = 52
+          Height = 13
+          Caption = 'Camada 2:'
+        end
+        object Label7: TLabel
+          Left = 26
+          Top = 106
+          Width = 52
+          Height = 13
+          Caption = 'Camada 3:'
+        end
+        object Label6: TLabel
+          Left = 26
+          Top = 138
+          Width = 52
+          Height = 13
+          Caption = 'Camada 4:'
+        end
         object DBEditKocCamada1: TDBEdit
-          Left = 84
-          Top = 33
+          Left = 108
+          Top = 49
           Width = 100
           Height = 21
           DataField = 'coeficienteSorcaoCam1'
@@ -231,75 +181,111 @@ object FormAgrotoxico: TFormAgrotoxico
           Enabled = False
           TabOrder = 0
         end
-        object DBEditKocCamada2: TDBEdit
-          Left = 84
-          Top = 60
-          Width = 100
-          Height = 21
-          DataField = 'coeficienteSorcaoCam2'
-          DataSource = DataSourceAgro
-          Enabled = False
-          TabOrder = 1
-        end
-        object DBEditKocCamada3: TDBEdit
-          Left = 84
-          Top = 87
-          Width = 100
-          Height = 21
-          DataField = 'coeficienteSorcaoCam3'
-          DataSource = DataSourceAgro
-          Enabled = False
-          TabOrder = 2
-        end
-        object DBEditKocCamada4: TDBEdit
-          Left = 84
-          Top = 114
-          Width = 100
-          Height = 21
-          DataField = 'coeficienteSorcaoCam4'
-          DataSource = DataSourceAgro
-          Enabled = False
-          TabOrder = 3
-        end
         object DBEditMeiaVidaCam1: TDBEdit
-          Left = 237
-          Top = 33
+          Left = 261
+          Top = 49
           Width = 100
           Height = 21
           DataField = 'meiaVidaCam1'
           DataSource = DataSourceAgro
           Enabled = False
-          TabOrder = 4
+          TabOrder = 1
+        end
+        object DBEditKocCamada2: TDBEdit
+          Left = 108
+          Top = 76
+          Width = 100
+          Height = 21
+          DataField = 'coeficienteSorcaoCam2'
+          DataSource = DataSourceAgro
+          Enabled = False
+          TabOrder = 2
         end
         object DBEditMeiaVidaCam2: TDBEdit
-          Left = 237
-          Top = 60
+          Left = 261
+          Top = 76
           Width = 100
           Height = 21
           DataField = 'meiaVidaCam2'
           DataSource = DataSourceAgro
           Enabled = False
-          TabOrder = 5
+          TabOrder = 3
         end
         object DBEditMeiaVidaCam3: TDBEdit
-          Left = 237
-          Top = 87
+          Left = 261
+          Top = 103
           Width = 100
           Height = 21
           DataField = 'meiaVidaCam3'
           DataSource = DataSourceAgro
           Enabled = False
+          TabOrder = 4
+        end
+        object DBEditKocCamada3: TDBEdit
+          Left = 108
+          Top = 103
+          Width = 100
+          Height = 21
+          DataField = 'coeficienteSorcaoCam3'
+          DataSource = DataSourceAgro
+          Enabled = False
+          TabOrder = 5
+        end
+        object DBEditKocCamada4: TDBEdit
+          Left = 108
+          Top = 130
+          Width = 100
+          Height = 21
+          DataField = 'coeficienteSorcaoCam4'
+          DataSource = DataSourceAgro
+          Enabled = False
           TabOrder = 6
         end
         object DBEditMeiaVidaCam4: TDBEdit
-          Left = 237
-          Top = 114
+          Left = 261
+          Top = 130
           Width = 100
           Height = 21
           DataField = 'meiaVidaCam4'
           DataSource = DataSourceAgro
           Enabled = False
           TabOrder = 7
+        end
+      end
+      object GroupBox2: TGroupBox
+        Left = 28
+        Top = 25
+        Width = 245
+        Height = 72
+        Caption = ' Princ'#237'pio Ativo '
+        TabOrder = 1
+        object DBEditPrincipioAtivo: TDBEdit
+          Left = 17
+          Top = 28
+          Width = 209
+          Height = 21
+          DataField = 'principioAtivo'
+          DataSource = DataSourceAgro
+          Enabled = False
+          TabOrder = 0
+        end
+      end
+      object GroupBox3: TGroupBox
+        Left = 279
+        Top = 25
+        Width = 129
+        Height = 72
+        Caption = ' Dose (g/ha) '
+        TabOrder = 2
+        object DBEditDose: TDBEdit
+          Left = 12
+          Top = 28
+          Width = 100
+          Height = 21
+          DataField = 'dose'
+          DataSource = DataSourceAgro
+          Enabled = False
+          TabOrder = 0
         end
       end
     end
@@ -395,13 +381,12 @@ object FormAgrotoxico: TFormAgrotoxico
       Images = FormPrincipal.ImageList1
       TabOrder = 6
       OnClick = Button1Click
-      ExplicitHeight = 25
     end
   end
   object DataSourceAgro: TDataSource
     DataSet = FDQueryAgro
-    Left = 608
-    Top = 296
+    Left = 480
+    Top = 368
   end
   object FDQueryAgro: TFDQuery
     BeforePost = FDQueryAgroBeforePost
@@ -409,7 +394,7 @@ object FormAgrotoxico: TFormAgrotoxico
     Connection = DataModule1.FDConnection1
     SQL.Strings = (
       'select * from agrotoxico')
-    Left = 528
-    Top = 296
+    Left = 400
+    Top = 368
   end
 end

@@ -9,22 +9,17 @@ uses
   FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS,
   FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt,
   FireDAC.Comp.DataSet, FireDAC.Comp.Client, UnitAgrotoxico, UnitLocalidade, UnitCalculo,
-  UnitSolo, Vcl.Grids, Vcl.DBGrids;
+  UnitSolo, Vcl.Grids, Vcl.DBGrids, Vcl.Buttons;
 
 type
   TFormCalculoResultado = class(TForm)
-    GroupBoxLocal: TGroupBox;
-    GroupBoxSolo: TGroupBox;
     GroupBoxAgrotoxico: TGroupBox;
     GroupBox4: TGroupBox;
-    Label3: TLabel;
     CheckBoxInserirManual: TCheckBox;
     EditDoseManual: TEdit;
     Panel5: TPanel;
     FDQueryResultado: TFDQuery;
     DataSourceResultado: TDataSource;
-    DBLookupComboSup: TDBLookupComboBox;
-    DBLookupComboBoxSolo: TDBLookupComboBox;
     DBLookupComboAgro: TDBLookupComboBox;
     FDQuerySolo: TFDQuery;
     FDQueryLocalidade: TFDQuery;
@@ -54,9 +49,6 @@ type
     btnNovaConsulta: TButton;
     DBNavigator2: TDBNavigator;
     Splitter1: TSplitter;
-    GroupBox3: TGroupBox;
-    RadioButtonSup: TRadioButton;
-    RadioButtonSub: TRadioButton;
     RadioButtonAS: TRadioButton;
     RadioButtonAB: TRadioButton;
     RadioButtonAT: TRadioButton;
@@ -67,14 +59,58 @@ type
     Label10: TLabel;
     DBEditConcentracaoEstimada: TDBEdit;
     GroupBoxSub: TGroupBox;
-    DataSourceSuper: TDataSource;
-    FDQuerySuper: TFDQuery;
     ButtonConsultar: TButton;
     DBLookupComboBoxLocal: TDBLookupComboBox;
     DateTimePicker2: TDateTimePicker;
     Label2: TLabel;
     DateTimePicker1: TDateTimePicker;
     Label1: TLabel;
+    DBEdit1: TDBEdit;
+    Label4: TLabel;
+    GroupBox3: TGroupBox;
+    DBEdit2: TDBEdit;
+    DBEdit3: TDBEdit;
+    DBEdit4: TDBEdit;
+    DBEdit5: TDBEdit;
+    DBEdit6: TDBEdit;
+    DBEdit7: TDBEdit;
+    DBEdit8: TDBEdit;
+    DBEdit9: TDBEdit;
+    Label5: TLabel;
+    Label6: TLabel;
+    Label7: TLabel;
+    Label8: TLabel;
+    Label11: TLabel;
+    GroupBoxSolo: TGroupBox;
+    Label12: TLabel;
+    Label14: TLabel;
+    Label15: TLabel;
+    Label16: TLabel;
+    Label17: TLabel;
+    DBLookupComboBoxSolo: TDBLookupComboBox;
+    DBEdit10: TDBEdit;
+    DBEdit11: TDBEdit;
+    DBEdit12: TDBEdit;
+    DBEdit13: TDBEdit;
+    DBEdit14: TDBEdit;
+    DBEdit15: TDBEdit;
+    DBEdit16: TDBEdit;
+    DBEdit17: TDBEdit;
+    DBEdit18: TDBEdit;
+    DBEdit19: TDBEdit;
+    DBEdit20: TDBEdit;
+    DBEdit21: TDBEdit;
+    DBEdit22: TDBEdit;
+    DBEdit23: TDBEdit;
+    DBEdit24: TDBEdit;
+    DBEdit25: TDBEdit;
+    Label18: TLabel;
+    Label19: TLabel;
+    Label20: TLabel;
+    SpeedButtonAgro: TSpeedButton;
+    SpeedButton1: TSpeedButton;
+    SpeedButton2: TSpeedButton;
+    DBRadioGroup1: TDBRadioGroup;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure btnSalvarClick(Sender: TObject);
     procedure realizaCalculos();
@@ -93,12 +129,14 @@ type
     procedure CheckBoxInserirManualClick(Sender: TObject);
     procedure Button1Click(Sender: TObject);
     procedure Edit1Change(Sender: TObject);
-    procedure RadioButtonSubClick(Sender: TObject);
-    procedure RadioButtonSupClick(Sender: TObject);
     procedure ButtonConsultarClick(Sender: TObject);
     procedure RadioButtonASClick(Sender: TObject);
     procedure RadioButtonABClick(Sender: TObject);
     procedure RadioButtonATClick(Sender: TObject);
+    procedure DataSourceResultadoDataChange(Sender: TObject; Field: TField);
+    procedure SpeedButton1Click(Sender: TObject);
+    procedure SpeedButton2Click(Sender: TObject);
+    procedure SpeedButtonAgroClick(Sender: TObject);
 
   private
     { Private declarations }
@@ -185,12 +223,12 @@ begin
   FDQueryResult.ParamByName('LOCAL').AsString := '%'+Edit1.Text+'%';
   FDQueryResult.ParamByName('SOLO').AsString := '%'+Edit1.Text+'%';
   FDQueryResult.ParamByName('ID').AsString := Edit1.Text;
-  if RadioButtonAS.Checked then FDQueryResult.SQL[18] := 'and tipo = 2';
-  if RadioButtonAB.Checked then FDQueryResult.SQL[18] := 'and tipo = 1';
+  if RadioButtonAS.Checked then FDQueryResult.SQL[18] := 'and r.tipo = 2';
+  if RadioButtonAB.Checked then FDQueryResult.SQL[18] := 'and r.tipo = 1';
   if RadioButtonAT.Checked then FDQueryResult.SQL[18] := '';
   FDQueryResult.ParamByName('DATADE').AsString := DateToStr(DateTimePicker1.DateTime);
   FDQueryResult.ParamByName('DATAATE').AsString := DateToStr(DateTimePicker2.DateTime);
-  showmessage( DateToStr(DateTimePicker1.DateTime) + ' ' + DateToStr(DateTimePicker2.DateTime));
+//  showmessage( DateToStr(DateTimePicker1.DateTime) + ' ' + DateToStr(DateTimePicker2.DateTime));
   FDQueryResult.Active := True;
 end;
 
@@ -318,6 +356,14 @@ begin
     end;
 end;
 
+procedure TFormCalculoResultado.DataSourceResultadoDataChange(Sender: TObject;
+  Field: TField);
+begin
+  FDQueryLocalidade.Active := False;
+  FDQueryLocalidade.ParamByName('tipo').AsString := FDQueryResultado.FieldByName('tipo').AsString;
+  FDQueryLocalidade.Active := True;
+end;
+
 procedure TFormCalculoResultado.Edit1Change(Sender: TObject);
 begin
   ButtonConsultar.Click;
@@ -325,7 +371,7 @@ end;
 
 procedure TFormCalculoResultado.FDQueryResultadoAfterPost(DataSet: TDataSet);
 begin
-  Application.MessageBox('Consulta salva com sucesso!', 'Consulta salva');
+  Application.MessageBox('Cálculo gravado com sucesso!', 'Cálculo realizado');
 end;
 
 procedure TFormCalculoResultado.FDQueryResultadoBeforePost(DataSet: TDataSet);
@@ -346,6 +392,7 @@ begin
     FieldByName('solo_id').AsInteger := res.Id_Solo;
     FieldByName('agrotoxico_id').AsInteger := res.Id_Agrotoxico;
     FieldByName('localidade_id').AsInteger := res.Id_Localidade;
+    FieldByName('data_resultado').AsDateTime := now;
   end;
 end;
 
@@ -361,14 +408,12 @@ begin
   FDQueryResult.Active := True;
   FDQueryResultado.Active := True;
   FDQuerySolo.Active := True;
-  FDQueryLocalidade.Active := True;
-  FDQuerySuper.Active := True;
+//  FDQueryLocalidade.Active := True;
   FDQueryAgro.Active := True;
   FDQueryResultado.Insert;
-  DBLookupComboBoxLocal.KeyValue := -1;
+//  DBLookupComboBoxLocal.KeyValue := -1;
   DBLookupComboBoxSolo.KeyValue := -1;
   DBLookupComboAgro.KeyValue := -1;
-  DBLookupComboSup.KeyValue := -1;
   ButtonConsultar.Click;
 end;
 
@@ -385,35 +430,6 @@ end;
 procedure TFormCalculoResultado.RadioButtonATClick(Sender: TObject);
 begin
  ButtonConsultar.Click;
-end;
-
-procedure TFormCalculoResultado.RadioButtonSubClick(Sender: TObject);
-begin
- if RadioButtonSub.Checked then
- begin
-    DBLookupComboBoxLocal.Enabled := True;
-    DBLookupComboSup.Enabled := False;
- end
- else
- begin
-    DBLookupComboBoxLocal.Enabled := False;
-    DBLookupComboSup.Enabled := True;
- end;
-end;
-
-procedure TFormCalculoResultado.RadioButtonSupClick(Sender: TObject);
-begin
- if RadioButtonSub.Checked then
- begin
-    DBLookupComboBoxLocal.Enabled := True;
-    DBLookupComboSup.Enabled := False;
- end
- else
- begin
-    DBLookupComboBoxLocal.Enabled := False;
-    DBLookupComboSup.Enabled := True;
- end;
-
 end;
 
 procedure TFormCalculoResultado.realizaCalculos;
@@ -460,7 +476,7 @@ begin
         end;
       agro.Dose := StrToFloat(EditDoseManual.Text);
     end
-  else
+    else
     begin
       agro.Dose := FDQueryAgro.FieldByName('dose').AsFloat;
     end;
@@ -469,7 +485,13 @@ begin
   local.Evapotranspiracao := FDQueryLocalidade.FieldByName('evapotranspiracao').AsFloat;
   local.PorosidadeAquifero := FDQueryLocalidade.FieldByName('porosidadeAquifero').AsFloat;
   local.ProfundidadeAquifero := FDQueryLocalidade.FieldByName('profundidadeAquifero').AsInteger;
-
+  local.Decliv := FDQueryLocalidade.FieldByName('decliv').AsFloat;
+  local.Interplan := FDQueryLocalidade.FieldByName('interplan').AsFloat;
+  local.Fxcont := FDQueryLocalidade.FieldByName('fxcont').AsFloat;
+  local.Coefe := FDQueryLocalidade.FieldByName('coefe').AsFloat;
+  // caso calculo subterraneo
+ if DBRadioGroup1.ItemIndex = 0 then
+  begin
   //verifica se há novas camadas. Se houver, é realizado um novo calculo sobre o af
   af:= calculaCamada1(solo, agro, local);
   if ((solo.ProfundidadeDeCamada2<>0) AND (solo.CapacidadeDeCampo2<>0) AND
@@ -505,6 +527,26 @@ begin
   DBEditConcentracaoEstimada.Text := FloatToStr(cf);
   DBEditConcentracaoEstimada.Color := clYellow;
   DBEditRecargaHidrica.Text := FloatToStr(q);
+  end
+  else
+  begin
+    showmessage('Cálculo Água Superficial');
+  end;
+end;
+
+procedure TFormCalculoResultado.SpeedButton1Click(Sender: TObject);
+begin
+  FormPrincipal.Localidade1.Click;
+end;
+
+procedure TFormCalculoResultado.SpeedButton2Click(Sender: TObject);
+begin
+    FormPrincipal.Solo1.Click;
+end;
+
+procedure TFormCalculoResultado.SpeedButtonAgroClick(Sender: TObject);
+begin
+  FormPrincipal.Agrotxicos1.Click;
 end;
 
 function TFormCalculoResultado.verificaCamposParaCalculo: Boolean;

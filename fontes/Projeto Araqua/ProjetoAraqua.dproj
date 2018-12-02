@@ -141,10 +141,6 @@
             <Form>FormLogin</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="Unit_Loc_Aguas.pas">
-            <Form>Form_Localidade</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
         <DCCReference Include="UnitBackup.pas">
             <Form>FmBackup</Form>
             <FormType>dfm</FormType>

@@ -47,7 +47,6 @@ object FormCadastroUsuario: TFormCadastroUsuario
       ParentBackground = False
       ParentColor = False
       TabOrder = 0
-      ExplicitHeight = 438
       object DBGridUsuarios: TDBGrid
         Left = 2
         Top = 65
@@ -197,7 +196,6 @@ object FormCadastroUsuario: TFormCadastroUsuario
         Images = FormPrincipal.ImageList1
         TabOrder = 6
         OnClick = Button1Click
-        ExplicitHeight = 29
       end
     end
     object PanelDados: TPanel
@@ -208,7 +206,6 @@ object FormCadastroUsuario: TFormCadastroUsuario
       Align = alClient
       BevelOuter = bvNone
       TabOrder = 2
-      ExplicitHeight = 438
       object Label1: TLabel
         Left = 33
         Top = 15
@@ -254,10 +251,26 @@ object FormCadastroUsuario: TFormCadastroUsuario
         Color = 16121076
         ParentColor = False
       end
+      object Label7: TLabel
+        Left = 35
+        Top = 247
+        Width = 67
+        Height = 13
+        Caption = 'Tema padr'#227'o:'
+        Color = 16121076
+        ParentColor = False
+      end
+      object Label8: TLabel
+        Left = 104
+        Top = 224
+        Width = 182
+        Height = 13
+        Caption = '1 - Usu'#225'rio Comum / 2 - Administrador'
+      end
       object DBComboBoxAcesso: TDBComboBox
         Left = 35
         Top = 218
-        Width = 145
+        Width = 54
         Height = 21
         DataField = 'acesso'
         DataSource = DataSourceUsuario
@@ -307,6 +320,32 @@ object FormCadastroUsuario: TFormCadastroUsuario
         PasswordChar = '*'
         TabOrder = 4
       end
+      object DBLookupComboBox1: TDBLookupComboBox
+        Left = 35
+        Top = 266
+        Width = 145
+        Height = 21
+        DataField = 'idTemas'
+        DataSource = DataSourceUsuario
+        Enabled = False
+        KeyField = 'idTemas'
+        ListField = 'nomeTema'
+        ListSource = DataSourceTema
+        TabOrder = 5
+      end
+      object DBCheckBox1: TDBCheckBox
+        Left = 38
+        Top = 304
+        Width = 97
+        Height = 17
+        Caption = 'Usu'#225'rio Ativo?'
+        DataField = 'idStatus'
+        DataSource = DataSourceUsuario
+        Enabled = False
+        TabOrder = 6
+        ValueChecked = '1'
+        ValueUnchecked = '0'
+      end
     end
   end
   object DataSourceUsuario: TDataSource
@@ -351,5 +390,27 @@ object FormCadastroUsuario: TFormCadastroUsuario
       Origin = 'acesso'
       Required = True
     end
+    object FDQueryUsuarioidTemas: TIntegerField
+      AutoGenerateValue = arDefault
+      FieldName = 'idTemas'
+      Origin = 'idTemas'
+    end
+    object FDQueryUsuarioidStatus: TIntegerField
+      AutoGenerateValue = arDefault
+      FieldName = 'idStatus'
+      Origin = 'idStatus'
+    end
+  end
+  object FDQueryTema: TFDQuery
+    Connection = DataModule1.FDConnection1
+    SQL.Strings = (
+      'select idTemas, nomeTema from temas')
+    Left = 329
+    Top = 273
+  end
+  object DataSourceTema: TDataSource
+    DataSet = FDQueryTema
+    Left = 329
+    Top = 329
   end
 end

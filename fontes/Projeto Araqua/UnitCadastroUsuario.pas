@@ -45,6 +45,14 @@ type
     Label6: TLabel;
     Splitter1: TSplitter;
     Button1: TButton;
+    Label7: TLabel;
+    DBLookupComboBox1: TDBLookupComboBox;
+    FDQueryTema: TFDQuery;
+    DataSourceTema: TDataSource;
+    FDQueryUsuarioidTemas: TIntegerField;
+    FDQueryUsuarioidStatus: TIntegerField;
+    DBCheckBox1: TDBCheckBox;
+    Label8: TLabel;
 
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure btnCancelarClick(Sender: TObject);
@@ -81,6 +89,8 @@ begin
   DBEditSenha.Enabled := false;
   EditRedigite.Enabled := false;
   DBComboBoxAcesso.Enabled := false;
+  DBLookupComboBox1.Enabled := false;
+  DBCheckBox1.Enabled := false;
   btnEditar.Enabled := true;
   btnNovo.Enabled := true;
   btnSalvar.Enabled := false;
@@ -96,6 +106,8 @@ begin
   DBEditSenha.Enabled := true;
   EditRedigite.Enabled := true;
   DBComboBoxAcesso.Enabled := true;
+  DBLookupComboBox1.Enabled := true;
+  DBCheckBox1.Enabled := true;
   btnEditar.Enabled := false;
   btnNovo.Enabled := false;
   btnSalvar.Enabled := true;
@@ -125,6 +137,8 @@ begin
   DBEditSenha.Enabled := true;
   EditRedigite.Enabled := true;
   DBComboBoxAcesso.Enabled := true;
+  DBLookupComboBox1.Enabled := true;
+  DBCheckBox1.Enabled := true;
   btnEditar.Enabled := false;
   btnNovo.Enabled := false;
   btnSalvar.Enabled := true;
@@ -144,6 +158,8 @@ begin
           DBEditSenha.Enabled := false;
           EditRedigite.Enabled := false;
           DBComboBoxAcesso.Enabled := false;
+          DBLookupComboBox1.Enabled := false;
+          DBCheckBox1.Enabled := false;
           btnEditar.Enabled := true;
           btnNovo.Enabled := true;
           btnSalvar.Enabled := false;
@@ -206,6 +222,7 @@ end;
 procedure TFormCadastroUsuario.FormCreate(Sender: TObject);
 begin
   FDQueryUsuario.Active := true;
+  FDQueryTema.Active := true;
   DBComboBoxAcesso.ItemIndex := -1;
 end;
 

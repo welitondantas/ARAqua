@@ -45,7 +45,7 @@ implementation
 
 {$R *.dfm}
 
-uses UnitDataModule;
+uses UnitDataModule, UnitPrincipal;
 
 procedure TFmReport.Button1Click(Sender: TObject);
 begin
@@ -54,15 +54,22 @@ begin
   FDQueryRep.ParamByName('LOCAL').AsString := '%'+Edit1.Text+'%';
   FDQueryRep.ParamByName('SOLO').AsString := '%'+Edit1.Text+'%';
   FDQueryRep.ParamByName('ID').AsString := Edit1.Text;
-  if RadioButtonAS.Checked then FDQueryRep.SQL[18] := 'and tipo = 2';
-  if RadioButtonAB.Checked then FDQueryRep.SQL[18] := 'and tipo = 1';
+  FDQueryRep.ParamByName('usuario').AsString := FormPrincipal.usuario;
+  FDQueryRep.ParamByName('de').AsString := DateTimeToStr(DateTimePicker1.DateTime);
+  FDQueryRep.ParamByName('ate').AsString := DateTimeToStr(DateTimePicker2.DateTime);
+  FDQueryRep.ParamByName('filtro').AsString := Edit1.Text;
+  if RadioButtonAS.Checked then FDQueryRep.SQL[18] := 'and r.tipo = 2';
+  if RadioButtonAB.Checked then FDQueryRep.SQL[18] := 'and r.tipo = 1';
   if RadioButtonAT.Checked then FDQueryRep.SQL[18] := '';
-  FDQueryRep.ParamByName('DATADE').AsString := DateTimeToStr(DateTimePicker1.DateTime);;
-  FDQueryRep.ParamByName('DATAATE').AsString := DateTimeToStr(DateTimePicker2.DateTime);
+  FDQueryRep.ParamByName('DATADE').AsString := DateToStr(DateTimePicker1.DateTime);;
+  FDQueryRep.ParamByName('DATAATE').AsString := DateToStr(DateTimePicker2.DateTime);
   FDQueryRep.Active := True;
   if FDQueryRep.RecordCount > 0 then
     begin
       frxReportRep.PrepareReport();
+//      TfrxMemoView(frxReportRep.FindObject('MemoUsuario')).Text := FormPrincipal.usuario;
+//      TfrxMemoView(frxReportRep.FindObject('MemoFiltro')).Text := 'Data Início: '+DateTimeToStr(DateTimePicker1.DateTime) + 'Data Final: '+DateTimeToStr(DateTimePicker2.DateTime) + 'LSA: '+Edit1.Text;
+
       frxReportRep.ShowReport();
     end
     else

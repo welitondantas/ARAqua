@@ -27,9 +27,6 @@ object FormCadastroSolo: TFormCadastroSolo
     Align = alClient
     ParentBackground = False
     TabOrder = 0
-    DesignSize = (
-      949
-      545)
     object Splitter1: TSplitter
       Left = 339
       Top = 1
@@ -43,7 +40,6 @@ object FormCadastroSolo: TFormCadastroSolo
       Top = 16
       Width = 584
       Height = 81
-      Anchors = [akTop]
       Caption = ' Solo '
       TabOrder = 0
       object Label1: TLabel
@@ -71,7 +67,6 @@ object FormCadastroSolo: TFormCadastroSolo
       Top = 111
       Width = 584
       Height = 226
-      Anchors = [akTop]
       Caption = ' Lixivia'#231#227'o '
       TabOrder = 1
       object Label4: TLabel

@@ -16,7 +16,6 @@ uses
   UnitCalculoResultado in 'UnitCalculoResultado.pas' {FormCalculoResultado},
   UnitUsuario in 'UnitUsuario.pas',
   UnitLogin in 'UnitLogin.pas' {FormLogin},
-  Unit_Loc_Aguas in 'Unit_Loc_Aguas.pas' {Form_Localidade},
   UnitBackup in 'UnitBackup.pas' {FmBackup},
   UnitAlteraSenha in 'UnitAlteraSenha.pas' {FmAlteraSenha},
   UnitTrataErro in 'UnitTrataErro.pas' {FmSistema_Trata_Erros},
@@ -34,6 +33,5 @@ begin
   Application.CreateForm(TDataModule1, DataModule1);
   Application.CreateForm(TFormPrincipal, FormPrincipal);
   Application.CreateForm(TFmSistema_Trata_Erros, FmSistema_Trata_Erros);
-  Application.CreateForm(TFmReport, FmReport);
   Application.Run;
 end.

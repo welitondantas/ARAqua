@@ -106,32 +106,30 @@ type
     FDQueryAgro: TFDQuery;
     GroupBoxBuscaAgro: TGroupBox;
     Panel1: TPanel;
-    PanelPrincipio: TPanel;
-    Label1: TLabel;
-    DBEditPrincipioAtivo: TDBEdit;
-    PanelDose: TPanel;
-    Label2: TLabel;
-    DBEditDose: TDBEdit;
-    PanelCamadas: TPanel;
-    Label3: TLabel;
-    Label4: TLabel;
-    Label5: TLabel;
-    Label6: TLabel;
-    Label7: TLabel;
-    Label9: TLabel;
-    DBEditKocCamada1: TDBEdit;
-    DBEditKocCamada2: TDBEdit;
-    DBEditKocCamada3: TDBEdit;
-    DBEditKocCamada4: TDBEdit;
-    DBEditMeiaVidaCam1: TDBEdit;
-    DBEditMeiaVidaCam2: TDBEdit;
-    DBEditMeiaVidaCam3: TDBEdit;
-    DBEditMeiaVidaCam4: TDBEdit;
     Splitter1: TSplitter;
     Panel2: TPanel;
     Label8: TLabel;
     EditBuscaAgro: TEdit;
     Button1: TButton;
+    GroupBox1: TGroupBox;
+    Label3: TLabel;
+    Label4: TLabel;
+    DBEditKocCamada1: TDBEdit;
+    DBEditMeiaVidaCam1: TDBEdit;
+    Label9: TLabel;
+    Label5: TLabel;
+    DBEditKocCamada2: TDBEdit;
+    DBEditMeiaVidaCam2: TDBEdit;
+    DBEditMeiaVidaCam3: TDBEdit;
+    DBEditKocCamada3: TDBEdit;
+    Label7: TLabel;
+    Label6: TLabel;
+    DBEditKocCamada4: TDBEdit;
+    DBEditMeiaVidaCam4: TDBEdit;
+    GroupBox2: TGroupBox;
+    GroupBox3: TGroupBox;
+    DBEditPrincipioAtivo: TDBEdit;
+    DBEditDose: TDBEdit;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure btnSalvarAgroClick(Sender: TObject);
     procedure btnCancelarAgroClick(Sender: TObject);
@@ -160,7 +158,7 @@ implementation
 
 {$R *.dfm}
 
-uses UnitDataModule, UnitAgrotoxico, UnitPrincipal;
+uses UnitDataModule, UnitAgrotoxico, UnitPrincipal, UnitFuncoes;
 
 procedure TFormAgrotoxico.btnCancelarAgroClick(Sender: TObject);
 begin
