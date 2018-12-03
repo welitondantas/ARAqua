@@ -23,7 +23,8 @@ uses
   UnitTema in 'UnitTema.pas' {FmTema},
   Vcl.Themes,
   Vcl.Styles,
-  UnitReport in 'UnitReport.pas' {FmReport};
+  UnitReport in 'UnitReport.pas' {FmReport},
+  UnitSobreARAqua in 'UnitSobreARAqua.pas' {FmSobre};
 
 {$R *.res}
 

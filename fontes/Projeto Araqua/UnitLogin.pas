@@ -97,7 +97,7 @@ begin
                     FormPrincipal.idUsuario := DataModule1.FDQueryUsuario.FieldByName('ID').AsInteger;
                     FormPrincipal.nomeUsuario := DataModule1.FDQueryUsuario.FieldByName('NOME').AsString;
                     FormPrincipal.Acesso := DataModule1.FDQueryUsuario.FieldByName('ACESSO').AsInteger;
-                    FormPrincipal.StatusBar1.Panels[0].Text :=  ' Bem Vindo '+ FormataNome(PrimeiroNome(FormPrincipal.nomeUsuario))+' !';
+                    FormPrincipal.StatusBar1.Panels[0].Text :=  ' Bem Vindo '+ FormPrincipal.nomeUsuario+' !';
                     FormPrincipal.logado := True;
                     ModalResult := mrOK;
             end

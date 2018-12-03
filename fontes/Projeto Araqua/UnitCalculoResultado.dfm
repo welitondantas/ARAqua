@@ -1,7 +1,7 @@
 object FormCalculoResultado: TFormCalculoResultado
   Left = 0
   Top = 0
-  Caption = 'C'#225'lculos'
+  Caption = 'C'#225'lculos de '#193'guas Subterr'#226'neas e '#193'guas Superficiais'
   ClientHeight = 600
   ClientWidth = 1401
   Color = clBtnFace
@@ -12,7 +12,7 @@ object FormCalculoResultado: TFormCalculoResultado
   Font.Style = []
   FormStyle = fsMDIChild
   OldCreateOrder = False
-  Position = poDesigned
+  Position = poScreenCenter
   Visible = True
   WindowState = wsMaximized
   OnClose = FormClose
@@ -201,9 +201,6 @@ object FormCalculoResultado: TFormCalculoResultado
     Color = clMenu
     ParentBackground = False
     TabOrder = 1
-    ExplicitLeft = 14
-    ExplicitTop = 542
-    ExplicitWidth = 1181
     object Button1: TButton
       AlignWithMargins = True
       Left = 1315
@@ -220,7 +217,6 @@ object FormCalculoResultado: TFormCalculoResultado
       Images = FormPrincipal.ImageList1
       TabOrder = 0
       OnClick = Button1Click
-      ExplicitLeft = 1095
     end
     object DBNavigator2: TDBNavigator
       Left = 1
@@ -241,63 +237,61 @@ object FormCalculoResultado: TFormCalculoResultado
     Color = clMenu
     ParentBackground = False
     TabOrder = 2
-    ExplicitWidth = 1000
     object GroupBox4: TGroupBox
       Left = 589
       Top = 8
-      Width = 274
-      Height = 258
+      Width = 212
+      Height = 194
       Caption = ' Resultados '
       Color = clBtnFace
       ParentBackground = False
       ParentColor = False
       TabOrder = 0
       object GroupBox1: TGroupBox
-        Left = 17
-        Top = 33
-        Width = 241
-        Height = 80
-        Caption = ' Recarga H'#237'drica '
+        Left = 9
+        Top = 25
+        Width = 192
+        Height = 66
+        Caption = ' Recarga H'#237'drica (mm/ano)'
         TabOrder = 0
-        object Label9: TLabel
-          Left = 183
-          Top = 31
-          Width = 46
-          Height = 13
-          Caption = '(mm/ano)'
-        end
         object DBEditRecargaHidrica: TDBEdit
-          Left = 20
+          Left = 12
           Top = 31
-          Width = 149
+          Width = 157
           Height = 21
           DataField = 'recargaHidrica'
           DataSource = DataSourceResultado
-          Enabled = False
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -11
+          Font.Name = 'Tahoma'
+          Font.Style = [fsBold]
+          ParentFont = False
+          ReadOnly = True
           TabOrder = 0
         end
       end
       object GroupBox2: TGroupBox
-        Left = 17
-        Top = 130
-        Width = 241
+        Left = 9
+        Top = 97
+        Width = 192
         Height = 79
-        Caption = ' Concentra'#231#227'o Estimada '
+        Caption = ' Concentra'#231#227'o Estimada  ( '#956'g i.a./L )'
         TabOrder = 1
-        object Label10: TLabel
-          Left = 183
-          Top = 35
-          Width = 48
-          Height = 13
-          Caption = '(ug i.a./L)'
-        end
         object DBEditConcentracaoEstimada: TDBEdit
-          Left = 21
+          Left = 13
           Top = 32
-          Width = 148
+          Width = 156
           Height = 21
           DataField = 'concentracaoEstimada'
           DataSource = DataSourceResultado
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -11
+          Font.Name = 'Tahoma'
+          Font.Style = [fsBold]
+          ParentFont = False
+          ReadOnly = True
           TabOrder = 0
         end
       end
@@ -321,7 +315,7 @@ object FormCalculoResultado: TFormCalculoResultado
       end
       object SpeedButtonAgro: TSpeedButton
         Left = 216
-        Top = 25
+        Top = 24
         Width = 23
         Height = 22
         Caption = '+'
@@ -357,7 +351,7 @@ object FormCalculoResultado: TFormCalculoResultado
         TabOrder = 2
       end
       object DBEdit1: TDBEdit
-        Left = 168
+        Left = 166
         Top = 68
         Width = 74
         Height = 21
@@ -376,30 +370,54 @@ object FormCalculoResultado: TFormCalculoResultado
         object Label5: TLabel
           Left = 30
           Top = 16
-          Width = 9
+          Width = 7
           Height = 13
           Caption = '1'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -11
+          Font.Name = 'Tahoma'
+          Font.Style = [fsBold]
+          ParentFont = False
         end
         object Label6: TLabel
           Left = 84
           Top = 16
-          Width = 6
+          Width = 7
           Height = 13
           Caption = '2'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -11
+          Font.Name = 'Tahoma'
+          Font.Style = [fsBold]
+          ParentFont = False
         end
         object Label7: TLabel
           Left = 138
           Top = 16
-          Width = 18
+          Width = 7
           Height = 13
           Caption = '3'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -11
+          Font.Name = 'Tahoma'
+          Font.Style = [fsBold]
+          ParentFont = False
         end
         object Label8: TLabel
           Left = 195
           Top = 16
-          Width = 6
+          Width = 7
           Height = 13
           Caption = '4'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -11
+          Font.Name = 'Tahoma'
+          Font.Style = [fsBold]
+          ParentFont = False
         end
         object Label11: TLabel
           Left = 8
@@ -548,7 +566,7 @@ object FormCalculoResultado: TFormCalculoResultado
       TabOrder = 6
       object SpeedButton1: TSpeedButton
         Left = 264
-        Top = 33
+        Top = 31
         Width = 23
         Height = 22
         Caption = '+'
@@ -579,55 +597,79 @@ object FormCalculoResultado: TFormCalculoResultado
       TabOrder = 7
       object Label12: TLabel
         Left = 94
-        Top = 61
-        Width = 6
+        Top = 64
+        Width = 7
         Height = 13
         Caption = '1'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'Tahoma'
+        Font.Style = [fsBold]
+        ParentFont = False
       end
       object Label14: TLabel
         Left = 148
-        Top = 61
-        Width = 6
+        Top = 64
+        Width = 7
         Height = 13
         Caption = '2'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'Tahoma'
+        Font.Style = [fsBold]
+        ParentFont = False
       end
       object Label15: TLabel
         Left = 202
-        Top = 61
-        Width = 6
+        Top = 64
+        Width = 7
         Height = 13
         Caption = '3'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'Tahoma'
+        Font.Style = [fsBold]
+        ParentFont = False
       end
       object Label16: TLabel
         Left = 259
-        Top = 61
-        Width = 6
+        Top = 64
+        Width = 7
         Height = 13
         Caption = '4'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'Tahoma'
+        Font.Style = [fsBold]
+        ParentFont = False
       end
       object Label17: TLabel
-        Left = 5
+        Left = 10
         Top = 112
         Width = 56
         Height = 13
         Caption = 'Capacidade'
       end
       object Label18: TLabel
-        Left = 5
+        Left = 10
         Top = 138
         Width = 50
         Height = 13
         Caption = 'Densidade'
       end
       object Label19: TLabel
-        Left = 5
+        Left = 10
         Top = 84
         Width = 64
         Height = 13
         Caption = 'Profundidade'
       end
       object Label20: TLabel
-        Left = 5
+        Left = 10
         Top = 165
         Width = 66
         Height = 13
@@ -635,11 +677,24 @@ object FormCalculoResultado: TFormCalculoResultado
       end
       object SpeedButton2: TSpeedButton
         Left = 264
-        Top = 33
+        Top = 31
         Width = 23
         Height = 22
         Caption = '+'
         OnClick = SpeedButton2Click
+      end
+      object Label3: TLabel
+        Left = 10
+        Top = 64
+        Width = 52
+        Height = 13
+        Caption = 'Camadas'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'Tahoma'
+        Font.Style = [fsBold]
+        ParentFont = False
       end
       object DBLookupComboBoxSolo: TDBLookupComboBox
         Left = 20
@@ -835,7 +890,7 @@ object FormCalculoResultado: TFormCalculoResultado
       Top = 8
       Width = 304
       Height = 76
-      Caption = ' Tipo de C'#225'lculo'
+      Caption = ' Tipo de C'#225'lculo para elabora'#231#227'o do cen'#225'rio '
       DataField = 'tipo'
       DataSource = DataSourceResultado
       Items.Strings = (
@@ -881,45 +936,10 @@ object FormCalculoResultado: TFormCalculoResultado
     ParamData = <
       item
         Name = 'TIPO'
+        DataType = ftWideString
         ParamType = ptInput
+        Value = '1'
       end>
-    object FDQueryLocalidadeid: TFDAutoIncField
-      FieldName = 'id'
-      Origin = 'id'
-      ProviderFlags = [pfInWhere, pfInKey]
-      ReadOnly = True
-    end
-    object FDQueryLocalidadeprecipitacao: TSingleField
-      FieldName = 'precipitacao'
-      Origin = 'precipitacao'
-      Required = True
-    end
-    object FDQueryLocalidadeevapotranspiracao: TSingleField
-      FieldName = 'evapotranspiracao'
-      Origin = 'evapotranspiracao'
-      Required = True
-    end
-    object FDQueryLocalidadeirrigacao: TSingleField
-      FieldName = 'irrigacao'
-      Origin = 'irrigacao'
-      Required = True
-    end
-    object FDQueryLocalidadeporosidadeAquifero: TSingleField
-      FieldName = 'porosidadeAquifero'
-      Origin = 'porosidadeAquifero'
-      Required = True
-    end
-    object FDQueryLocalidadeprofundidadeAquifero: TIntegerField
-      FieldName = 'profundidadeAquifero'
-      Origin = 'profundidadeAquifero'
-      Required = True
-    end
-    object FDQueryLocalidadedescricao: TStringField
-      FieldName = 'descricao'
-      Origin = 'descricao'
-      Required = True
-      Size = 100
-    end
   end
   object FDQueryAgro: TFDQuery
     Connection = DataModule1.FDConnection1

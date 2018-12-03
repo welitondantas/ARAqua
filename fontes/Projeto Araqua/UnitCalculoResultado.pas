@@ -27,13 +27,6 @@ type
     DataSourceSolo: TDataSource;
     DataSourceLocalidade: TDataSource;
     DataSourceAgro: TDataSource;
-    FDQueryLocalidadeid: TFDAutoIncField;
-    FDQueryLocalidadeprecipitacao: TSingleField;
-    FDQueryLocalidadeevapotranspiracao: TSingleField;
-    FDQueryLocalidadeirrigacao: TSingleField;
-    FDQueryLocalidadeporosidadeAquifero: TSingleField;
-    FDQueryLocalidadeprofundidadeAquifero: TIntegerField;
-    FDQueryLocalidadedescricao: TStringField;
     Button1: TButton;
     Panel3: TPanel;
     Panel6: TPanel;
@@ -53,10 +46,8 @@ type
     RadioButtonAB: TRadioButton;
     RadioButtonAT: TRadioButton;
     GroupBox1: TGroupBox;
-    Label9: TLabel;
     DBEditRecargaHidrica: TDBEdit;
     GroupBox2: TGroupBox;
-    Label10: TLabel;
     DBEditConcentracaoEstimada: TDBEdit;
     GroupBoxSub: TGroupBox;
     ButtonConsultar: TButton;
@@ -111,6 +102,7 @@ type
     SpeedButton1: TSpeedButton;
     SpeedButton2: TSpeedButton;
     DBRadioGroup1: TDBRadioGroup;
+    Label3: TLabel;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure btnSalvarClick(Sender: TObject);
     procedure realizaCalculos();
@@ -372,6 +364,7 @@ end;
 procedure TFormCalculoResultado.FDQueryResultadoAfterPost(DataSet: TDataSet);
 begin
   Application.MessageBox('Cálculo gravado com sucesso!', 'Cálculo realizado');
+  ButtonConsultar.Click;
 end;
 
 procedure TFormCalculoResultado.FDQueryResultadoBeforePost(DataSet: TDataSet);

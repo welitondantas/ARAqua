@@ -12,7 +12,7 @@ object FormCadastroLocalidade: TFormCadastroLocalidade
   Font.Style = []
   FormStyle = fsMDIChild
   OldCreateOrder = False
-  Position = poDesktopCenter
+  Position = poScreenCenter
   Visible = True
   WindowState = wsMaximized
   OnClose = FormClose
@@ -36,8 +36,6 @@ object FormCadastroLocalidade: TFormCadastroLocalidade
     BevelInner = bvRaised
     BevelOuter = bvNone
     TabOrder = 0
-    ExplicitTop = 482
-    ExplicitWidth = 966
     object btnSalvar: TButton
       Left = 215
       Top = 15
@@ -121,7 +119,6 @@ object FormCadastroLocalidade: TFormCadastroLocalidade
       Images = FormPrincipal.ImageList1
       TabOrder = 6
       OnClick = Button7Click
-      ExplicitLeft = 880
     end
   end
   object PanelDescricao: TPanel
@@ -132,7 +129,6 @@ object FormCadastroLocalidade: TFormCadastroLocalidade
     Align = alLeft
     BevelOuter = bvNone
     TabOrder = 1
-    ExplicitHeight = 482
     object GroupBoxBuscaLocal: TGroupBox
       Left = 0
       Top = 0
@@ -144,7 +140,6 @@ object FormCadastroLocalidade: TFormCadastroLocalidade
       ParentBackground = False
       ParentColor = False
       TabOrder = 0
-      ExplicitHeight = 482
       object Panel4: TPanel
         Left = 2
         Top = 15
@@ -184,6 +179,8 @@ object FormCadastroLocalidade: TFormCadastroLocalidade
         Height = 452
         Align = alClient
         DataSource = DataSourceLocalidade
+        Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
+        ReadOnly = True
         TabOrder = 1
         TitleFont.Charset = DEFAULT_CHARSET
         TitleFont.Color = clWindowText
@@ -208,7 +205,7 @@ object FormCadastroLocalidade: TFormCadastroLocalidade
             Expanded = False
             FieldName = 'descricao'
             Title.Caption = 'Descri'#231#227'o da Localidade'
-            Width = 335
+            Width = 250
             Visible = True
           end>
       end
@@ -222,22 +219,14 @@ object FormCadastroLocalidade: TFormCadastroLocalidade
     Align = alClient
     ParentBackground = False
     TabOrder = 2
-    ExplicitLeft = 0
-    ExplicitWidth = 556
-    ExplicitHeight = 482
-    object Label12: TLabel
-      Left = 34
-      Top = 96
-      Width = 50
-      Height = 13
-      Caption = 'Descri'#231#227'o:'
-    end
+    ExplicitLeft = 414
+    ExplicitTop = -2
     object GroupBoxClima: TGroupBox
       Left = 27
-      Top = 120
+      Top = 155
       Width = 329
       Height = 135
-      Caption = 'Clima'
+      Caption = ' Clima '
       Color = clBtnFace
       ParentBackground = False
       ParentColor = False
@@ -302,10 +291,10 @@ object FormCadastroLocalidade: TFormCadastroLocalidade
     end
     object GroupBoxAquifero: TGroupBox
       Left = 27
-      Top = 264
+      Top = 296
       Width = 329
       Height = 89
-      Caption = 'Aqu'#237'fero'
+      Caption = ' Aqu'#237'fero '
       Color = clBtnFace
       ParentBackground = False
       ParentColor = False
@@ -349,25 +338,16 @@ object FormCadastroLocalidade: TFormCadastroLocalidade
         TabOrder = 1
       end
     end
-    object DBEditDescricao: TDBEdit
-      Left = 90
-      Top = 93
-      Width = 615
-      Height = 21
-      DataField = 'descricao'
-      DataSource = DataSourceLocalidade
-      TabOrder = 2
-    end
     object GroupBox1: TGroupBox
       Left = 379
-      Top = 120
+      Top = 155
       Width = 326
       Height = 135
-      Caption = #193'gua Superficial'
+      Caption = ' '#193'gua Superficial '
       Color = clBtnFace
       ParentBackground = False
       ParentColor = False
-      TabOrder = 3
+      TabOrder = 2
       object Label8: TLabel
         Left = 20
         Top = 24
@@ -456,10 +436,27 @@ object FormCadastroLocalidade: TFormCadastroLocalidade
       Items.Strings = (
         #193'gua Subterr'#226'nea'
         #193'gua Superficial')
-      TabOrder = 4
+      TabOrder = 3
       Values.Strings = (
         '1'
         '2')
+    end
+    object GroupBox2: TGroupBox
+      Left = 27
+      Top = 93
+      Width = 329
+      Height = 53
+      Caption = ' Descri'#231#227'o da Localidade '
+      TabOrder = 4
+      object DBEditDescricao: TDBEdit
+        Left = 10
+        Top = 20
+        Width = 247
+        Height = 21
+        DataField = 'descricao'
+        DataSource = DataSourceLocalidade
+        TabOrder = 0
+      end
     end
   end
   object DataSourceLocalidade: TDataSource

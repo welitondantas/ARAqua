@@ -413,6 +413,8 @@ object FormCadastroSolo: TFormCadastroSolo
         Height = 435
         Align = alClient
         DataSource = DataSourceSolo
+        Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
+        ReadOnly = True
         TabOrder = 0
         TitleFont.Charset = DEFAULT_CHARSET
         TitleFont.Color = clWindowText

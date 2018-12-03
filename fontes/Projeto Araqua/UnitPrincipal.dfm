@@ -1,7 +1,9 @@
 object FormPrincipal: TFormPrincipal
   Left = 0
   Top = 0
-  Caption = 'Araqu'#225
+  Caption = 
+    'ARAqu'#225' - Software para Avalia'#231#227'o de Risco Ambiental de Agrot'#243'xic' +
+    'o'
   ClientHeight = 703
   ClientWidth = 1145
   Color = clBtnFace
@@ -27307,18 +27309,28 @@ object FormPrincipal: TFormPrincipal
     object Sobre1: TMenuItem
       Caption = 'S&obre'
       ShortCut = 113
+      OnClick = Sobre1Click
     end
     object Sair1: TMenuItem
       Caption = '&Sair'
       ShortCut = 123
       OnClick = Sair1Click
     end
+    object Exibir1: TMenuItem
+      Caption = 'Exibir'
+      Checked = True
+      object BarradeMenu1: TMenuItem
+        Caption = 'Barra de Menu'
+        Checked = True
+        OnClick = BarradeMenu1Click
+      end
+    end
   end
   object ImageList1: TImageList
     Left = 1096
     Top = 24
     Bitmap = {
-      494C010107008800740010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010107008800780010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000002000000001002000000000000020
       0000000000000000000000000000000000000000000000000000000000000000
       0000F7F7F7090000000000000000000000000000000000000000000000000000

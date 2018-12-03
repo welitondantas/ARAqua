@@ -40,10 +40,8 @@ type
     Button7: TButton;
     Panel4: TPanel;
     Splitter1: TSplitter;
-    DBEditDescricao: TDBEdit;
     panelFundoLocal: TPanel;
     Label1: TLabel;
-    Label12: TLabel;
     GroupBox1: TGroupBox;
     Label8: TLabel;
     Label9: TLabel;
@@ -55,6 +53,8 @@ type
     DBEdit_CoeficienteSuper: TDBEdit;
     DBRadioGroup1: TDBRadioGroup;
     ButtonConsultar: TButton;
+    GroupBox2: TGroupBox;
+    DBEditDescricao: TDBEdit;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure btnSalvarClick(Sender: TObject);
     procedure btnEditarClick(Sender: TObject);

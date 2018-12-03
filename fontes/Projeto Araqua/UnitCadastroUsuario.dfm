@@ -54,6 +54,7 @@ object FormCadastroUsuario: TFormCadastroUsuario
         Height = 372
         Align = alClient
         DataSource = DataSourceUsuario
+        Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
         TabOrder = 0
         TitleFont.Charset = DEFAULT_CHARSET
         TitleFont.Color = clWindowText
@@ -64,18 +65,21 @@ object FormCadastroUsuario: TFormCadastroUsuario
           item
             Expanded = False
             FieldName = 'id'
-            Width = 32
+            Title.Caption = 'C'#243'd.'
+            Width = 38
             Visible = True
           end
           item
             Expanded = False
             FieldName = 'nome'
+            Title.Caption = 'Nome do Usu'#225'rio'
             Width = 186
             Visible = True
           end
           item
             Expanded = False
             FieldName = 'login'
+            Title.Caption = 'Login'
             Width = 123
             Visible = True
           end>
@@ -206,145 +210,153 @@ object FormCadastroUsuario: TFormCadastroUsuario
       Align = alClient
       BevelOuter = bvNone
       TabOrder = 2
-      object Label1: TLabel
-        Left = 33
+      object GroupBox1: TGroupBox
+        Left = 14
         Top = 15
-        Width = 31
-        Height = 13
-        Caption = 'Nome:'
-        Color = 16121076
-        ParentColor = False
-      end
-      object Label2: TLabel
-        Left = 35
-        Top = 61
-        Width = 29
-        Height = 13
-        Caption = 'Login:'
-        Color = 16121076
-        ParentColor = False
-      end
-      object Label3: TLabel
-        Left = 35
-        Top = 107
-        Width = 34
-        Height = 13
-        Caption = 'Senha:'
-        Color = 16121076
-        ParentColor = False
-      end
-      object Label4: TLabel
-        Left = 35
-        Top = 153
-        Width = 84
-        Height = 13
-        Caption = 'Redigite a senha:'
-        Color = 16121076
-        ParentColor = False
-      end
-      object Label5: TLabel
-        Left = 35
-        Top = 199
-        Width = 78
-        Height = 13
-        Caption = 'N'#237'vel de acesso:'
-        Color = 16121076
-        ParentColor = False
-      end
-      object Label7: TLabel
-        Left = 35
-        Top = 247
-        Width = 67
-        Height = 13
-        Caption = 'Tema padr'#227'o:'
-        Color = 16121076
-        ParentColor = False
-      end
-      object Label8: TLabel
-        Left = 104
-        Top = 224
-        Width = 182
-        Height = 13
-        Caption = '1 - Usu'#225'rio Comum / 2 - Administrador'
-      end
-      object DBComboBoxAcesso: TDBComboBox
-        Left = 35
-        Top = 218
-        Width = 54
-        Height = 21
-        DataField = 'acesso'
-        DataSource = DataSourceUsuario
-        Enabled = False
-        Items.Strings = (
-          '1'
-          '2')
+        Width = 299
+        Height = 345
+        Caption = ' Dados do Usu'#225'rio '
         TabOrder = 0
-      end
-      object DBEditLogin: TDBEdit
-        Left = 35
-        Top = 80
-        Width = 121
-        Height = 21
-        DataField = 'login'
-        DataSource = DataSourceUsuario
-        Enabled = False
-        TabOrder = 1
-      end
-      object DBEditNome: TDBEdit
-        Left = 33
-        Top = 34
-        Width = 121
-        Height = 21
-        DataField = 'nome'
-        DataSource = DataSourceUsuario
-        Enabled = False
-        TabOrder = 2
-      end
-      object DBEditSenha: TDBEdit
-        Left = 35
-        Top = 126
-        Width = 121
-        Height = 21
-        DataField = 'senha'
-        DataSource = DataSourceUsuario
-        Enabled = False
-        PasswordChar = '*'
-        TabOrder = 3
-      end
-      object EditRedigite: TEdit
-        Left = 35
-        Top = 172
-        Width = 121
-        Height = 21
-        Enabled = False
-        PasswordChar = '*'
-        TabOrder = 4
-      end
-      object DBLookupComboBox1: TDBLookupComboBox
-        Left = 35
-        Top = 266
-        Width = 145
-        Height = 21
-        DataField = 'idTemas'
-        DataSource = DataSourceUsuario
-        Enabled = False
-        KeyField = 'idTemas'
-        ListField = 'nomeTema'
-        ListSource = DataSourceTema
-        TabOrder = 5
-      end
-      object DBCheckBox1: TDBCheckBox
-        Left = 38
-        Top = 304
-        Width = 97
-        Height = 17
-        Caption = 'Usu'#225'rio Ativo?'
-        DataField = 'idStatus'
-        DataSource = DataSourceUsuario
-        Enabled = False
-        TabOrder = 6
-        ValueChecked = '1'
-        ValueUnchecked = '0'
+        object Label1: TLabel
+          Left = 33
+          Top = 15
+          Width = 31
+          Height = 13
+          Caption = 'Nome:'
+          Color = 16121076
+          ParentColor = False
+        end
+        object Label2: TLabel
+          Left = 35
+          Top = 61
+          Width = 29
+          Height = 13
+          Caption = 'Login:'
+          Color = 16121076
+          ParentColor = False
+        end
+        object Label3: TLabel
+          Left = 35
+          Top = 107
+          Width = 34
+          Height = 13
+          Caption = 'Senha:'
+          Color = 16121076
+          ParentColor = False
+        end
+        object Label4: TLabel
+          Left = 35
+          Top = 153
+          Width = 84
+          Height = 13
+          Caption = 'Redigite a senha:'
+          Color = 16121076
+          ParentColor = False
+        end
+        object Label5: TLabel
+          Left = 35
+          Top = 199
+          Width = 78
+          Height = 13
+          Caption = 'N'#237'vel de acesso:'
+          Color = 16121076
+          ParentColor = False
+        end
+        object Label8: TLabel
+          Left = 95
+          Top = 222
+          Width = 182
+          Height = 13
+          Caption = '1 - Usu'#225'rio Comum / 2 - Administrador'
+        end
+        object Label7: TLabel
+          Left = 35
+          Top = 247
+          Width = 67
+          Height = 13
+          Caption = 'Tema padr'#227'o:'
+          Color = 16121076
+          ParentColor = False
+        end
+        object DBEditNome: TDBEdit
+          Left = 33
+          Top = 34
+          Width = 121
+          Height = 21
+          DataField = 'nome'
+          DataSource = DataSourceUsuario
+          Enabled = False
+          TabOrder = 0
+        end
+        object DBEditLogin: TDBEdit
+          Left = 35
+          Top = 80
+          Width = 121
+          Height = 21
+          DataField = 'login'
+          DataSource = DataSourceUsuario
+          Enabled = False
+          TabOrder = 1
+        end
+        object DBEditSenha: TDBEdit
+          Left = 35
+          Top = 126
+          Width = 121
+          Height = 21
+          DataField = 'senha'
+          DataSource = DataSourceUsuario
+          Enabled = False
+          PasswordChar = '*'
+          TabOrder = 2
+        end
+        object EditRedigite: TEdit
+          Left = 35
+          Top = 172
+          Width = 121
+          Height = 21
+          Enabled = False
+          PasswordChar = '*'
+          TabOrder = 3
+        end
+        object DBComboBoxAcesso: TDBComboBox
+          Left = 35
+          Top = 218
+          Width = 54
+          Height = 21
+          DataField = 'acesso'
+          DataSource = DataSourceUsuario
+          Enabled = False
+          Items.Strings = (
+            '1'
+            '2')
+          TabOrder = 4
+        end
+        object DBLookupComboBox1: TDBLookupComboBox
+          Left = 35
+          Top = 266
+          Width = 145
+          Height = 21
+          DataField = 'idTemas'
+          DataSource = DataSourceUsuario
+          Enabled = False
+          KeyField = 'idTemas'
+          ListField = 'nomeTema'
+          ListSource = DataSourceTema
+          TabOrder = 5
+        end
+        object DBCheckBox1: TDBCheckBox
+          Left = 38
+          Top = 304
+          Width = 97
+          Height = 17
+          Caption = 'Usu'#225'rio Ativo?'
+          DataField = 'idStatus'
+          DataSource = DataSourceUsuario
+          Enabled = False
+          TabOrder = 6
+          ValueChecked = '1'
+          ValueUnchecked = '0'
+        end
       end
     end
   end

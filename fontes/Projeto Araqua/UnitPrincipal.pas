@@ -6,7 +6,7 @@ uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Imaging.pngimage, Vcl.ExtCtrls,
   Vcl.StdCtrls, System.ImageList, Vcl.ImgList, Vcl.Imaging.GIFImg, Vcl.ComCtrls,
-  Vcl.Menus, IniFiles, Vcl.Themes, Vcl.WinXCalendars, Vcl.ToolWin;
+  Vcl.Menus, IniFiles, Vcl.Themes, Vcl.WinXCalendars, Vcl.ToolWin, System.UITypes;
 
 type
   TFormPrincipal = class(TForm)
@@ -57,6 +57,8 @@ type
     CalendarView1: TCalendarView;
     Calendrio1: TMenuItem;
     Usurio2: TMenuItem;
+    Exibir1: TMenuItem;
+    BarradeMenu1: TMenuItem;
     procedure ImageAgroClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure ImageSoloClick(Sender: TObject);
@@ -81,6 +83,8 @@ type
     procedure ImageUserClick(Sender: TObject);
     procedure Image2Click(Sender: TObject);
     procedure reportGeralClick(Sender: TObject);
+    procedure BarradeMenu1Click(Sender: TObject);
+    procedure Sobre1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -103,7 +107,7 @@ implementation
 uses UnitCadastroUsuario, UnitCadastroAgrotóxico, UnitSolo,
   UnitCadastroSolo, UnitCadastroLocalidade, UnitCalculoResultado, UnitLogin,
   UnitDataModule, UnitUsuario, UnitFuncoes, UnitTema, UnitAlteraSenha,
-  UnitTrataErro, UnitBackup, UnitReport;
+  UnitTrataErro, UnitBackup, UnitReport, UnitSobreARAqua;
 
 procedure TFormPrincipal.Agrotxicos1Click(Sender: TObject);
 begin
@@ -144,6 +148,21 @@ begin
    begin
      FmBackup.Show;
    end;
+
+end;
+
+procedure TFormPrincipal.BarradeMenu1Click(Sender: TObject);
+begin
+  if (BarradeMenu1.Checked = True) then
+  begin
+  PanelBotoes.Visible := False;
+  BarradeMenu1.Checked := False;
+  end
+    else
+  begin
+  PanelBotoes.Visible := True;
+  BarradeMenu1.Checked := True;
+  end;
 
 end;
 
@@ -387,6 +406,12 @@ begin
 
     end;
   end;
+end;
+
+procedure TFormPrincipal.Sobre1Click(Sender: TObject);
+begin
+  FmSobre := TFmSobre.Create(Self);
+  FmSobre.ShowModal;
 end;
 
 procedure TFormPrincipal.Solo1Click(Sender: TObject);

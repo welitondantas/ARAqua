@@ -25,8 +25,6 @@ object FormLogin: TFormLogin
     Align = alClient
     ParentBackground = False
     TabOrder = 0
-    ExplicitWidth = 435
-    ExplicitHeight = 336
     object Image5: TImage
       Left = 1
       Top = 1
@@ -7309,8 +7307,6 @@ object FormLogin: TFormLogin
           Text = ' Informe o Login e Senha.'
           Width = 50
         end>
-      ExplicitTop = 312
-      ExplicitWidth = 433
     end
     object CheckBoxLembrar: TCheckBox
       Left = 192
