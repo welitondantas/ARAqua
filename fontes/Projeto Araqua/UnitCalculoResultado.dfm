@@ -241,7 +241,7 @@ object FormCalculoResultado: TFormCalculoResultado
       Left = 589
       Top = 8
       Width = 212
-      Height = 194
+      Height = 369
       Caption = ' Resultados '
       Color = clBtnFace
       ParentBackground = False
@@ -295,12 +295,89 @@ object FormCalculoResultado: TFormCalculoResultado
           TabOrder = 0
         end
       end
+      object GroupBox5: TGroupBox
+        Left = 11
+        Top = 182
+        Width = 190
+        Height = 172
+        Caption = ' Quociente de Risco '
+        TabOrder = 2
+        object Label9: TLabel
+          Left = 16
+          Top = 24
+          Width = 58
+          Height = 13
+          Caption = 'Potabilidade'
+        end
+        object Label10: TLabel
+          Left = 16
+          Top = 72
+          Width = 86
+          Height = 13
+          Caption = 'Animais Aqu'#225'ticos'
+        end
+        object Label21: TLabel
+          Left = 16
+          Top = 122
+          Width = 85
+          Height = 13
+          Caption = 'Plantas Aqu'#225'ticas'
+        end
+        object DBEditPotabilidade: TDBEdit
+          Left = 13
+          Top = 43
+          Width = 156
+          Height = 21
+          DataField = 'concentracaoEstimada'
+          DataSource = DataSourceResultado
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -11
+          Font.Name = 'Tahoma'
+          Font.Style = [fsBold]
+          ParentFont = False
+          ReadOnly = True
+          TabOrder = 0
+        end
+        object DBEditAnimais: TDBEdit
+          Left = 13
+          Top = 91
+          Width = 156
+          Height = 21
+          DataField = 'concentracaoEstimada'
+          DataSource = DataSourceResultado
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -11
+          Font.Name = 'Tahoma'
+          Font.Style = [fsBold]
+          ParentFont = False
+          ReadOnly = True
+          TabOrder = 1
+        end
+        object DBEditPlantas: TDBEdit
+          Left = 13
+          Top = 140
+          Width = 156
+          Height = 21
+          DataField = 'concentracaoEstimada'
+          DataSource = DataSourceResultado
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -11
+          Font.Name = 'Tahoma'
+          Font.Style = [fsBold]
+          ParentFont = False
+          ReadOnly = True
+          TabOrder = 2
+        end
+      end
     end
     object GroupBoxAgrotoxico: TGroupBox
       Left = 327
       Top = 8
       Width = 256
-      Height = 258
+      Height = 369
       Caption = 'Agrot'#243'xico - Dose (g/ha)'
       Color = clBtnFace
       ParentBackground = False
@@ -323,7 +400,7 @@ object FormCalculoResultado: TFormCalculoResultado
       end
       object CheckBoxInserirManual: TCheckBox
         Left = 16
-        Top = 222
+        Top = 105
         Width = 145
         Height = 17
         Caption = 'Inserir dose manualmente'
@@ -332,7 +409,7 @@ object FormCalculoResultado: TFormCalculoResultado
       end
       object EditDoseManual: TEdit
         Left = 167
-        Top = 220
+        Top = 103
         Width = 74
         Height = 21
         Enabled = False
@@ -362,7 +439,7 @@ object FormCalculoResultado: TFormCalculoResultado
       end
       object GroupBox3: TGroupBox
         Left = 11
-        Top = 99
+        Top = 136
         Width = 230
         Height = 115
         Caption = ' Camadas - Coeficiente absor'#231#227'o'
@@ -505,6 +582,68 @@ object FormCalculoResultado: TFormCalculoResultado
           DataSource = DataSourceAgro
           Enabled = False
           TabOrder = 7
+        end
+      end
+      object GroupBox6: TGroupBox
+        Left = 12
+        Top = 256
+        Width = 229
+        Height = 105
+        Caption = ' Caracter'#237'sticas '
+        TabOrder = 5
+        object Label22: TLabel
+          Left = 10
+          Top = 24
+          Width = 62
+          Height = 13
+          Caption = 'Potabilidade:'
+        end
+        object Label23: TLabel
+          Left = 10
+          Top = 50
+          Width = 118
+          Height = 13
+          Caption = 'CE50 Animais Aqu'#225'ticos:'
+        end
+        object Label24: TLabel
+          Left = 10
+          Top = 76
+          Width = 117
+          Height = 13
+          Caption = 'CE50 Plantas Aqu'#225'ticas:'
+        end
+        object DBEdit26: TDBEdit
+          Left = 134
+          Top = 18
+          Width = 84
+          Height = 21
+          DataField = 'potabilidade'
+          DataSource = DataSourceAgro
+          Enabled = False
+          ReadOnly = True
+          TabOrder = 0
+        end
+        object DBEdit27: TDBEdit
+          Left = 134
+          Top = 45
+          Width = 84
+          Height = 21
+          DataField = 'ce50_animais'
+          DataSource = DataSourceAgro
+          Enabled = False
+          ReadOnly = True
+          TabOrder = 1
+        end
+        object DBEdit28: TDBEdit
+          Left = 134
+          Top = 72
+          Width = 84
+          Height = 21
+          DataField = 'ce50_plantas'
+          DataSource = DataSourceAgro
+          Enabled = False
+          ReadOnly = True
+          TabOrder = 2
         end
       end
     end

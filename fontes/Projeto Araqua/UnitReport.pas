@@ -8,7 +8,7 @@ uses
   FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Param,
   FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf,
   FireDAC.Stan.Async, FireDAC.DApt, frxClass, frxExportPDF, frxDBSet, Data.DB,
-  FireDAC.Comp.DataSet, FireDAC.Comp.Client;
+  FireDAC.Comp.DataSet, FireDAC.Comp.Client, frxExportCSV;
 
 type
   TFmReport = class(TForm)
@@ -29,6 +29,7 @@ type
     Edit1: TEdit;
     Label3: TLabel;
     Button2: TButton;
+    frxCSVExport1: TfrxCSVExport;
     procedure Button1Click(Sender: TObject);
     procedure Button2Click(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);

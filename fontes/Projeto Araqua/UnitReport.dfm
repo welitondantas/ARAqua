@@ -3256,4 +3256,17 @@ object FmReport: TFmReport
     Left = 408
     Top = 160
   end
+  object frxCSVExport1: TfrxCSVExport
+    UseFileCache = True
+    ShowProgress = True
+    OverwritePrompt = False
+    DataOnly = False
+    Separator = ';'
+    OEMCodepage = False
+    UTF8 = False
+    NoSysSymbols = True
+    ForcedQuotes = False
+    Left = 408
+    Top = 208
+  end
 end

@@ -45,6 +45,7 @@ uses UnitPrincipal, UnitDataModule;
 procedure TFmTema.Button1Click(Sender: TObject);
 var aplicado: integer;
 begin
+aplicado := 0;
   try
     TStyleManager.TrySetStyle( Datamodule1.FDQueryTema.FieldByName('NOMETEMA').AsString );
     FormPrincipal.StatusBar1.Panels[5].Text := 'Tema : '+ Datamodule1.FDQueryTema.FieldByName('NOMETEMA').AsString;

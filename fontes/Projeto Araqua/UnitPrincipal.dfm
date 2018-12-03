@@ -27234,6 +27234,15 @@ object FormPrincipal: TFormPrincipal
   object MainMenu1: TMainMenu
     Left = 1088
     Top = 80
+    object Exibir1: TMenuItem
+      Caption = 'Exibir'
+      Checked = True
+      object BarradeMenu1: TMenuItem
+        Caption = 'Barra de Menu'
+        Checked = True
+        OnClick = BarradeMenu1Click
+      end
+    end
     object Usurio1: TMenuItem
       Caption = '&Usu'#225'rio'
       object AlterarSenha1: TMenuItem
@@ -27289,6 +27298,21 @@ object FormPrincipal: TFormPrincipal
         ShortCut = 121
         OnClick = reportGeralClick
       end
+      object Cadastros2: TMenuItem
+        Caption = 'Cadastros'
+        object Solo2: TMenuItem
+          Caption = 'Solo'
+          OnClick = Solo2Click
+        end
+        object Localidade2: TMenuItem
+          Caption = 'Localidade'
+          OnClick = Localidade2Click
+        end
+        object Agrotxico1: TMenuItem
+          Caption = 'Agrot'#243'xico'
+          OnClick = Agrotxico1Click
+        end
+      end
     end
     object Utilitrios1: TMenuItem
       Caption = '&Utilit'#225'rios'
@@ -27316,21 +27340,12 @@ object FormPrincipal: TFormPrincipal
       ShortCut = 123
       OnClick = Sair1Click
     end
-    object Exibir1: TMenuItem
-      Caption = 'Exibir'
-      Checked = True
-      object BarradeMenu1: TMenuItem
-        Caption = 'Barra de Menu'
-        Checked = True
-        OnClick = BarradeMenu1Click
-      end
-    end
   end
   object ImageList1: TImageList
     Left = 1096
     Top = 24
     Bitmap = {
-      494C010107008800780010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010107008800840010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000002000000001002000000000000020
       0000000000000000000000000000000000000000000000000000000000000000
       0000F7F7F7090000000000000000000000000000000000000000000000000000

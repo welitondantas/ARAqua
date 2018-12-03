@@ -130,6 +130,13 @@ type
     GroupBox3: TGroupBox;
     DBEditPrincipioAtivo: TDBEdit;
     DBEditDose: TDBEdit;
+    GroupBox4: TGroupBox;
+    Label1: TLabel;
+    Label2: TLabel;
+    DBEditCE50Plantas: TDBEdit;
+    DBEditCE50Animais: TDBEdit;
+    GroupBox5: TGroupBox;
+    DBEditPotabilidade: TDBEdit;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure btnSalvarAgroClick(Sender: TObject);
     procedure btnCancelarAgroClick(Sender: TObject);
@@ -173,6 +180,9 @@ begin
   DBEditMeiaVidaCam2.Enabled := false;
   DBEditMeiaVidaCam3.Enabled := false;
   DBEditMeiaVidaCam4.Enabled := false;
+  DBEditPotabilidade.Enabled := false;
+  DBEditCE50Plantas.Enabled := false;
+  DBEditCE50Animais.Enabled := false;
   btnEditar.Enabled := true;
   btnNovo.Enabled := true;
   btnSalvarAgro.Enabled := false;
@@ -193,6 +203,9 @@ begin
   DBEditMeiaVidaCam2.Enabled := true;
   DBEditMeiaVidaCam3.Enabled := true;
   DBEditMeiaVidaCam4.Enabled := true;
+  DBEditPotabilidade.Enabled := true;
+  DBEditCE50Plantas.Enabled := true;
+  DBEditCE50Animais.Enabled := true;
   btnEditar.Enabled := false;
   btnNovo.Enabled := false;
   btnSalvarAgro.Enabled := true;
@@ -227,6 +240,9 @@ begin
   DBEditMeiaVidaCam2.Enabled := true;
   DBEditMeiaVidaCam3.Enabled := true;
   DBEditMeiaVidaCam4.Enabled := true;
+  DBEditPotabilidade.Enabled := true;
+  DBEditCE50Plantas.Enabled := true;
+  DBEditCE50Animais.Enabled := true;
   btnEditar.Enabled := false;
   btnNovo.Enabled := false;
   btnSalvarAgro.Enabled := true;
@@ -249,6 +265,9 @@ begin
       DBEditMeiaVidaCam2.Enabled := false;
       DBEditMeiaVidaCam3.Enabled := false;
       DBEditMeiaVidaCam4.Enabled := false;
+      DBEditPotabilidade.Enabled := false;
+      DBEditCE50Plantas.Enabled := false;
+      DBEditCE50Animais.Enabled := false;
       btnEditar.Enabled := true;
       btnNovo.Enabled := true;
       btnSalvarAgro.Enabled := false;
@@ -313,6 +332,9 @@ begin
   agro.MeiaVidaCamada2 := StrToInt(VerificaCampos(DBEditMeiaVidaCam2.Text));
   agro.MeiaVidaCamada3 := StrToInt(VerificaCampos(DBEditMeiaVidaCam3.Text));
   agro.MeiaVidaCamada4 := StrToInt(VerificaCampos(DBEditMeiaVidaCam4.Text));
+  agro.Potabilidade := StrToInt(VerificaCampos(DBEditPotabilidade.Text));
+  agro.Canimais := StrToFloat(VerificaCampos(DBEditCE50Animais.Text));
+  agro.Cplantas := StrToFloat(VerificaCampos(DBEditCE50Plantas.Text));
   FDQueryAgro.FieldByName('principioAtivo').AsString := agro.PrincipioAtivo;
   FDQueryAgro.FieldByName('dose').AsFloat := agro.Dose;
   FDQueryAgro.FieldByName('coeficienteSorcaoCam1').AsFloat := agro.CoeficienteSorcaoCamada1;
@@ -323,6 +345,9 @@ begin
   FDQueryAgro.FieldByName('meiaVidaCam2').AsInteger := agro.MeiaVidaCamada2;
   FDQueryAgro.FieldByName('meiaVidaCam3').AsInteger := agro.MeiaVidaCamada3;
   FDQueryAgro.FieldByName('meiaVidaCam4').AsInteger := agro.MeiaVidaCamada4;
+  FDQueryAgro.FieldByName('potabilidade').AsInteger := agro.Potabilidade;
+  FDQueryAgro.FieldByName('ce50_plantas').AsFloat := agro.CPlantas;
+  FDQueryAgro.FieldByName('ce50_animais').AsFloat := agro.CAnimais;
 end;
 
 procedure TFormAgrotoxico.FormClose(Sender: TObject; var Action: TCloseAction);

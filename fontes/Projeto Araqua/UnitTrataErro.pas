@@ -4,7 +4,7 @@ interface
 
 uses
   Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
-  AppEvnts;
+  AppEvnts, System.UITypes;
 
 type
   TFmSistema_Trata_Erros = class(TForm)

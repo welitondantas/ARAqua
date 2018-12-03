@@ -8,7 +8,7 @@ uses
   FireDAC.Stan.Pool, FireDAC.Stan.Async, FireDAC.Phys, FireDAC.VCLUI.Wait,
   Data.DB, FireDAC.Comp.Client, FireDAC.Phys.MySQL, FireDAC.Phys.MySQLDef,
   FireDAC.Stan.Param, FireDAC.DatS, FireDAC.DApt.Intf, FireDAC.DApt,
-  FireDAC.Comp.DataSet;
+  FireDAC.Comp.DataSet, frxExportCSV, frxClass, frxExportPDF, frxDBSet;
 
 type
   TDataModule1 = class(TDataModule)
@@ -21,6 +21,17 @@ type
     FDQueryKill: TFDQuery;
     FDQueryTema: TFDQuery;
     DataSourceTema: TDataSource;
+    FDQueryRepLoc: TFDQuery;
+    FDQueryRepAgro: TFDQuery;
+    FDQueryRepSol: TFDQuery;
+    frxReportRepLoc: TfrxReport;
+    frxReportRepAgro: TfrxReport;
+    frxReportRepSol: TfrxReport;
+    frxDBDatasetRepLoc: TfrxDBDataset;
+    frxDBDatasetRepAgro: TfrxDBDataset;
+    frxDBDatasetRepSol: TfrxDBDataset;
+    frxPDFExport1: TfrxPDFExport;
+    frxCSVExport1: TfrxCSVExport;
     procedure DataModuleCreate(Sender: TObject);
   private
     { Private declarations }

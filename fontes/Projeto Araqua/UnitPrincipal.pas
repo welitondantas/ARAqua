@@ -59,6 +59,10 @@ type
     Usurio2: TMenuItem;
     Exibir1: TMenuItem;
     BarradeMenu1: TMenuItem;
+    Cadastros2: TMenuItem;
+    Solo2: TMenuItem;
+    Localidade2: TMenuItem;
+    Agrotxico1: TMenuItem;
     procedure ImageAgroClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure ImageSoloClick(Sender: TObject);
@@ -85,6 +89,9 @@ type
     procedure reportGeralClick(Sender: TObject);
     procedure BarradeMenu1Click(Sender: TObject);
     procedure Sobre1Click(Sender: TObject);
+    procedure Solo2Click(Sender: TObject);
+    procedure Localidade2Click(Sender: TObject);
+    procedure Agrotxico1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -108,6 +115,14 @@ uses UnitCadastroUsuario, UnitCadastroAgrotóxico, UnitSolo,
   UnitCadastroSolo, UnitCadastroLocalidade, UnitCalculoResultado, UnitLogin,
   UnitDataModule, UnitUsuario, UnitFuncoes, UnitTema, UnitAlteraSenha,
   UnitTrataErro, UnitBackup, UnitReport, UnitSobreARAqua;
+
+procedure TFormPrincipal.Agrotxico1Click(Sender: TObject);
+begin
+  DataModule1.FDQueryRepAgro.Active := False;
+  DataModule1.FDQueryRepAgro.Active := True;
+  DataModule1.frxReportRepAgro.PrepareReport();
+  DataModule1.frxReportRepAgro.ShowReport();
+end;
 
 procedure TFormPrincipal.Agrotxicos1Click(Sender: TObject);
 begin
@@ -182,14 +197,12 @@ end;
 
 procedure TFormPrincipal.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
-  Application.Terminate;
+ Sair1.Click;
 end;
 
 procedure TFormPrincipal.FormCreate(Sender: TObject);
-  var usr: TUsuario;
-      ARQUIVOINI, SERVER, DATABASE, PASSWORD, USER, LOG, BACKUP, MYSQL, SCRIPT, PORT,CRIPTO, DECRIPTO: string;
+  var ARQUIVOINI, SERVER, DATABASE, PASSWORD, USER, LOG, BACKUP, MYSQL, SCRIPT, PORT,CRIPTO, DECRIPTO: string;
       ArqIni : TIniFile;
-      I : integer;
 begin
    // Verifica se o arquivo INI existe
    ARQUIVOINI := StringReplace(LowerCase(Application.ExeName),'.exe','.ini',[]);
@@ -382,6 +395,14 @@ begin
         FormCadastroLocalidade.Show;
 end;
 
+procedure TFormPrincipal.Localidade2Click(Sender: TObject);
+begin
+  DataModule1.FDQueryRepLoc.Active := False;
+  DataModule1.FDQueryRepLoc.Active := True;
+  DataModule1.frxReportRepLoc.PrepareReport();
+  DataModule1.frxReportRepLoc.ShowReport();
+end;
+
 procedure TFormPrincipal.reportGeralClick(Sender: TObject);
 begin
   FmReport := TFmReport.Create(self);
@@ -403,7 +424,7 @@ begin
     end;
   mrNO:
     begin
-
+    abort
     end;
   end;
 end;
@@ -423,6 +444,14 @@ begin
       end
       else
         FormCadastroSolo.Show;
+end;
+
+procedure TFormPrincipal.Solo2Click(Sender: TObject);
+begin
+  DataModule1.FDQueryRepSol.Active := False;
+  DataModule1.FDQueryRepSol.Active := True;
+  DataModule1.frxReportRepSol.PrepareReport();
+  DataModule1.frxReportRepSol.ShowReport();
 end;
 
 procedure TFormPrincipal.Timer1Timer(Sender: TObject);

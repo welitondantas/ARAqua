@@ -30,6 +30,10 @@ object FmBackup: TFmBackup
     TabOrder = 0
     object TabSheetCliente: TTabSheet
       Caption = '  Backup e Restaura'#231#227'o  '
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object Splitter1: TSplitter
         Left = 417
         Top = 0
@@ -391,12 +395,11 @@ object FmBackup: TFmBackup
             Left = 6
             Top = 16
             Width = 41
-            Height = 24
+            Height = 13
             Margins.Left = 5
             Margins.Top = 15
             Align = alLeft
             Caption = 'Arquivo:'
-            ExplicitHeight = 13
           end
           object ButtonConsulta: TButton
             AlignWithMargins = True
@@ -492,7 +495,7 @@ object FmBackup: TFmBackup
             Left = 6
             Top = 23
             Width = 57
-            Height = 33
+            Height = 13
             Margins.Left = 5
             Margins.Top = 22
             Margins.Right = 0
@@ -504,7 +507,6 @@ object FmBackup: TFmBackup
             Font.Name = 'Tahoma'
             Font.Style = [fsBold]
             ParentFont = False
-            ExplicitHeight = 13
           end
           object ButtonExec: TButton
             AlignWithMargins = True

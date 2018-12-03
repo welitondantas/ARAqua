@@ -1,0 +1,222 @@
+object DataModule1: TDataModule1
+  OldCreateOrder = False
+  OnCreate = DataModuleCreate
+  Height = 370
+  Width = 689
+  object FDQueryUsuario: TFDQuery
+    Connection = FDConnection1
+    SQL.Strings = (
+      'select * from usuario')
+    Left = 144
+    Top = 24
+  end
+  object FDConnection1: TFDConnection
+    Params.Strings = (
+      'Database=dbaraqua'
+      'User_Name=araqua'
+      'Password=araqua'
+      'DriverID=MySQL')
+    Connected = True
+    LoginPrompt = False
+    Left = 56
+    Top = 24
+  end
+  object FDQuerySession: TFDQuery
+    Connection = FDConnection1
+    SQL.Strings = (
+      'SELECT * FROM INFORMATION_SCHEMA.PROCESSLIST'
+      'where upper(db) = upper( :DATABASE )')
+    Left = 56
+    Top = 78
+    ParamData = <
+      item
+        Name = 'DATABASE'
+        DataType = ftWideString
+        ParamType = ptInput
+        Value = '%%'
+      end>
+  end
+  object DataSourceSession: TDataSource
+    DataSet = FDQuerySession
+    Left = 57
+    Top = 126
+  end
+  object FDQueryDML: TFDQuery
+    Connection = FDConnection1
+    Left = 264
+    Top = 80
+  end
+  object DataSourceDML: TDataSource
+    DataSet = FDQueryDML
+    Left = 264
+    Top = 128
+  end
+  object FDQueryKill: TFDQuery
+    Connection = FDConnection1
+    SQL.Strings = (
+      'KILL :PROCESSO')
+    Left = 360
+    Top = 78
+    ParamData = <
+      item
+        Name = 'PROCESSO'
+        ParamType = ptInput
+      end>
+  end
+  object FDQueryTema: TFDQuery
+    Connection = FDConnection1
+    SQL.Strings = (
+      'select t.* from temas t'
+      ''
+      'order by nometema;')
+    Left = 152
+    Top = 79
+  end
+  object DataSourceTema: TDataSource
+    DataSet = FDQueryTema
+    Left = 152
+    Top = 127
+  end
+  object FDQueryRepLoc: TFDQuery
+    Connection = FDConnection1
+    SQL.Strings = (
+      'select * from localidade order by descricao')
+    Left = 440
+    Top = 24
+  end
+  object FDQueryRepAgro: TFDQuery
+    Connection = FDConnection1
+    SQL.Strings = (
+      'select * from agrotoxico order by principioativo')
+    Left = 536
+    Top = 24
+  end
+  object FDQueryRepSol: TFDQuery
+    Connection = FDConnection1
+    SQL.Strings = (
+      'select * from solo order by nome')
+    Left = 624
+    Top = 24
+  end
+  object frxReportRepLoc: TfrxReport
+    Version = '5.3.14'
+    DotMatrixReport = False
+    IniFile = '\Software\Fast Reports'
+    PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
+    PreviewOptions.Zoom = 1.000000000000000000
+    PrintOptions.Printer = 'Default'
+    PrintOptions.PrintOnSheet = 0
+    ReportOptions.CreateDate = 43437.061576898150000000
+    ReportOptions.LastChange = 43437.061576898150000000
+    ScriptLanguage = 'PascalScript'
+    ScriptText.Strings = (
+      'begin'
+      ''
+      'end.')
+    Left = 440
+    Top = 88
+    Datasets = <>
+    Variables = <>
+    Style = <>
+  end
+  object frxReportRepAgro: TfrxReport
+    Version = '5.3.14'
+    DotMatrixReport = False
+    IniFile = '\Software\Fast Reports'
+    PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
+    PreviewOptions.Zoom = 1.000000000000000000
+    PrintOptions.Printer = 'Default'
+    PrintOptions.PrintOnSheet = 0
+    ReportOptions.CreateDate = 43437.061867268520000000
+    ReportOptions.LastChange = 43437.061867268520000000
+    ScriptLanguage = 'PascalScript'
+    ScriptText.Strings = (
+      'begin'
+      ''
+      'end.')
+    Left = 536
+    Top = 88
+    Datasets = <>
+    Variables = <>
+    Style = <>
+  end
+  object frxReportRepSol: TfrxReport
+    Version = '5.3.14'
+    DotMatrixReport = False
+    IniFile = '\Software\Fast Reports'
+    PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
+    PreviewOptions.Zoom = 1.000000000000000000
+    PrintOptions.Printer = 'Default'
+    PrintOptions.PrintOnSheet = 0
+    ReportOptions.CreateDate = 43437.061910138890000000
+    ReportOptions.LastChange = 43437.061910138890000000
+    ScriptLanguage = 'PascalScript'
+    ScriptText.Strings = (
+      'begin'
+      ''
+      'end.')
+    Left = 624
+    Top = 88
+    Datasets = <>
+    Variables = <>
+    Style = <>
+  end
+  object frxDBDatasetRepLoc: TfrxDBDataset
+    UserName = 'frxDBDatasetRepLoc'
+    CloseDataSource = False
+    BCDToCurrency = False
+    Left = 440
+    Top = 144
+  end
+  object frxDBDatasetRepAgro: TfrxDBDataset
+    UserName = 'frxDBDatasetRepAgro'
+    CloseDataSource = False
+    BCDToCurrency = False
+    Left = 536
+    Top = 144
+  end
+  object frxDBDatasetRepSol: TfrxDBDataset
+    UserName = 'frxDBDatasetRepSol'
+    CloseDataSource = False
+    BCDToCurrency = False
+    Left = 624
+    Top = 144
+  end
+  object frxPDFExport1: TfrxPDFExport
+    UseFileCache = True
+    ShowProgress = True
+    OverwritePrompt = False
+    DataOnly = False
+    PrintOptimized = False
+    Outline = False
+    Background = False
+    HTMLTags = True
+    Quality = 95
+    Transparency = False
+    Author = 'FastReport'
+    Subject = 'FastReport PDF export'
+    ProtectionFlags = [ePrint, eModify, eCopy, eAnnot]
+    HideToolbar = False
+    HideMenubar = False
+    HideWindowUI = False
+    FitWindow = False
+    CenterWindow = False
+    PrintScaling = False
+    PdfA = False
+    Left = 440
+    Top = 200
+  end
+  object frxCSVExport1: TfrxCSVExport
+    UseFileCache = True
+    ShowProgress = True
+    OverwritePrompt = False
+    DataOnly = False
+    Separator = ';'
+    OEMCodepage = False
+    UTF8 = False
+    NoSysSymbols = True
+    ForcedQuotes = False
+    Left = 536
+    Top = 200
+  end
+end

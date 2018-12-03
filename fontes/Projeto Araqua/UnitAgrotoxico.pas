@@ -14,6 +14,9 @@ interface
         FCoeficienteSorcaoCamada1: double;
         FMeiaVidaCamada4: integer;
         FCoeficienteSorcaoCamada4: double;
+        FPotabilidade: integer;
+        FCplantas: double;
+        FCanimais: double;
         FId: integer;
         FDose: double;
         procedure SetCoeficienteSorcaoCamada1(const Value: double);
@@ -26,6 +29,9 @@ interface
         procedure SetMeiaVidaCamada2(const Value: integer);
         procedure SetMeiaVidaCamada3(const Value: integer);
         procedure SetMeiaVidaCamada4(const Value: integer);
+        procedure SetPotabilidade(const Value: integer);
+        procedure SetCanimais(const Value: double);
+        procedure SetCplantas(const Value: double);
         procedure SetPrincipioAtivo(const Value: String);
         function getCoeficienteSorcaoCamada1: double;
         function getCoeficienteSorcaoCamada2: double;
@@ -37,6 +43,9 @@ interface
         function getMeiaVidaCamada2: integer;
         function getMeiaVidaCamada3: integer;
         function getMeiaVidaCamada4: integer;
+        function getPotabilidade: integer;
+        function getCplantas: double;
+        function getCanimais: double;
         function getPrincipioAtivo: String;
 
       published
@@ -51,12 +60,20 @@ interface
         property MeiaVidaCamada2: integer read getMeiaVidaCamada2 write SetMeiaVidaCamada2;
         property MeiaVidaCamada3: integer read getMeiaVidaCamada3 write SetMeiaVidaCamada3;
         property MeiaVidaCamada4: integer read getMeiaVidaCamada4 write SetMeiaVidaCamada4;
+        property Potabilidade: integer read getPotabilidade write SetPotabilidade;
+        property Canimais: double read getCanimais write SetCanimais;
+        property Cplantas: double read getCplantas write SetCplantas;
     end;
 implementation
 
 { TForm }
 
 { TAgrotoxico }
+
+function TAgrotoxico.getCanimais: double;
+begin
+  Result := FCanimais;
+end;
 
 function TAgrotoxico.getCoeficienteSorcaoCamada1: double;
 begin
@@ -76,6 +93,11 @@ end;
 function TAgrotoxico.getCoeficienteSorcaoCamada4: double;
 begin
   Result := FCoeficienteSorcaoCamada4;
+end;
+
+function TAgrotoxico.getCplantas: double;
+begin
+  Result := FCplantas;
 end;
 
 function TAgrotoxico.getDose: double;
@@ -108,9 +130,19 @@ begin
   Result := FMeiaVidaCamada4;
 end;
 
+function TAgrotoxico.getPotabilidade: integer;
+begin
+  Result := FPotabilidade;
+end;
+
 function TAgrotoxico.getPrincipioAtivo: String;
 begin
   Result := FPrincipioAtivo;
+end;
+
+procedure TAgrotoxico.SetCanimais(const Value: double);
+begin
+  FCanimais := Value;
 end;
 
 procedure TAgrotoxico.SetCoeficienteSorcaoCamada1(const Value: double);
@@ -131,6 +163,11 @@ end;
 procedure TAgrotoxico.SetCoeficienteSorcaoCamada4(const Value: double);
 begin
   FCoeficienteSorcaoCamada4 := Value;
+end;
+
+procedure TAgrotoxico.SetCplantas(const Value: double);
+begin
+  FCplantas := Value;
 end;
 
 procedure TAgrotoxico.SetDose(const Value: double);
@@ -161,6 +198,11 @@ end;
 procedure TAgrotoxico.SetMeiaVidaCamada4(const Value: integer);
 begin
   FMeiaVidaCamada4 := Value;
+end;
+
+procedure TAgrotoxico.SetPotabilidade(const Value: integer);
+begin
+  FPotabilidade := Value;
 end;
 
 procedure TAgrotoxico.SetPrincipioAtivo(const Value: String);
